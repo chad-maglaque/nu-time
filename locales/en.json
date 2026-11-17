@@ -1,0 +1,443 @@
+{
+  "lang": "en",
+  "dir": "ltr",
+  "langName": "English",
+  "brand": "Nu:Time",
+  "brandLocal": "Nu:Time",
+  "meta": {
+    "title": "Nu:Time™ — time and location reimagined",
+    "description": "Nu:Time (刻时 Ke-Shi) is an open standard for time and place: one clock for the whole planet, a decimal day of 10 gongs, 100 kè, 1,000 beats and 100,000 ticks, and a single unit — the kè — that measures both when and where."
+  },
+  "nav": {
+    "time": "Time reimagined",
+    "how": "How it works",
+    "ke": "The kè",
+    "geometry": "Geometry",
+    "heritage": "Heritage",
+    "why": "Why now",
+    "build": "Developers",
+    "watch": "Nu:Watch",
+    "join": "Join",
+    "spec": "The Standard",
+    "explore": "Explore more"
+  },
+  "units": {
+    "gong": "gong",
+    "ke": "kè",
+    "beat": "beat",
+    "tick": "tick",
+    "gongs": "gongs",
+    "kes": "kè",
+    "beats": "beats",
+    "ticks": "ticks"
+  },
+  "hero": {
+    "eyebrow": "The Nu:Time Standard · 刻时 Ke-Shi",
+    "title": "time and location reimagined.",
+    "sub": "One clock for the whole planet. A decimal day of 10 gongs, 100 kè and 1,000 beats. And one unit — the kè — that measures both when and where you are.",
+    "ctaExplore": "Explore more",
+    "ctaJoin": "Join the launch",
+    "clockLabel": "Universal Nu:Time, now",
+    "conventional": "Your wall clock",
+    "city": "Place",
+    "position": "Your position",
+    "noon": "Solar noon",
+    "sunrise": "Sunrise",
+    "sunset": "Sunset",
+    "east": "E",
+    "west": "W",
+    "north": "N",
+    "south": "S",
+    "polarDay": "Sun up all day",
+    "polarNight": "Sun down all day",
+    "dayBar": "Today at your place, in universal Nu:Time",
+    "dialHint": "The time is the same for everyone; the face turns with your place, so your solar noon is always at the top. At Greenwich the zero mark — where gong, beat and tick roll over — sits at the very bottom; everywhere else the face turns by your distance from Greenwich in kè. Red hand: once a day. Blue: once a gong. Gold: once a beat.",
+    "solarTime": "Your solar time",
+    "choose": "Choose a location",
+    "current": "Current Location (Auto-Detect)",
+    "locating": "Finding your location…",
+    "located": "Your location:",
+    "approx": "Approximate location (from your connection):",
+    "locfail": "Couldn't get your location. Allow location access for this site in your browser, or choose a city.",
+    "nuDay": "Nu:Day"
+  },
+  "eliminates": {
+    "title": "Nu:Time eliminates",
+    "items": [
+      "12 and 24 hours",
+      "AM and PM",
+      "60 minutes",
+      "60 seconds",
+      "Time zones",
+      "Daylight saving",
+      "Leap seconds",
+      "The International Date Line"
+    ],
+    "tail": "and keeps the only things that matter: the instant, and the sun over your head."
+  },
+  "time": {
+    "title": "Time reimagined.",
+    "lead": "Every place on Earth reads the same Nu:Time at the same instant. Where you are no longer changes what time it is — it only changes where the sun is. Your position, in kè, tells you exactly when your noon, sunrise and sunset fall.",
+    "points": [
+      {
+        "title": "One instant",
+        "text": "Gong 00:00:00 begins at 00:00 UTC, everywhere. Shanghai, Delhi, Paris and New York read the same digits. Meetings, flights and markets need no conversion."
+      },
+      {
+        "title": "Your sun, in kè",
+        "text": "Your longitude, in kè, is your offset from the Prime Meridian. Each kè east brings your solar noon 10 beats earlier; each kè west, 10 beats later."
+      },
+      {
+        "title": "No date line",
+        "text": "The universal day turns over once, for everyone, at midnight on the Prime Meridian. No jumping a day mid-Pacific, no two Tuesdays — and days are simply numbered (Nu:Day 61361), with no leap years to count."
+      },
+      {
+        "title": "Your clock, if you want it",
+        "text": "Nu:Time devices can also show your local solar day, where noon is always 05:00:00. Every reading is labelled; universal and local are never silently mixed."
+      }
+    ]
+  },
+  "how": {
+    "title": "The whole system fits on one line.",
+    "lead": "Every unit is a power of ten. Every display reads the same way: GG:BB:TT — gong, beat, tick.",
+    "cards": [
+      {
+        "n": "10",
+        "unit": "gongs · 更",
+        "text": "A tenth of the day: 2 hours 24 minutes. The first field of every Nu:Time reading."
+      },
+      {
+        "n": "100",
+        "unit": "kè",
+        "text": "A hundredth of the day: 14.4 minutes — and 3.6° of arc. The kè is the bridge between time and place."
+      },
+      {
+        "n": "1,000",
+        "unit": "beats",
+        "text": "A thousandth of the day: 86.4 seconds. Long enough to mean something, short enough to meet on."
+      },
+      {
+        "n": "100,000",
+        "unit": "ticks",
+        "text": "0.864 seconds — close to a resting heartbeat. The last field of every reading."
+      }
+    ],
+    "tableTitle": "Familiar moments, in universal Nu:Time",
+    "colConventional": "UTC",
+    "colBeats": "Beats",
+    "colNu": "Nu:Time",
+    "rows": [
+      [
+        "Midnight at Greenwich",
+        "00:00",
+        "0",
+        "00:00:00"
+      ],
+      [
+        "A quarter day",
+        "06:00",
+        "250",
+        "02:50:00"
+      ],
+      [
+        "One gong in three",
+        "07:12",
+        "300",
+        "03:00:00"
+      ],
+      [
+        "Noon at Greenwich",
+        "12:00",
+        "500",
+        "05:00:00"
+      ],
+      [
+        "Three quarters",
+        "18:00",
+        "750",
+        "07:50:00"
+      ],
+      [
+        "Last tick of the day",
+        "23:59:59.2",
+        "999.99",
+        "09:99:99"
+      ]
+    ],
+    "mathTitle": "The arithmetic",
+    "math": [
+      "Half a day is 500 beats. A quarter is 250. A meeting is 20 beats; a lunch, 30.",
+      "Durations subtract like ordinary numbers — no carrying by 60, no AM/PM.",
+      "The units are identical in every language. Only the names change."
+    ]
+  },
+  "ke": {
+    "title": "The kè: one unit for when and where.",
+    "lead": "A full day is 100 kè. A full circle is 100 kè. So the Earth's turn and the clock's turn are the same number — and time zones become simple arithmetic.",
+    "facts": [
+      {
+        "n": "1 kè",
+        "text": "= 1/100 of a day = 14.4 minutes = 10 beats"
+      },
+      {
+        "n": "1 kè",
+        "text": "= 1/100 of a circle = 3.6° of arc"
+      },
+      {
+        "n": "Nu:Long",
+        "text": "0 to 50 kè east or west of the Prime Meridian (50 kè = 180°)"
+      },
+      {
+        "n": "Nu:Lat",
+        "text": "0 to 25 kè north or south of the Equator (25 kè = 90°)"
+      }
+    ],
+    "ruleTitle": "The only time-zone rule you'll ever need",
+    "rule": "Solar noon = 05:00:00 − (your Nu:Long east, in kè, × 10 beats)",
+    "tableTitle": "Where noon falls, in universal Nu:Time",
+    "colPlace": "Place",
+    "colLong": "Nu:Long",
+    "colNoon": "Mean solar noon",
+    "note": "Mean solar noon; the true sun can run up to about 1 kè (16 minutes) early or late through the year — the equation of time, built into every Nu:Time clock."
+  },
+  "geometry": {
+    "title": "A new era of geometry.",
+    "lead": "Degrees were Babylon's choice. Radians are a mathematician's. The 100-kè circle speaks the same language as your clock and your map — and makes trigonometry intuitive.",
+    "items": [
+      [
+        "Full turn",
+        "100 kè",
+        "360°"
+      ],
+      [
+        "Straight line · triangle's angles",
+        "50 kè",
+        "180°"
+      ],
+      [
+        "Right angle",
+        "25 kè",
+        "90°"
+      ],
+      [
+        "Equilateral triangle",
+        "16⅔ kè",
+        "60°"
+      ],
+      [
+        "Regular pentagon, interior",
+        "30 kè",
+        "108°"
+      ],
+      [
+        "Sunrise horizon dip",
+        "0.23 kè",
+        "0.833°"
+      ]
+    ],
+    "colAngle": "Angle",
+    "colKe": "In kè",
+    "colDeg": "In degrees",
+    "trig": "sin 25 kè = 1. cos 50 kè = −1. A wave that repeats daily has a period of exactly 100 kè. Cycles, orbits and oscillations finally share one unit with the calendar.",
+    "convertTitle": "Convert",
+    "deg": "Degrees",
+    "keLabel": "Kè"
+  },
+  "heritage": {
+    "title": "Not a new idea. A finished one.",
+    "lead": "Great civilizations have long tried to divide the day more sensibly. Nu:Time borrows their wisdom and adds what none of them had: a planet that can agree on the instant.",
+    "items": [
+      {
+        "key": "zh",
+        "era": "Antiquity – 17th c.",
+        "place": "China",
+        "title": "The hundred kè (刻)",
+        "text": "For more than two thousand years, Chinese astronomers divided the day into 100 kè, measured by water clocks — the same 14.4-minute kè at the heart of Nu:Time. Night was kept in five watches, the gēng (更). The 17th-century Shixian calendar switched to 96 kè to match European hours. 刻时 Ke-Shi restores the hundred."
+      },
+      {
+        "key": "in",
+        "era": "c. 400 CE –",
+        "place": "India",
+        "title": "Ghaṭikā and pala",
+        "text": "Indian astronomy, as in the Sūrya Siddhānta, divided the day into 60 ghaṭikā of 24 minutes, each of 60 pala. The day was a whole to be divided — not hours bolted to a dial. Today a single Indian Standard Time (UTC+5:30) spans nearly 30 degrees of longitude, and the northeast still debates a clock of its own."
+      },
+      {
+        "key": "fr",
+        "era": "1793 – 1795",
+        "place": "France",
+        "title": "The decimal Revolution",
+        "text": "Revolutionary France made the day 10 hours of 100 minutes of 100 seconds. The decimal second was 0.864 s — exactly a Nu:Time tick. Metres and kilograms conquered the world; decimal time was suspended after 17 months. It was right too early."
+      },
+      {
+        "key": "it",
+        "era": "14th – 19th c.",
+        "place": "Italy",
+        "title": "Ore italiche",
+        "text": "For centuries Italian clocks counted 24 hours from sunset, so the dial always told you how much daylight remained. Time was anchored to the sun over your own city — the idea Nu:Time restores with the kè."
+      },
+      {
+        "key": "es",
+        "era": "1940 – today",
+        "place": "Spain",
+        "title": "A country on the wrong clock",
+        "text": "Spain sits mostly west of Greenwich yet keeps Central European Time, adopted in 1940. Its clocks run an hour or more ahead of its sun — a living example of what political time zones do to daily life."
+      },
+      {
+        "key": "de",
+        "era": "1959 – today",
+        "place": "Germany",
+        "title": "Atomic time on the air",
+        "text": "Germany's PTB in Braunschweig broadcasts atomic time across Europe on the DCF77 signal, keeping millions of radio clocks exact. Precision is solved. The units we display it in are not."
+      }
+    ]
+  },
+  "why": {
+    "title": "Why now. Inertia be damned.",
+    "lead": "The measurement of time is being rebuilt from the atom up. The display of time has not changed since Babylon.",
+    "items": [
+      {
+        "title": "The second is being redefined",
+        "text": "Optical atomic clocks now outperform the caesium clocks that define the SI second. Metrologists are on a roadmap to redefine the second around 2030. If the foundation is being replaced, the façade can be too."
+      },
+      {
+        "title": "Leap seconds were always the clock's problem",
+        "text": "UTC fixes the day at 86,400 atomic seconds, so it has had to insert 27 leap seconds since 1972 to keep up with the Earth — and by 2035 it will stop trying, letting civil time drift away from the sun. Nu:Time divides the Earth's actual turn, so it never needs a leap second. That's how we know the time is now."
+      },
+      {
+        "title": "Time zones are politics, not physics",
+        "text": "Dozens of offsets are in use worldwide, some 30 or 45 minutes off the hour. China spans five geographic zones on one clock. India spans nearly two on one offset. Spain lives an hour off its sun. Nu:Time separates the shared instant from the local sun."
+      },
+      {
+        "title": "Daylight saving has lost the argument",
+        "text": "Twice a year, a billion people break their sleep for a 1916 energy policy. The European Parliament voted in 2019 to end seasonal clock changes; the clocks are still changing. Nu:Time has no daylight saving to abolish."
+      },
+      {
+        "title": "Machines already count in tens",
+        "text": "Satellites, payment rails, sensors and AI agents coordinate across every zone at once. Base 60 is a translation layer they tolerate. Decimal time is native to computation."
+      },
+      {
+        "title": "The world's next standards are being written",
+        "text": "With China Standards 2035, China has set out to lead international standards in emerging technology, and its BeiDou system and National Time Service Center are now pillars of how the world keeps time. 刻时 Ke-Shi — rooted in China's own hundred-kè day — is offered as an open candidate for that work, and for everyone's."
+      }
+    ]
+  },
+  "roadmap": {
+    "title": "The path.",
+    "items": [
+      {
+        "when": "2026",
+        "text": "Open standard v1.0, reference code and open-hardware reference clock. First Nu:Time devices."
+      },
+      {
+        "when": "2027",
+        "text": "Nu:Time Certified programme for compatible devices and software. Standards-body submissions."
+      },
+      {
+        "when": "2030 – 2035",
+        "text": "AI-assisted pilot conversion of legacy temporal and geospatial data to kè."
+      },
+      {
+        "when": "2035 +",
+        "text": "Scaled conversion as leap seconds end and the second is redefined. Time and place, in one unit."
+      }
+    ]
+  },
+  "build": {
+    "title": "Open. Build one.",
+    "lead": "Nu:Time is an open standard. The specification, reference code and clock designs are free for anyone to use, build on and ship — so the standard can belong to everyone, while the Nu:Time name stands for quality.",
+    "items": [
+      {
+        "title": "The Standard v1.0",
+        "text": "Units, the kè, universal synchronization, Nu:Lat/Nu:Long, the 100-kè circle, solar position and the nu-time/v1 record. CC BY 4.0.",
+        "link": "Read the Standard",
+        "href": "/spec/"
+      },
+      {
+        "title": "APIs: JavaScript & Python",
+        "text": "Drop-in conversions between UTC and Nu:Time, degrees and kè, latitude/longitude and Nu:Lat/Nu:Long — with shared test vectors. MIT or Apache 2.0.",
+        "link": "Developer docs",
+        "href": "/developers/"
+      },
+      {
+        "title": "Open hardware clock",
+        "text": "A reference design: low-power ARM MCU, GNSS for UTC and kè coordinates, MIP display, and a haptic pulse every kè. CERN-OHL-P 2.0.",
+        "link": "Hardware reference",
+        "href": "/developers/#hardware"
+      }
+    ],
+    "quartzTitle": "Quartz cycles per Nu:Time tick",
+    "quartz": [
+      [
+        "3.456 MHz",
+        "2,985,984",
+        "Exact integer divide — the Nu:Time crystal"
+      ],
+      [
+        "32.768 kHz",
+        "28,311.552",
+        "Phase accumulator (28,311 / 28,312)"
+      ],
+      [
+        "1 MHz",
+        "864,000",
+        "Integer divide"
+      ],
+      [
+        "10 MHz",
+        "8,640,000",
+        "Integer divide"
+      ],
+      [
+        "16 MHz",
+        "13,824,000",
+        "Integer divide"
+      ]
+    ],
+    "colCrystal": "Crystal",
+    "colCycles": "Cycles / tick",
+    "colMethod": "Method",
+    "certTitle": "Nu:Time Certified",
+    "cert": "Anyone may build to the standard and say \"Nu:Time compatible\". Devices that pass the conformance tests may carry the Nu:Time Certified mark.",
+    "license": "Spec & docs: CC BY 4.0 · Code: MIT or Apache 2.0 · Hardware: CERN-OHL-P 2.0 · Royalty-free patent pledge for implementers. Nu:Time™, Ke-Shi™, 刻时™ and their logos are trademarks of Nu-Time Inc. and are not licensed by the open licences. The unit names — gong (gēng 更), kè (刻), beat and tick — are ordinary words, free for anyone to use."
+  },
+  "watch": {
+    "eyebrow": "The first Nu:Time timepiece",
+    "title": "Nu:Watch™",
+    "text": "A designer watch built around the Nu:Time dial: the day as one golden ring, the sun as a hand, your place on Earth on your wrist.",
+    "cta": "Explore Nu:Watch"
+  },
+  "join": {
+    "title": "Be first. Help set the standard.",
+    "lead": "Developers, makers, researchers, standards people, creators, press and the simply curious — tell us who you are and we'll bring you in.",
+    "name": "Name",
+    "email": "Email",
+    "role": "I am a…",
+    "roles": {
+      "developer": "Developer",
+      "maker": "Hardware maker",
+      "researcher": "Researcher / academic",
+      "standards": "Standards / government",
+      "creator": "Creator / influencer",
+      "press": "Press",
+      "investor": "Investor / partner",
+      "curious": "Just curious"
+    },
+    "country": "Country / region",
+    "message": "What would you build with Nu:Time? (optional)",
+    "consent": "Email me Nu:Time launch news. Unsubscribe anytime.",
+    "submit": "Join",
+    "sending": "Sending…",
+    "ok": "You're in. Welcome to Nu:Time.",
+    "err": "That didn't go through. Please try again, or email hello@nu-time.com.",
+    "invalid": "Please enter a valid email."
+  },
+  "footer": {
+    "tagline": "time and location reimagined.",
+    "rights": "© 2026 Nu-Time Inc. Nu:Time™, Ke-Shi™ and 刻时™ are trademarks of Nu-Time Inc.",
+    "open": "Open standard: spec CC BY 4.0 · code MIT or Apache 2.0 · hardware CERN-OHL-P 2.0.",
+    "contact": "Contact",
+    "press": "Press",
+    "brand": "Brand guidelines",
+    "languages": "Languages"
+  }
+}

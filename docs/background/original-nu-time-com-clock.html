@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nu:Time</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- SunCalc library for sunrise/sunset calculations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/suncalc/1.8.0/suncalc.min.js"></script>
+    <style>
+        /* Custom font for better aesthetics */
+        /* Importing Orbitron for general text and Space Mono for numeric displays */
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap');
+        canvas {
+            background-color: #C8A86C; /* Gold/Brass */
+            border: 2px solid #e0e0e0;
+            border-radius: 50%;
+            display: block;
+            margin: 0 auto;
+            max-width: 100%; /* Ensure responsiveness */
+            height: auto; /* Maintain aspect ratio */
+        }
+        body {
+            background-color: #5A5A5A; /* Page background color, one shade lighter than clock face */
+            transition: background-color 0.8s ease;
+        }
+        /* Custom styles for time displays to use Orbitron and fixed width for the container */
+        #gongTimeDisplay, #gmtTimeDisplay {
+            font-family: 'Orbitron', sans-serif; /* Apply Orbitron directly as requested */
+            width: 350px; /* Set a fixed width for the container to 350px */
+            display: inline-block; /* Allows width to work */
+            box-sizing: border-box; /* Include padding in the width */
+            /* Removed min-width as it's no longer needed with direct Orbitron application */
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center p-4 font-orbitron">
+    <!-- Main container for the application, centered and responsive -->
+    <div class="bg-[#3A3A3A] p-8 rounded-xl shadow-lg w-full max-w-md text-center">
+        <h1 class="text-3xl font-bold text-gray-100 mb-6">Nu:Time</h1>
+
+        <!-- Section for displaying the current NuTime and Analog Clock -->
+        <div class="mb-8">
+            <!-- NuTime Display - Now just the numbers directly -->
+            <div class="mb-4">
+                <!-- Re-applied font-mono class for fixed-width numbers, adjusted padding -->
+                <span id="gongTimeDisplay" class="text-5xl font-mono text-left px-12 text-blue-300 bg-blue-900 py-3 rounded-lg shadow-inner">
+                    00:00:00
+                </span>
+            </div>
+
+            <!-- Analog Clock Canvas -->
+            <canvas id="nuTimeClock" width="300" height="300" class="mt-6"></canvas>
+
+            <!-- User Location Display (Removed Lat/Long values, keeping only the dropdown) -->
+            <div class="mt-8">
+                <div class="flex flex-col sm:flex-row justify-center items-center space-y-2 sm:space-y-0 sm:space-x-4">
+                    <!-- Longitude and Latitude display removed -->
+                </div>
+            </div>
+
+            <!-- Location Selector Dropdown -->
+            <div class="mt-6 mb-4">
+                <select id="locationSelect" class="block w-full px-4 py-2 rounded-lg border border-gray-600 bg-gray-700 text-gray-100 shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                    <option value="" disabled selected>Choose a location</option>
+                    <option value="current" data-lat="0" data-lon="0">Current Location (Auto-Detect)</option>
+                    <!-- Options will be dynamically loaded here by JavaScript -->
+                </select>
+            </div>
+
+
+            <!-- Standard GMT Time Display - Now just the numbers directly and hidden -->
+            <div class="mt-8 mb-4 hidden">
+                <p class="text-lg font-medium text-gray-300">Standard GMT Time:</p>
+                <!-- Re-applied font-mono class for fixed-width numbers, adjusted padding -->
+                <span id="gmtTimeDisplay" class="text-3xl font-mono text-left px-12 text-green-300 bg-green-900 py-2 rounded-lg shadow-inner">
+                    00:00:00
+                </span>
+                <p class="text-sm text-gray-300 mt-1">HH:MM:SS</p>
+            </div>
+
+            <!-- Removed NuTime Time (Custom Ticks) display -->
+            <!-- Removed Unix Time display -->
+            <!-- Removed Sunrise NuTime Display -->
+            <!-- Removed Sunset NuTime Display -->
+            <!-- Removed GMT Sunrise Time Display -->
+            <!-- Removed GMT Sunset Time Display -->
+        </div>
+    </div>
+
+    <script>
+        // Configure Tailwind CSS to use the Orbitron and Space Mono font families
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        orbitron: ['Orbitron', 'sans-serif'],
+                        'space-mono': ['Space Mono', 'monospace'], // Defined Space Mono
+                    },
+                },
+            },
+        };
+
+        const canvas = document.getElementById('nuTimeClock');
+        const ctx = canvas.getContext('2d');
+        let radius; // Will be set dynamically in setCanvasSize
+
+        // Greenwich, UK coordinates (default fallback)
+        const DEFAULT_LATITUDE = 51.4826;
+        const DEFAULT_LONGITUDE = 0.0077;
+
+        // Global variables to store user's actual or default location
+        let userLatitude = DEFAULT_LATITUDE;
+        let userLongitude = DEFAULT_LONGITUDE;
+
+        // Global variables to store sunrise/sunset in NuTime seconds for comparison
+        let sunriseNuTimeSeconds = 0;
+        let sunsetNuTimeSeconds = 0;
+        let isNightMode = false; // Flag to control coloring
+
+        // Variable to hold the interval ID for location updates
+        let locationIntervalId;
+        // Flag to indicate if location has been manually set or successfully auto-detected
+        let isLocationManuallySet = false;
+
+        // New array for predefined locations
+        const predefinedLocations = [
+            { "city": "Anchorage", "country": "USA", "latitude": 61.2181, "longitude": -149.9003 },
+            { "city": "Atlanta", "country": "USA", "latitude": 33.7490, "longitude": -84.3880 },
+            { "city": "Bangkok", "country": "Thailand", "latitude": 13.7563, "longitude": 100.5018 },
+            { "city": "Barcelona", "country": "Spain", "latitude": 41.3851, "longitude": 2.1737 },
+            { "city": "Beijing", "country": "China", "latitude": 39.9075, "longitude": 116.3972 },
+            { "city": "Berlin", "country": "Germany", "latitude": 52.5244, "longitude": 13.4105 },
+            { "city": "Bogota", "country": "Colombia", "latitude": 4.7109, "longitude": -74.0721 },
+            { "city": "Cairo", "country": "Egypt", "latitude": 30.0444, "longitude": 31.2357 },
+            { "city": "Cape Town", "country": "South Africa", "latitude": -33.9258, "longitude": 18.4232 },
+            { "city": "Chicago", "country": "USA", "latitude": 41.8781, "longitude": -87.6298 },
+            { "city": "Delhi", "country": "India", "latitude": 28.6139, "longitude": 77.2090 },
+            { "city": "Dubai", "country": "UAE", "latitude": 25.277, "longitude": 55.296 },
+            { "city": "Helsinki", "country": "Finland", "latitude": 60.169856, "longitude": 24.938379 },
+            { "city": "Hong Kong", "country": "Hong Kong SAR", "latitude": 22.3193, "longitude": 114.1694 },
+            { "city": "Houston", "country": "USA", "latitude": 29.7604, "longitude": -95.3698 },
+            { "city": "Istanbul", "country": "Turkey", "latitude": 41.0082, "longitude": 28.9784 },
+            { "city": "Jakarta", "country": "Indonesia", "latitude": -6.2088, "longitude": 106.8456 },
+            { "city": "Johannesburg", "country": "South Africa", "latitude": -26.2041, "longitude": 28.0473 },
+            { "city": "Karachi", "country": "Pakistan", "latitude": 24.8607, "longitude": 67.0011 },
+            { "city": "Kuala Lumpur", "country": "Malaysia", "latitude": 3.1390, "longitude": 101.6869 },
+            { "city": "Lagos", "country": "Nigeria", "latitude": 6.5244, "longitude": 3.3792 },
+            { "city": "London", "country": "United Kingdom", "latitude": 51.5074, "longitude": -0.1278 },
+            { "city": "Los Angeles", "country": "USA", "latitude": 34.0522, "longitude": -118.2437 },
+            { "city": "Madrid", "country": "Spain", "latitude": 40.4168, "longitude": -3.7038 },
+            { "city": "Manila", "country": "Philippines", "latitude": 14.5995, "longitude": 120.9842 },
+            { "city": "Mexico City", "country": "Mexico", "latitude": 19.4326, "longitude": -99.1332 },
+            { "city": "Moscow", "country": "Russia", "latitude": 55.7558, "longitude": 37.6173 },
+            { "city": "Mumbai", "country": "India", "latitude": 19.0760, "longitude": 72.8777 },
+            { "city": "Nairobi", "country": "Kenya", "latitude": -1.2921, "longitude": 36.8219 },
+            { "city": "New York City", "country": "USA", "latitude": 40.7128, "longitude": -74.0060 },
+            { "city": "Paris", "country": "France", "latitude": 48.8566, "longitude": 2.3522 },
+            { "city": "Reykjavik", "country": "Iceland", "latitude": 64.15, "longitude": -21.94 },
+            { "city": "Rio de Janeiro", "country": "Brazil", "latitude": -22.9068, "longitude": -43.1729 },
+            { "city": "Riyadh", "country": "Saudi Arabia", "latitude": 24.7136, "longitude": 46.6753 },
+            { "city": "Rome", "country": "Italy", "latitude": 41.9028, "longitude": 12.4964 },
+            { "city": "Santiago", "country": "Chile", "latitude": -33.4489, "longitude": -70.6693 },
+            { "city": "San Francisco", "country": "USA", "latitude": 37.7749, "longitude": -122.4194 },
+            { "city": "Sao Paulo", "country": "Brazil", "latitude": -23.5505, "longitude": -46.6333 },
+            { "city": "Seattle", "country": "USA", "latitude": 47.6062, "longitude": -122.3321 },
+            { "city": "Seoul", "country": "South Korea", "latitude": 37.5665, "longitude": 126.9780 },
+            { "city": "Shanghai", "country": "China", "latitude": 31.2304, "longitude": 121.4737 },
+            { "city": "Singapore", "country": "Singapore", "latitude": 1.3521, "longitude": 103.8198 },
+            { "city": "Stockholm", "country": "Sweden", "latitude": 59.32788, "longitude": 18.05327 },
+            { "city": "Sydney", "country": "Australia", "latitude": -33.8688, "longitude": 151.2093 },
+            { "city": "Taipei", "country": "Taiwan", "latitude": 25.0329, "longitude": 121.5654 },
+            { "city": "Tel Aviv", "country": "Israel", "latitude": 32.0853, "longitude": 34.7818 },
+            { "city": "Tokyo", "country": "Japan", "latitude": 35.6895, "longitude": 139.6917 },
+            { "city": "Ushuaia", "country": "Argentina", "latitude": -54.81, "longitude": -68.31 },
+            { "city": "Vancouver", "country": "Canada", "latitude": 49.2827, "longitude": -123.1207 },
+            { "city": "Washington D.C.", "country": "USA", "latitude": 38.9072, "longitude": -77.0369 }
+        ];
+
+        /**
+         * Pads a number with a leading zero if it's less than 10.
+         * @param {number} num - The number to pad.
+         * @returns {string} The padded number as a string.
+         */
+        function pad(num) {
+            return num < 10 ? '0' + num : num;
+        }
+
+        /**
+         * Formats a Date object into HH:MM:SS GMT string.
+         * @param {Date} date - The Date object to format.
+         * @returns {string} Formatted time string.
+         */
+        function formatGMTTime(date) {
+            if (!date) return '--:--:--';
+            const gengs = date.getUTCHours();
+            const minutes = date.getUTCMinutes();
+            const seconds = date.getUTCSeconds();
+            return `${pad(gengs)}:${pad(minutes)}:${pad(seconds)}`;
+        }
+
+        /**
+         * Converts a Date object (assumed to be GMT) into NuTime (Geng:Minute:Second) format.
+         * @param {Date} date - The Date object to convert.
+         * @returns {string} Formatted NuTime string.
+         */
+        function convertGMTToNuTime(date) {
+            if (!date) return '--:--:--';
+
+            const standardGengs = date.getUTCHours();
+            const standardMinutes = date.getUTCMinutes();
+            const standardSeconds = date.getUTCSeconds();
+
+            const totalStandardSeconds = (standardGengs * 3600) + (standardMinutes * 60) + standardSeconds;
+            const fractionOfDay = totalStandardSeconds / 86400; // Total seconds in a standard day
+
+            const totalNuTimeSeconds = fractionOfDay * 100000; // Scale to 100,000 NuTime-Seconds in a day
+
+            const nuGengs = totalNuTimeSeconds / 10000; // 1 NuGeng = 10,000 NuTime seconds
+            const remainingSecondsAfterNuGengs = totalNuTimeSeconds % 10000;
+
+            const nuMinutes = remainingSecondsAfterNuGengs / 100; // 1 NuMinute = 100 NuTime seconds
+            const nuSeconds = remainingSecondsAfterNuGengs % 100; // Remaining seconds after NuMinutes
+
+            return `${pad(Math.floor(nuGengs))}:${pad(Math.floor(nuMinutes))}:${pad(Math.floor(nuSeconds))}`; // Floor only for digital display
+        }
+
+        /**
+         * Converts a NuTime string (GG:MM:SS) into total NuTime seconds from midnight.
+         * @param {string} nuTimeString - The NuTime string in "GG:MM:SS" format.
+         * @returns {number} Total NuTime seconds from midnight.
+         */
+        function nuTimeStringToSeconds(nuTimeString) {
+            if (!nuTimeString || nuTimeString === '--:--:--') return 0; // Handle initial state or invalid input
+            const parts = nuTimeString.split(':').map(Number);
+            const kes = parts[0]; // Assuming for this function kes might be passed as gengs if format is H:M:S
+            const minutes = parts[1];
+            const seconds = parts[2];
+            // Reconstruct total NuTime seconds based on 10000 seconds per geng, 100 seconds per minute
+            return (kes * 10000) + (minutes * 100) + seconds; // Note: kes here are effectively NuGengs
+        }
+
+        /**
+         * Normalizes an angle to be within the range [0, 2*Math.PI).
+         * @param {number} angle - The angle in radians.
+         * @returns {number} The normalized angle.
+         */
+        function normalizeAngle(angle) {
+            let normalized = angle % (2 * Math.PI);
+            if (normalized < 0) {
+                normalized += 2 * Math.PI;
+            }
+            return normalized;
+        }
+
+        /**
+         * Blends two RGB colors.
+         * @param {number[]} c1
+         * @param {number[]} c2
+         * @param {number} t
+         * @returns {number[]}
+         */
+        function mixColors(c1, c2, t) {
+            return [
+                Math.round(c1[0] + (c2[0] - c1[0]) * t),
+                Math.round(c1[1] + (c2[1] - c1[1]) * t),
+                Math.round(c1[2] + (c2[2] - c1[2]) * t)
+            ];
+        }
+
+        /**
+         * Smoothstep helper for smoother sky transitions.
+         * @param {number} edge0
+         * @param {number} edge1
+         * @param {number} x
+         * @returns {number}
+         */
+        function smoothstep(edge0, edge1, x) {
+            const t = Math.max(0, Math.min(1, (x - edge0) / (edge1 - edge0)));
+            return t * t * (3 - 2 * t);
+        }
+
+        /**
+         * Returns an RGB sky color based on current date/time, location, and solar altitude.
+         * @param {Date} now
+         * @param {number} latitude
+         * @param {number} longitude
+         * @returns {number[]} [r,g,b]
+         */
+        function getSkyColor(now, latitude, longitude) {
+            const pos = SunCalc.getPosition(now, latitude, longitude);
+            const altitudeDeg = pos.altitude * 180 / Math.PI;
+
+            const ASTRO_NIGHT = [1, 1, 5];
+            const NIGHT = [4, 8, 20];
+            const PREDAWN = [12, 22, 52];
+            const NAUTICAL_BLUE = [28, 52, 115];
+            const CIVIL_BLUE = [60, 120, 215];
+            const NOON_BLUE = [86, 170, 255];
+            const TWILIGHT_WARM = [255, 150, 70];
+            const MILKY_HINT = [30, 38, 64];
+
+            const dayW = smoothstep(-2, 8, altitudeDeg);
+            const civilW = smoothstep(-8, 2, altitudeDeg) * (1 - smoothstep(8, 20, altitudeDeg));
+            const nauticalW = smoothstep(-14, -4, altitudeDeg) * (1 - smoothstep(-2, 6, altitudeDeg));
+            const astroW = smoothstep(-22, -10, altitudeDeg) * (1 - smoothstep(-8, 0, altitudeDeg));
+            const nightW = 1 - smoothstep(-20, -12, altitudeDeg);
+
+            const dayT = Math.pow(Math.max(0, Math.min(1, altitudeDeg / 90)), 0.58);
+            const dayCol = mixColors(mixColors(CIVIL_BLUE, NOON_BLUE, 0.22), NOON_BLUE, dayT);
+            const civilCol = CIVIL_BLUE;
+            const nauticalCol = mixColors(PREDAWN, NAUTICAL_BLUE, 0.75);
+            const astroCol = mixColors(NIGHT, PREDAWN, 0.35);
+
+            const localHour = (now.getUTCHours() + now.getUTCMinutes() / 60 + longitude / 15 + 24) % 24;
+            const distMid = Math.min(localHour, 24 - localHour) / 24;
+            const deep = 1 - smoothstep(0.10, 0.25, distMid);
+            const nightCol = mixColors(NIGHT, ASTRO_NIGHT, deep);
+
+            let weights = [dayW, civilW, nauticalW, astroW, nightW];
+            let total = weights.reduce((a, b) => a + b, 0);
+            if (total <= 1e-9) {
+                weights = [0, 0, 0, 0, 1];
+                total = 1;
+            }
+            weights = weights.map(w => w / total);
+
+            const palette = [dayCol, civilCol, nauticalCol, astroCol, nightCol];
+            let sky = [0, 0, 0];
+            for (let i = 0; i < 5; i++) {
+                sky[0] += weights[i] * palette[i][0];
+                sky[1] += weights[i] * palette[i][1];
+                sky[2] += weights[i] * palette[i][2];
+            }
+            sky = sky.map(v => Math.round(v));
+
+            const times = SunCalc.getTimes(now, latitude, longitude);
+            const sunriseMs = times.sunrise ? Math.abs(now - times.sunrise) : Infinity;
+            const sunsetMs = times.sunset ? Math.abs(now - times.sunset) : Infinity;
+            const halfHourMs = 30 * 60 * 1000;
+            const dawnWarm = Math.exp(-Math.pow(sunriseMs / halfHourMs, 2));
+            const duskWarm = Math.exp(-Math.pow(sunsetMs / halfHourMs, 2));
+            const warmGate = smoothstep(-8, 3, altitudeDeg) * (1 - smoothstep(6, 18, altitudeDeg));
+            const warmAmount = 0.10 * (dawnWarm + duskWarm) * warmGate;
+            sky = mixColors(sky, TWILIGHT_WARM, Math.max(0, Math.min(1, warmAmount)));
+
+            const milkyGate = nightW * (1 - smoothstep(0.11, 0.24, distMid));
+            const milkyWave = 0.5 + 0.5 * Math.sin((localHour / 24) * 2 * Math.PI * 3 + 1.2);
+            const milky = 0.05 * milkyGate * milkyWave;
+            sky = mixColors(sky, MILKY_HINT, Math.max(0, Math.min(1, milky)));
+
+            return sky;
+        }
+
+        /**
+         * Updates the page background color to match the current sky color at the selected location.
+         */
+        function updateBackgroundSkyColor() {
+            const now = new Date();
+            const sky = getSkyColor(now, userLatitude, userLongitude);
+            document.body.style.backgroundColor = `rgb(${sky[0]}, ${sky[1]}, ${sky[2]})`;
+        }
+
+        /**
+         * Draws the clock face, including the outer circle and center dot.
+         * @param {number} longitudeOffset - The longitude offset in radians for position adjustment.
+         */
+        function drawFace(longitudeOffset) {
+            ctx.beginPath();
+            ctx.arc(0, 0, radius, 0, 2 * Math.PI);
+            ctx.fillStyle = '#1A1A1A'; // Changed to Deep Black/Dark Grey #1A1A1A
+            ctx.fill();
+
+            // Draw outer border
+            ctx.strokeStyle = '#333';
+            ctx.lineWidth = 5;
+            ctx.stroke();
+
+            // Draw outermost concentric circle (radius * 0.60)
+            ctx.beginPath();
+            const outermostConcentricRadius = radius * 0.60;
+            ctx.arc(0, 0, outermostConcentricRadius, 0, 2 * Math.PI);
+            ctx.strokeStyle = '#35545C'; // Stroke color
+            ctx.lineWidth = 3; // Stroke width
+            ctx.fillStyle = '#FFB347'; // Fill color Lighter Orange #FFB347
+            ctx.fill();
+            ctx.stroke();
+
+            // Draw tick markers for 0, 25, 50, 75 kes on the outermost concentric circle
+            const tickKes = [0, 25, 50, 75];
+            const tickLength = radius * 0.03; // Length of the tick marks
+            const tickWidth = 2; // Width of the tick marks
+            const tickColor = '#F5DEB3'; // Color of the tick marks
+            const totalKesInCircle = 100; // Total kes for a full circle
+
+            tickKes.forEach(keValue => {
+                // Calculate angle for each tick (100 kes in a full circle, starting from 6 o'clock)
+                // Apply the same longitude offset to the tick markers
+                const angle = Math.PI + (keValue / totalKesInCircle) * 2 * Math.PI + longitudeOffset;
+
+                ctx.save(); // Save the current canvas state
+                ctx.rotate(angle); // Rotate to the tick's position
+
+                ctx.beginPath();
+                ctx.strokeStyle = tickColor;
+                ctx.lineWidth = tickWidth;
+                ctx.moveTo(0, -outermostConcentricRadius); // Start at the outermost concentric circle
+                ctx.lineTo(0, -outermostConcentricRadius + tickLength); // Draw inwards
+                ctx.stroke();
+
+                ctx.restore(); // Restore the canvas state
+            });
+
+
+            // Draw second concentric circle (radius * 0.40)
+            ctx.beginPath();
+            const secondConcentricRadius = radius * 0.40;
+            ctx.arc(0, 0, secondConcentricRadius, 0, 2 * Math.PI);
+            ctx.strokeStyle = '#F5DEB3'; // Stroke color changed to #F5DEB3
+            ctx.lineWidth = 3; // Stroke width
+            ctx.fillStyle = '#1A1A1A'; // Fill with Deep Black/Dark Grey #1A1A1A
+            ctx.fill();
+            ctx.stroke();
+
+            // Draw third concentric circle (radius * 0.20)
+            ctx.beginPath();
+            const thirdConcentricRadius = radius * 0.20;
+            ctx.arc(0, 0, thirdConcentricRadius, 0, 2 * Math.PI);
+            ctx.strokeStyle = '#FFB347'; // Stroke color Lighter Orange #FFB347
+            ctx.lineWidth = 3; // Stroke width
+            ctx.fillStyle = '#FF8C00'; // Fill color Vibrant Orange #FF8C00
+            ctx.fill();
+            ctx.stroke();
+
+            // Draw center dot
+            ctx.beginPath();
+            ctx.arc(0, 0, radius * 0.05, 0, 2 * Math.PI);
+            ctx.fillStyle = '#F5DEB3'; // Light Beige/Cream
+            ctx.fill();
+        }
+
+        /**
+         * Draws the clock hands.
+         * @param {number} pos - The position value (ke, minute, or second).
+         * @param {string} type - The type of hand ('geng', 'minute', 'second', 'sunsetMarker', 'sunriseMarker', 'geng').
+         */
+        function drawHand(pos, type, longitudeOffset = 0) {
+            let length;
+            let width;
+            let angle;
+            let totalUnits; // Total units for a full circle for this hand type
+            let color;
+
+            ctx.beginPath();
+            switch (type) {
+                case "geng": // New Geng Hand
+                    length = radius * 0.4; // Updated length ratio to 0.4
+                    width = radius * 0.03 * 2; // Same width as minute hand
+                    totalUnits = 10; // 10 NuTime gengs in a full circle
+                    angle = Math.PI + (pos / totalUnits) * 2 * Math.PI + longitudeOffset; // Apply longitudeOffset
+                    color = '#4169E1'; // Vibrant Blue
+                    break;
+                case "ke":
+                    length = radius * 0.8; // Changed to 0.8 * radius
+                    width = radius * 0.04; // This width is for the line if it were drawn
+                    totalUnits = 100; // 100 kes in a full circle
+                    // Angle for clockwise rotation from 6 o'clock (bottom), offset by longitude
+                    angle = Math.PI + (pos / totalUnits) * 2 * Math.PI + longitudeOffset; // Already applied
+                    color = isNightMode ? '#E2E2E2' : '#FFB347'; // Changed to E2E2E2 for night mode
+
+                    const circleRadius = radius * 0.04 * 2; // Reverted ke marker circle size
+
+                    // Only draw the circle for the ke hand, making the arm transparent
+                    ctx.beginPath();
+                    ctx.rotate(angle);
+                    ctx.arc(0, -length, circleRadius, 0, 2 * Math.PI);
+                    ctx.fillStyle = color; // Use the conditional color
+                    ctx.fill();
+                    ctx.rotate(-angle); // Rotate back for next hand
+                    return; // Exit function after drawing ke hand
+                case "minute":
+                    length = radius * 0.60; // Changed to 0.60 * radius
+                    width = radius * 0.03 * 2;
+                    totalUnits = 100; // 100 minutes per geng (full circle for minute hand)
+                    // Angle for clockwise rotation from 6 o'clock (bottom)
+                    // Initial angle is Math.PI (6 o'clock). Add for clockwise rotation.
+                    angle = Math.PI + (pos / totalUnits) * 2 * Math.PI + longitudeOffset; // Apply longitudeOffset
+                    color = '#FF4500'; // Vibrant Red
+                    break;
+                case "second":
+                    length = radius * 0.60; // Set to outermost concentric circle radius
+                    width = radius * 0.01;
+                    totalUnits = 100; // 100 seconds per minute (full circle for second hand)
+                    // Angle for clockwise rotation from 6 o'clock (bottom)
+                    // Initial angle is Math.PI (6 o'clock). Add for clockwise rotation.
+                    angle = Math.PI + (pos / totalUnits) * 2 * Math.PI + longitudeOffset; // Apply longitudeOffset
+                    color = '#d5a763'; // Changed to #d5a763
+                    break;
+                case "sunsetMarker": // Case for the sunset marker, now a white triangle
+                    // The base of the triangle should be at the outermost dark grey perimeter (radius)
+                    length = radius; // The base of the triangle will be at this distance from center
+                    width = radius * 0.08; // Size of the triangle (height from base to tip)
+                    totalUnits = 100000; // Total NuTime seconds in a day for positioning
+                    // Angle for clockwise rotation from 6 o'clock (bottom), offset by longitude
+                    angle = Math.PI + (pos / totalUnits) * 2 * Math.PI + longitudeOffset; // Used passed longitudeOffset
+                    color = '#E2E2E2'; // Changed to E2E2E2
+
+                    ctx.rotate(angle);
+                    // Draw triangle: tip is further out, base is at 'length'
+                    ctx.moveTo(0, -length + width); // Apex (pointing inward)
+                    ctx.lineTo(-width / 2, -length); // Bottom-left point (base at perimeter)
+                    ctx.lineTo(width / 2, -length); // Bottom-right point (base at perimeter)
+                    ctx.closePath();
+                    ctx.fillStyle = color;
+                    ctx.fill();
+                    ctx.rotate(-angle); // Rotate back
+                    return; // Exit function after drawing marker
+                case "sunriseMarker": // Case for the sunrise marker, now a yellow triangle
+                    // The base of the triangle should be at the outermost dark grey perimeter (radius)
+                    length = radius; // The base of the triangle will be at this distance from center
+                    width = radius * 0.08; // Size of the triangle (height from base to tip)
+                    totalUnits = 100000; // Total NuTime seconds in a day for positioning
+                    // Angle for clockwise rotation from 6 o'clock (bottom), offset by longitude
+                    angle = Math.PI + (pos / totalUnits) * 2 * Math.PI + longitudeOffset; // Used passed longitudeOffset
+                    color = '#FFB347'; // Changed to Lighter Orange #FFB347
+
+                    ctx.beginPath();
+                    ctx.rotate(angle);
+                    ctx.moveTo(0, -length + width); // Apex (pointing inward)
+                    ctx.lineTo(-width / 2, -length); // Bottom-left point (base at perimeter)
+                    ctx.lineTo(width / 2, -length); // Bottom-right point (base at perimeter)
+                    ctx.closePath();
+                    ctx.fillStyle = color;
+                    ctx.fill();
+                    ctx.rotate(-angle); // Rotate back
+                    return; // Exit function after drawing marker
+            }
+
+            ctx.lineWidth = width;
+            ctx.lineCap = "round";
+            ctx.strokeStyle = color;
+            ctx.moveTo(0, 0);
+            ctx.rotate(angle);
+            ctx.lineTo(0, -length); // Draw upwards in the rotated coordinate system
+            ctx.stroke();
+            ctx.rotate(-angle); // Rotate back for next hand
+        }
+
+        /**
+         * Handles the change event for the location select dropdown.
+         * Updates userLatitude and userLongitude based on the selected option.
+         * If "Current Location" is selected, it1 attempts to get geolocation.
+         * @param {Event} event - The change event object.
+         */
+        function handleLocationChange(event) {
+            const selectedOption = event.target.options[event.target.selectedIndex];
+            const value = selectedOption.value;
+
+            // Clear any existing automatic location updates
+            if (locationIntervalId) {
+                clearInterval(locationIntervalId);
+            }
+            isLocationManuallySet = true; // A selection has been made
+
+            if (value === "current") {
+                isLocationManuallySet = false; // Allow auto-detect to run again
+                getUserLocation(); // Attempt to get current location
+                // Re-establish the interval if "Current Location" is selected
+                locationIntervalId = setInterval(getUserLocation, 5000);
+            } else {
+                userLatitude = parseFloat(selectedOption.dataset.lat);
+                userLongitude = parseFloat(selectedOption.dataset.lon);
+                updateGreenwichTimes(); // Recalculate sunrise/sunset with new location
+                updateBackgroundSkyColor(); // Update background to new sky color
+                updateKeTime(); // Redraw clock with new location offset
+            }
+        }
+
+        /**
+         * Fetches and displays the user's current longitude and latitude.
+         */
+        function getUserLocation() {
+            // Only proceed if a location hasn't been manually set
+            if (isLocationManuallySet) {
+                return;
+            }
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        userLongitude = position.coords.longitude;
+                        userLatitude = position.coords.latitude;
+                        updateGreenwichTimes(); // Recalculate sunrise/sunset with user's location
+                        updateBackgroundSkyColor(); // Update background to current sky color
+                        updateKeTime(); // Redraw clock with new location offset
+                        isLocationManuallySet = true; // Mark as set after successful auto-detection
+                        if (locationIntervalId) {
+                            clearInterval(locationIntervalId); // Stop further automatic updates
+                        }
+                    },
+                    (error) => {
+                        console.error('Error getting location:', error);
+                        // Fallback to Greenwich, UK coordinates on error
+                        userLongitude = DEFAULT_LONGITUDE;
+                        userLatitude = DEFAULT_LATITUDE;
+                        updateGreenwichTimes(); // Recalculate sunrise/sunset with default location
+                        updateBackgroundSkyColor(); // Update background to current sky color
+                        updateKeTime(); // Redraw clock with new location offset
+                        isLocationManuallySet = true; // Mark as set even on error, to prevent constant retries
+                        if (locationIntervalId) {
+                            clearInterval(locationIntervalId); // Stop further automatic updates
+                        }
+                    },
+                    { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 }
+                );
+            } else {
+                // Fallback to Greenwich, UK coordinates if geolocation not supported
+                userLongitude = DEFAULT_LONGITUDE;
+                userLatitude = DEFAULT_LATITUDE;
+                updateGreenwichTimes(); // Recalculate sunrise/sunset with default location
+                updateBackgroundSkyColor(); // Update background to current sky color
+                updateKeTime(); // Redraw clock with new location offset
+                isLocationManuallySet = true; // Mark as set
+                if (locationIntervalId) {
+                    clearInterval(locationIntervalId); // Stop further automatic updates
+                }
+            }
+        }
+
+        /**
+         * Populates the location dropdown with predefined cities.
+         */
+        function populateLocationDropdown() {
+            const locationSelect = document.getElementById('locationSelect');
+            // Clear existing options except the first two (Choose and Current)
+            while (locationSelect.options.length > 2) {
+                locationSelect.remove(2);
+            }
+
+            predefinedLocations.forEach(location => {
+                const option = document.createElement('option');
+                option.value = location.city.toLowerCase().replace(/\s/g, '_'); // Create a unique value
+                option.dataset.lat = location.latitude;
+                option.dataset.lon = location.longitude;
+                option.textContent = `${location.city}, ${location.country}`;
+                locationSelect.appendChild(option);
+            });
+        }
+
+
+        /**
+         * Calculates and displays the current time in the custom NuTime system based on GMT,
+         * and updates the analog clock. Also displays standard GMT and Unix time.
+         *
+         * This function is called repeatedly to update the clock in real-time.
+         */
+        function updateKeTime() {
+            const now = new Date();
+            // Use UTC methods to get GMT time components
+            const standardGengs = now.getUTCHours();
+            const standardMinutes = now.getUTCMinutes();
+            const standardSeconds = now.getUTCSeconds();
+            const standardMilliseconds = now.getUTCMilliseconds();
+
+            // Calculate total standard seconds from midnight GMT (24 gengs * 60 minutes/geng * 60 seconds/minute)
+            const totalStandardSeconds = (standardGengs * 3600) + (standardMinutes * 60) + standardSeconds + (standardMilliseconds / 1000);
+
+            // Calculate the fraction of the standard day that has passed
+            const fractionOfDay = totalStandardSeconds / 86400; // Total seconds in a standard day
+
+            // Calculate the total NuTime-Seconds from midnight in the new system (100,000 NuTime-Seconds per day)
+            const totalNuTimeSeconds = fractionOfDay * 100000;
+
+            // Decompose totalNuTimeSeconds into NuTime components (Geng:Minute:Second)
+            const nuGengs_float = totalNuTimeSeconds / 10000; // 1 NuGeng = 10,000 NuTime seconds
+            const remainingSecondsAfterNuGengs_float = totalNuTimeSeconds % 10000;
+
+            const nuMinutes_float = remainingSecondsAfterNuGengs_float / 100; // 1 NuMinute = 100 NuTime seconds
+            const nuSeconds_float = remainingSecondsAfterNuGengs_float % 100; // Remaining seconds after NuMinutes (keep as float for smooth movement)
+
+            // Update the digital NuTime display
+            document.getElementById('gongTimeDisplay').textContent =
+                `${pad(Math.floor(nuGengs_float))}:${pad(Math.floor(nuMinutes_float))}:${pad(Math.floor(nuSeconds_float))}`; // Floor only for digital display
+
+            // Update Standard GMT Time display (unchanged)
+            document.getElementById('gmtTimeDisplay').textContent =
+                `${pad(standardGengs)}:${pad(standardMinutes)}:${pad(standardSeconds)}`;
+
+            // Calculate visual angles for night mode logic
+            const NuTime_to_Radians_Factor = (2 * Math.PI) / 100000;
+            const Longitude_to_Radians_Factor = (2 * Math.PI) / 360;
+            const Initial_Offset_Radians = Math.PI; // For 6 o'clock start
+
+            // Round userLongitude to the nearest 3.6 degrees before calculating the offset
+            const roundedLongitude = Math.round(userLongitude / 3.6) * 3.6;
+            const longitudeOffsetRadians = (roundedLongitude / 360) * 2 * Math.PI;
+
+            const currentKeVisualAngle = normalizeAngle(Initial_Offset_Radians + (totalNuTimeSeconds * NuTime_to_Radians_Factor) + longitudeOffsetRadians);
+            const sunriseVisualAngle = normalizeAngle(Initial_Offset_Radians + (sunriseNuTimeSeconds * NuTime_to_Radians_Factor) + longitudeOffsetRadians);
+            const sunsetVisualAngle = normalizeAngle(Initial_Offset_Radians + (sunsetNuTimeSeconds * NuTime_to_Radians_Factor) + longitudeOffsetRadians);
+
+            // Determine if it's night mode based on visual angles
+            if (sunsetVisualAngle < sunriseVisualAngle) {
+                isNightMode = (currentKeVisualAngle >= sunsetVisualAngle && currentKeVisualAngle < sunriseVisualAngle);
+            } else {
+                isNightMode = (currentKeVisualAngle >= sunsetVisualAngle || currentKeVisualAngle < sunriseVisualAngle);
+            }
+
+            // Update background sky color continuously
+            updateBackgroundSkyColor();
+
+            // Update the analog clock
+            ctx.clearRect(-radius, -radius, canvas.width, canvas.height); // Clear canvas
+            drawFace(longitudeOffsetRadians); // Pass longitudeOffsetRadians to drawFace
+
+            // Draw sunset and sunrise markers
+            if (sunsetNuTimeSeconds !== 0) {
+                drawHand(sunsetNuTimeSeconds, "sunsetMarker", longitudeOffsetRadians); // Pass longitudeOffsetRadians
+            }
+            if (sunriseNuTimeSeconds !== 0) {
+                drawHand(sunriseNuTimeSeconds, "sunriseMarker", longitudeOffsetRadians); // Pass longitudeOffsetRadians
+            }
+
+            // Draw new geng hand, ke hand, minute hand, second hand
+            drawHand(nuGengs_float, "geng", longitudeOffsetRadians); // New Geng hand (0-10)
+            drawHand(totalNuTimeSeconds / 1000, "ke", longitudeOffsetRadians); // Ke hand (0-100)
+            drawHand(nuMinutes_float, "minute", longitudeOffsetRadians); // Minute hand (0-100)
+            drawHand(nuSeconds_float, "second", longitudeOffsetRadians); // Second hand (0-100)
+
+            requestAnimationFrame(updateKeTime); // Use requestAnimationFrame for smooth updates
+        }
+
+        /**
+         * Calculates and displays Greenwich sunrise and sunset times in GMT and NuTime.
+         * This function should be called once per day or when the date changes.
+         * This will now use the user's location (or default)
+         */
+        function updateGreenwichTimes() {
+            const today = new Date();
+            // SunCalc.getTimes returns times in local timezone Date objects.
+            // We now use userLatitude and userLongitude
+            const times = SunCalc.getTimes(today, userLatitude, userLongitude);
+
+            // Convert sunrise and sunset to NuTime
+            const sunriseNuTimeString = convertGMTToNuTime(times.sunrise);
+            const sunsetNuTimeString = convertGMTToNuTime(times.sunset);
+
+            // Store the NuTime seconds for comparison (still needed for night mode logic)
+            sunriseNuTimeSeconds = nuTimeStringToSeconds(sunriseNuTimeString);
+            sunsetNuTimeSeconds = nuTimeStringToSeconds(sunsetNuTimeString);
+        }
+
+
+        // Initialize the current NuTime display and set an interval to update it every standard second
+        window.onload = function() {
+            // Adjust canvas size for responsiveness
+            const setCanvasSize = () => {
+                const containerWidth = canvas.parentElement.clientWidth;
+                const displaySize = Math.min(containerWidth * 0.8, 300); // Max 300px display size
+
+                const dpr = window.devicePixelRatio || 1; // Get device pixel ratio
+
+                // Set canvas's internal drawing buffer size to a higher resolution
+                canvas.width = displaySize * dpr;
+                canvas.height = displaySize * dpr;
+
+                // Set canvas's CSS (displayed) size
+                canvas.style.width = `${displaySize}px`;
+                canvas.style.height = `${displaySize}px`;
+
+                // Reset the canvas transformation matrix
+                ctx.setTransform(1, 0, 0, 1, 0, 0);
+
+                // Scale the context to match the device pixel ratio
+                ctx.scale(dpr, dpr);
+
+                // Translate the context origin to the center of the *displayed* canvas
+                // The drawing commands will then use this scaled context.
+                ctx.translate(displaySize / 2, displaySize / 2);
+
+                // Recalculate radius based on the *display* size
+                radius = (displaySize / 2) * 0.90; // Adjust radius to leave some margin
+
+                // Initial draw after size is set
+                updateKeTime(); 
+            };
+
+            setCanvasSize(); // Set initial size
+            window.addEventListener('resize', setCanvasSize); // Adjust on resize
+
+            // Populate the dropdown with the new list of locations
+            populateLocationDropdown();
+
+            // Get user's location initially
+            getUserLocation();
+            // Store the interval ID for potential clearing later
+            locationIntervalId = setInterval(getUserLocation, 5000); // Keep for periodic location updates
+
+            // Update Greenwich times initially and then once every geng to catch date changes
+            updateGreenwichTimes();
+            updateBackgroundSkyColor();
+            setInterval(updateGreenwichTimes, 3600 * 1000); // Update every geng
+
+            // Start the animation loop using requestAnimationFrame
+            requestAnimationFrame(updateKeTime);
+
+            // Add event listener for location selection
+            document.getElementById('locationSelect').addEventListener('change', handleLocationChange);
+        };
+    </script>
+</body>
+</html>

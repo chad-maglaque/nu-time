@@ -1,0 +1,10 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "node build.mjs",
+  "outputDirectory": "dist",
+  "cleanUrls": true,
+  "headers": [
+    { "source": "/(assets|img)/(.*)", "headers": [{ "key": "cache-control", "value": "public, max-age=86400" }] },
+    { "source": "/(.*)", "headers": [{ "key": "x-content-type-options", "value": "nosniff" }, { "key": "referrer-policy", "value": "strict-origin-when-cross-origin" }] }
+  ]
+}
