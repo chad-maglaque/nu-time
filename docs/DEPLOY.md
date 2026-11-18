@@ -4,10 +4,11 @@ A checklist for going live. Steps marked **(you)** need your accounts or sign-in
 
 ## 1. Vercel project
 
-1. **(you)** Sign in to the Vercel CLI: `npx vercel login` (or `bunx vercel login`).
-2. From this repository: `npx vercel link` → create project **nu-time**.
-3. Build settings come from `vercel.json`: build command `node build.mjs`, output directory `dist`. No install step is needed.
-4. First deploy to a preview URL: `npx vercel` → open it and click through Overview, The Standard and Developers.
+Decided: **Vercel Pro** (company site; Hobby is non-commercial only), deployed from GitHub so every push to `main` goes live.
+
+1. **(you)** Sign in at vercel.com with GitHub and upgrade the team to **Pro**.
+2. **(you)** **Add New → Project → Import** `chad-maglaque/nu-time` and approve Vercel's access to that repository. Framework preset: **Other**. Build settings come from `vercel.json` (build `node build.mjs`, output `dist`); leave the install command empty.
+3. Deploy. Vercel gives a preview URL (`nu-time-….vercel.app`): open it and click through Overview, a few languages, The Standard, Developers and Privacy.
 
 ## 2. Signup form storage — required before launch
 
@@ -23,23 +24,30 @@ The **Join** form must save every signup somewhere. In production it saves to Up
    ```
    The CSV has one row per email: date, country (detected), email, name, role, country (typed), message, language, page, time zone, consent.
 
-## 3. Domain
+## 3. Domains and DNS
 
-nu-time.com is registered at GoDaddy and currently served by GoDaddy hosting.
+All four domains are registered at GoDaddy and use GoDaddy DNS today. They move to **Cloudflare DNS** (free); the site is served by Vercel. Decided: **nu-time.com** is the site; **nu-watch.com, nu.watch and nu-beat.com redirect to nu-time.com** (Nu-Watch is not launching).
 
-1. **(you)** Create a free Cloudflare account → **Add site** → `nu-time.com` → Free plan. Cloudflare imports the existing DNS records.
-2. **(you)** GoDaddy → nu-time.com → **Nameservers** → **Change** → enter the two Cloudflare nameservers. Propagation takes minutes to a few hours.
-3. In Vercel → project **nu-time** → **Domains** → add `nu-time.com` and `www.nu-time.com`.
-4. In Cloudflare DNS, set the records Vercel shows (typically `A @ 76.76.21.21` and `CNAME www cname.vercel-dns.com`), **DNS only** (grey cloud) so Vercel handles HTTPS.
-5. Optional: point `nu-beat.com` at nu-time.com with a Cloudflare redirect rule.
+1. **(you)** GoDaddy → each domain → **DNSSEC**: make sure it is off before changing nameservers (otherwise the domain stops resolving).
+2. **(you)** Cloudflare (free account) → **Add a domain** for each of the four → Free plan. Cloudflare imports GoDaddy's records.
+3. In Cloudflare DNS for each domain, **delete the imported GoDaddy records**: the `A` records (50.63.7.149, 3.33.251.168, 15.197.225.128), `www` CNAMEs, and the GoDaddy mail records (`MX` mailstore1/smtp.secureserver.net) — no GoDaddy mailboxes are in use.
+4. Add the Vercel records for each domain, **DNS only** (grey cloud) so Vercel issues the HTTPS certificates:
+   - `A @ 76.76.21.21`
+   - `CNAME www cname.vercel-dns.com`
+5. **(you)** GoDaddy → each domain → **Nameservers → Change → Enter my own** → the two Cloudflare nameservers. Propagation: minutes to a few hours.
+6. Vercel → project **nu-time** → **Settings → Domains**:
+   - `nu-time.com` (primary) and `www.nu-time.com` → redirect to `nu-time.com`.
+   - `nu-beat.com`, `www.nu-beat.com`, `nu-watch.com`, `www.nu-watch.com`, `nu.watch`, `www.nu.watch` → each **Redirect to** `nu-time.com` (308).
 
 ## 4. Email addresses used on the site
 
-The site shows **info@**, **press@**, **privacy@** and **standards@nu-time.com**. Before launch:
+The site shows **info@**, **press@**, **privacy@** and **standards@nu-time.com**. Decided: Cloudflare **Email Routing** (free) forwards all four to the owner's work inbox.
 
-1. **(you)** Cloudflare → nu-time.com → **Email** → **Email Routing** → enable (Cloudflare adds the MX records).
-2. Add a forwarding rule for each address (or a catch-all) to the inbox that should receive it, and verify that inbox.
-3. Send a test message to each address.
+1. **(you)** Cloudflare → nu-time.com → **Email → Email Routing** → enable. Cloudflare adds its `MX` and `TXT` (SPF) records.
+2. **Destination address**: the owner's work inbox → click the verification link Cloudflare sends.
+3. **Routing rules**: `info@`, `press@`, `privacy@`, `standards@` → that inbox (or one catch-all rule).
+4. Send a test message to each address from a different account.
+5. Replies come from the personal inbox. Sending *as* info@nu-time.com needs a mail service later (not needed for launch).
 
 ## 5. Launch checks
 

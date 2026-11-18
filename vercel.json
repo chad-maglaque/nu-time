@@ -4,7 +4,44 @@
   "outputDirectory": "dist",
   "cleanUrls": true,
   "headers": [
-    { "source": "/(assets|img)/(.*)", "headers": [{ "key": "cache-control", "value": "public, max-age=86400" }] },
-    { "source": "/(.*)", "headers": [{ "key": "x-content-type-options", "value": "nosniff" }, { "key": "referrer-policy", "value": "strict-origin-when-cross-origin" }] }
+    {
+      "source": "/(assets|img)/(.*)",
+      "headers": [
+        {
+          "key": "cache-control",
+          "value": "public, max-age=86400"
+        }
+      ]
+    },
+    {
+      "source": "/assets/og/(.*)",
+      "headers": [
+        {
+          "key": "cache-control",
+          "value": "public, max-age=604800"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "x-content-type-options",
+          "value": "nosniff"
+        },
+        {
+          "key": "referrer-policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "permissions-policy",
+          "value": "geolocation=(self), camera=(), microphone=()"
+        },
+        {
+          "key": "x-frame-options",
+          "value": "SAMEORIGIN"
+        }
+      ]
+    }
   ]
 }

@@ -1,0 +1,16 @@
+<!-- Social preview card generator. Usage: bun build.mjs; cp tools/og-card.html dist/_og.html; run the dev server; then screenshot http://localhost:4310/_og.html#<lang> at 1200x630 (no hash = English) with a fresh headless Chrome profile per language, and save as public/assets/og/<lang>.jpg. -->
+<!doctype html><html><head><meta charset="utf-8"><style>html,body{margin:0;background:#1a1a1a}iframe{border:0;width:1200px;height:630px;display:block}</style></head>
+<body><iframe id="f"></iframe>
+<script>
+f.src = location.hash ? "/" + location.hash.slice(1) + "/" : "/";
+f.onload = () => {
+  const d = f.contentDocument, s = d.createElement("style");
+  s.textContent = `header.top,.subnav,nav.sub,.hero .lead,.hero .ctas,.readout .label,.clock>*:not(canvas):not(.readout){display:none!important}
+  main{padding-top:0!important} .hero{min-height:630px!important;height:630px;padding:0 64px!important;align-items:center!important;margin:0!important}
+  .hero{grid-template-columns:700px 1fr!important;gap:24px!important} .hero-copy{max-width:700px!important} .hero h1{font-size:84px!important;line-height:1.06!important;max-width:700px!important} .hero .eyebrow{font-size:17px!important;margin-bottom:26px!important}
+  .ogurl{font:600 22px/1 Orbitron,sans-serif;letter-spacing:.12em;color:#c8a86c;margin-top:34px}`;
+  d.head.appendChild(s);
+  const u = d.createElement("div"); u.className = "ogurl"; u.textContent = "NU-TIME.COM"; d.querySelector(".hero-copy").appendChild(u);
+  d.querySelector(".hero").scrollIntoView();
+};
+</script></body></html>

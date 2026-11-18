@@ -38,11 +38,16 @@ function head(t, title, desc, canonical, alternates) {
 ${alternates || ""}
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(desc)}">
-<meta property="og:image" content="${SITE}/assets/og.jpg">
+<meta property="og:image" content="${SITE}/assets/og/${existsSync(join(ROOT, "public/assets/og", t.lang + ".jpg")) ? t.lang : "en"}.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Nu:Time">
+<meta property="og:type" content="website">
 <meta property="og:url" content="${SITE}${canonical}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#1a1a1a">
 <link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="preload" href="/assets/fonts/orbitron.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/site.css?v=${BUILD}">
 </head>
@@ -281,6 +286,13 @@ for (const t of locales) for (const [d, file] of Object.entries(DOCS)) {
   writeFileSync(join(DIST, t.lang, d, "index.html"), docPage(file, `/${t.lang}/${d}/`, t, docSrc(d, t.lang)));
   if (d === "spec") docUrls.push(`/${t.lang}/${d}/`);
 }
+// 404: English chrome, links to every language
+writeFileSync(join(DIST, "404.html"), `${head(EN, "Not found · Nu:Time™", EN.meta.description, "/404")}
+${topbar(EN)}
+<main class="doc"><h1>404</h1><p>This page doesn't exist. Try the <a href="/">overview</a>, <a href="/spec/">the Standard</a> or <a href="/developers/">Developers</a>.</p>
+<p>${locales.map((x) => `<a href="${path(x.lang)}" lang="${hl(x.lang)}">${esc(x.langName)}</a>`).join(" · ")}</p></main>
+${footer(EN)}
+</body></html>`);
 const urls = [...locales.map((t) => path(t.lang)), "/spec/", ...docUrls, "/developers/"].map((u) => `<url><loc>${SITE}${u}</loc></url>`).join("");
 writeFileSync(join(DIST, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls}</urlset>`);
 writeFileSync(join(DIST, "robots.txt"), `User-agent: *\nAllow: /\nSitemap: ${SITE}/sitemap.xml\n`);
