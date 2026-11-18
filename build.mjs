@@ -19,6 +19,11 @@ const EN = locales.find((t) => t.lang === "en");
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 const path = (l) => (l === "en" ? "/" : `/${l}/`);
 const hl = (l) => (l === "zh" ? "zh-Hans" : l);
+// translated doc pages live in docs/i18n/<doc>/<lang>.md; fall back to the English page
+const DOCS = { spec: "SPEC.md", privacy: "PRIVACY.md" };
+const docSrc = (d, l) => join(ROOT, "docs/i18n", d, l + ".md");
+const docPath = (d, l) => (l !== "en" && existsSync(docSrc(d, l)) ? `/${l}/${d}/` : `/${d}/`);
+const privPath = (l) => docPath("privacy", l);
 const logo = (L, href) => `<a class="logo" href="${href}" aria-label="Nu:Time"><span class="inv">U</span>U:TIME<sup>™</sup>${L === "zh" ? '<span class="zh">刻时</span>' : ""}</a>`;
 
 function head(t, title, desc, canonical, alternates) {
@@ -46,12 +51,12 @@ ${alternates || ""}
 
 function topbar(t, sub) {
   const L = t.lang, base = path(L);
-  const langLinks = locales.map((x) => `<a href="${path(x.lang)}" lang="${hl(x.lang)}"${x.lang === L ? ' aria-current="true"' : ""}>${esc(x.langName)}</a>`).join("");
+  const langLinks = locales.map((x) => `<a href="${path(x.lang)}" lang="${hl(x.lang)}" hreflang="${hl(x.lang)}" data-lang="${x.lang}"${x.lang === L ? ' aria-current="true"' : ""}>${esc(x.langName)}</a>`).join("");
   return `<header class="top">
   <div class="bar">
     ${logo(L, base)}
-    <nav class="nav"><a href="${base}">${esc(t.nav.overview)}</a><a href="/spec/">${esc(t.nav.spec)}</a><a href="/developers/">${esc(t.nav.build)}</a></nav>
-    <details class="langs"><summary>${esc(t.langName)}</summary><div>${langLinks}</div></details>
+    <nav class="nav"><a href="${base}">${esc(t.nav.overview)}</a><a href="${docPath("spec", t.lang)}">${esc(t.nav.spec)}</a><a href="/developers/">${esc(t.nav.build)}</a></nav>
+    <details class="langs"><summary aria-label="${esc(t.footer.languages)}"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M2.5 12h19M12 2.5c3 3.2 3 15.8 0 19M12 2.5c-3 3.2-3 15.8 0 19" fill="none" stroke="currentColor" stroke-width="1.6"/></svg><span>${esc(t.langName)}</span></summary><div role="menu">${langLinks}</div></details>
     <a class="btn small" href="${base}#join">${esc(t.nav.join)}</a>
   </div>
   ${sub || ""}
@@ -60,13 +65,13 @@ function topbar(t, sub) {
 
 function footer(t) {
   const L = t.lang;
-  const langLinks = locales.map((x) => `<a href="${path(x.lang)}" lang="${hl(x.lang)}">${esc(x.langName)}</a>`).join("");
+  const langLinks = locales.map((x) => `<a href="${path(x.lang)}" lang="${hl(x.lang)}" hreflang="${hl(x.lang)}" data-lang="${x.lang}">${esc(x.langName)}</a>`).join("");
   return `<footer class="foot">
   ${logo(L, path(L))}
   <p class="small" style="margin-top:12px">${esc(t.footer.tagline)}</p>
   <nav>${langLinks}</nav>
   <p class="small">${esc(t.footer.rights)} ${esc(t.footer.open)}</p>
-  <p class="small"><a href="/spec/">${esc(t.nav.spec)}</a> · <a href="/developers/">${esc(t.nav.build)}</a> · <a href="/developers/#using-the-name">${esc(t.footer.brand)}</a> · <a href="/privacy/">Privacy</a> · <a href="mailto:info@nu-time.com">${esc(t.footer.contact)}</a> · <a href="mailto:press@nu-time.com">${esc(t.footer.press)}</a></p>
+  <p class="small"><a href="${docPath("spec", t.lang)}">${esc(t.nav.spec)}</a> · <a href="/developers/">${esc(t.nav.build)}</a> · <a href="/developers/#using-the-name">${esc(t.footer.brand)}</a> · <a href="${privPath(t.lang)}">${esc(t.footer.privacy)}</a> · <a href="mailto:info@nu-time.com">${esc(t.footer.contact)}</a> · <a href="mailto:press@nu-time.com">${esc(t.footer.press)}</a></p>
 </footer>`;
 }
 
@@ -176,7 +181,7 @@ ${topbar(t, subnav)}
 <section id="build" class="band">
   <h2>${esc(t.build.title)}</h2>
   <p class="lead">${esc(t.build.lead)}</p>
-  <div class="grid3">${t.build.items.map((i) => `<article class="card"><h3>${esc(i.title)}</h3><p>${esc(i.text)}</p><a class="more" href="${i.href}">${esc(i.link)} →</a></article>`).join("")}</div>
+  <div class="grid3">${t.build.items.map((i) => `<article class="card"><h3>${esc(i.title)}</h3><p>${esc(i.text)}</p><a class="more" href="${i.href === "/spec/" ? docPath("spec", t.lang) : i.href}">${esc(i.link)} →</a></article>`).join("")}</div>
   <div class="split">
     <div>
       <h3>${esc(t.build.quartzTitle)}</h3>
@@ -198,7 +203,7 @@ ${topbar(t, subnav)}
     <label>${esc(t.join.country)}<input name="country" autocomplete="country-name" maxlength="80"></label>
     <label class="wide">${esc(t.join.message)}<textarea name="message" rows="3" maxlength="2000"></textarea></label>
     <label class="hp" aria-hidden="true">Website<input name="website" tabindex="-1" autocomplete="off"></label>
-    <label class="check wide"><input type="checkbox" name="consent" checked> <span>${esc(t.join.consent)} <a href="/privacy/">Privacy</a></span></label>
+    <label class="check wide"><input type="checkbox" name="consent" checked> <span>${esc(t.join.consent)} <a href="${privPath(t.lang)}">${esc(t.footer.privacy)}</a></span></label>
     <input type="hidden" name="lang" value="${L}">
     <button class="btn" type="submit">${esc(t.join.submit)}</button>
     <p class="status" role="status" aria-live="polite"></p>
@@ -206,6 +211,7 @@ ${topbar(t, subnav)}
 </section>
 </main>
 ${footer(t)}
+<script>window.NT_CITIES = ${JSON.stringify(t.cities || {}).replace(/</g, "\\u003c")};</script>
 <script src="/assets/nutime.js?v=${BUILD}"></script>
 <script src="/assets/clock.js?v=${BUILD}"></script>
 <script src="/assets/site.js?v=${BUILD}"></script>
@@ -240,14 +246,14 @@ function md(src) {
   }
   return out.join("\n");
 }
-function docPage(file, urlPath) {
-  const src = readFileSync(join(ROOT, "docs", file), "utf8");
+function docPage(file, urlPath, t = EN, srcPath = join(ROOT, "docs", file)) {
+  const src = readFileSync(srcPath, "utf8");
   const title = /^# (.*)$/m.exec(src)[1];
   const desc = src.split("\n").find((l) => l && !l.startsWith("#") && !l.startsWith("**")) || title;
-  return `${head(EN, title + " · Nu:Time™", desc.slice(0, 200), urlPath)}
-${topbar(EN)}
+  return `${head(t, title + " · Nu:Time™", desc.slice(0, 200), urlPath)}
+${topbar(t)}
 <main class="doc">${md(src)}</main>
-${footer(EN)}
+${footer(t)}
 </body></html>`;
 }
 
@@ -268,7 +274,14 @@ for (const [file, p] of [["SPEC.md", "/spec/"], ["DEVELOPERS.md", "/developers/"
   mkdirSync(join(DIST, p), { recursive: true });
   writeFileSync(join(DIST, p, "index.html"), docPage(file, p));
 }
-const urls = [...locales.map((t) => path(t.lang)), "/spec/", "/developers/"].map((u) => `<url><loc>${SITE}${u}</loc></url>`).join("");
+const docUrls = [];
+for (const t of locales) for (const [d, file] of Object.entries(DOCS)) {
+  if (t.lang === "en" || !existsSync(docSrc(d, t.lang))) continue;
+  mkdirSync(join(DIST, t.lang, d), { recursive: true });
+  writeFileSync(join(DIST, t.lang, d, "index.html"), docPage(file, `/${t.lang}/${d}/`, t, docSrc(d, t.lang)));
+  if (d === "spec") docUrls.push(`/${t.lang}/${d}/`);
+}
+const urls = [...locales.map((t) => path(t.lang)), "/spec/", ...docUrls, "/developers/"].map((u) => `<url><loc>${SITE}${u}</loc></url>`).join("");
 writeFileSync(join(DIST, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls}</urlset>`);
 writeFileSync(join(DIST, "robots.txt"), `User-agent: *\nAllow: /\nSitemap: ${SITE}/sitemap.xml\n`);
 console.log("built", locales.map((t) => t.lang).join(", "), "+ spec, developers");

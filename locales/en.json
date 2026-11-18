@@ -64,7 +64,7 @@
   },
   "eliminates": {
     "title": "the things you never understood anyway, like: 24 hours, AM and PM, 60 minutes, 60 seconds, Time zones, Daylight Saving, leap seconds, and the International Date Line!",
-    "tail": "and keeps only the things that matter: the moment you're in, and the sun's position in the sky.",
+    "tail": "and keeps only the things that matter, like: the moment you're in and the sun's position in the sky.",
     "heading": "Nu:Time eliminates."
   },
   "time": {
@@ -294,12 +294,12 @@
         "text": "Twice a year, a billion people break their sleep for a 1916 energy policy. The European Parliament voted in 2019 to end seasonal clock changes; the clocks are still changing. Nu:Time has no daylight saving to abolish."
       },
       {
-        "title": "Machines already count in tens",
-        "text": "Satellites, payment rails, sensors and AI agents coordinate across every zone at once. Base 60 is a translation layer they tolerate. Decimal time is native to computation."
+        "title": "Machines don't need base 60",
+        "text": "Satellites, payment rails, sensors and AI agents coordinate across every zone at once. Base 60 is a translation layer they tolerate. A decimal day is simply easier to compute."
       },
       {
-        "title": "The world's next standards are being re-written in 2035",
-        "text": "China has set out to lead international standards in emerging technology, and its BeiDou system and National Time Service Center are now pillars of how the world keeps time. 刻时 Ke-Shi — rooted in China's own hundred-kè day — is an open standard for that work, and for everyone."
+        "title": "Towards 2035: the world's next standards are being written",
+        "text": "China is actively shaping international standards in emerging technology, and its BeiDou Navigation Satellite System and the National Time Service Center of the Chinese Academy of Sciences are now important forces in how the world keeps time. 刻时 Ke-Shi — rooted in ancient China's hundred-kè day — is offered as an open standard for that work, and for everyone."
       }
     ]
   },
@@ -414,6 +414,60 @@
     "contact": "Contact",
     "press": "Press",
     "brand": "Brand guidelines",
-    "languages": "Languages"
+    "languages": "Languages",
+    "privacy": "Privacy"
+  },
+  "cities": {
+    "Anchorage": "Anchorage",
+    "Atlanta": "Atlanta",
+    "Bangkok": "Bangkok",
+    "Barcelona": "Barcelona",
+    "Beijing": "Beijing",
+    "Berlin": "Berlin",
+    "Bogota": "Bogota",
+    "Cairo": "Cairo",
+    "Cape Town": "Cape Town",
+    "Chicago": "Chicago",
+    "Delhi": "Delhi",
+    "Dubai": "Dubai",
+    "Helsinki": "Helsinki",
+    "Hong Kong": "Hong Kong",
+    "Houston": "Houston",
+    "Istanbul": "Istanbul",
+    "Jakarta": "Jakarta",
+    "Johannesburg": "Johannesburg",
+    "Karachi": "Karachi",
+    "Kuala Lumpur": "Kuala Lumpur",
+    "Lagos": "Lagos",
+    "London": "London",
+    "Los Angeles": "Los Angeles",
+    "Madrid": "Madrid",
+    "Manila": "Manila",
+    "Mexico City": "Mexico City",
+    "Moscow": "Moscow",
+    "Mumbai": "Mumbai",
+    "Nairobi": "Nairobi",
+    "New York City": "New York City",
+    "Paris": "Paris",
+    "Reykjavik": "Reykjavik",
+    "Rio de Janeiro": "Rio de Janeiro",
+    "Riyadh": "Riyadh",
+    "Rome": "Rome",
+    "Santiago": "Santiago",
+    "San Francisco": "San Francisco",
+    "Sao Paulo": "Sao Paulo",
+    "Seattle": "Seattle",
+    "Seoul": "Seoul",
+    "Shanghai": "Shanghai",
+    "Singapore": "Singapore",
+    "Stockholm": "Stockholm",
+    "Sydney": "Sydney",
+    "Taipei": "Taipei",
+    "Tel Aviv": "Tel Aviv",
+    "Tokyo": "Tokyo",
+    "Ushuaia": "Ushuaia",
+    "Vancouver": "Vancouver",
+    "Washington D.C.": "Washington D.C.",
+    "Greenwich": "Greenwich"
   }
 }

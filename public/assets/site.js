@@ -2,6 +2,27 @@
 /* Sub-nav active state, degree/kè converter, signup forms. */
 (function () {
   "use strict";
+  // ── language selector ──
+  var LANGS = ["en", "zh", "hi", "ur", "es", "fr", "de", "it"];
+  var store = { get: function (k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
+                set: function (k, v) { try { localStorage.setItem(k, v); } catch (e) {} } };
+  document.querySelectorAll("a[data-lang]").forEach(function (a) {
+    a.addEventListener("click", function () { store.set("nt-lang", a.getAttribute("data-lang")); });
+  });
+  var menu = document.querySelector("details.langs");
+  if (menu) {
+    document.addEventListener("click", function (e) { if (menu.open && !menu.contains(e.target)) menu.open = false; });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape" && menu.open) { menu.open = false; menu.querySelector("summary").focus(); } });
+  }
+  // First visit to the English home page: go to the visitor's own language if we have it (once; a choice always wins).
+  if (location.pathname === "/" && !store.get("nt-lang")) {
+    var want = null;
+    (navigator.languages || [navigator.language || ""]).some(function (l) {
+      var p = String(l).toLowerCase().split("-")[0]; if (LANGS.indexOf(p) >= 0) { want = p; return true; } return false;
+    });
+    store.set("nt-lang", want || "en");
+    if (want && want !== "en" && document.querySelector('a[data-lang="' + want + '"]')) location.replace("/" + want + "/" + location.hash);
+  }
   // sub-nav: dim the link for the section in view
   var links = document.querySelectorAll("[data-subnav] a");
   if (links.length && "IntersectionObserver" in window) {

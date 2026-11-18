@@ -1,0 +1,473 @@
+{
+  "lang": "fr",
+  "dir": "ltr",
+  "langName": "Français",
+  "brand": "Nu:Time",
+  "brandLocal": "Nu:Time",
+  "meta": {
+    "title": "Nu:Time™ — le temps et le lieu, réinventés",
+    "description": "Nu:Time (刻时 Ke-Shi) est un standard ouvert pour le temps et le lieu : une seule horloge pour toute la planète, une journée décimale de 10 gongs, 100 kè, 1 000 beats et 100 000 tics, et une seule unité — le kè — pour mesurer à la fois le quand et le où."
+  },
+  "nav": {
+    "time": "Le temps réinventé",
+    "how": "Comment ça marche",
+    "ke": "Le kè",
+    "geometry": "Géométrie",
+    "heritage": "Héritage",
+    "why": "Pourquoi maintenant",
+    "build": "Développeurs",
+    "join": "Nous rejoindre",
+    "spec": "Le standard",
+    "explore": "En savoir plus",
+    "overview": "Vue d’ensemble"
+  },
+  "units": {
+    "gong": "gong",
+    "ke": "kè",
+    "beat": "beat",
+    "tick": "tic",
+    "gongs": "gongs",
+    "kes": "kè",
+    "beats": "beats",
+    "ticks": "tics"
+  },
+  "hero": {
+    "eyebrow": "Le standard Nu:Time · 刻时 Ke-Shi",
+    "title": "le temps et le lieu, réinventés.",
+    "sub": "Une seule horloge pour toute la planète, et une journée rythmée par 10 gongs, 1 000 beats et 100 000 tics. Et une seule unité — le kè — pour relier le temps et l’espace : 100 kè font un tour complet, et disent à la fois quand et où vous êtes sur Terre.",
+    "ctaExplore": "En savoir plus",
+    "ctaJoin": "Participer au lancement",
+    "clockLabel": "heure universelle Nu:Time, en ce moment",
+    "city": "Lieu",
+    "position": "Votre position",
+    "noon": "Midi solaire",
+    "sunrise": "Lever du soleil",
+    "sunset": "Coucher du soleil",
+    "east": "E",
+    "west": "O",
+    "north": "N",
+    "south": "S",
+    "polarDay": "Le soleil ne se couche pas",
+    "polarNight": "Le soleil ne se lève pas",
+    "dayBar": "Aujourd’hui, là où vous êtes, en heure universelle Nu:Time",
+    "dialHint": "L’heure Nu:Time est la même pour tous, partout sur Terre. Le cadran d’une horloge Nu:Time tourne selon l’endroit où vous vous trouvez, en gardant une référence fixe au méridien de Greenwich.\n\nLe midi solaire est toujours en haut du cadran, où que vous soyez sur la planète. Et tandis que le Soleil traverse le ciel, trois aiguilles marquent le passage du temps : l’aiguille rouge fait un tour par jour, l’aiguille bleue un tour par gong, et l’aiguille dorée un tour par beat, en égrenant les tics.",
+    "choose": "Choisir un lieu",
+    "current": "Position actuelle (détection automatique)",
+    "locating": "Recherche de votre position…",
+    "approx": "Position approximative (d’après votre connexion) :",
+    "locfail": "Impossible d’obtenir votre position. Autorisez l’accès à la localisation pour ce site dans votre navigateur, ou choisissez une ville.",
+    "latitude": "Latitude",
+    "longitude": "Longitude",
+    "locate": "Utiliser ma position",
+    "inAction": "Nu:Time en action",
+    "tryIt": "Essayez par vous-même !"
+  },
+  "eliminates": {
+    "title": "Adieu à tout ce que vous n’avez jamais vraiment compris : les 24 heures, l’AM et le PM des anglophones, les 60 minutes, les 60 secondes, les fuseaux horaires, le passage à l’heure d’été, les secondes intercalaires et la ligne de changement de date !",
+    "tail": "Ne reste que l’essentiel : l’instant présent, et la place du Soleil dans le ciel.",
+    "heading": "Nu:Time fait table rase."
+  },
+  "time": {
+    "title": "Le temps réinventé.",
+    "lead": "Avec Nu:Time, partout sur Terre, il est la même heure au même instant. L’endroit où vous êtes ne change plus l’heure qu’il est : il change seulement la position du Soleil, et le moment où il se lève et se couche.",
+    "points": [
+      {
+        "title": "Une heure universelle",
+        "text": "Nous vivons dans un monde connecté. Shanghai, Delhi, Paris et New York vivent à la même heure. Réunions, vols et marchés aussi."
+      },
+      {
+        "title": "Plus de ligne de changement de date",
+        "text": "Le jour universel change une seule fois, au même instant, pour tout le monde. Fini les allers-retours d’un jour à l’autre au milieu du Pacifique, fini les deux mardis d’affilée."
+      },
+      {
+        "title": "Votre place au soleil",
+        "text": "Selon votre distance au méridien de Greenwich, le Soleil passe au zénith plus tôt ou plus tard. Mais l’heure universelle, elle, reste la même — toujours."
+      },
+      {
+        "title": "Votre montre, à votre façon",
+        "text": "Comme le cadran ci-dessus, les appareils Nu:Time peuvent afficher votre journée solaire locale et la position du Soleil. Heure universelle et heure locale ne se confondent jamais."
+      }
+    ]
+  },
+  "how": {
+    "title": "Tout le système tient en une ligne.",
+    "lead": "Chaque unité est une puissance de dix. Chaque affichage se lit de la même façon : gong:beat:tic.",
+    "cards": [
+      {
+        "n": "10",
+        "unit": "gongs · 更",
+        "text": "Un dixième de la journée, plus long qu’une heure classique : le premier champ de tout affichage Nu:Time."
+      },
+      {
+        "n": "1 000",
+        "unit": "beats · 分",
+        "text": "Un millième de la journée : assez long pour compter, assez court pour une réunion."
+      },
+      {
+        "n": "100 000",
+        "unit": "tics · 秒",
+        "text": "À peu près un battement de cœur au repos. Le dernier champ de tout affichage Nu:Time."
+      },
+      {
+        "n": "100",
+        "unit": "kè · 刻",
+        "text": "Avec 100 kè dans une journée et 100 dans un cercle, le kè fait le pont entre le temps et le lieu."
+      }
+    ]
+  },
+  "ke": {
+    "title": "Le kè : une seule unité pour dire quand et où.",
+    "lead": "Une journée entière, c’est 100 kè. Un tour complet, c’est 100 kè. La rotation de la Terre et le tour du cadran s’expriment donc par le même nombre — et les fuseaux horaires disparaissent.",
+    "facts": [
+      {
+        "n": "1 kè",
+        "text": "1/100 de journée"
+      },
+      {
+        "n": "1 kè",
+        "text": "1/100 de cercle"
+      },
+      {
+        "n": "Longitude",
+        "text": "De 0 à 50 kè à l’est ou à l’ouest du méridien de Greenwich"
+      },
+      {
+        "n": "Latitude",
+        "text": "De 0 à 25 kè au nord ou au sud de l’équateur"
+      }
+    ]
+  },
+  "geometry": {
+    "title": "Une nouvelle ère pour la géométrie.",
+    "lead": "Les degrés, c’était le choix de Babylone. Les radians, celui des mathématiciens. Le cercle de 100 kè parle la même langue que votre montre et votre carte — et rend la géométrie intuitive.",
+    "items": [
+      [
+        "Tour complet",
+        "100 kè",
+        "360°"
+      ],
+      [
+        "Angle plat · somme des angles d’un triangle",
+        "50 kè",
+        "180°"
+      ],
+      [
+        "Angle droit",
+        "25 kè",
+        "90°"
+      ],
+      [
+        "Triangle équilatéral",
+        "16,67 kè",
+        "60°"
+      ],
+      [
+        "Triangle rectangle, angle de 30°",
+        "8,33 kè",
+        "30°"
+      ],
+      [
+        "Pentagone régulier, angle intérieur",
+        "30 kè",
+        "108°"
+      ]
+    ],
+    "colAngle": "Angle",
+    "colKe": "En kè",
+    "colDeg": "En degrés",
+    "trig": "sin 25 kè = 1, cos 50 kè = −1, sin 75 kè = −1 et cos 100 kè = 1.\n\nUne onde qui se répète chaque jour a une période d’exactement 100 kè. Cycles, orbites et oscillations partagent enfin la même unité que le calendrier.",
+    "convertTitle": "Convertir",
+    "deg": "Degrés",
+    "keLabel": "Kè",
+    "trigTitle": "Une nouvelle ère pour la trigonométrie.",
+    "trigCols": [
+      "Angle",
+      "Degrés",
+      "sin",
+      "cos",
+      "tan"
+    ],
+    "trigRows": [
+      [
+        "0 kè",
+        "0°",
+        "0",
+        "1",
+        "0"
+      ],
+      [
+        "8,33 kè",
+        "30°",
+        "1/2",
+        "√3/2",
+        "√3/3"
+      ],
+      [
+        "12,5 kè",
+        "45°",
+        "√2/2",
+        "√2/2",
+        "1"
+      ],
+      [
+        "16,67 kè",
+        "60°",
+        "√3/2",
+        "1/2",
+        "√3"
+      ],
+      [
+        "25 kè",
+        "90°",
+        "1",
+        "0",
+        "—"
+      ],
+      [
+        "50 kè",
+        "180°",
+        "0",
+        "−1",
+        "0"
+      ],
+      [
+        "75 kè",
+        "270°",
+        "−1",
+        "0",
+        "—"
+      ],
+      [
+        "100 kè",
+        "360°",
+        "0",
+        "1",
+        "0"
+      ]
+    ]
+  },
+  "heritage": {
+    "title": "Pas une idée neuve. Une idée enfin aboutie.",
+    "lead": "De grandes civilisations ont longtemps cherché à diviser le jour de façon plus sensée. Nu:Time hérite de leur sagesse et y ajoute ce qu’aucune n’avait : une planète capable de s’accorder sur l’instant.",
+    "items": [
+      {
+        "key": "zh",
+        "era": "Antiquité – XVIIᵉ s.",
+        "place": "Chine",
+        "title": "Le kè (刻)",
+        "text": "Pendant plus de deux mille ans, les astronomes chinois ont divisé le jour en 100 kè, mesurés à la clepsydre — le kè même qui est au cœur de Nu:Time. La nuit se comptait en cinq veilles, les gēng (更). Le standard Nu:Time · 刻时 Ke-Shi rend au gēng (更) et au kè (刻) la place qui leur revient."
+      },
+      {
+        "key": "fr",
+        "era": "1793–1795",
+        "place": "France",
+        "title": "La Révolution décimale",
+        "text": "La France révolutionnaire a divisé le jour en 10 heures de 100 minutes de 100 secondes — exactement le gong, le beat et le tic de Nu:Time. Le mètre et le kilogramme ont conquis le monde ; l’heure décimale avait simplement un temps d’avance."
+      },
+      {
+        "key": "es",
+        "era": "Depuis 1940",
+        "place": "Espagne",
+        "title": "Un pays dans le mauvais fuseau",
+        "text": "L’Espagne se situe en majeure partie à l’ouest de Greenwich, mais elle a adopté l’heure d’Europe centrale en 1940. Ses horloges ont une heure ou plus d’avance sur son soleil — un exemple vivant de ce que les fuseaux horaires font à la vie quotidienne."
+      }
+    ]
+  },
+  "why": {
+    "title": "Pourquoi maintenant.",
+    "lead": "La mesure du temps se reconstruit aujourd’hui à partir de l’atome, mais son affichage n’a pas changé depuis Babylone. Il est temps.",
+    "items": [
+      {
+        "title": "La seconde va être redéfinie",
+        "text": "Les horloges atomiques optiques surpassent désormais les horloges à césium qui définissent la seconde du SI. Les métrologues suivent une feuille de route pour redéfinir la seconde vers 2030. Si l’on refait les fondations, on peut aussi refaire la façade."
+      },
+      {
+        "title": "Les secondes intercalaires ont toujours été le problème",
+        "text": "L’UTC fixe la journée à 86 400 secondes atomiques : il a donc fallu insérer 27 secondes intercalaires depuis 1972 pour suivre la Terre. D’ici 2035, elles auront disparu, et le temps civil s’éloignera peu à peu du Soleil. Nu:Time s’aligne sur la rotation réelle de la Terre : il n’aura plus jamais besoin d’une seconde intercalaire. Voilà comment nous savons que l’heure est venue."
+      },
+      {
+        "title": "Les fuseaux horaires relèvent de la politique, pas de la physique",
+        "text": "Des dizaines de décalages horaires sont en usage dans le monde. La Chine s’étend sur cinq fuseaux avec une seule heure. L’Inde, sur près de deux. L’Espagne est décalée d’une heure entière. Nu:Time distingue l’heure, commune à tous, du soleil, propre à chaque lieu."
+      },
+      {
+        "title": "L’heure d’été a perdu la partie",
+        "text": "Deux fois par an, un milliard de personnes bousculent leur sommeil au nom d’une politique énergétique de 1916. En 2019, le Parlement européen a voté la fin du changement d’heure saisonnier ; les horloges changent toujours. Nu:Time n’a pas d’heure d’été à abolir."
+      },
+      {
+        "title": "Les machines n’ont pas besoin de la base 60",
+        "text": "Satellites, réseaux de paiement, capteurs et agents d’IA se coordonnent sur tous les fuseaux à la fois. La base 60 n’est pour eux qu’une couche de traduction qu’ils tolèrent. Une journée décimale est tout simplement plus facile à calculer."
+      },
+      {
+        "title": "Cap sur 2035 : les normes mondiales de demain s’écrivent",
+        "text": "La Chine participe activement à l’élaboration des normes internationales dans les technologies émergentes, et son système de navigation par satellite BeiDou comme le Centre national du service du temps (NTSC) de l’Académie chinoise des sciences comptent aujourd’hui parmi les acteurs majeurs de la mesure du temps dans le monde. 刻时 Ke-Shi — enraciné dans le jour de cent kè de la Chine ancienne — est proposé comme standard ouvert pour ce chantier, et pour tous."
+      }
+    ]
+  },
+  "roadmap": {
+    "title": "Le cap.",
+    "items": [
+      {
+        "when": "2026",
+        "text": "Standard ouvert Nu:Time v1.0, code de référence et implémentation de référence en matériel libre."
+      },
+      {
+        "when": "2027",
+        "text": "Programme Nu:Time Certified pour les appareils et logiciels compatibles. Soumissions aux organismes de normalisation."
+      },
+      {
+        "when": "2030–2035",
+        "text": "Conversion pilote, assistée par l’IA, des données temporelles et géospatiales existantes vers le standard Nu:Time · 刻时 Ke-Shi."
+      },
+      {
+        "when": "2035 et au-delà",
+        "text": "Conversion à grande échelle, à mesure que les secondes intercalaires prennent fin et que la seconde est redéfinie. Le temps et le lieu, en une seule unité."
+      }
+    ]
+  },
+  "build": {
+    "title": "Ouvert. Fabriquez le vôtre.",
+    "lead": "Le standard Nu:Time · 刻时 Ke-Shi est un standard ouvert. La spécification et les implémentations de référence sont libres : chacun peut les utiliser, bâtir dessus et les intégrer à ses produits. Le standard appartient à tous, et le nom Nu:Time · 刻时 Ke-Shi est synonyme de précision.",
+    "items": [
+      {
+        "title": "Le standard v1.0",
+        "text": "Les unités, le kè, la synchronisation universelle, Nu:Lat/Nu:Long, le cercle de 100 kè, la position du Soleil et l’enregistrement nu-time/v1. CC BY 4.0.",
+        "link": "Lire le standard",
+        "href": "/spec/"
+      },
+      {
+        "title": "API : JavaScript et Python",
+        "text": "Des conversions prêtes à l’emploi entre UTC et Nu:Time, degrés et kè, latitude/longitude et Nu:Lat/Nu:Long — avec des vecteurs de test communs. MIT ou Apache 2.0.",
+        "link": "Documentation développeurs",
+        "href": "/developers/"
+      },
+      {
+        "title": "Horloge en matériel libre",
+        "text": "Une conception de référence : microcontrôleur ARM basse consommation, GNSS pour l’UTC et les coordonnées en kè, écran MIP, et une impulsion haptique à chaque kè. CERN-OHL-P 2.0.",
+        "link": "Référence matérielle",
+        "href": "/developers/#hardware"
+      }
+    ],
+    "quartzTitle": "Cycles de quartz par tic Nu:Time",
+    "quartz": [
+      [
+        "3,456 MHz",
+        "2 985 984",
+        "Division entière exacte — le quartz Nu:Time"
+      ],
+      [
+        "32,768 kHz",
+        "28 311,552",
+        "Accumulateur de phase (28 311 / 28 312)"
+      ],
+      [
+        "1 MHz",
+        "864 000",
+        "Division entière"
+      ],
+      [
+        "10 MHz",
+        "8 640 000",
+        "Division entière"
+      ],
+      [
+        "16 MHz",
+        "13 824 000",
+        "Division entière"
+      ]
+    ],
+    "colCrystal": "Quartz",
+    "colCycles": "Cycles / tic",
+    "colMethod": "Méthode",
+    "certTitle": "Nu:Time Certified",
+    "cert": "Chacun peut appliquer le standard et présenter son produit comme « compatible Nu:Time ». Les appareils qui réussissent les tests de conformité peuvent porter la marque Nu:Time Certified.",
+    "license": "Spécification et documentation : CC BY 4.0 · Code : MIT ou Apache 2.0 · Matériel : CERN-OHL-P 2.0 · Engagement de licence de brevets sans redevance pour les implémenteurs. Nu:Time™, Ke-Shi™, 刻时™ et leurs logos sont des marques de Nu-Time Inc. et ne sont pas couverts par les licences ouvertes. Les noms des unités — gong (gēng 更), kè (刻), beat et tic — sont des mots ordinaires, libres d’usage pour tous."
+  },
+  "join": {
+    "title": "Soyez parmi les premiers. Contribuez au standard.",
+    "lead": "Développement, fabrication, recherche, normalisation, création, presse ou simple curiosité : dites-nous qui vous êtes, et nous vous ferons une place.",
+    "name": "Nom",
+    "email": "E-mail",
+    "role": "Votre profil",
+    "roles": {
+      "developer": "Développement",
+      "maker": "Fabrication de matériel",
+      "researcher": "Recherche / université",
+      "standards": "Normalisation / secteur public",
+      "creator": "Création de contenu / influence",
+      "press": "Presse",
+      "investor": "Investissement / partenariat",
+      "curious": "Simple curiosité"
+    },
+    "country": "Pays / région",
+    "message": "Que construiriez-vous avec Nu:Time ? (facultatif)",
+    "consent": "Recevoir par e-mail les nouvelles du lancement de Nu:Time. Désinscription possible à tout moment.",
+    "submit": "Je m’inscris",
+    "sending": "Envoi en cours…",
+    "ok": "C’est fait. Bienvenue dans l’aventure Nu:Time.",
+    "err": "L’envoi a échoué. Veuillez réessayer, ou écrivez-nous à info@nu-time.com.",
+    "invalid": "Veuillez saisir une adresse e-mail valide."
+  },
+  "footer": {
+    "tagline": "le temps et le lieu, réinventés.",
+    "rights": "© 2026 Nu-Time Inc. Nu:Time™, Ke-Shi™ et 刻时™ sont des marques de Nu-Time Inc.",
+    "open": "Standard ouvert : spécification CC BY 4.0 · code MIT ou Apache 2.0 · matériel CERN-OHL-P 2.0.",
+    "contact": "Contact",
+    "press": "Presse",
+    "brand": "Charte de marque",
+    "languages": "Langues",
+    "privacy": "Confidentialité"
+  },
+  "cities": {
+    "Anchorage": "Anchorage",
+    "Atlanta": "Atlanta",
+    "Bangkok": "Bangkok",
+    "Barcelona": "Barcelone",
+    "Beijing": "Pékin",
+    "Berlin": "Berlin",
+    "Bogota": "Bogota",
+    "Cairo": "Le Caire",
+    "Cape Town": "Le Cap",
+    "Chicago": "Chicago",
+    "Delhi": "Delhi",
+    "Dubai": "Dubaï",
+    "Helsinki": "Helsinki",
+    "Hong Kong": "Hong Kong",
+    "Houston": "Houston",
+    "Istanbul": "Istanbul",
+    "Jakarta": "Jakarta",
+    "Johannesburg": "Johannesburg",
+    "Karachi": "Karachi",
+    "Kuala Lumpur": "Kuala Lumpur",
+    "Lagos": "Lagos",
+    "London": "Londres",
+    "Los Angeles": "Los Angeles",
+    "Madrid": "Madrid",
+    "Manila": "Manille",
+    "Mexico City": "Mexico",
+    "Moscow": "Moscou",
+    "Mumbai": "Mumbai",
+    "Nairobi": "Nairobi",
+    "New York City": "New York",
+    "Paris": "Paris",
+    "Reykjavik": "Reykjavik",
+    "Rio de Janeiro": "Rio de Janeiro",
+    "Riyadh": "Riyad",
+    "Rome": "Rome",
+    "Santiago": "Santiago",
+    "San Francisco": "San Francisco",
+    "Sao Paulo": "São Paulo",
+    "Seattle": "Seattle",
+    "Seoul": "Séoul",
+    "Shanghai": "Shanghai",
+    "Singapore": "Singapour",
+    "Stockholm": "Stockholm",
+    "Sydney": "Sydney",
+    "Taipei": "Taipei",
+    "Tel Aviv": "Tel Aviv",
+    "Tokyo": "Tokyo",
+    "Ushuaia": "Ushuaïa",
+    "Vancouver": "Vancouver",
+    "Washington D.C.": "Washington",
+    "Greenwich": "Greenwich"
+  }
+}

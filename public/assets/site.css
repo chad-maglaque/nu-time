@@ -16,9 +16,23 @@
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; scroll-padding-top: 120px; }
 body { margin: 0; background: var(--bg); color: var(--text); font: 17px/1.65 var(--sans); }
 [dir="rtl"] body { line-height: 2; }
+/* scripts beyond Latin */
+:lang(zh-Hans) { line-break: strict; word-break: normal; overflow-wrap: anywhere; }
+:lang(zh-Hans) body { font-family: "Inter", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", system-ui, sans-serif; }
+:lang(zh-Hans) h1, :lang(zh-Hans) h2, :lang(zh-Hans) h3 { letter-spacing: .02em; line-height: 1.25; word-break: keep-all; }   /* break at punctuation, not inside words like 重新 */
+:lang(hi) body { line-height: 1.8; } :lang(hi) h1, :lang(hi) h2 { line-height: 1.35; }
+:lang(ur) body { font-family: "Noto Nastaliq Urdu", "Jameel Noori Nastaleeq", "Urdu Typesetting", "Inter", system-ui, sans-serif; line-height: 2.1; }
+:lang(ur) h1, :lang(ur) h2, :lang(ur) h3 { line-height: 1.7; letter-spacing: 0; }
+/* RTL + script fixes */
+html:lang(zh-Hans) { --logo: "Orbitron", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; }
+html:lang(hi) { --logo: "Orbitron", "Noto Sans Devanagari", "Kohinoor Devanagari", "Nirmala UI", sans-serif; }
+html:lang(ur) { --logo: "Orbitron", "Noto Nastaliq Urdu", "Jameel Noori Nastaleeq", "Urdu Typesetting", sans-serif; }
+:lang(ur) *:not(.logo):not(.logo *) { letter-spacing: 0 !important; }   /* spacing breaks the joins between Arabic-script letters */
+.tbl td, .trigtbl th, .trigtbl td { unicode-bidi: plaintext; }
+.trigtbl td, .tbl .nu { direction: ltr; unicode-bidi: isolate; }        /* √3/2, −1, 2.985.984 never mirror */
 a { color: var(--gold); text-decoration: none; transition: opacity .2s; }
 a:hover { opacity: .6; }
-h1, h2, h3 { line-height: 1.12; margin: 0 0 .5em; font-weight: 700; }
+h1, h2, h3 { line-height: 1.12; margin: 0 0 .5em; font-weight: 700; text-wrap: balance; }
 h1 { font-size: clamp(40px, 6.4vw, 78px); color: var(--gold); letter-spacing: -0.01em; }
 h2 { font-size: clamp(30px, 4.2vw, 50px); color: var(--gold); letter-spacing: -0.01em; }
 h3 { font-size: 20px; font-weight: 650; color: var(--text); }
@@ -28,7 +42,7 @@ p { margin: 0 0 1em; }
 .note, .small { font-size: 14px; color: var(--muted); max-width: 62em; }
 
 /* logo: the first U is inverted to form the n of "nu" */
-.logo { font: 800 24px/1 var(--logo); color: var(--gold); letter-spacing: .04em; white-space: nowrap; display: inline-flex; align-items: center; }
+.logo { font: 800 24px/1 var(--logo); color: var(--gold); letter-spacing: .04em; white-space: nowrap; display: inline-flex; align-items: center; direction: ltr; unicode-bidi: isolate; }
 .logo:hover { opacity: 1; }
 .logo .inv { display: inline-block; transform: scaleY(-1); }
 .logo sup { font-size: 10px; opacity: .75; margin-inline-start: 2px; align-self: flex-start; }
@@ -46,9 +60,10 @@ p { margin: 0 0 1em; }
 .sub a:hover { color: var(--gold); text-decoration: underline; opacity: 1; }
 .sub a.active { opacity: .4; }
 .langs { position: relative; font-size: 13px; }
-.langs summary { cursor: pointer; list-style: none; padding: 6px 12px; background: #2a2a2a; border: 1px solid #3a3a3a; border-radius: 6px; }
+.langs summary { cursor: pointer; list-style: none; padding: 6px 12px; background: #2a2a2a; border: 1px solid #3a3a3a; border-radius: 6px; display: inline-flex; align-items: center; gap: 7px; }
+.langs summary svg { opacity: .8; }
 .langs summary::-webkit-details-marker { display: none; }
-.langs div { position: absolute; inset-inline-end: 0; top: 120%; background: #2a2a2a; border: 1px solid #3a3a3a; border-radius: 8px; padding: 6px; display: grid; min-width: 150px; z-index: 30; }
+.langs div { position: absolute; inset-inline-end: 0; top: calc(100% + 6px); background: #2a2a2a; border: 1px solid #3a3a3a; border-radius: 8px; padding: 6px; display: grid; min-width: 150px; z-index: 30; }
 .langs a, .foot nav a { padding: 6px 10px; color: var(--text); border-radius: 6px; }
 .langs a[aria-current] { color: var(--gold); }
 .btn { display: inline-block; font: 700 14px/1 var(--logo); letter-spacing: .1em; text-transform: uppercase; padding: 16px 30px; border-radius: 999px;
@@ -120,7 +135,7 @@ p { margin: 0 0 1em; }
 .cards4 .unit { display: block; font: 600 12px var(--logo); letter-spacing: .14em; text-transform: uppercase; color: var(--text); margin: 10px 0 12px; }
 .split { display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; align-items: start; }
 .tbl { width: 100%; border-collapse: collapse; font-size: 15px; margin-bottom: 18px; }
-.tbl th, .tbl td { text-align: start; padding: 12px 10px; border-bottom: 1px solid var(--line); }
+.tbl th, .tbl td { text-align: start; padding: 12px 10px; border-bottom: 1px solid var(--line); hyphens: auto; overflow-wrap: anywhere; }
 .tbl thead th { font: 600 11px var(--logo); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
 .tbl tbody th { font-weight: 500; color: var(--text2); }
 .tbl .nu { font: 700 15px var(--mono); color: var(--gold); direction: ltr; unicode-bidi: isolate; letter-spacing: .03em; }
@@ -162,7 +177,7 @@ p { margin: 0 0 1em; }
 .signup input:focus, .signup select:focus, .signup textarea:focus { outline: 2px solid var(--gold); outline-offset: 1px; }
 .signup .check { display: flex; gap: 10px; align-items: flex-start; font-weight: 400; }
 .signup .check input { margin-top: 4px; }
-.signup .hp { position: absolute; left: -9999px; }
+.signup .hp { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }   /* hidden without off-screen offsets (those scroll in RTL pages) */
 .signup .btn { justify-self: start; }
 .status { grid-column: 1 / -1; margin: 0; min-height: 1.6em; font-weight: 600; }
 .status.ok { color: #7fd18b; } .status.err { color: #ff8f7a; }

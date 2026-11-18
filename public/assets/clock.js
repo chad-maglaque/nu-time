@@ -90,7 +90,15 @@
     skyAt = 0; last = "";
   }
   // options: "Choose a location", "Current Location (Auto-Detect)", then the cities as "City, Country"
-  CITIES.forEach(function (c, i) { var o = document.createElement("option"); o.value = i; o.textContent = c[0] + ", " + c[1]; sel.appendChild(o); });
+  // Labels in the page language: city names from the locale file, country names from the browser (CLDR).
+  var CC = {"Argentina": "AR", "Australia": "AU", "Brazil": "BR", "Canada": "CA", "Chile": "CL", "China": "CN", "Colombia": "CO", "Egypt": "EG", "Finland": "FI", "France": "FR", "Germany": "DE", "Hong Kong SAR": "HK", "Iceland": "IS", "India": "IN", "Indonesia": "ID", "Israel": "IL", "Italy": "IT", "Japan": "JP", "Kenya": "KE", "Malaysia": "MY", "Mexico": "MX", "Nigeria": "NG", "Pakistan": "PK", "Philippines": "PH", "Russia": "RU", "Saudi Arabia": "SA", "Singapore": "SG", "South Africa": "ZA", "South Korea": "KR", "Spain": "ES", "Sweden": "SE", "Taiwan": "TW", "Thailand": "TH", "Turkey": "TR", "UAE": "AE", "USA": "US", "United Kingdom": "GB"};
+  var cityNames = window.NT_CITIES || {}, regionNames = null;
+  try { regionNames = new Intl.DisplayNames([document.documentElement.lang || "en"], { type: "region" }); } catch (e) {}
+  // Chinese page: mainland convention for Taiwan and Hong Kong (decided 2026-11-18).
+  var REGION_OVERRIDES = { zh: { TW: "中国台湾", HK: "中国香港" } };
+  var regionOverride = REGION_OVERRIDES[(document.documentElement.lang || "en").slice(0, 2)] || {};
+  function label(c) { var cc = CC[c[1]], country = regionOverride[cc] || (regionNames && cc && regionNames.of(cc)) || c[1]; return (cityNames[c[0]] || c[0]) + ", " + country; }
+  CITIES.forEach(function (c, i) { var o = document.createElement("option"); o.value = i; o.textContent = label(c); sel.appendChild(o); });
   function pickCity(i) { var c = CITIES[i]; sel.value = String(i); setPlace(c[0], c[2], c[3], c[4]); say(""); }
   function indexOf(name) { for (var i = 0; i < CITIES.length; i++) if (CITIES[i][0] === name) return i; return -1; }
 

@@ -1,0 +1,473 @@
+{
+  "lang": "de",
+  "dir": "ltr",
+  "langName": "Deutsch",
+  "brand": "Nu:Time",
+  "brandLocal": "Nu:Time",
+  "meta": {
+    "title": "Nu:Time™ – Zeit und Ort neu gedacht",
+    "description": "Nu:Time (刻时 Ke-Shi) ist ein offener Standard für Zeit und Ort: eine Uhrzeit für den ganzen Planeten, ein dezimaler Tag aus 10 Gongs, 100 Kè, 1.000 Beats und 100.000 Ticks – und eine einzige Einheit, das Kè, die beides misst: wann und wo."
+  },
+  "nav": {
+    "time": "Zeit neu gedacht",
+    "how": "So funktioniert’s",
+    "ke": "Das Kè",
+    "geometry": "Geometrie",
+    "heritage": "Geschichte",
+    "why": "Warum jetzt",
+    "build": "Entwickler-Doku",
+    "join": "Mitmachen",
+    "spec": "Der Standard",
+    "explore": "Mehr entdecken",
+    "overview": "Übersicht"
+  },
+  "units": {
+    "gong": "Gong",
+    "ke": "Kè",
+    "beat": "Beat",
+    "tick": "Tick",
+    "gongs": "Gongs",
+    "kes": "Kè",
+    "beats": "Beats",
+    "ticks": "Ticks"
+  },
+  "hero": {
+    "eyebrow": "Der Nu:Time-Standard · 刻时 Ke-Shi",
+    "title": "Zeit und Ort neu gedacht.",
+    "sub": "Eine Uhrzeit für den ganzen Planeten – mit einem Tag aus 10 Gongs, 1.000 Beats und 100.000 Ticks. Und eine Einheit, die Zeit und Raum verbindet: das Kè. 100 Kè ergeben einen vollen Kreis und zeigen dir, wann und wo auf der Erde du gerade bist.",
+    "ctaExplore": "Mehr entdecken",
+    "ctaJoin": "Beim Start dabei sein",
+    "clockLabel": "Nu:Time-Weltzeit, jetzt",
+    "city": "Ort",
+    "position": "Dein Standort",
+    "noon": "Sonnenmittag",
+    "sunrise": "Sonnenaufgang",
+    "sunset": "Sonnenuntergang",
+    "east": "O",
+    "west": "W",
+    "north": "N",
+    "south": "S",
+    "polarDay": "Sonne geht nicht unter",
+    "polarNight": "Sonne geht nicht auf",
+    "dayBar": "Heute an deinem Standort, in Nu:Time-Weltzeit",
+    "dialHint": "Nu:Time ist für alle gleich, überall auf der Erde. Das Zifferblatt einer Nu:Time-Uhr richtet sich nach deinem Standort aus und bleibt dabei fest auf den Nullmeridian in Greenwich bezogen.\n\nDer Sonnenmittag steht immer oben, egal wo auf dem Planeten du bist. Während die Sonne über den Himmel wandert, zeigen drei Zeiger den Lauf der Zeit: Der rote Zeiger dreht sich einmal pro Tag, der blaue einmal pro Gong und der goldene einmal pro Beat – er zählt die vergehenden Ticks.",
+    "choose": "Ort wählen",
+    "current": "Aktueller Standort (automatisch)",
+    "locating": "Standort wird ermittelt …",
+    "approx": "Ungefährer Standort (über deine Internetverbindung):",
+    "locfail": "Dein Standort konnte nicht ermittelt werden. Erlaube dieser Seite in deinem Browser den Standortzugriff – oder wähle eine Stadt.",
+    "latitude": "Breite",
+    "longitude": "Länge",
+    "locate": "Meinen Standort verwenden",
+    "inAction": "Nu:Time in Aktion",
+    "tryIt": "Probier es selbst aus!"
+  },
+  "eliminates": {
+    "title": "mit allem, was du ohnehin nie verstanden hast: 24 Stunden, AM und PM, 60 Minuten, 60 Sekunden, Zeitzonen, Sommerzeit, Schaltsekunden und der Datumsgrenze!",
+    "tail": "und behält nur, was wirklich zählt: den Moment, in dem du bist, und den Stand der Sonne am Himmel.",
+    "heading": "Nu:Time macht Schluss."
+  },
+  "time": {
+    "title": "Zeit neu gedacht.",
+    "lead": "Mit Nu:Time gilt überall auf der Erde im selben Augenblick dieselbe Uhrzeit. Wo du bist, ändert nicht mehr, wie spät es ist – nur, wo die Sonne steht und wann sie auf- und untergeht.",
+    "points": [
+      {
+        "title": "Eine Zeit für alle",
+        "text": "Die Welt ist vernetzt. Shanghai, Delhi, Paris und New York haben dieselbe Uhrzeit. Meetings, Flüge und Börsen auch."
+      },
+      {
+        "title": "Keine Datumsgrenze",
+        "text": "Der Tag wechselt einmal – für alle im selben Moment. Kein Hin- und Herspringen zwischen zwei Tagen mitten im Pazifik und nie wieder zwei Dienstage."
+      },
+      {
+        "title": "Deine Sonne, dein Ort",
+        "text": "Je nach Abstand zum Nullmeridian in Greenwich erreicht die Sonne bei dir früher oder später ihren Höchststand. Die Nu:Time-Weltzeit bleibt trotzdem dieselbe – immer."
+      },
+      {
+        "title": "Deine Uhr, dein Stil",
+        "text": "Wie das Zifferblatt oben können Nu:Time-Geräte deinen lokalen Sonnentag anzeigen und wo die Sonne gerade steht. Nu:Time-Weltzeit und Ortszeit geraten dabei nie durcheinander."
+      }
+    ]
+  },
+  "how": {
+    "title": "Das ganze System passt in eine Zeile.",
+    "lead": "Jede Einheit ist eine Zehnerpotenz. Jede Anzeige folgt demselben Muster: Gong:Beat:Tick.",
+    "cards": [
+      {
+        "n": "10",
+        "unit": "Gongs · 更",
+        "text": "Ein Zehntel des Tages und länger als eine herkömmliche Stunde: das erste Feld jeder Nu:Time-Anzeige."
+      },
+      {
+        "n": "1.000",
+        "unit": "Beats · 分",
+        "text": "Ein Tausendstel des Tages: lang genug, um ins Gewicht zu fallen, kurz genug für ein Meeting."
+      },
+      {
+        "n": "100.000",
+        "unit": "Ticks · 秒",
+        "text": "Etwa so lang wie ein Herzschlag in Ruhe. Das letzte Feld jeder Nu:Time-Anzeige."
+      },
+      {
+        "n": "100",
+        "unit": "Kè · 刻",
+        "text": "100 Kè am Tag, 100 Kè im Kreis: Das Kè ist die Brücke zwischen Zeit und Ort."
+      }
+    ]
+  },
+  "ke": {
+    "title": "Das Kè: eine Einheit für Wann und Wo.",
+    "lead": "Ein ganzer Tag hat 100 Kè. Ein ganzer Kreis hat 100 Kè. Die Drehung der Erde und die Runde des Zeigers ergeben also dieselbe Zahl – und Zeitzonen verschwinden.",
+    "facts": [
+      {
+        "n": "1 Kè",
+        "text": "1/100 eines Tages"
+      },
+      {
+        "n": "1 Kè",
+        "text": "1/100 eines Kreises"
+      },
+      {
+        "n": "Länge",
+        "text": "0 bis 50 Kè östlich oder westlich des Nullmeridians"
+      },
+      {
+        "n": "Breite",
+        "text": "0 bis 25 Kè nördlich oder südlich des Äquators"
+      }
+    ]
+  },
+  "geometry": {
+    "title": "Geometrie für eine neue Zeit.",
+    "lead": "Das Gradmaß hat Babylon gewählt, das Bogenmaß die Mathematik. Der 100-Kè-Kreis spricht dieselbe Sprache wie deine Uhr und deine Karte – und macht Geometrie intuitiv.",
+    "items": [
+      [
+        "Vollwinkel",
+        "100 Kè",
+        "360°"
+      ],
+      [
+        "Gestreckter Winkel · Winkelsumme im Dreieck",
+        "50 Kè",
+        "180°"
+      ],
+      [
+        "Rechter Winkel",
+        "25 Kè",
+        "90°"
+      ],
+      [
+        "Gleichseitiges Dreieck",
+        "16,67 Kè",
+        "60°"
+      ],
+      [
+        "Rechtwinkliges Dreieck, 30°-Winkel",
+        "8,33 Kè",
+        "30°"
+      ],
+      [
+        "Regelmäßiges Fünfeck, Innenwinkel",
+        "30 Kè",
+        "108°"
+      ]
+    ],
+    "colAngle": "Winkel",
+    "colKe": "In Kè",
+    "colDeg": "In Grad",
+    "trig": "sin 25 Kè = 1, cos 50 Kè = −1, sin 75 Kè = −1 und cos 100 Kè = 1.\n\nEine Welle, die sich täglich wiederholt, hat eine Periode von genau 100 Kè. Zyklen, Umlaufbahnen und Schwingungen teilen sich endlich eine Einheit mit dem Kalender.",
+    "convertTitle": "Umrechnen",
+    "deg": "Grad",
+    "keLabel": "Kè",
+    "trigTitle": "Trigonometrie für eine neue Zeit.",
+    "trigCols": [
+      "Winkel",
+      "Grad",
+      "sin",
+      "cos",
+      "tan"
+    ],
+    "trigRows": [
+      [
+        "0 Kè",
+        "0°",
+        "0",
+        "1",
+        "0"
+      ],
+      [
+        "8,33 Kè",
+        "30°",
+        "1/2",
+        "√3/2",
+        "√3/3"
+      ],
+      [
+        "12,5 Kè",
+        "45°",
+        "√2/2",
+        "√2/2",
+        "1"
+      ],
+      [
+        "16,67 Kè",
+        "60°",
+        "√3/2",
+        "1/2",
+        "√3"
+      ],
+      [
+        "25 Kè",
+        "90°",
+        "1",
+        "0",
+        "—"
+      ],
+      [
+        "50 Kè",
+        "180°",
+        "0",
+        "−1",
+        "0"
+      ],
+      [
+        "75 Kè",
+        "270°",
+        "−1",
+        "0",
+        "—"
+      ],
+      [
+        "100 Kè",
+        "360°",
+        "0",
+        "1",
+        "0"
+      ]
+    ]
+  },
+  "heritage": {
+    "title": "Keine neue Idee. Eine zu Ende gedachte.",
+    "lead": "Große Kulturen haben immer wieder versucht, den Tag vernünftiger einzuteilen. Nu:Time übernimmt ihre Erkenntnisse und ergänzt, was keine von ihnen hatte: einen Planeten, der sich auf denselben Moment einigen kann.",
+    "items": [
+      {
+        "key": "zh",
+        "era": "Antike bis 17. Jh.",
+        "place": "China",
+        "title": "Das Kè (刻)",
+        "text": "Über zweitausend Jahre lang teilten chinesische Astronomen den Tag in 100 Kè ein, gemessen mit Wasseruhren – dasselbe Kè, das im Mittelpunkt von Nu:Time steht. Die Nacht war in fünf Wachen gegliedert, die Gēng (更). Der Nu:Time-Standard · 刻时 Ke-Shi gibt Gēng (更) und Kè (刻) ihren angestammten Platz zurück."
+      },
+      {
+        "key": "fr",
+        "era": "1793 – 1795",
+        "place": "Frankreich",
+        "title": "Die dezimale Revolution",
+        "text": "Das revolutionäre Frankreich teilte den Tag in 10 Stunden zu je 100 Minuten zu je 100 Sekunden – genau wie Gong, Beat und Tick bei Nu:Time. Meter und Kilogramm haben die Welt erobert; die Dezimalzeit kam einfach zu früh."
+      },
+      {
+        "key": "es",
+        "era": "1940 – heute",
+        "place": "Spanien",
+        "title": "Ein Land in der falschen Zeitzone",
+        "text": "Spanien liegt größtenteils westlich von Greenwich, übernahm 1940 aber die Mitteleuropäische Zeit. Seine Uhren gehen der Sonne seither eine Stunde oder mehr voraus – ein lebendiges Beispiel dafür, was Zeitzonen mit dem Alltag machen."
+      }
+    ]
+  },
+  "why": {
+    "title": "Warum jetzt.",
+    "lead": "Die Zeitmessung wird gerade vom Atom aus neu aufgebaut – doch die Art, wie wir Zeit anzeigen, hat sich seit Babylon nicht verändert. Es wird Zeit.",
+    "items": [
+      {
+        "title": "Die Sekunde wird neu definiert",
+        "text": "Optische Atomuhren übertreffen heute die Cäsiumuhren, auf denen die SI-Sekunde beruht. Nach dem Fahrplan der Metrologie soll die Sekunde um 2030 neu definiert werden. Wird das Fundament ersetzt, kann die Fassade gleich mit."
+      },
+      {
+        "title": "Schaltsekunden waren immer das Problem",
+        "text": "UTC legt den Tag auf 86.400 Atomsekunden fest. Um mit der Erde Schritt zu halten, mussten seit 1972 deshalb 27 Schaltsekunden eingefügt werden – und spätestens 2035 ist damit Schluss: Die amtliche Zeit driftet dann langsam von der Sonne weg. Nu:Time richtet sich nach der tatsächlichen Drehung der Erde und braucht nie wieder eine Schaltsekunde. Darum wissen wir: Die Zeit ist reif."
+      },
+      {
+        "title": "Zeitzonen sind Politik, nicht Physik",
+        "text": "Weltweit gelten Dutzende verschiedene Abweichungen von UTC. China erstreckt sich über fünf Zeitzonen – mit einer einzigen Uhrzeit. Indien über fast zwei. Spanien ist um eine ganze Stunde verschoben. Nu:Time trennt die gemeinsame Zeit von der Sonne vor Ort."
+      },
+      {
+        "title": "Die Sommerzeit hat die Debatte verloren",
+        "text": "Zweimal im Jahr bringt eine Milliarde Menschen ihren Schlaf durcheinander – wegen einer Energiesparmaßnahme von 1916. Das Europäische Parlament hat 2019 für das Ende der Zeitumstellung gestimmt; umgestellt wird trotzdem weiter. Nu:Time hat keine Sommerzeit, die man abschaffen müsste."
+      },
+      {
+        "title": "Maschinen brauchen kein Sechzigersystem",
+        "text": "Satelliten, Zahlungssysteme, Sensoren und KI-Agenten stimmen sich über alle Zeitzonen hinweg gleichzeitig ab. Das Sechzigersystem ist für sie nur eine Übersetzungsschicht, die sie in Kauf nehmen. Ein Dezimaltag lässt sich schlicht einfacher berechnen."
+      },
+      {
+        "title": "Richtung 2035: Die Weltstandards von morgen werden geschrieben",
+        "text": "China gestaltet internationale Standards für neue Technologien aktiv mit, und sein Satellitennavigationssystem BeiDou sowie das National Time Service Center der Chinesischen Akademie der Wissenschaften sind heute wichtige Kräfte der weltweiten Zeitmessung. 刻时 Ke-Shi – verwurzelt im Tag aus hundert Kè des alten China – wird als offener Standard angeboten: für diese Arbeit und für alle."
+      }
+    ]
+  },
+  "roadmap": {
+    "title": "Der Weg.",
+    "items": [
+      {
+        "when": "2026",
+        "text": "Offener Nu:Time-Standard v1.0, Referenzcode und eine Open-Hardware-Referenzimplementierung."
+      },
+      {
+        "when": "2027",
+        "text": "Zertifizierungsprogramm „Nu:Time Certified“ für kompatible Geräte und Software. Einreichung bei Normungsgremien."
+      },
+      {
+        "when": "2030 – 2035",
+        "text": "KI-gestützte Pilotumstellung bestehender Zeit- und Geodaten auf den Nu:Time-Standard · 刻时 Ke-Shi."
+      },
+      {
+        "when": "Ab 2035",
+        "text": "Umstellung im großen Maßstab, wenn die Schaltsekunden enden und die Sekunde neu definiert ist. Zeit und Ort in einer Einheit."
+      }
+    ]
+  },
+  "build": {
+    "title": "Offen. Zum Selberbauen.",
+    "lead": "Der Nu:Time-Standard · 刻时 Ke-Shi ist ein offener Standard. Spezifikation und Referenzimplementierungen stehen allen frei zur Verfügung – zum Nutzen, Weiterentwickeln und Einbauen in eigene Produkte. Der Standard gehört allen, und der Name Nu:Time · 刻时 Ke-Shi steht für Präzision.",
+    "items": [
+      {
+        "title": "Der Standard v1.0",
+        "text": "Einheiten, das Kè, weltweite Synchronisation, Nu:Lat/Nu:Long, der 100-Kè-Kreis, der Sonnenstand und der Datensatz nu-time/v1. CC BY 4.0.",
+        "link": "Zum Standard",
+        "href": "/spec/"
+      },
+      {
+        "title": "APIs: JavaScript & Python",
+        "text": "Einsatzfertige Umrechnungen zwischen UTC und Nu:Time, Grad und Kè, Breite/Länge und Nu:Lat/Nu:Long – mit gemeinsamen Testvektoren. MIT oder Apache 2.0.",
+        "link": "Zur Entwicklerdoku",
+        "href": "/developers/"
+      },
+      {
+        "title": "Open-Hardware-Uhr",
+        "text": "Ein Referenzdesign: stromsparender ARM-Mikrocontroller, GNSS für UTC und Kè-Koordinaten, MIP-Display und ein haptischer Impuls bei jedem Kè. CERN-OHL-P 2.0.",
+        "link": "Zur Hardware-Referenz",
+        "href": "/developers/#hardware"
+      }
+    ],
+    "quartzTitle": "Quarzschwingungen pro Nu:Time-Tick",
+    "quartz": [
+      [
+        "3,456 MHz",
+        "2.985.984",
+        "Exakte ganzzahlige Teilung – der Nu:Time-Quarz"
+      ],
+      [
+        "32,768 kHz",
+        "28.311,552",
+        "Phasenakkumulator (28.311 / 28.312)"
+      ],
+      [
+        "1 MHz",
+        "864.000",
+        "Ganzzahlige Teilung"
+      ],
+      [
+        "10 MHz",
+        "8.640.000",
+        "Ganzzahlige Teilung"
+      ],
+      [
+        "16 MHz",
+        "13.824.000",
+        "Ganzzahlige Teilung"
+      ]
+    ],
+    "colCrystal": "Quarz",
+    "colCycles": "Schwingungen / Tick",
+    "colMethod": "Verfahren",
+    "certTitle": "Nu:Time Certified",
+    "cert": "Alle dürfen nach dem Standard bauen und ihr Produkt als „Nu:Time-kompatibel“ bezeichnen. Geräte, die die Konformitätstests bestehen, dürfen das Zeichen „Nu:Time Certified“ tragen.",
+    "license": "Spezifikation & Doku: CC BY 4.0 · Code: MIT oder Apache 2.0 · Hardware: CERN-OHL-P 2.0 · Gebührenfreie Patentzusage für alle, die den Standard umsetzen. Nu:Time™, Ke-Shi™, 刻时™ und die zugehörigen Logos sind Marken der Nu-Time Inc. und fallen nicht unter die offenen Lizenzen. Die Einheitennamen – Gong (gēng 更), Kè (刻), Beat und Tick – sind gewöhnliche Wörter und dürfen von allen frei verwendet werden."
+  },
+  "join": {
+    "title": "Früh dabei. Den Standard mitgestalten.",
+    "lead": "Ob Software oder Hardware, Forschung oder Normung, Content, Presse oder einfach Neugier – sag uns, wer du bist, und wir holen dich mit ins Boot.",
+    "name": "Name",
+    "email": "E-Mail",
+    "role": "Was beschreibt dich am besten?",
+    "roles": {
+      "developer": "Softwareentwicklung",
+      "maker": "Hardware / Maker",
+      "researcher": "Forschung / Wissenschaft",
+      "standards": "Normung / Verwaltung",
+      "creator": "Content / Social Media",
+      "press": "Presse",
+      "investor": "Investment / Partnerschaft",
+      "curious": "Einfach neugierig"
+    },
+    "country": "Land / Region",
+    "message": "Was würdest du mit Nu:Time bauen? (optional)",
+    "consent": "Ich möchte Neuigkeiten zum Start von Nu:Time per E-Mail erhalten. Abmelden ist jederzeit möglich.",
+    "submit": "Mitmachen",
+    "sending": "Wird gesendet …",
+    "ok": "Du bist dabei. Willkommen bei Nu:Time.",
+    "err": "Das hat leider nicht geklappt. Bitte versuch es noch einmal oder schreib uns an info@nu-time.com.",
+    "invalid": "Bitte gib eine gültige E-Mail-Adresse ein."
+  },
+  "footer": {
+    "tagline": "Zeit und Ort neu gedacht.",
+    "rights": "© 2026 Nu-Time Inc. Nu:Time™, Ke-Shi™ und 刻时™ sind Marken der Nu-Time Inc.",
+    "open": "Offener Standard: Spezifikation CC BY 4.0 · Code MIT oder Apache 2.0 · Hardware CERN-OHL-P 2.0.",
+    "contact": "Kontakt",
+    "press": "Presse",
+    "brand": "Markenrichtlinien",
+    "languages": "Sprachen",
+    "privacy": "Datenschutz"
+  },
+  "cities": {
+    "Anchorage": "Anchorage",
+    "Atlanta": "Atlanta",
+    "Bangkok": "Bangkok",
+    "Barcelona": "Barcelona",
+    "Beijing": "Peking",
+    "Berlin": "Berlin",
+    "Bogota": "Bogotá",
+    "Cairo": "Kairo",
+    "Cape Town": "Kapstadt",
+    "Chicago": "Chicago",
+    "Delhi": "Delhi",
+    "Dubai": "Dubai",
+    "Helsinki": "Helsinki",
+    "Hong Kong": "Hongkong",
+    "Houston": "Houston",
+    "Istanbul": "Istanbul",
+    "Jakarta": "Jakarta",
+    "Johannesburg": "Johannesburg",
+    "Karachi": "Karatschi",
+    "Kuala Lumpur": "Kuala Lumpur",
+    "Lagos": "Lagos",
+    "London": "London",
+    "Los Angeles": "Los Angeles",
+    "Madrid": "Madrid",
+    "Manila": "Manila",
+    "Mexico City": "Mexiko-Stadt",
+    "Moscow": "Moskau",
+    "Mumbai": "Mumbai",
+    "Nairobi": "Nairobi",
+    "New York City": "New York",
+    "Paris": "Paris",
+    "Reykjavik": "Reykjavík",
+    "Rio de Janeiro": "Rio de Janeiro",
+    "Riyadh": "Riad",
+    "Rome": "Rom",
+    "Santiago": "Santiago de Chile",
+    "San Francisco": "San Francisco",
+    "Sao Paulo": "São Paulo",
+    "Seattle": "Seattle",
+    "Seoul": "Seoul",
+    "Shanghai": "Shanghai",
+    "Singapore": "Singapur",
+    "Stockholm": "Stockholm",
+    "Sydney": "Sydney",
+    "Taipei": "Taipeh",
+    "Tel Aviv": "Tel Aviv",
+    "Tokyo": "Tokio",
+    "Ushuaia": "Ushuaia",
+    "Vancouver": "Vancouver",
+    "Washington D.C.": "Washington, D.C.",
+    "Greenwich": "Greenwich"
+  }
+}
