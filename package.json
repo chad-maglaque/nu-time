@@ -1,1 +1,10 @@
-{ "name": "nu-time", "private": true, "type": "module", "scripts": { "build": "node build.mjs" } }
+{
+  "name": "nu-time",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "dev": "node build.mjs && node dev.mjs",
+    "test": "tests/run.sh"
+  }
+}

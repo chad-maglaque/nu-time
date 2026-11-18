@@ -9,6 +9,7 @@ import { createRequire } from "node:module";
 const ROOT = dirname(fileURLToPath(import.meta.url));
 const DIST = join(ROOT, "dist");
 const SITE = "https://nu-time.com";
+const BUILD = Date.now().toString(36);   // cache-busting stamp for CSS/JS links
 const ORDER = ["en", "zh", "hi", "ur", "es", "fr", "de", "it"];
 const NT = createRequire(import.meta.url)("./reference/js/nutime.js");
 const locales = ORDER.filter((l) => existsSync(join(ROOT, "locales", l + ".json")))
@@ -19,7 +20,6 @@ const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replac
 const path = (l) => (l === "en" ? "/" : `/${l}/`);
 const hl = (l) => (l === "zh" ? "zh-Hans" : l);
 const logo = (L, href) => `<a class="logo" href="${href}" aria-label="Nu:Time"><span class="inv">U</span>U:TIME<sup>™</sup>${L === "zh" ? '<span class="zh">刻时</span>' : ""}</a>`;
-const NOON_CITIES = [["Beijing", 116.407], ["Shanghai", 121.474], ["Tokyo", 139.65], ["Delhi", 77.209], ["Dubai", 55.271], ["Paris", 2.352], ["London", -0.128], ["São Paulo", -46.633], ["New York", -74.006], ["San Francisco", -122.419]];
 
 function head(t, title, desc, canonical, alternates) {
   return `<!doctype html>
@@ -39,7 +39,7 @@ ${alternates || ""}
 <meta name="theme-color" content="#1a1a1a">
 <link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
 <link rel="preload" href="/assets/fonts/orbitron.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/site.css?v=${BUILD}">
 </head>
 <body>`;
 }
@@ -50,7 +50,7 @@ function topbar(t, sub) {
   return `<header class="top">
   <div class="bar">
     ${logo(L, base)}
-    <nav class="nav"><a href="/spec/">${esc(t.nav.spec)}</a><a href="/developers/">${esc(t.nav.build)}</a><a href="https://nu-watch.com">${esc(t.nav.watch)}</a></nav>
+    <nav class="nav"><a href="${base}">${esc(t.nav.overview)}</a><a href="/spec/">${esc(t.nav.spec)}</a><a href="/developers/">${esc(t.nav.build)}</a></nav>
     <details class="langs"><summary>${esc(t.langName)}</summary><div>${langLinks}</div></details>
     <a class="btn small" href="${base}#join">${esc(t.nav.join)}</a>
   </div>
@@ -66,7 +66,7 @@ function footer(t) {
   <p class="small" style="margin-top:12px">${esc(t.footer.tagline)}</p>
   <nav>${langLinks}</nav>
   <p class="small">${esc(t.footer.rights)} ${esc(t.footer.open)}</p>
-  <p class="small"><a href="/spec/">${esc(t.nav.spec)}</a> · <a href="/developers/">${esc(t.nav.build)}</a> · <a href="/developers/#using-the-name">${esc(t.footer.brand)}</a> · <a href="/privacy/">Privacy</a> · <a href="mailto:hello@nu-time.com">${esc(t.footer.contact)}</a> · <a href="mailto:press@nu-time.com">${esc(t.footer.press)}</a></p>
+  <p class="small"><a href="/spec/">${esc(t.nav.spec)}</a> · <a href="/developers/">${esc(t.nav.build)}</a> · <a href="/developers/#using-the-name">${esc(t.footer.brand)}</a> · <a href="/privacy/">Privacy</a> · <a href="mailto:info@nu-time.com">${esc(t.footer.contact)}</a> · <a href="mailto:press@nu-time.com">${esc(t.footer.press)}</a></p>
 </footer>`;
 }
 
@@ -78,10 +78,6 @@ function home(t) {
   const subnav = `<nav class="sub" data-subnav>
     <a href="#time">${esc(t.nav.time)}</a><a href="#how">${esc(t.nav.how)}</a><a href="#ke">${esc(t.nav.ke)}</a><a href="#geometry">${esc(t.nav.geometry)}</a><a href="#heritage">${esc(t.nav.heritage)}</a><a href="#why">${esc(t.nav.why)}</a><a href="#build">${esc(t.nav.build)}</a><a href="#join">${esc(t.nav.join)}</a>
   </nav>`;
-  const noonRows = NOON_CITIES.map(([n, lon]) => {
-    const k = NT.nuLong(lon);
-    return `<tr><th>${esc(n)}</th><td>${NT.formatKe(k, h.east, h.west, 1)}</td><td class="nu">${NT.fields(NT.solarNoonTicks(lon)).display}</td></tr>`;
-  }).join("");
   return `${head(t, t.meta.title, t.meta.description, path(L), alt)}
 ${topbar(t, subnav)}
 <main>
@@ -92,33 +88,40 @@ ${topbar(t, subnav)}
     <p class="lead">${esc(h.sub)}</p>
     <div class="ctas"><a class="btn ghost" href="#time">${esc(h.ctaExplore)}</a><a class="btn" href="#join">${esc(h.ctaJoin)}</a></div>
   </div>
-  <div class="clock" data-clock data-polar-day="${esc(h.polarDay)}" data-polar-night="${esc(h.polarNight)}" data-locating="${esc(h.locating)}" data-located="${esc(h.located)}" data-approx="${esc(h.approx)}" data-locfail="${esc(h.locfail)}" data-e="${esc(h.east)}" data-w="${esc(h.west)}" data-n="${esc(h.north)}" data-s="${esc(h.south)}">
+  <div class="clock" data-clock data-polar-day="${esc(h.polarDay)}" data-polar-night="${esc(h.polarNight)}" data-locating="${esc(h.locating)}" data-approx="${esc(h.approx)}" data-locfail="${esc(h.locfail)}" data-e="${esc(h.east)}" data-w="${esc(h.west)}" data-n="${esc(h.north)}" data-s="${esc(h.south)}">
     <canvas width="640" height="640" role="img" aria-label="${esc(h.clockLabel)}"></canvas>
     <div class="readout">
       <span class="label" data-label>${esc(h.clockLabel)}</span>
-      <output class="big" data-big>00:00:00</output>
-      <span class="units"><i>${esc(u.gong)}</i><i>${esc(u.beat)}</i><i>${esc(u.tick)}</i></span>
-      <span class="label">${esc(h.nuDay)} <span data-nuday>—</span></span>
+      <output class="big" data-big><span class="dg">0</span><span class="dg">0</span><span class="cl">:</span><span class="dg">0</span><span class="dg">0</span><span class="cl">:</span><span class="dg">0</span><span class="dg">0</span></output>
+      <span class="units"><i><b>${esc(u.gong)}</b></i><s></s><i><b>${esc(u.beat)}</b></i><s></s><i><b>${esc(u.tick)}</b></i></span>
     </div>
-    <p class="hint">${esc(h.dialHint)}</p>
-    <div class="loc"><label>${esc(h.city)} <select data-city><option value="" disabled>${esc(h.choose)}</option><option value="current">${esc(h.current)}</option></select></label></div>
+    <h3 class="clockhead">${esc(h.inAction)}</h3>
+    ${h.dialHint.split("\n\n").map((para) => `<p class="hint">${esc(para)}</p>`).join("")}
+    <h3 class="clockhead">${esc(h.tryIt)}</h3>
+    <div class="loc"><select data-city aria-label="${esc(h.city)}"><option value="" disabled>${esc(h.choose)}</option><option value="current">${esc(h.current)}</option></select><button type="button" class="link" data-locate>${esc(h.locate)}</button></div>
     <p class="hint" data-locstatus aria-live="polite"></p>
-    <dl class="facts">
-      <div><dt>${esc(h.position)}</dt><dd data-pos>—</dd></div>
-      <div><dt>${esc(h.noon)}</dt><dd data-noon>—</dd></div>
-      <div><dt>${esc(h.solarTime)}</dt><dd data-solar>—</dd></div>
-      <div><dt>${esc(h.conventional)}</dt><dd data-conv>—</dd></div>
-      <div><dt>${esc(h.sunrise)}</dt><dd data-rise>—</dd></div>
-      <div><dt>${esc(h.sunset)}</dt><dd data-set>—</dd></div>
-    </dl>
-    <div class="daybar"><span>${esc(h.dayBar)}</span><div class="track" data-bar><span class="now" data-bar-now></span></div><div class="scale"><span>0</span><span>25</span><span>50</span><span>75</span><span>100 ${esc(u.kes)}</span></div></div>
+    <div class="position">
+      <div class="poshead">${esc(h.position)}</div>
+      <dl class="posrow">
+        <div><dt>${esc(h.latitude)}</dt><dd data-lat>—</dd></div>
+        <div><dt>${esc(h.longitude)}</dt><dd data-lon>—</dd></div>
+      </dl>
+      <dl class="sunrow">
+        <div><dt>${esc(h.sunrise)}</dt><dd data-rise>—</dd></div>
+        <div><dt>${esc(h.noon)}</dt><dd data-noon>—</dd></div>
+        <div><dt>${esc(h.sunset)}</dt><dd data-set>—</dd></div>
+      </dl>
+    </div>
+    <div class="daybar"><span>${esc(h.dayBar)}</span><div class="track" data-bar><span class="now" data-bar-now></span></div><div class="scale">${[0, 2, 4, 6, 8, 10].map((g) => `<span style="left:${g * 10}%">${g}</span>`).join("")}</div><span class="unit">${esc(u.gongs)}</span></div>
   </div>
 </section>
 
 <section class="elim" aria-labelledby="elim-h">
-  <h2 id="elim-h">${esc(t.eliminates.title)}</h2>
-  <ul>${t.eliminates.items.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>
+  <div class="elim-in">
+  <h2 id="elim-h">${esc(t.eliminates.heading)}</h2>
+  <p class="lead-in">${esc(t.eliminates.title)}</p>
   <p>${esc(t.eliminates.tail)}</p>
+  </div>
 </section>
 
 <section id="time" class="band">
@@ -131,24 +134,12 @@ ${topbar(t, subnav)}
   <h2>${esc(t.how.title)}</h2>
   <p class="lead">${esc(t.how.lead)}</p>
   <div class="cards4">${t.how.cards.map((c) => `<article class="card"><strong>${esc(c.n)}</strong><span class="unit">${esc(c.unit)}</span><p>${esc(c.text)}</p></article>`).join("")}</div>
-  <div class="split">
-    <div>
-      <h3>${esc(t.how.tableTitle)}</h3>
-      <table class="tbl"><thead><tr><th></th><th>${esc(t.how.colConventional)}</th><th>${esc(t.how.colBeats)}</th><th>${esc(t.how.colNu)}</th></tr></thead>
-      <tbody>${t.how.rows.map((r) => `<tr><th>${esc(r[0])}</th><td>${esc(r[1])}</td><td>${esc(r[2])}</td><td class="nu">${esc(r[3])}</td></tr>`).join("")}</tbody></table>
-    </div>
-    <div><h3>${esc(t.how.mathTitle)}</h3><ul class="ticks">${t.how.math.map((m) => `<li>${esc(m)}</li>`).join("")}</ul></div>
-  </div>
 </section>
 
 <section id="ke" class="band">
   <h2>${esc(t.ke.title)}</h2>
   <p class="lead">${esc(t.ke.lead)}</p>
   <div class="grid4 kefacts">${t.ke.facts.map((f) => `<article class="card"><strong>${esc(f.n)}</strong><p>${esc(f.text)}</p></article>`).join("")}</div>
-  <div class="rule"><h3>${esc(t.ke.ruleTitle)}</h3><p>${esc(t.ke.rule)}</p></div>
-  <h3>${esc(t.ke.tableTitle)}</h3>
-  <table class="tbl"><thead><tr><th>${esc(t.ke.colPlace)}</th><th>${esc(t.ke.colLong)}</th><th>${esc(t.ke.colNoon)}</th></tr></thead><tbody>${noonRows}</tbody></table>
-  <p class="note">${esc(t.ke.note)}</p>
 </section>
 
 <section id="geometry" class="band alt">
@@ -158,11 +149,14 @@ ${topbar(t, subnav)}
     <table class="tbl"><thead><tr><th>${esc(t.geometry.colAngle)}</th><th>${esc(t.geometry.colKe)}</th><th>${esc(t.geometry.colDeg)}</th></tr></thead>
     <tbody>${t.geometry.items.map((r) => `<tr><th>${esc(r[0])}</th><td class="nu">${esc(r[1])}</td><td>${esc(r[2])}</td></tr>`).join("")}</tbody></table>
     <div>
-      <p class="trig">${esc(t.geometry.trig)}</p>
       <h3>${esc(t.geometry.convertTitle)}</h3>
       <div class="conv" data-conv-ke><label>${esc(t.geometry.deg)}<input type="number" step="any" value="90" data-deg></label><span>⇄</span><label>${esc(t.geometry.keLabel)}<input type="number" step="any" value="25" data-ke></label></div>
     </div>
   </div>
+  <h2 class="subhead">${esc(t.geometry.trigTitle)}</h2>
+  ${t.geometry.trig.split("\n\n").map((para) => `<p class="lead">${esc(para)}</p>`).join("")}
+  <table class="tbl trigtbl"><thead><tr>${t.geometry.trigCols.map((c) => `<th>${esc(c)}</th>`).join("")}</tr></thead>
+  <tbody>${t.geometry.trigRows.map((r) => `<tr><th class="nu">${esc(r[0])}</th><td>${esc(r[1])}</td><td>${esc(r[2])}</td><td>${esc(r[3])}</td><td>${esc(r[4])}</td></tr>`).join("")}</tbody></table>
 </section>
 
 <section id="heritage" class="band">
@@ -175,7 +169,7 @@ ${topbar(t, subnav)}
   <h2>${esc(t.why.title)}</h2>
   <p class="lead">${esc(t.why.lead)}</p>
   <div class="grid3">${t.why.items.map((i, n) => `<article class="card"><span class="num">0${n + 1}</span><h3>${esc(i.title)}</h3><p>${esc(i.text)}</p></article>`).join("")}</div>
-  <h3>${esc(t.roadmap.title)}</h3>
+  <h2 class="subhead">${esc(t.roadmap.title)}</h2>
   <ol class="road">${t.roadmap.items.map((r) => `<li><b>${esc(r.when)}</b><span>${esc(r.text)}</span></li>`).join("")}</ol>
 </section>
 
@@ -192,11 +186,6 @@ ${topbar(t, subnav)}
     <div class="card"><h3>${esc(t.build.certTitle)}</h3><p>${esc(t.build.cert)}</p></div>
   </div>
   <p class="note">${esc(t.build.license)}</p>
-</section>
-
-<section class="watch">
-  <img src="/assets/watch-black.webp" alt="Nu:Watch" loading="lazy" width="512" height="768">
-  <div><p class="eyebrow">${esc(t.watch.eyebrow)}</p><h2>${esc(t.watch.title)}</h2><p class="lead">${esc(t.watch.text)}</p><a class="btn" href="https://nu-watch.com">${esc(t.watch.cta)}</a></div>
 </section>
 
 <section id="join" class="band alt">
@@ -217,9 +206,9 @@ ${topbar(t, subnav)}
 </section>
 </main>
 ${footer(t)}
-<script src="/assets/nutime.js"></script>
-<script src="/assets/clock.js"></script>
-<script src="/assets/site.js"></script>
+<script src="/assets/nutime.js?v=${BUILD}"></script>
+<script src="/assets/clock.js?v=${BUILD}"></script>
+<script src="/assets/site.js?v=${BUILD}"></script>
 </body>
 </html>`;
 }

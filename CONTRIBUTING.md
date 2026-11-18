@@ -25,7 +25,7 @@ Changes to the Standard need a short contributor licence agreement, so that Nu-T
 
 ## Translations
 
-Locale files live in `locales/<lang>.json` with exactly the same keys as `locales/en.json`. Translate the labels, never the durations or the `GG:BB:TT` field order. Chinese unit names are under cultural review (Standard §1.2) — please discuss in an issue before proposing them.
+Locale files live in `locales/<lang>.json` with exactly the same keys as `locales/en.json`. Translate the labels, never the durations or the `GG:BB:TT` field order. Chinese uses the unit names fixed in the Standard (§1.2): 更 gēng · 刻 kè · 分 fēn · 秒 miǎo.
 
 ## Using the name
 

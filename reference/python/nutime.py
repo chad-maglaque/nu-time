@@ -96,4 +96,4 @@ def solar_noon(lon_deg: float) -> NuTime:
 
 
 if __name__ == "__main__":
-    print("Universal Nu:Time:", now())
+    print("universal Nu:Time:", now())

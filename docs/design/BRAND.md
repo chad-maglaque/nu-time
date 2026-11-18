@@ -1,12 +1,19 @@
 # Brand and design system
 
-Shared by nu-time.com and nu-watch.com (from the Nu:Watch web prototype).
+Design system for nu-time.com.
 
 ## Logo
 
-- Wordmark set in **Orbitron**, weight 800, colour gold `#FFB347`: the first letter is a **U turned upside down** (`transform: scaleY(-1)`), so `UU:TIME` reads as **∩U:TIME** — "nu:TIME". Same treatment for **∩U:WATCH**.
+- Wordmark set in **Orbitron**, weight 800, colour gold `#FFB347`: the first letter is a **U turned upside down** (`transform: scaleY(-1)`), so `UU:TIME` reads as **∩U:TIME** — "nu:TIME".
 - Superscript ™ at about 40% size, 75% opacity.
-- In running text: **Nu:Time™**, **Nu:Watch™**. Chinese: **刻时 Ke-Shi**. Never "NuTime" or "Nutime".
+- In running text: **Nu:Time™**. Chinese: **刻时 Ke-Shi**. Never "NuTime" or "Nutime".
+
+## Chinese name: 刻时 (decision: proceed, 2026-11-17)
+
+- Reads as verb + object, "to mark / engrave time" (like 计时, 报时), and as "kè-time"; a deliberate reversal of 时刻.
+- Spoken *kè shí* collides with **课时** (class period) and **刻蚀** (etching, a semiconductor term); pinyin and English "keshi" search is crowded (课时 / 刻蚀 / the singer keshi).
+- Mitigation: always pair characters with the Latin brand (**刻时 Nu:Time**); consider **刻时制** as the spoken form for "the kè system".
+- Before launch: gut check with 5–10 native speakers across regions; CNIPA trademark search and filing for 刻时 (classes 9, 14, 42).
 
 ## Colour
 

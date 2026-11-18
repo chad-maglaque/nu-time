@@ -9,11 +9,10 @@ Nu:Time is an open standard. Anyone may implement it, build on it and ship it �
 | **Hardware designs** | `hardware/` | **CERN-OHL-P 2.0** — [LICENSES/CERN-OHL-P-2.0.txt](LICENSES/CERN-OHL-P-2.0.txt) |
 | **Fonts**: Orbitron, Inter (third party) | `public/assets/fonts/` | **SIL OFL 1.1** — [LICENSES/OFL-1.1.txt](LICENSES/OFL-1.1.txt) |
 | **Brand**: the names Nu:Time™, Ke-Shi™, 刻时™, the Nu:Time logo and icon | `public/assets/icon.svg` and wherever the names appear | **Trademarks of Nu-Time Inc. Not licensed** by any of the above — see [TRADEMARKS.md](TRADEMARKS.md) |
-| **Nu:Watch™ product imagery** (third party) | `public/assets/watch-black.webp` | **© Nu-Watch Inc., all rights reserved.** Used with permission; not covered by this repository's licences |
 
 **Patents:** Nu-Time Inc. pledges not to assert any patent it holds that is necessarily infringed by implementing the Nu:Time Standard — see [PATENTS.md](PATENTS.md).
 
-**Unit names** — gong, kè, beat, tick, and any Chinese names adopted for them — are ordinary words. Nobody owns them.
+**Unit names** — gong / gēng (更), kè (刻), beat / fēn (分) and tick / miǎo (秒) — are ordinary words. Nobody owns them.
 
 ## Why these licences
 

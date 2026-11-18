@@ -10,9 +10,9 @@ Nu:Time™ (刻时 Ke-Shi™) is an open standard for representing time and plac
 |---|---|---:|---|---:|
 | Day | 日 rì | 1 | 10 gongs | 86,400 s |
 | **Gong** | 更 gēng | 1/10 | 10 kè · 100 beats | 8,640 s (2 h 24 min) |
-| **Kè** | *see §1.2* | 1/100 | 10 beats | 864 s (14.4 min) |
-| **Beat** | *see §1.2* | 1/1,000 | 100 ticks | 86.4 s |
-| **Tick** | *see §1.2* | 1/100,000 | — | 0.864 s |
+| **Kè** | 刻 kè | 1/100 | 10 beats | 864 s (14.4 min) |
+| **Beat** | 分 fēn | 1/1,000 | 100 ticks | 86.4 s |
+| **Tick** | 秒 miǎo | 1/100,000 | — | 0.864 s |
 
 - 1 day = 10 gongs = 100 kè = 1,000 beats = 100,000 ticks.
 - **The Earth is the reference.** A Nu:Time day is one rotation of the Earth (the mean solar day, as measured by UT1), and every unit is an exact fraction of it. SI durations are nominal: as the Earth's rotation varies, a real tick differs from 0.864 s by roughly ten nanoseconds.
@@ -39,13 +39,13 @@ Translate the names, never the durations or the field order. `GG:BB:TT` is ident
 | English | gong | kè | beat | tick |
 | French / Spanish / Italian | gong | kè | beat | tic |
 | German | Gong | Kè | Beat | Tick |
-| Chinese | 更 gēng | *under review* | *under review* | *under review* |
+| Chinese | 更 gēng | 刻 kè | 分 fēn | 秒 miǎo |
 
-**Chinese names are under cultural review.** Earlier design work labelled gong, beat and tick 更 · 分 · 刻; this standard's use of the kè as a hundredth of the day (and 3.6° of arc) follows the historical 刻. The two readings conflict, and the choice touches language and heritage, so v1.0 fixes only 更 for the gong and leaves the other Chinese names open until review with native speakers, historians of Chinese timekeeping and the community (§9).
+In Chinese, `05:37:50` reads **五更三十七分五十秒**. 更 and 刻 are the historical names of the night watch and of the hundredth of a day; 分 and 秒 make every reading as natural as 时分秒. Where Nu:Time units appear beside SI units and could be confused, write **刻时分** and **刻时秒**.
 
 ## 2. Universal synchronization
 
-- **Universal Nu:Time** is the default and canonical reference. Gong `00:00:00` begins at midnight on the Prime Meridian — **00:00:00 UT1**, which is 00:00 UTC to within 0.9 s (about one tick). `05:00:00` is noon at Greenwich.
+- **universal Nu:Time** is the default and canonical reference. Gong `00:00:00` begins at midnight on the Prime Meridian — **00:00:00 UT1**, which is 00:00 UTC to within 0.9 s (about one tick). `05:00:00` is noon at Greenwich.
 - Every place on Earth reads the same universal Nu:Time at the same instant. Nu:Time defines no time zones, no daylight saving and no date line.
 - Every stored or transmitted Nu:Time value **must** carry its reference (§5). Absent a reference, a value is universal.
 
@@ -87,18 +87,35 @@ A full circle is **100 kè**: 1 kè = 3.6°, 1° = 5/18 kè ≈ 0.2778 kè. Beca
 
 ### 3.2 Geometry
 
+Kè values are written as decimals, rounded to two places (exact value in kè = degrees × 100 / 360).
+
 | Angle | Kè | Degrees |
 |---|---:|---:|
 | Full turn | 100 | 360° |
+| Regular hexagon, interior | 33.33 | 120° |
+| Regular pentagon, interior / exterior | 30 / 20 | 108° / 72° |
 | Straight angle · sum of a triangle's angles | 50 | 180° |
 | Right angle | 25 | 90° |
-| Equilateral triangle | 16⅔ | 60° |
-| Regular pentagon, interior / exterior | 30 / 20 | 108° / 72° |
-| Regular hexagon, interior | 33⅓ | 120° |
+| Equilateral triangle | 16.67 | 60° |
+| Half a right angle | 12.5 | 45° |
+| Right triangle, 30° angle | 8.33 | 30° |
 
-Trigonometric functions take kè naturally: sin 25 kè = 1, cos 50 kè = −1; a daily cycle has a period of exactly 100 kè.
+### 3.3 Trigonometry
 
-### 3.3 Dials
+Trigonometric functions take kè naturally: sin 25 kè = 1, cos 50 kè = −1, sin 75 kè = −1 and cos 100 kè = 1. A wave that repeats daily has a period of exactly 100 kè.
+
+| Angle | Degrees | sin | cos | tan |
+|---|---:|---:|---:|---:|
+| 0 kè | 0° | 0 | 1 | 0 |
+| 8.33 kè | 30° | 1/2 | √3/2 | √3/3 |
+| 12.5 kè | 45° | √2/2 | √2/2 | 1 |
+| 16.67 kè | 60° | √3/2 | 1/2 | √3 |
+| 25 kè | 90° | 1 | 0 | — |
+| 50 kè | 180° | 0 | −1 | 0 |
+| 75 kè | 270° | −1 | 0 | — |
+| 100 kè | 360° | 0 | 1 | 0 |
+
+### 3.4 Dials
 
 An analog Nu:Time dial has no numerals: four quarter marks (0, 25, 50, 75 kè) with zero emphasized, where gong, beat and tick roll over. The dial **should** be turned by the wearer's Nu:Long (rounded to the nearest kè): at Greenwich zero sits at the bottom, and everywhere the gong hand points straight up at local solar noon.
 
@@ -180,10 +197,9 @@ Accuracy is set by the oscillator's ppm error, temperature and ageing, not by th
 
 ## 8. Names and certification
 
-The specification text is licensed CC BY 4.0. The names **Nu:Time™**, **Ke-Shi™**, **刻时™** and their logos are trademarks of Nu-Time Inc. and are not licensed by this document. The names of the units — gong, kè, beat, tick and any Chinese names adopted for them — are ordinary words and are not claimed by anyone: use them freely. Any implementation may describe itself as "Nu:Time compatible". Implementations passing §6 may apply for the **Nu:Time Certified** mark. Nu-Time Inc. pledges not to assert any patent it holds that is necessarily infringed by implementing this standard.
+The specification text is licensed CC BY 4.0. The names **Nu:Time™**, **Ke-Shi™**, **刻时™** and their logos are trademarks of Nu-Time Inc. and are not licensed by this document. The names of the units — gong / gēng (更), kè (刻), beat / fēn (分) and tick / miǎo (秒) — are ordinary words and are not claimed by anyone: use them freely. Any implementation may describe itself as "Nu:Time compatible". Implementations passing §6 may apply for the **Nu:Time Certified** mark. Nu-Time Inc. pledges not to assert any patent it holds that is necessarily infringed by implementing this standard.
 
 ## 9. Planned for v1.1
 
-- Chinese names for the kè, beat and tick, after cultural review (§1.2).
 - Standard binary encoding and network time protocol profile.
 - Conformance programme operating rules.

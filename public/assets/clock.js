@@ -77,6 +77,13 @@
   var place = null, skyAt = 0, events = null, sunUp = true, last = "";
   var say = function (k, extra) { if (status) status.textContent = (k ? root.getAttribute("data-" + k) : "") + (extra || ""); };
 
+  // After the visitor picks a place, bring the clock face into view so they see the change.
+  function showClock() {
+    if (document.activeElement && document.activeElement.blur) document.activeElement.blur();   // a focused control would pull the page back down
+    var still = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (window.innerWidth > 980) window.scrollTo({ top: 0, behavior: still ? "auto" : "smooth" });
+    else canvas.scrollIntoView({ behavior: still ? "auto" : "smooth", block: "start" });
+  }
   function setPlace(name, lat, lon, tz, kind) {
     place = { name: name, lat: lat, lon: lon, tz: tz || Intl.DateTimeFormat().resolvedOptions().timeZone, kind: kind || "city" };
     try { localStorage.setItem("nt-place", JSON.stringify(place)); } catch (e) {}
@@ -89,39 +96,39 @@
 
   // "Current Location": precise position from the browser; if that is refused or unavailable,
   // the approximate position our host derives from the connection (/api/where); else say why.
-  function locate() {
+  function locate(byUser) {
     sel.value = "current"; say("locating");
     var approx = function () {
       fetch("/api/where", { cache: "no-store" }).then(function (r) { if (!r.ok) throw 0; return r.json(); }).then(function (g) {
         if (g.lat == null || g.lon == null) throw 0;
         setPlace(g.city || "≈", +g.lat, +g.lon, g.tz, "approx");
-        say("approx", " " + (g.city ? g.city + (g.region ? ", " + g.region : "") : (+g.lat).toFixed(2) + ", " + (+g.lon).toFixed(2)));
+        if (g.city) say("approx", " " + g.city + (g.region ? ", " + g.region : "")); else say("");
+        if (byUser) showClock();
       }).catch(function () { say("locfail"); });
     };
     if (!navigator.geolocation || window.isSecureContext === false) return approx();
     navigator.geolocation.getCurrentPosition(function (p) {
       var lat = p.coords.latitude, lon = p.coords.longitude;
       setPlace("current", lat, lon, null, "current");
-      say("located", " " + lat.toFixed(3) + ", " + lon.toFixed(3));
+      say("");
+      if (byUser) showClock();
     }, approx, { enableHighAccuracy: false, timeout: 15000, maximumAge: 300000 });
   }
-  sel.addEventListener("change", function () { if (sel.value === "current") locate(); else if (sel.value !== "") pickCity(+sel.value); });
+  sel.addEventListener("change", function () { if (sel.value === "current") locate(true); else if (sel.value !== "") { pickCity(+sel.value); showClock(); } });
+  var locBtn = $("[data-locate]");
+  if (locBtn) locBtn.addEventListener("click", function () { locate(true); });
 
   var saved = null; try { saved = JSON.parse(localStorage.getItem("nt-place")); } catch (e) {}
   if (saved && saved.lat != null && saved.kind === "city" && indexOf(saved.name) >= 0) pickCity(indexOf(saved.name));
-  else if (saved && saved.lat != null && saved.kind !== "city") { sel.value = "current"; setPlace(saved.name, saved.lat, saved.lon, saved.tz, saved.kind); say(saved.kind === "approx" ? "approx" : "located", " " + (saved.kind === "approx" && saved.name !== "≈" ? saved.name : saved.lat.toFixed(3) + ", " + saved.lon.toFixed(3))); }
+  else if (saved && saved.lat != null && saved.kind !== "city") { sel.value = "current"; setPlace(saved.name, saved.lat, saved.lon, saved.tz, saved.kind); if (saved.kind === "approx" && saved.name !== "≈") say("approx", " " + saved.name); }
   else if (DEFAULT_BY_LANG[lang] && indexOf(DEFAULT_BY_LANG[lang]) >= 0) pickCity(indexOf(DEFAULT_BY_LANG[lang]));
   else { sel.value = ""; setPlace.apply(null, [GREENWICH[0], GREENWICH[2], GREENWICH[3], GREENWICH[4]]); }
   // If the visitor has already granted location access, refresh it silently (no prompt on page load).
   try { if (navigator.permissions && (!saved || saved.kind === "current")) navigator.permissions.query({ name: "geolocation" }).then(function (r) { if (r.state === "granted") locate(); }); } catch (e) {}
 
-  var big = $("[data-big]"), conv = $("[data-conv]"), rise = $("[data-rise]"), set = $("[data-set]"), solar = $("[data-solar]"),
-      pos = $("[data-pos]"), noon = $("[data-noon]"), nuday = $("[data-nuday]"), bar = $("[data-bar]"), barNow = $("[data-bar-now]");
+  var big = $("[data-big]"), rise = $("[data-rise]"), set = $("[data-set]"), latEl = $("[data-lat]"), lonEl = $("[data-lon]"),
+      noon = $("[data-noon]"), bar = $("[data-bar]"), barNow = $("[data-bar-now]");
   var dir = { E: root.getAttribute("data-e"), W: root.getAttribute("data-w"), N: root.getAttribute("data-n"), S: root.getAttribute("data-s") };
-  var fmtConv = function (ms) {
-    try { return new Intl.DateTimeFormat(lang, { timeZone: place.tz, hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).format(new Date(ms)); }
-    catch (e) { return new Date(ms).toTimeString().slice(0, 5); }
-  };
   var uni = function (ms) { return NT.now(ms, "utc"); };
   var frac = function (ms) { return NT.msIntoDay(ms, "utc") / NT.DAY_MS; };   // fraction of the universal day
 
@@ -163,7 +170,8 @@
     if (events.polar) { rise.textContent = root.getAttribute(events.polar === "day" ? "data-polar-day" : "data-polar-night"); set.textContent = "—"; }
     else { rise.textContent = uni(events.sunrise).display.slice(0, 5); set.textContent = uni(events.sunset).display.slice(0, 5); }
     noon.textContent = uni(events.solarNoon).display.slice(0, 5);
-    pos.textContent = NT.formatKe(NT.nuLat(place.lat), dir.N, dir.S, 1) + " · " + NT.formatKe(NT.nuLong(place.lon), dir.E, dir.W, 1);
+    latEl.textContent = NT.formatKe(NT.nuLat(place.lat), dir.N, dir.S, 1);
+    lonEl.textContent = NT.formatKe(NT.nuLong(place.lon), dir.E, dir.W, 1);
     var pct = function (t) { return (frac(t) * 100).toFixed(2) + "%"; }, dark = "#2a2a2a", lit = "#FFB347";
     if (events.polar) bar.style.background = events.polar === "day" ? lit : dark;
     else {
@@ -183,55 +191,84 @@
   size(); window.addEventListener("resize", size);
   function offset() { return Math.round(place.lon / 3.6) * 3.6 * Math.PI / 180; } // snapped to the nearest kè (3.6°), as on nu-time.com
   function ang(f) { return Math.PI / 2 + f * 2 * Math.PI + offset(); }             // canvas angle; f = fraction of universal day
+  var shadeCtx = null;
+  function shadeLayer() {
+    if (!shadeCtx) shadeCtx = document.createElement("canvas").getContext("2d");
+    if (shadeCtx.canvas.width !== W) { shadeCtx.canvas.width = W; shadeCtx.canvas.height = W; }
+    return shadeCtx;
+  }
   function hand(a, len, w, color, back) {
     ctx.beginPath(); ctx.lineCap = "round"; ctx.lineWidth = w; ctx.strokeStyle = color;
     ctx.moveTo(-Math.cos(a) * (back || 0), -Math.sin(a) * (back || 0)); ctx.lineTo(Math.cos(a) * len, Math.sin(a) * len); ctx.stroke();
   }
-  function tri(a, r, s, color) {
-    ctx.save(); ctx.rotate(a); ctx.beginPath();
-    ctx.moveTo(r, 0); ctx.lineTo(r - s, -s * 0.6); ctx.lineTo(r - s, s * 0.6); ctx.closePath();
-    ctx.fillStyle = color; ctx.fill(); ctx.restore();
-  }
   function draw(ms) {
     var R = W / 2 * 0.96, f = frac(ms);
     ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.clearRect(0, 0, W, W); ctx.translate(W / 2, W / 2);
+    // Geometry (× R). The gold ring keeps its width but sits on a smaller radius: the outer dark
+    // channel (the sun's path) is wider and the inner dark disc narrower.
+    var FACE = 0.96, RING = 0.60, RW = 0.2, LINE = 0.012;
+    var TEAL = RING + RW / 2 + LINE / 2, CREAM = RING - RW / 2 - LINE / 2;
+    var TEAL_OUT = TEAL + LINE / 2, SUN_R = (TEAL_OUT + FACE) / 2;   // the sun runs centred in the outer channel
+    ctx.lineCap = "butt";
     // case + face
     ctx.beginPath(); ctx.arc(0, 0, R, 0, 2 * Math.PI); ctx.fillStyle = "#c8a86c"; ctx.fill();
-    ctx.beginPath(); ctx.arc(0, 0, R * 0.95, 0, 2 * Math.PI); ctx.fillStyle = "#151515"; ctx.fill();
-    // day ring
-    ctx.beginPath(); ctx.arc(0, 0, R * 0.66, 0, 2 * Math.PI); ctx.lineWidth = R * 0.2; ctx.strokeStyle = "#f2b04a"; ctx.stroke();
-    ctx.beginPath(); ctx.arc(0, 0, R * 0.77, 0, 2 * Math.PI); ctx.lineWidth = R * 0.012; ctx.strokeStyle = "#35545c"; ctx.stroke();
-    ctx.beginPath(); ctx.arc(0, 0, R * 0.55, 0, 2 * Math.PI); ctx.lineWidth = R * 0.012; ctx.strokeStyle = "#f5deb3"; ctx.stroke();
-    // night (occluded) sector of the ring, sunset → sunrise, and the sunrise / sunset markers
-    if (events && !events.polar) {
-      var fr = frac(events.sunrise), fs = frac(events.sunset);
-      ctx.beginPath(); ctx.arc(0, 0, R * 0.66, ang(fs), ang(fr) + (fr < fs ? 2 * Math.PI : 0));
-      ctx.lineWidth = R * 0.2; ctx.strokeStyle = "#6e5427"; ctx.stroke();
-      tri(ang(fr), R * 0.9, R * 0.07, "#f2b04a"); tri(ang(fs), R * 0.9, R * 0.07, "#ede6d6");
-    } else if (events && events.polar === "night") {
-      ctx.beginPath(); ctx.arc(0, 0, R * 0.66, 0, 2 * Math.PI); ctx.lineWidth = R * 0.2; ctx.strokeStyle = "#6e5427"; ctx.stroke();
-    }
-    // 100 graduations; quarter marks at 0 / 25 / 50 / 75 kè; zero emphasized. No numerals.
+    ctx.beginPath(); ctx.arc(0, 0, R * FACE, 0, 2 * Math.PI); ctx.fillStyle = "#151515"; ctx.fill();
+    // day ring with teal (outer) and cream (inner) guide lines
+    ctx.beginPath(); ctx.arc(0, 0, R * RING, 0, 2 * Math.PI); ctx.lineWidth = R * RW; ctx.strokeStyle = "#f2b04a"; ctx.stroke();
+    ctx.beginPath(); ctx.arc(0, 0, R * TEAL, 0, 2 * Math.PI); ctx.lineWidth = R * LINE; ctx.strokeStyle = "#35545c"; ctx.stroke();
+    ctx.beginPath(); ctx.arc(0, 0, R * CREAM, 0, 2 * Math.PI); ctx.lineWidth = R * LINE; ctx.strokeStyle = "#f5deb3"; ctx.stroke();
+    // fine graduations (one per kè) on the outer edge of the day ring. No numerals.
+    var RING_OUT = RING + RW / 2;
     for (var i = 0; i < 100; i++) {
-      var a = ang(i / 100), quarter = i % 25 === 0, zero = i === 0;
-      ctx.beginPath(); ctx.lineCap = zero ? "round" : "butt";
-      ctx.lineWidth = R * (zero ? 0.04 : quarter ? 0.022 : 0.007);
-      ctx.strokeStyle = zero ? "#fff6e0" : quarter ? "#1a1a1a" : "rgba(26,26,26,.55)";
-      var r1 = R * (zero ? 0.52 : quarter ? 0.57 : 0.71), r2 = R * (zero ? 0.8 : 0.75);
-      ctx.moveTo(Math.cos(a) * r1, Math.sin(a) * r1); ctx.lineTo(Math.cos(a) * r2, Math.sin(a) * r2); ctx.stroke();
+      if (i % 25 === 0) continue;
+      var a = ang(i / 100);
+      ctx.beginPath(); ctx.lineWidth = R * 0.007; ctx.strokeStyle = "rgba(26,26,26,.55)";
+      ctx.moveTo(Math.cos(a) * R * (RING_OUT - 0.04), Math.sin(a) * R * (RING_OUT - 0.04)); ctx.lineTo(Math.cos(a) * R * RING_OUT, Math.sin(a) * R * RING_OUT); ctx.stroke();
     }
-    var za = ang(0);
-    ctx.beginPath(); ctx.arc(Math.cos(za) * R * 0.87, Math.sin(za) * R * 0.87, R * 0.04, 0, 2 * Math.PI); ctx.fillStyle = "#ede6d6"; ctx.fill();
-    // solar noon on the ring
-    if (events) { var na = ang(frac(events.solarNoon));
-      ctx.beginPath(); ctx.arc(Math.cos(na) * R * 0.66, Math.sin(na) * R * 0.66, R * 0.085, 0, 2 * Math.PI); ctx.fillStyle = "#ff8c00"; ctx.fill();
-      ctx.lineWidth = R * 0.012; ctx.strokeStyle = "#1a1a1a"; ctx.stroke(); }
+    // quarter marks: short, soft cream; the tip meets the teal ring's outer edge; zero the same colour, thicker
+    [0, 25, 50, 75].forEach(function (k) {
+      var a = ang(k / 100);
+      ctx.beginPath(); ctx.lineWidth = R * (k === 0 ? 0.03 : 0.016); ctx.strokeStyle = "#ede3cc";
+      ctx.moveTo(Math.cos(a) * R * (TEAL_OUT - 0.08), Math.sin(a) * R * (TEAL_OUT - 0.08)); ctx.lineTo(Math.cos(a) * R * TEAL_OUT, Math.sin(a) * R * TEAL_OUT); ctx.stroke();
+    });
+    // night: a translucent shade over the ring and marks, sunset → sunrise, in one fill (no double shading).
+    // Sunrise end convex (shade bulges into day); sunset end concave (day bulges into the shade).
+    var NIN = CREAM + LINE / 2, NOUT = TEAL_OUT, NMID = (NIN + NOUT) / 2, NCAP = (NOUT - NIN) / 2;
+    var SHADE = "rgba(24,16,6,.32)";   // lighter, more transparent; edges softened below where the browser supports canvas filters
+    var at = function (fx, r) { var a = ang(fx); return [Math.cos(a) * R * r, Math.sin(a) * R * r]; };
+    // Drawn on its own layer (bite included), then composited with one blur so both ends feather alike.
+    if (events && (events.polar === "night" || !events.polar)) {
+      var o = shadeLayer();
+      o.setTransform(1, 0, 0, 1, 0, 0); o.clearRect(0, 0, W, W); o.translate(W / 2, W / 2);
+      o.beginPath();
+      if (events.polar === "night") {
+        o.arc(0, 0, R * NOUT, 0, 2 * Math.PI, false); o.arc(0, 0, R * NIN, 0, 2 * Math.PI, true);
+        o.fillStyle = SHADE; o.fill("nonzero");
+      } else {
+        var fr = frac(events.sunrise), fs = frac(events.sunset), a1 = ang(fs), a2 = ang(fr) + (fr < fs ? 2 * Math.PI : 0);
+        o.arc(0, 0, R * NOUT, a1, a2, false); o.arc(0, 0, R * NIN, a2, a1, true); o.closePath();
+        var u = at(fr, NMID); o.moveTo(u[0] + R * NCAP, u[1]); o.arc(u[0], u[1], R * NCAP, 0, 2 * Math.PI, false);   // sunrise: convex cap
+        o.fillStyle = SHADE; o.fill("nonzero");
+        var c = at(fs, NMID);                                                                                           // sunset: concave bite
+        o.globalCompositeOperation = "destination-out"; o.beginPath(); o.arc(c[0], c[1], R * NCAP, 0, 2 * Math.PI); o.fillStyle = "#000"; o.fill();
+        o.globalCompositeOperation = "source-over";
+      }
+      ctx.save();
+      if ("filter" in ctx) ctx.filter = "blur(" + Math.max(1, R * 0.012).toFixed(1) + "px)";   // soft, not abrupt
+      ctx.drawImage(o.canvas, -W / 2, -W / 2);
+      ctx.restore();
+    }
+    // the sun: travels the dark outer channel with the gong hand (as on nu-time.com) —
+    // #FFB347 while up, #E2E2E2 below the horizon, like the moon. Drawn above the marks, below the hands.
+    var sa = ang(f), sx = Math.cos(sa) * R * SUN_R, sy = Math.sin(sa) * R * SUN_R;
+    if (sunUp) { ctx.beginPath(); ctx.arc(sx, sy, R * 0.092, 0, 2 * Math.PI); ctx.fillStyle = "rgba(255,179,71,.22)"; ctx.fill(); }
+    ctx.beginPath(); ctx.arc(sx, sy, R * 0.07, 0, 2 * Math.PI); ctx.fillStyle = sunUp ? "#ffb347" : "#e2e2e2"; ctx.fill();
     // sun disc
     ctx.beginPath(); ctx.arc(0, 0, R * 0.2, 0, 2 * Math.PI); ctx.fillStyle = "#ff8c00"; ctx.fill();
     ctx.lineWidth = R * 0.012; ctx.strokeStyle = "#ffb347"; ctx.stroke();
     // hands: gong/day (red), beat (blue: one turn per gong), tick (gold: one turn per beat)
     hand(ang(f), R * 0.6, R * 0.055, "#d9452b", R * 0.08);
-    hand(ang((f * 10) % 1), R * 0.8, R * 0.035, "#3d6be0", R * 0.1);
+    hand(ang((f * 10) % 1), R * (TEAL_OUT - 0.0175), R * 0.035, "#3d6be0", R * 0.1);   // rounded tip ends exactly at the teal ring's outer edge
     hand(ang((f * 1000) % 1), R * 0.88, R * 0.012, "#e8c45a", R * 0.14);
     ctx.beginPath(); ctx.arc(0, 0, R * 0.05, 0, 2 * Math.PI); ctx.fillStyle = "#1a1a1a"; ctx.fill();
   }
@@ -241,9 +278,7 @@
     if (ms - skyAt > 1000) { skyAt = ms; updateSky(ms); }
     var d = uni(ms).display;
     if (d !== last) {
-      last = d; big.textContent = d; nuday.textContent = NT.nuDay(ms);
-      solar.textContent = NT.now(ms, "solar", { lon: place.lon }).display;
-      conv.textContent = fmtConv(ms);
+      last = d; big.innerHTML = d.split("").map(function (ch) { return ch === ":" ? '<span class="cl">:</span>' : '<span class="dg">' + ch + "</span>"; }).join("");
       barNow.style.left = (frac(ms) * 100).toFixed(2) + "%";
     }
     draw(ms);

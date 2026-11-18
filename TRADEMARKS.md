@@ -2,7 +2,7 @@
 
 **Nu:Time™**, **Ke-Shi™** and **刻时™**, and the Nu:Time logo and icon, are trademarks of Nu-Time Inc. The open licences in this repository (see [LICENSING.md](LICENSING.md)) cover the code, the Standard, the docs and the hardware designs. They do **not** grant any right to use these names or logos.
 
-The **unit names** — gong, kè, beat, tick, and any Chinese names adopted for them — are ordinary words, free for anyone to use.
+The **unit names** — gong / gēng (更), kè (刻), beat / fēn (分) and tick / miǎo (秒) — are ordinary words, free for anyone to use.
 
 ## You may, without asking
 

@@ -2,7 +2,7 @@
 /* Sub-nav active state, degree/kè converter, signup forms. */
 (function () {
   "use strict";
-  // sub-nav: dim the link for the section in view (from the Nu:Watch prototype)
+  // sub-nav: dim the link for the section in view
   var links = document.querySelectorAll("[data-subnav] a");
   if (links.length && "IntersectionObserver" in window) {
     var map = {};

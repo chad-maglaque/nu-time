@@ -77,7 +77,7 @@ Firmware rules: keep the RTC in UTC; derive Nu:Time from the absolute instant on
 
 Nu:Time™, Ke-Shi™ and 刻时™ are trademarks of Nu-Time Inc. The open licences cover code, docs and designs — not the names or logos.
 
-**Free for everyone:** the unit names — gong, kè, beat, tick, and the Chinese names (under cultural review) — and the arithmetic itself. Nobody owns them.
+**Free for everyone:** the unit names — gong / gēng (更), kè (刻), beat / fēn (分) and tick / miǎo (秒) — and the arithmetic itself. Nobody owns them.
 
 **You may, without asking:** say your product is "Nu:Time compatible", "supports the Nu:Time Standard" or "displays Nu:Time"; write about, teach and review Nu:Time.
 

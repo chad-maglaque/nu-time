@@ -18,7 +18,7 @@
     en: { gong: "gong", ke: "kè", beat: "beat", tick: "tick" }, fr: { gong: "gong", ke: "kè", beat: "beat", tick: "tic" },
     it: { gong: "gong", ke: "kè", beat: "beat", tick: "tic" },  de: { gong: "Gong", ke: "Kè", beat: "Beat", tick: "Tick" },
     es: { gong: "gong", ke: "kè", beat: "beat", tick: "tic" },
-    zh: { gong: "更" }   // other Chinese unit names are under cultural review (Standard §1.2)
+    zh: { gong: "更", ke: "刻", beat: "分", tick: "秒" }
   };
 
   function pad(n) { return (n < 10 ? "0" : "") + n; }

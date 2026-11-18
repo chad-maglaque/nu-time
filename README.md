@@ -27,15 +27,24 @@ The site has no build dependencies and loads nothing from third-party CDNs or fo
 
 ### Website services (Vercel)
 
-| Endpoint | Purpose | Configuration |
-|---|---|---|
-| `POST /api/signup` | Launch / developer interest list | Upstash Redis via Vercel Marketplace (`KV_REST_API_URL`, `KV_REST_API_TOKEN`); optional `NOTIFY_WEBHOOK_URL` |
-| `GET /api/signup` | CSV export | `Authorization: Bearer $ADMIN_KEY` |
-| `GET /api/where` | Approximate visitor location for the clock when the browser won't share one | none (Vercel geo headers); nothing stored |
+| Endpoint | Purpose |
+|---|---|
+| `POST /api/signup` | The "Join" form: stores name, email, role, country, message, language, time zone, consent. Honeypot field and per-IP rate limit (30/hour) against bots. One row per email; re-joining updates it. |
+| `GET /api/signup` | Download every signup as CSV — `curl -H "Authorization: Bearer $ADMIN_KEY" https://nu-time.com/api/signup > signups.csv` |
+| `GET /api/where` | Approximate visitor location for the clock when the browser won't share one (Vercel geo headers); nothing stored |
+
+**Local development** — `npm run dev` (or `bun build.mjs && bun dev.mjs`) serves the site and runs the functions at http://localhost:4310. Signups go to `.data/signups.jsonl` (git-ignored); export with `curl -H "Authorization: Bearer dev" localhost:4310/api/signup`.
+
+**Production setup** — the full go-live checklist (Vercel, signup storage, domain, email) is in [docs/DEPLOY.md](docs/DEPLOY.md). For the form specifically, once, in the Vercel dashboard for the nu-time project:
+
+1. **Storage** — Storage → Marketplace → **Upstash for Redis** → create (free tier) and connect to the project. This sets `KV_REST_API_URL` and `KV_REST_API_TOKEN`. Without it the form answers "That didn't go through" rather than losing data.
+2. **Export key** — Settings → Environment Variables → `ADMIN_KEY` = a long random string (keep it private).
+3. **Notifications (optional)** — `NOTIFY_WEBHOOK_URL` = a Slack or Discord incoming-webhook URL to be pinged on every signup.
+4. Redeploy, submit a test signup on the live site, and check it appears in the CSV export.
 
 ### Languages
 
-English is the source. Nu:Time is planned in eight languages — English, French, Italian, German, Spanish, Simplified Chinese, Hindi and Urdu — as `locales/<lang>.json` files with the same keys as `locales/en.json`. Translation is on hold until the English copy is final and the Chinese unit names complete cultural review (Standard §1.2).
+English is the source. Nu:Time is planned in eight languages — English, French, Italian, German, Spanish, Simplified Chinese, Hindi and Urdu — as `locales/<lang>.json` files with the same keys as `locales/en.json`. Translation is on hold until the English copy is final. Chinese unit names are fixed in the Standard (§1.2): 更 gēng · 刻 kè · 分 fēn · 秒 miǎo.
 
 ## Licensing
 
