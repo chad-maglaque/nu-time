@@ -31,6 +31,7 @@ The site has no build dependencies and loads nothing from third-party CDNs or fo
 |---|---|
 | `POST /api/signup` | The "Join" form: stores name, email, role, country, message, language, time zone, consent. Honeypot field and per-IP rate limit (30/hour) against bots. One row per email; re-joining updates it. |
 | `GET /api/signup` | Download every signup as CSV — `curl -H "Authorization: Bearer $ADMIN_KEY" https://nu-time.com/api/signup > signups.csv` |
+| `DELETE /api/signup?email=…` | Remove one signup (privacy requests) — `curl -X DELETE -H "Authorization: Bearer $ADMIN_KEY" "https://nu-time.com/api/signup?email=someone@example.com"` |
 | `GET /api/where` | Approximate visitor location for the clock when the browser won't share one (Vercel geo headers); nothing stored |
 
 **Local development** — `npm run dev` (or `bun build.mjs && bun dev.mjs`) serves the site and runs the functions at http://localhost:4310. Signups go to `.data/signups.jsonl` (git-ignored); export with `curl -H "Authorization: Bearer dev" localhost:4310/api/signup`.

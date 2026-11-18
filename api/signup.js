@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT OR Apache-2.0 — Copyright (c) 2025-2026 Nu-Time Inc.
 // POST /api/signup — store a launch / developer interest signup.
 // GET  /api/signup — export all signups as CSV (requires `Authorization: Bearer $ADMIN_KEY`).
+// DELETE /api/signup?email=… — remove one signup, e.g. for a privacy request (requires the same key).
 //
 // Storage, in order of preference:
 //   1. Upstash Redis over REST (production) — set by Vercel Marketplace → Upstash:
@@ -10,7 +11,7 @@
 // Optional: NOTIFY_WEBHOOK_URL — Slack- or Discord-compatible webhook pinged for each new signup.
 // No dependencies; runs on Vercel's Node runtime and under dev.mjs.
 
-import { appendFile, readFile, mkdir } from "node:fs/promises";
+import { appendFile, readFile, writeFile, mkdir } from "node:fs/promises";
 import { dirname } from "node:path";
 
 const FIELDS = ["email", "name", "role", "country", "message", "lang", "page", "tz", "consent"];
@@ -31,6 +32,10 @@ function upstashStore(url, token) {
       const key = `signup:nu-time:${rec.email}`;   // one row per email; re-joining updates it
       await redis(["HSET", key, ...Object.entries(rec).flat()], ["ZADD", "signups", String(Date.now()), key]);
     },
+    async remove(email) {
+      const key = `signup:nu-time:${email}`;
+      return (await redis(["DEL", key], ["ZREM", "signups", key]))[0].result > 0;
+    },
     async list() {
       const keys = (await redis(["ZRANGE", "signups", "0", "-1"]))[0].result;
       if (!keys.length) return [];
@@ -46,6 +51,12 @@ function fileStore(path) {
   return {
     async hit(ip) { const n = (hits.get(ip) || 0) + 1; hits.set(ip, n); return n; },
     async save(rec) { await mkdir(dirname(path), { recursive: true }); await appendFile(path, JSON.stringify(rec) + "\n"); },
+    async remove(email) {
+      let text = ""; try { text = await readFile(path, "utf8"); } catch { return false; }
+      const keep = text.split("\n").filter((l) => l.trim() && JSON.parse(l).email !== email);
+      await writeFile(path, keep.length ? keep.join("\n") + "\n" : "");
+      return keep.length !== text.split("\n").filter((l) => l.trim()).length;
+    },
     async list() {
       let text = ""; try { text = await readFile(path, "utf8"); } catch { return []; }
       const byEmail = new Map();   // latest row per email, like the Redis store
@@ -68,9 +79,18 @@ export default async function handler(req, res) {
   const db = store();
   if (!db) return res.status(503).json({ ok: false, error: "storage-not-configured" });
 
+  const admin = (process.env.ADMIN_KEY || "").trim();
+  const isAdmin = admin.length >= 16 && String(req.headers.authorization || "").trim() === `Bearer ${admin}`;
+  if (req.method === "DELETE") {
+    if (!isAdmin) return res.status(401).end();
+    const email = clean(new URL(req.url, "http://x").searchParams.get("email"), 200).toLowerCase();
+    if (!email) return res.status(400).json({ ok: false, error: "email-required" });
+    return res.status(200).json({ ok: true, removed: await db.remove(email) });
+  }
   if (req.method === "GET") {
-    if (!process.env.ADMIN_KEY || req.headers.authorization !== `Bearer ${process.env.ADMIN_KEY}`) return res.status(401).end();
-    const q = (v) => `"${String(v ?? "").replace(/"/g, '""')}"`;
+    if (!isAdmin) return res.status(401).end();
+    // quote every cell; neutralise spreadsheet formulas (=, +, -, @) in visitor-typed text
+    const q = (v) => { let s = String(v ?? ""); if (/^[=+\-@\t\r]/.test(s)) s = "'" + s; return `"${s.replace(/"/g, '""')}"`; };
     const rows = (await db.list()).sort((a, b) => String(a.at).localeCompare(String(b.at)));
     res.setHeader("content-type", "text/csv; charset=utf-8");
     res.setHeader("content-disposition", 'attachment; filename="nu-time-signups.csv"');

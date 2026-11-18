@@ -11,7 +11,7 @@ const ROOT = dirname(fileURLToPath(import.meta.url));
 const DIST = join(ROOT, "dist");
 const PORT = +(process.env.PORT || 4310);
 process.env.NUTIME_LOCAL_STORE ||= join(ROOT, ".data", "signups.jsonl");
-process.env.ADMIN_KEY ||= "dev";
+process.env.ADMIN_KEY ||= "local-dev-admin-key";   // the API requires 16+ characters
 
 const TYPES = { ".html": "text/html; charset=utf-8", ".css": "text/css", ".js": "text/javascript", ".json": "application/json",
   ".svg": "image/svg+xml", ".webp": "image/webp", ".png": "image/png", ".woff2": "font/woff2", ".xml": "application/xml", ".txt": "text/plain",
