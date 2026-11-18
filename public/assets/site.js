@@ -3,7 +3,7 @@
 (function () {
   "use strict";
   // ── language selector ──
-  var LANGS = ["en", "zh", "hi", "ur", "es", "fr", "de", "it"];
+  var LANGS = ["en", "zh", "ja", "hi", "ur", "es", "pt", "fr", "de", "it", "ru"];
   var store = { get: function (k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
                 set: function (k, v) { try { localStorage.setItem(k, v); } catch (e) {} } };
   document.querySelectorAll("a[data-lang]").forEach(function (a) {

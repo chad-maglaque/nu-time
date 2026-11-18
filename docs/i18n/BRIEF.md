@@ -17,6 +17,9 @@ An open standard for time and place. One universal time for the whole planet; th
 | it | Italian | Italy | |
 | de | German | Germany, Austria, Switzerland | Nouns capitalised (der Gong, das Kè, der Beat, der Tick). |
 | es | Spanish | Neutral international Spanish (Spain + Latin America) | The Spain heritage card must be factual, not mocking. |
+| ja | Japanese | Science/tech creators (YouTube, X, note, Qiita), engineers, watch and quartz enthusiasts, general readers | Natural modern Japanese, です・ます for prose, short punchy headings. Faithful to the English: no added Japan-specific content. |
+| pt | Portuguese (Brazil) | Brazilian tech and science readers and creators; should also read fine in Portugal | Brazilian Portuguese (você), not European. Decimal comma. |
+| ru | Russian | Russian-speaking tech, science and engineering readers | Natural, plain modern Russian; avoid канцелярит. Decimal comma, thin-space thousands. |
 
 ## Fixed terms (glossary)
 
@@ -39,6 +42,8 @@ An open standard for time and place. One universal time for the whole planet; th
 - **Unit patterns in prose**: write `gong:beat:tick` with the local unit names (gong:beat:tic, Gong:Beat:Tick, 更:分:秒 …). Only the live clock's `GG:BB:TT` digits are fixed.
 - **Gender**: use activity or field names for roles (e.g. "Software development", not "Developer") rather than masculine forms or star/colon forms.
 - **Language-specific number rules (decided)**: French/Italian/German decimal comma; **Spanish decimal point** with thin-space thousands; Hindi/Urdu Indian grouping in prose but international grouping in technical tables.
+- **ja / pt / ru units and brand**: brand stays `Nu:Time` (`brandLocal` = `Nu:Time`); Ke-Shi (刻时) as in the other languages. Choose unit names that read naturally and justify them in your notes. Japanese: 分 and 秒 would read as SI minutes/seconds, exactly the clash Chinese avoids with 刻时分/刻时秒; weigh kanji (更・刻・分・秒, which share the Chinese characters) against katakana (ゴング・ケー・ビート・ティック) and pick one consistent system; 刻 is a real Japanese time word (時刻, 一刻). Russian: Cyrillic names (e.g. гонг, кэ, бит, тик) declined naturally. Portuguese: gong, kè, beat, tique/tick — pick and stay consistent.
+- **ja / pt / ru unit names (decided in review)**: ja ゴング・kè・ビート・ティック (Latin kè, as in hi/ur); pt gong · kè · beat · tique; ru гонг · кэ · удар · тик ("universal Nu:Time" = единое время Nu:Time).
 - **Labels in `n` fields** (e.g. "Longitude", "Latitude", "1 kè") are display text — translate them.
 - **cities**: translate city names to the standard local exonym (e.g. 北京, Pékin → keep "Pékin" only if that is current usage; Mumbai → मुंबई). If a city is normally left untranslated in the language, keep it. Country names are not here — the browser localises them.
 

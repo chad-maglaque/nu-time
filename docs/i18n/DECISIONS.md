@@ -16,9 +16,19 @@
 | 14 | Spanish: decimal point with thin-space thousands; activity role labels under "Tu perfil"; keep sen/cos/tan and Pekín; Mumbai. *(done)* |
 | 15 | Keep "National Time Service Center" as the institution's English proper name. |
 | 16 | Native human sign-off before launch: Chinese ×2 (creator community + standards/academia), Hindi ×1, Urdu ×1, European quick read. *(owner action)* |
-| 17 | Privacy page translated into all seven languages *(done)*; Standard translated into Chinese at /zh/spec/ (translated, then independently reviewed: `notes/spec-zh.md`, `reviews/spec-zh.md`) *(done)*; Developers page later. |
+| 17 | Privacy page translated into all seven languages *(done)*; Standard translated into Chinese at /zh/spec/ (translated, then independently reviewed: `notes/spec-zh.md`, `reviews/spec-zh.md`) *(done)*. **Developers page stays English only, and the Standard stays English + Chinese** (owner confirmed 2026-11-18: developers read technical docs in English, and code and API names are English anyway). |
 
-**Raised by the Chinese Standard review (2026-11-18), for the owner / legal / a timing engineer:**
+**Japanese, Portuguese (Brazil) and Russian added (2026-11-18)**, each translated, independently reviewed and back-translated (`notes/`, `reviews/`, `backtranslation/` per code), with the privacy notice translated too. The Standard stays English + Chinese; Developers stays English.
+
+| Code | Units | Notable review decisions |
+|---|---|---|
+| ja | ゴング · kè · ビート · ティック | Latin kè (ケー reads as "K" / "100K"); pinyin on the 分/秒 unit cards; 正中時刻 for solar noon (南中 is wrong south of the equator); 刻时 kept as the brand. |
+| pt | gong · kè · beat · tique | Brazilian Portuguese, você; decimal comma; sen/cos/tg; "Para devs" in the menu; China card restored to "is actively shaping". |
+| ru | гонг · кэ · удар · тик | «удар» (heartbeat) instead of «бит», which engineers read as the data bit; вы; «Национальный центр службы времени» translated (overrides #15 for Russian). |
+
+**Owner direction (2026-11-18):** the launch is a publication, a "hello world" for an idea. There is no programme, product or implementation behind it yet, so legal and regulatory points are **not blocking** and the wording stays as it is. The notes below are kept for reference only, for if and when a real programme exists.
+
+**Raised by the Chinese Standard review (2026-11-18), reference only:**
 
 - **认证 (certification) in mainland China — legal.** Certification activities and marks are regulated under 《认证认可条例》 and need approval from the national certification authority (CNCA). The zh site (`build.certTitle`, `build.cert`, roadmap 2027) and §8 of the Standard call the Nu-Time Inc. programme 认证. Approve, or switch to a neutral term such as 一致性测评 before mainland promotion.
 - **"兼容刻时 Nu:Time" — legal.** May the compatibility claim be localised, or must it stay as the English "Nu:Time compatible"? The Standard now gives the English mark first: **Nu:Time Certified**（刻时 Nu:Time 认证）.

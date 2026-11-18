@@ -10,7 +10,7 @@ const ROOT = dirname(fileURLToPath(import.meta.url));
 const DIST = join(ROOT, "dist");
 const SITE = "https://nu-time.com";
 const BUILD = Date.now().toString(36);   // cache-busting stamp for CSS/JS links
-const ORDER = ["en", "zh", "hi", "ur", "es", "fr", "de", "it"];
+const ORDER = ["en", "zh", "ja", "hi", "ur", "es", "pt", "fr", "de", "it", "ru"];
 const NT = createRequire(import.meta.url)("./reference/js/nutime.js");
 const locales = ORDER.filter((l) => existsSync(join(ROOT, "locales", l + ".json")))
   .map((l) => JSON.parse(readFileSync(join(ROOT, "locales", l + ".json"), "utf8")));
@@ -18,7 +18,7 @@ const EN = locales.find((t) => t.lang === "en");
 
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 const path = (l) => (l === "en" ? "/" : `/${l}/`);
-const hl = (l) => (l === "zh" ? "zh-Hans" : l);
+const hl = (l) => ({ zh: "zh-Hans", pt: "pt-BR" })[l] || l;
 // translated doc pages live in docs/i18n/<doc>/<lang>.md; fall back to the English page
 const DOCS = { spec: "SPEC.md", privacy: "PRIVACY.md" };
 const docSrc = (d, l) => join(ROOT, "docs/i18n", d, l + ".md");

@@ -7,7 +7,8 @@ import json, pathlib, re, sys
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 EN = json.loads((ROOT / "locales/en.json").read_text())
 EXPECT = {"zh": ("ltr", "简体中文"), "hi": ("ltr", "हिन्दी"), "ur": ("rtl", "اردو"), "fr": ("ltr", "Français"),
-          "it": ("ltr", "Italiano"), "de": ("ltr", "Deutsch"), "es": ("ltr", "Español")}
+          "it": ("ltr", "Italiano"), "de": ("ltr", "Deutsch"), "es": ("ltr", "Español"),
+          "ja": ("ltr", "日本語"), "pt": ("ltr", "Português"), "ru": ("ltr", "Русский")}
 # Values that must be byte-identical to English wherever they appear (keys, links, table numbers)
 VERBATIM_KEYS = {"key", "href"}
 

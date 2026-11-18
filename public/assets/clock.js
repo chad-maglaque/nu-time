@@ -69,7 +69,7 @@
     ["Vancouver", "Canada", 49.2827, -123.1207, "America/Vancouver"],
     ["Washington D.C.", "USA", 38.9072, -77.0369, "America/New_York"]
   ];
-  var DEFAULT_BY_LANG = { zh: "Beijing", hi: "Delhi", ur: "Delhi", fr: "Paris", it: "Rome", de: "Berlin", es: "Madrid" };
+  var DEFAULT_BY_LANG = { zh: "Beijing", hi: "Delhi", ur: "Delhi", fr: "Paris", it: "Rome", de: "Berlin", es: "Madrid", ja: "Tokyo", pt: "Sao Paulo", ru: "Moscow" };
   var GREENWICH = ["Greenwich", "Royal Observatory", 51.4826, 0.0077, "Europe/London"];   // default, as on nu-time.com
   var lang = (document.documentElement.lang || "en").slice(0, 2);
   var $ = function (s) { return root.querySelector(s); };
