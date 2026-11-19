@@ -50,7 +50,7 @@
     "polarDay": "Sun up all day",
     "polarNight": "Sun down all day",
     "dayBar": "Today at your location, in universal Nu:Time",
-    "dialHint": "Nu:Time is the same for everyone — no matter where you are. But unlike a regular clock, the four coordinates on the Nu:Time clock face rotate to match your location, keeping a fixed reference to the Prime Meridian in Greenwich.\n\nSolar noon is always at the top of the clock and as the Sun moves across the sky, three hands mark the passage of time: the Red hand completes one revolution per day, the Blue hand one revolution every gong, and the Gold hand one revolution every beat, marking the passing ticks.",
+    "dialHint": "Nu:Time is the same for everyone — no matter where you are. But unlike a regular clock, the four coordinates on the Nu:Time clock face rotate to match your location, keeping a fixed reference to the Prime Meridian in Greenwich.\n\nSolar noon is always at the top of the clock and as the Sun moves across the sky, three hands mark the passage of time: the Red hand completes one revolution per day, the Blue hand one revolution for every gong, and the Gold hand one revolution for every beat, marking the passing ticks.",
     "choose": "Choose a location",
     "current": "Current Location (Auto-Detect)",
     "locating": "Finding your location…",
