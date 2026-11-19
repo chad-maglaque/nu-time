@@ -50,7 +50,7 @@
     "polarDay": "Le soleil ne se couche pas",
     "polarNight": "Le soleil ne se lève pas",
     "dayBar": "Aujourd’hui, là où vous êtes, en heure universelle Nu:Time",
-    "dialHint": "L’heure Nu:Time est la même pour tous — où que vous soyez. Contrairement à une horloge ordinaire, les quatre coordonnées du cadran Nu:Time tournent selon l’endroit où vous vous trouvez, en gardant une référence fixe au méridien de Greenwich.\n\nLe midi solaire est toujours en haut du cadran et, tandis que le Soleil traverse le ciel, trois aiguilles marquent le passage du temps : l’aiguille rouge fait un tour par jour, l’aiguille bleue un tour par gong, et l’aiguille dorée un tour par beat, en égrenant les tics.",
+    "dialHint": "L’heure Nu:Time est la même pour tous — où que vous soyez. Mais contrairement à une horloge ordinaire, les quatre coordonnées du cadran Nu:Time tournent selon l’endroit où vous vous trouvez, en gardant une référence fixe au méridien de Greenwich.\n\nLe midi solaire est toujours en haut du cadran et, tandis que le Soleil traverse le ciel, trois aiguilles marquent le passage du temps : l’aiguille rouge fait un tour par jour, l’aiguille bleue un tour par gong, et l’aiguille dorée un tour par beat, en égrenant les tics.",
     "choose": "Choisir un lieu",
     "current": "Position actuelle (détection automatique)",
     "locating": "Recherche de votre position…",

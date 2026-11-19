@@ -50,7 +50,7 @@
     "polarDay": "Il sole non tramonta",
     "polarNight": "Il sole non sorge",
     "dayBar": "La giornata di oggi dove ti trovi, in Nu:Time universale",
-    "dialHint": "Nu:Time è lo stesso per tutti — ovunque tu sia. A differenza di un normale orologio, le quattro coordinate sul quadrante Nu:Time ruotano in base alla tua posizione e mantengono un riferimento fisso al meridiano di Greenwich.\n\nIl mezzogiorno solare è sempre in cima al quadrante e, mentre il sole attraversa il cielo, tre lancette segnano lo scorrere del tempo: la lancetta rossa compie un giro al giorno, quella blu un giro ogni gong e quella dorata un giro ogni beat, scandendo i tic che passano.",
+    "dialHint": "Nu:Time è lo stesso per tutti — ovunque tu sia. Ma, a differenza di un normale orologio, le quattro coordinate sul quadrante Nu:Time ruotano in base alla tua posizione e mantengono un riferimento fisso al meridiano di Greenwich.\n\nIl mezzogiorno solare è sempre in cima al quadrante e, mentre il sole attraversa il cielo, tre lancette segnano lo scorrere del tempo: la lancetta rossa compie un giro al giorno, quella blu un giro ogni gong e quella dorata un giro ogni beat, scandendo i tic che passano.",
     "choose": "Scegli un luogo",
     "current": "Posizione attuale (rilevamento automatico)",
     "locating": "Rilevamento della posizione…",

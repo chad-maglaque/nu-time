@@ -50,7 +50,7 @@
     "polarDay": "Sonne geht nicht unter",
     "polarNight": "Sonne geht nicht auf",
     "dayBar": "Heute an deinem Standort, in Nu:Time-Weltzeit",
-    "dialHint": "Nu:Time ist für alle gleich – egal, wo du bist. Anders als bei einer gewöhnlichen Uhr drehen sich die vier Koordinaten auf dem Nu:Time-Zifferblatt passend zu deinem Standort und bleiben dabei fest auf den Nullmeridian in Greenwich bezogen.\n\nDer Sonnenmittag steht immer oben, und während die Sonne über den Himmel wandert, zeigen drei Zeiger den Lauf der Zeit: Der rote Zeiger dreht sich einmal pro Tag, der blaue einmal pro Gong und der goldene einmal pro Beat – er zählt die vergehenden Ticks.",
+    "dialHint": "Nu:Time ist für alle gleich – egal, wo du bist. Aber anders als bei einer gewöhnlichen Uhr drehen sich die vier Koordinaten auf dem Nu:Time-Zifferblatt passend zu deinem Standort und bleiben dabei fest auf den Nullmeridian in Greenwich bezogen.\n\nDer Sonnenmittag steht immer oben, und während die Sonne über den Himmel wandert, zeigen drei Zeiger den Lauf der Zeit: Der rote Zeiger dreht sich einmal pro Tag, der blaue einmal pro Gong und der goldene einmal pro Beat – er zählt die vergehenden Ticks.",
     "choose": "Ort wählen",
     "current": "Aktueller Standort (automatisch)",
     "locating": "Standort wird ermittelt …",

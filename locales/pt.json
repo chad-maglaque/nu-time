@@ -50,7 +50,7 @@
     "polarDay": "O sol não se põe",
     "polarNight": "O sol não nasce",
     "dayBar": "Hoje na sua localização, em Nu:Time universal",
-    "dialHint": "O Nu:Time é o mesmo para todos — não importa onde você esteja. Ao contrário de um relógio comum, as quatro coordenadas do mostrador do relógio Nu:Time giram de acordo com a sua localização e mantêm uma referência fixa ao meridiano de Greenwich.\n\nO meio-dia solar fica sempre no alto do mostrador e, enquanto o sol atravessa o céu, três ponteiros marcam a passagem do tempo: o vermelho dá uma volta por dia, o azul dá uma volta a cada gong e o dourado dá uma volta a cada beat, marcando os tiques que passam.",
+    "dialHint": "O Nu:Time é o mesmo para todos — não importa onde você esteja. Mas, ao contrário de um relógio comum, as quatro coordenadas do mostrador do relógio Nu:Time giram de acordo com a sua localização e mantêm uma referência fixa ao meridiano de Greenwich.\n\nO meio-dia solar fica sempre no alto do mostrador e, enquanto o sol atravessa o céu, três ponteiros marcam a passagem do tempo: o vermelho dá uma volta por dia, o azul dá uma volta a cada gong e o dourado dá uma volta a cada beat, marcando os tiques que passam.",
     "choose": "Escolha um local",
     "current": "Localização atual (detecção automática)",
     "locating": "Obtendo sua localização…",
