@@ -37,6 +37,7 @@ DNS_ZONES="nu-time.org nutime.org nu-time.com"   # Cloudflare zones: apex + www 
 MAIL_ZONES="nu-time.org nutime.org nu-time.com"  # Cloudflare zones with Email Routing on
 # The only addresses that forward; mail to any other address is dropped.
 MAIL_ADDRESSES="info@nu-time.org press@nu-time.org privacy@nu-time.org standards@nu-time.org legal@nu-time.org
+                info@nutime.org  press@nutime.org  privacy@nutime.org  standards@nutime.org  legal@nutime.org
                 info@nu-time.com press@nu-time.com privacy@nu-time.com standards@nu-time.com"
 PROJECT="nu-time"
 HOMEPAGE="https://$PRIMARY"
