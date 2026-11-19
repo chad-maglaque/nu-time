@@ -69,4 +69,5 @@ All of it is scripted, and both scripts are safe to re-run:
 - [ ] `tools/check-domains.sh` passes.
 - [x] Reachability from mainland China (e.g. a China-based uptime checker such as 17ce.com or chinaz.com). If Vercel is blocked or slow, plan a Hong Kong mirror.
   - **2026-11-18, Globalping probes in mainland China (~60 requests, 20+ cities, Unicom / Mobile / Telecom / Alibaba / Tencent):** not blocked. DNS resolves correctly everywhere (216.150.1.1, no poisoning). `/zh/`, `/assets/clock.js` and `/api/where` return 200, typically 0.3–1 s; `/api/where` returns the right Chinese city. Outliers: some China Telecom probes take 4–5 s; one Unicom probe in Fuzhou is reset on every request. No Hong Kong mirror needed for launch. Re-check weekly, because Vercel IP ranges can be blocked without notice. Test the link inside WeChat by hand (it can't be tested from outside).
-- [ ] Repository switched to public when the Standard is published.
+  - **2026-11-19, nu-time.org (new domain of record):** 19 of 20 mainland probes return `/zh/` with 200, mostly in 0.6–2.5 s; one Tencent probe in Chongqing timed out. DNS resolves to Vercel (216.150.1.1 / 216.150.16.1) with no poisoning.
+- [x] Repository switched to public when the Standard is published (2026-11-19).
