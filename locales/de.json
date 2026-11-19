@@ -11,7 +11,7 @@
   "nav": {
     "time": "Zeit neu gedacht",
     "how": "So funktioniert’s",
-    "ke": "Das Kè",
+    "ke": "Kè",
     "geometry": "Geometrie",
     "heritage": "Geschichte",
     "why": "Warum jetzt",
@@ -116,7 +116,7 @@
     ]
   },
   "ke": {
-    "title": "Das Kè: eine Einheit für Wann und Wo.",
+    "title": "Kè: eine Einheit für Wann und Wo.",
     "lead": "Ein ganzer Tag hat 100 Kè. Ein ganzer Kreis hat 100 Kè. Die Drehung der Erde und die Drehung der vier Koordinaten auf dem Nu:Time-Zifferblatt sind also gleich – und Zeitzonen verschwinden.",
     "facts": [
       {
@@ -139,7 +139,7 @@
   },
   "geometry": {
     "title": "Geometrie für eine neue Zeit.",
-    "lead": "Das Gradmaß hat Babylon gewählt, das Bogenmaß die Mathematik. Der 100-Kè-Kreis spricht dieselbe Sprache wie deine Uhr und deine Karte – und macht Geometrie intuitiv.",
+    "lead": "Das Gradmaß hat Babylon gewählt, das Bogenmaß die Mathematik. Der 100-Kè-Kreis spricht dieselbe Sprache wie deine Uhr und deine Karte – und macht Geometrie intuitiver.",
     "items": [
       [
         "Vollwinkel",
@@ -247,7 +247,7 @@
     ]
   },
   "heritage": {
-    "title": "Keine neue Idee, aber wir haben sie zu Ende gedacht.",
+    "title": "Keine neue Idee. Wir haben sie zu Ende gedacht.",
     "lead": "Große Kulturen haben immer wieder versucht, den Tag vernünftiger einzuteilen. Nu:Time übernimmt ihre Erkenntnisse und ergänzt, was keine von ihnen hatte: einen Planeten, der sich auf denselben Moment einigen kann – egal, wo du bist.",
     "items": [
       {

@@ -11,7 +11,7 @@
   "nav": {
     "time": "Le temps réinventé",
     "how": "Comment ça marche",
-    "ke": "Le kè",
+    "ke": "Kè",
     "geometry": "Géométrie",
     "heritage": "Héritage",
     "why": "Pourquoi maintenant",
@@ -116,7 +116,7 @@
     ]
   },
   "ke": {
-    "title": "Le kè : une seule unité pour dire quand et où.",
+    "title": "Kè : une seule unité pour dire quand et où.",
     "lead": "Une journée entière, c’est 100 kè. Un tour complet, c’est 100 kè. La rotation de la Terre et celle des quatre coordonnées du cadran Nu:Time sont donc identiques — et les fuseaux horaires disparaissent.",
     "facts": [
       {
@@ -139,7 +139,7 @@
   },
   "geometry": {
     "title": "Une nouvelle ère pour la géométrie.",
-    "lead": "Les degrés, c’était le choix de Babylone. Les radians, celui des mathématiciens. Le cercle de 100 kè parle la même langue que votre montre et votre carte — et rend la géométrie intuitive.",
+    "lead": "Les degrés, c’était le choix de Babylone. Les radians, celui des mathématiciens. Le cercle de 100 kè parle la même langue que votre montre et votre carte — et rend la géométrie plus intuitive.",
     "items": [
       [
         "Tour complet",
@@ -247,7 +247,7 @@
     ]
   },
   "heritage": {
-    "title": "Pas une idée neuve, mais nous l’avons menée à terme.",
+    "title": "Pas une idée neuve. Nous l’avons menée à terme.",
     "lead": "De grandes civilisations ont longtemps cherché à diviser le jour de façon plus sensée. Nu:Time hérite de leur sagesse et y ajoute ce qu’aucune n’avait : une planète capable de s’accorder sur le même instant — où que vous soyez.",
     "items": [
       {

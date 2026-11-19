@@ -11,7 +11,7 @@
   "nav": {
     "time": "El tiempo, reinventado",
     "how": "Cómo funciona",
-    "ke": "El kè",
+    "ke": "Kè",
     "geometry": "Geometría",
     "heritage": "Legado",
     "why": "Por qué ahora",
@@ -116,7 +116,7 @@
     ]
   },
   "ke": {
-    "title": "El kè: una sola unidad para el cuándo y el dónde.",
+    "title": "Kè: una sola unidad para el cuándo y el dónde.",
     "lead": "Un día completo son 100 kè. Una vuelta completa son 100 kè. Así, la rotación de la Tierra y la rotación de las cuatro coordenadas de la esfera del reloj Nu:Time coinciden, y los husos horarios desaparecen.",
     "facts": [
       {
@@ -139,7 +139,7 @@
   },
   "geometry": {
     "title": "Una nueva era para la geometría.",
-    "lead": "Los grados fueron cosa de Babilonia. Los radianes, de los matemáticos. El círculo de 100 kè habla el mismo idioma que tu reloj y tu mapa, y vuelve intuitiva la geometría.",
+    "lead": "Los grados fueron cosa de Babilonia. Los radianes, de los matemáticos. El círculo de 100 kè habla el mismo idioma que tu reloj y tu mapa, y vuelve más intuitiva la geometría.",
     "items": [
       [
         "Vuelta completa",
@@ -247,7 +247,7 @@
     ]
   },
   "heritage": {
-    "title": "No es una idea nueva, pero la completamos.",
+    "title": "No es una idea nueva. La completamos.",
     "lead": "Desde hace mucho, grandes civilizaciones han intentado dividir el día de forma más sensata. Nu:Time recoge su sabiduría y añade lo que ninguna tuvo: un planeta capaz de ponerse de acuerdo sobre un mismo momento, estés donde estés.",
     "items": [
       {

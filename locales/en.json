@@ -11,7 +11,7 @@
   "nav": {
     "time": "Time reimagined",
     "how": "How it works",
-    "ke": "The kè",
+    "ke": "Kè",
     "geometry": "Geometry",
     "heritage": "Heritage",
     "why": "Why now",
@@ -116,7 +116,7 @@
     ]
   },
   "ke": {
-    "title": "The kè: one unit for when and where.",
+    "title": "Kè: one unit for when and where.",
     "lead": "A full day is 100 kè. A full circle is 100 kè. So the Earth's rotation and the rotation of the four coordinates on the Nu:Time clock face are the same — and time zones disappear.",
     "facts": [
       {
@@ -139,7 +139,7 @@
   },
   "geometry": {
     "title": "A new era of geometry.",
-    "lead": "Degrees were Babylon's choice. Radians are a mathematician's. The 100-kè circle speaks the same language as your watch and your map — and makes geometry intuitive.",
+    "lead": "Degrees were Babylon's choice. Radians are a mathematician's. The 100-kè circle speaks the same language as your watch and your map — and makes geometry more intuitive.",
     "items": [
       [
         "Full turn",
@@ -247,7 +247,7 @@
     ]
   },
   "heritage": {
-    "title": "Not a new idea, but we finished it.",
+    "title": "Not a new idea. We finished it.",
     "lead": "Great civilizations have long tried to divide the day more sensibly. Nu:Time borrows their wisdom and adds what none of them had: a planet that can agree on the same moment — no matter where you are.",
     "items": [
       {
@@ -336,7 +336,7 @@
       },
       {
         "title": "APIs: JavaScript & Python",
-        "text": "Drop-in conversions between UTC and Nu:Time, degrees and kè, latitude and longitude — all with shared test vectors. MIT or Apache 2.0.",
+        "text": "Drop-in conversions between UTC and Nu:Time and between degrees and kè, including latitude and longitude — all with shared test vectors. MIT or Apache 2.0.",
         "link": "Developer docs",
         "href": "/developers/"
       },

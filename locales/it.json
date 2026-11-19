@@ -11,7 +11,7 @@
   "nav": {
     "time": "Il tempo, ripensato",
     "how": "Come funziona",
-    "ke": "Il kè",
+    "ke": "Kè",
     "geometry": "Geometria",
     "heritage": "Le radici",
     "why": "Perché adesso",
@@ -116,7 +116,7 @@
     ]
   },
   "ke": {
-    "title": "Il kè: una sola unità per il quando e il dove.",
+    "title": "Kè: una sola unità per il quando e il dove.",
     "lead": "Un giorno intero dura 100 kè. Un giro completo misura 100 kè. Così la rotazione della Terra e quella delle quattro coordinate sul quadrante Nu:Time coincidono — e i fusi orari scompaiono.",
     "facts": [
       {
@@ -139,7 +139,7 @@
   },
   "geometry": {
     "title": "Una nuova era per la geometria.",
-    "lead": "I gradi sono stati una scelta di Babilonia. I radianti, quella dei matematici. Il cerchio da 100 kè parla la stessa lingua del tuo orologio e della tua mappa, e rende la geometria intuitiva.",
+    "lead": "I gradi sono stati una scelta di Babilonia. I radianti, quella dei matematici. Il cerchio da 100 kè parla la stessa lingua del tuo orologio e della tua mappa, e rende la geometria più intuitiva.",
     "items": [
       [
         "Angolo giro",
@@ -247,7 +247,7 @@
     ]
   },
   "heritage": {
-    "title": "Non è un'idea nuova, ma l'abbiamo portata a compimento.",
+    "title": "Non è un'idea nuova. L'abbiamo portata a compimento.",
     "lead": "Da secoli le grandi civiltà cercano di dividere il giorno in modo più sensato. Nu:Time ne raccoglie la saggezza e aggiunge ciò che nessuna di loro aveva: un intero pianeta d'accordo sullo stesso istante — ovunque tu sia.",
     "items": [
       {
