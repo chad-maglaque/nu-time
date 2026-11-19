@@ -1,4 +1,4 @@
-# Deploying nu-time.com
+# Deploying nu-time.org
 
 A checklist for going live. Steps marked **(you)** need your accounts or sign-in.
 
@@ -20,40 +20,50 @@ The **Join** form must save every signup somewhere. In production it saves to Up
 4. Redeploy (`npx vercel --prod` or **Redeploy** in the dashboard).
 5. **Test**: submit one signup on the live site, then download the list as CSV:
    ```sh
-   curl -H "Authorization: Bearer $ADMIN_KEY" https://nu-time.com/api/signup > nu-time-signups.csv
+   curl -H "Authorization: Bearer $ADMIN_KEY" https://nu-time.org/api/signup > nu-time-signups.csv
    ```
    The CSV has one row per email: date, country (detected), email, name, role, country (typed), message, language, page, time zone, consent.
 
-## 3. Domains and DNS
+## 3. Domains, DNS and email
 
-All four domains are registered at GoDaddy and use GoDaddy DNS today. They move to **Cloudflare DNS** (free); the site is served by Vercel. Decided: **nu-time.com** is the site; **nu-watch.com, nu.watch and nu-beat.com redirect to nu-time.com** (Nu-Watch is not launching).
+Nu:Time is an open standard, so **nu-time.org** is the domain of record. **nu-time.com** and **nutime.org** (and all three `www`) 308-redirect to it, keeping the path and query. All three zones are on **Cloudflare DNS** (free), DNS only (grey cloud); the site is served by Vercel.
 
-1. **(you)** GoDaddy → each domain → **DNSSEC**: make sure it is off before changing nameservers (otherwise the domain stops resolving).
-2. **(you)** Cloudflare (free account) → **Add a domain** for each of the four → Free plan. Cloudflare imports GoDaddy's records.
-3. In Cloudflare DNS for each domain, **delete the imported GoDaddy records**: the `A` records (50.63.7.149, 3.33.251.168, 15.197.225.128), `www` CNAMEs, and the GoDaddy mail records (`MX` mailstore1/smtp.secureserver.net) — no GoDaddy mailboxes are in use.
-4. Add the Vercel records for each domain, **DNS only** (grey cloud) so Vercel issues the HTTPS certificates:
-   - `A @ 76.76.21.21`
-   - `CNAME www cname.vercel-dns.com`
-5. **(you)** GoDaddy → each domain → **Nameservers → Change → Enter my own** → the two Cloudflare nameservers. Propagation: minutes to a few hours.
-6. Vercel → project **nu-time** → **Settings → Domains**:
-   - `nu-time.com` (primary) and `www.nu-time.com` → redirect to `nu-time.com`.
-   - `nu-beat.com`, `www.nu-beat.com`, `nu-watch.com`, `www.nu-watch.com`, `nu.watch`, `www.nu.watch` → each **Redirect to** `nu-time.com` (308).
+Only named addresses forward, through Cloudflare **Email Routing** (free), to the owner's work inbox: **info@**, **press@**, **privacy@**, **standards@** and **legal@nu-time.org** (the ones the site shows), plus the older info@, press@, privacy@ and standards@nu-time.com. Mail to any other address is dropped: the catch-all stays off on all three zones, and nutime.org has no addresses. The list is `MAIL_ADDRESSES` in the script.
 
-## 4. Email addresses used on the site
+The commercial watch domains (**nu-watch.com, nu.watch, nu-beat.com**) are separate and are not part of this setup. Nothing here touches them.
 
-The site shows **info@**, **press@**, **privacy@** and **standards@nu-time.com**. Decided: Cloudflare **Email Routing** (free) forwards all four to the owner's work inbox.
+All of it is scripted, and both scripts are safe to re-run:
 
-1. **(you)** Cloudflare → nu-time.com → **Email → Email Routing** → enable. Cloudflare adds its `MX` and `TXT` (SPF) records.
-2. **Destination address**: the owner's work inbox → click the verification link Cloudflare sends.
-3. **Routing rules**: `info@`, `press@`, `privacy@`, `standards@` → that inbox (or one catch-all rule).
-4. Send a test message to each address from a different account.
-5. Replies come from the personal inbox. Sending *as* info@nu-time.com needs a mail service later (not needed for launch).
+- [tools/domains.sh](../tools/domains.sh) makes the changes in Cloudflare, Vercel and GitHub.
+- [tools/check-domains.sh](../tools/check-domains.sh) checks the result. It is read-only and needs no tokens.
 
-## 5. Launch checks
+1. **(you)** Create `.env.domains` at the repository root. Git ignores it, so it stays private if the repository goes public:
+   ```sh
+   CLOUDFLARE_API_TOKEN=…   # My Profile → API Tokens → Custom Token: Zone·Zone·Read, Zone·DNS·Edit,
+                            # Zone·Zone Settings·Edit, Zone·Email Routing Rules·Edit, Account·Email Routing Addresses·Edit
+   VERCEL_TOKEN=…           # vercel.com/account/tokens, scope: the team that owns project nu-time
+   EMAIL_DEST=…             # the inbox the named addresses forward to
+   ```
+2. `tools/domains.sh` is a dry run: it prints every change it would make.
+3. `tools/domains.sh --apply` makes the changes, in this order:
+   1. Adds `EMAIL_DEST` as a Cloudflare mail destination if it is new. Cloudflare emails it a verification link; click it.
+   2. Points Cloudflare DNS for each zone at Vercel: apex `A` and `www` `CNAME`, DNS only, so Vercel issues the certificates. It deletes old parking records and old mail records, and keeps everything else.
+   3. Turns on Email Routing on each zone, which adds Cloudflare's `MX` and SPF records.
+   4. In Vercel (project **nu-time** → Domains), adds `nu-time.org` to serve the site, and adds `www.nu-time.org`, `nutime.org` and `www.nutime.org` as redirects. If Vercel asks for an ownership TXT record, it adds the record in Cloudflare and verifies.
+   5. Waits until `https://nu-time.org` serves the site, then sets `www.nu-time.com` and `nu-time.com` to **Redirect to** `nu-time.org` (308), nu-time.com last.
+   6. Points each address in `MAIL_ADDRESSES` at `EMAIL_DEST`, creating the rule or repointing it. It turns any catch-all off, and reports, without changing, rules for other addresses. It waits for the verification click first, if that is still pending.
+   7. Sets the GitHub repository's homepage to `https://nu-time.org`.
+   8. Runs `tools/check-domains.sh`. It checks the site, canonical tag, sitemap, redirects and mail records.
+4. **(you)** Google Search Console: add nu-time.org, then on the nu-time.com property go to **Settings → Change of address**.
+5. Send a test message to a few addresses at each domain from a different account. Replies come from the work inbox. Sending *as* info@nu-time.org needs a mail service later (not needed for launch).
 
-- [ ] Overview, The Standard, Developers and Privacy load on `https://nu-time.com`.
+## 4. Launch checks
+
+- [ ] Overview, The Standard, Developers and Privacy load on `https://nu-time.org`.
 - [ ] Clock: "Use my location" works; on a browser that refuses location, the approximate city appears (`/api/where`).
 - [ ] Join form: a test signup appears in the CSV export (step 2.5).
 - [ ] Footer Contact (info@) and Press (press@) emails arrive.
-- [ ] Reachability from mainland China (e.g. a China-based uptime checker such as 17ce.com or chinaz.com). If Vercel is blocked or slow, plan a Hong Kong mirror.
+- [ ] `tools/check-domains.sh` passes.
+- [x] Reachability from mainland China (e.g. a China-based uptime checker such as 17ce.com or chinaz.com). If Vercel is blocked or slow, plan a Hong Kong mirror.
+  - **2026-11-18, Globalping probes in mainland China (~60 requests, 20+ cities, Unicom / Mobile / Telecom / Alibaba / Tencent):** not blocked. DNS resolves correctly everywhere (216.150.1.1, no poisoning). `/zh/`, `/assets/clock.js` and `/api/where` return 200, typically 0.3–1 s; `/api/where` returns the right Chinese city. Outliers: some China Telecom probes take 4–5 s; one Unicom probe in Fuzhou is reset on every request. No Hong Kong mirror needed for launch. Re-check weekly, because Vercel IP ranges can be blocked without notice. Test the link inside WeChat by hand (it can't be tested from outside).
 - [ ] Repository switched to public when the Standard is published.
