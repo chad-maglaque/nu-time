@@ -8,9 +8,9 @@ The **digits** always show **universal** Nu:Time — the same for everyone on Ea
 
 ## Geometry
 
-- **No numerals.** Four short quarter marks at 0, 25, 50 and 75 kè in soft cream `#ede3cc`, 0.08 R long, so the tip meets the outer edge of the teal ring (0.716 R), plus fine graduations (one per kè) on the day ring.
+- **No numerals.** Four short quarter marks at 0, 25, 50 and 75 Kè in soft cream `#ede3cc`, 0.08 R long, so the tip meets the outer edge of the teal ring (0.716 R), plus fine graduations (one per Kè) on the day ring.
 - **The zero mark** — where gong, beat and tick roll over — is the same colour and length, only thicker (0.030 R vs 0.016 R).
-- **Rotation.** At Greenwich (0 kè / 0°) zero sits at the **bottom** of the dial. Elsewhere the whole face turns clockwise by the place's longitude east of Greenwich, rounded to the nearest kè (3.6°), as on the original nu-time.com clock. Result: **solar noon is always at the top and solar midnight at the bottom**, for everyone.
+- **Rotation.** At Greenwich (0 Kè / 0°) zero sits at the **bottom** of the dial. Elsewhere the whole face turns clockwise by the place's longitude east of Greenwich, rounded to the nearest Kè (3.6°), as on the original nu-time.com clock. Result: **solar noon is always at the top and solar midnight at the bottom**, for everyone.
 - Angle on the canvas for a fraction *f* of the universal day: `θ = π/2 + 2πf + round(lon/3.6)·3.6°` (canvas angles, clockwise from 3 o'clock).
 
 ## Layers (outside in)
@@ -55,4 +55,4 @@ The sky is an artistic visualization; real sky colour also depends on weather, a
 ## Location
 
 - Dropdown: "Choose a location", "Current Location (Auto-Detect)", then the 50 cities of the original nu-time.com list in the same order, labelled "City, Country". Default with nothing chosen: the Royal Observatory, Greenwich.
-- "Current Location": the browser's position; if refused or unavailable, the approximate location derived from the connection (`/api/where`); otherwise a clear message. Only the dial rotation is snapped to the nearest kè; sun, sky, sunrise and sunset use exact coordinates.
+- "Current Location": the browser's position; if refused or unavailable, the approximate location derived from the connection (`/api/where`); otherwise a clear message. Only the dial rotation is snapped to the nearest Kè; sun, sky, sunrise and sunset use exact coordinates.

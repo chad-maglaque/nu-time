@@ -216,3 +216,6 @@ p { margin: 0 0 1em; }
   .cards4, .grid3, .grid4, .timeline, .road, .signup { grid-template-columns: 1fr; }
   .bar { gap: 14px; } .btn.small { display: none; }
 }
+.phi-ids { list-style: none; padding: 0; margin: 8px 0 32px; display: flex; flex-wrap: wrap; gap: 10px; max-width: 760px; }
+.phi-ids li { font: 600 15px var(--mono); color: var(--gold); border: 1px solid var(--line); border-radius: 10px; padding: 9px 14px; direction: ltr; unicode-bidi: isolate; }
+.quartz { max-width: 760px; }

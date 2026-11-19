@@ -36,8 +36,8 @@ keOfDay    = ticksOfDay / 1,000
 
 | 语言 | 更 | 刻 | 分 | 秒 |
 |---|---|---|---|---|
-| 英语 | gong | kè | beat | tick |
-| 法语 / 西班牙语 / 意大利语 | gong | kè | beat | tic |
+| 英语 | gong | Kè | beat | tick |
+| 法语 / 西班牙语 / 意大利语 | gong | Kè | beat | tic |
 | 德语 | Gong | Kè | Beat | Tick |
 | 中文 | 更 gēng | 刻 kè | 分 fēn | 秒 miǎo |
 
@@ -124,7 +124,7 @@ UTC 将一日固定为 86400 个原子秒。地球自转一周的时长并不固
 Nu:Long 为向东 *X* 刻处的当地**平**太阳正午，以统一刻时表示为：
 
 ```
-solarNoon = 05:00:00 − X kè = 500 − 10·X beats   (X negative for west)
+solarNoon = 05:00:00 − X Kè = 500 − 10·X beats   (X negative for west)
 ```
 
 示例：上海（东经 121.47° = 向东 33.74 刻）→ 约 `01:62:58`；德里（东经 77.21° = 向东 21.45 刻）→ 约 `02:85:53`；纽约（西经 74.01° = 向西 20.56 刻）→ 约 `07:05:57`。

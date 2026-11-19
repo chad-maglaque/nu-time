@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT OR Apache-2.0 — Copyright (c) 2025-2026 Nu-Time Inc.
-/* Sub-nav active state, degree/kè converter, signup forms. */
+/* Sub-nav active state, degree/Kè converter, signup forms. */
 (function () {
   "use strict";
   // ── language selector ──
@@ -39,7 +39,7 @@
     Object.keys(map).forEach(function (id) { var s = document.getElementById(id); if (s) io.observe(s); });
   }
 
-  // degrees ⇄ kè
+  // degrees ⇄ Kè
   var conv = document.querySelector("[data-conv-ke]");
   if (conv) {
     var d = conv.querySelector("[data-deg]"), k = conv.querySelector("[data-ke]");

@@ -26,6 +26,8 @@
 | pt | gong · kè · beat · tique | Brazilian Portuguese, você; decimal comma; sen/cos/tg; "Para devs" in the menu; China card restored to "is actively shaping". |
 | ru | гонг · кэ · удар · тик | «удар» (heartbeat) instead of «бит», which engineers read as the data bit; вы; «Национальный центр службы времени» translated (overrides #15 for Russian). |
 
+**Golden Ratio geometry update (2026-11-19):** owner direction — English edits are intentional and are not reverted in translation; localise as needed. Kè is a name: always capital Kè, never "the Kè" (this supersedes the lowercase-kè notes in `notes/fr.md`, `notes/pt.md` and `notes/de.md`); Russian writes «Кэ». Records: `updates/2026-11-19-golden-ratio/`.
+
 **Owner direction (2026-11-18):** the launch is a publication, a "hello world" for an idea. There is no programme, product or implementation behind it yet, so legal and regulatory points are **not blocking** and the wording stays as it is. The notes below are kept for reference only, for if and when a real programme exists.
 
 **Raised by the Chinese Standard review (2026-11-18), reference only:**

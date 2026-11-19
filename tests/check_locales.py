@@ -58,7 +58,7 @@ def check(code):
     if d and t.get("dir") != d: errs.append(f"dir should be {d!r}")
     if name and t.get("langName") != name: errs.append(f"langName should be {name!r}")
     # table cells with numbers must be unchanged (geometry, trig)
-    for sect, key in [("geometry", "items"), ("geometry", "trigRows")]:
+    for sect, key in [("geometry", "items"), ("geometry", "goldenRows")]:
         for i, (er, tr_) in enumerate(zip(EN[sect][key], t.get(sect, {}).get(key, []))):
             for j, (a, b) in enumerate(zip(er, tr_)):
                 if re.search(r"\d", a) and not (sect == "geometry" and key == "items" and j == 0):

@@ -3,9 +3,9 @@
  *
  * Dial:
  *  - The digits always show UNIVERSAL Nu:Time.
- *  - The face has no numerals: four quarter marks (0 / 25 / 50 / 75 kè) and 100 fine graduations.
+ *  - The face has no numerals: four quarter marks (0 / 25 / 50 / 75 Kè) and 100 fine graduations.
  *    The emphasized zero mark is where gong, beat and tick roll over.
- *  - At Greenwich the zero mark is at the very bottom (0 kè / 0°). Elsewhere the whole face turns
+ *  - At Greenwich the zero mark is at the very bottom (0 Kè / 0°). Elsewhere the whole face turns
  *    clockwise by the place's longitude east of Greenwich, so solar noon is always at the top and
  *    the dial matches the local sky, while the time it tells is the same for everyone.
  *  Hands: red gong hand (1 turn/day), blue beat hand (1 turn/gong), gold tick hand (1 turn/beat).
@@ -191,13 +191,13 @@
   }
 
   // ── dial: the original Nu:Time face, rotated to your longitude ──
-  // Zero (where gong, beat and tick roll over) is at the very bottom at Greenwich (0 kè / 0°),
+  // Zero (where gong, beat and tick roll over) is at the very bottom at Greenwich (0 Kè / 0°),
   // and the whole face turns clockwise by the place's longitude east of Greenwich — so every
   // place's solar noon is at the top and its solar midnight at the bottom.
   var DPR = Math.min(window.devicePixelRatio || 1, 3), W = 0;
   function size() { var w = canvas.clientWidth || 320; canvas.width = w * DPR; canvas.height = w * DPR; W = canvas.width; }
   size(); window.addEventListener("resize", size);
-  function offset() { return Math.round(place.lon / 3.6) * 3.6 * Math.PI / 180; } // snapped to the nearest kè (3.6°), as on nu-time.com
+  function offset() { return Math.round(place.lon / 3.6) * 3.6 * Math.PI / 180; } // snapped to the nearest Kè (3.6°), as on nu-time.com
   function ang(f) { return Math.PI / 2 + f * 2 * Math.PI + offset(); }             // canvas angle; f = fraction of universal day
   var shadeCtx = null;
   function shadeLayer() {
@@ -225,7 +225,7 @@
     ctx.beginPath(); ctx.arc(0, 0, R * RING, 0, 2 * Math.PI); ctx.lineWidth = R * RW; ctx.strokeStyle = "#f2b04a"; ctx.stroke();
     ctx.beginPath(); ctx.arc(0, 0, R * TEAL, 0, 2 * Math.PI); ctx.lineWidth = R * LINE; ctx.strokeStyle = "#35545c"; ctx.stroke();
     ctx.beginPath(); ctx.arc(0, 0, R * CREAM, 0, 2 * Math.PI); ctx.lineWidth = R * LINE; ctx.strokeStyle = "#f5deb3"; ctx.stroke();
-    // fine graduations (one per kè) on the outer edge of the day ring. No numerals.
+    // fine graduations (one per Kè) on the outer edge of the day ring. No numerals.
     var RING_OUT = RING + RW / 2;
     for (var i = 0; i < 100; i++) {
       if (i % 25 === 0) continue;

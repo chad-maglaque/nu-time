@@ -3,7 +3,7 @@
 Copyright (c) 2025-2026 Nu-Time Inc. Licensed under MIT OR Apache-2.0, at your option.
 "Nu:Time", "Ke-Shi" and "刻时" are trademarks of Nu-Time Inc.
 
-1 day = 10 gongs = 100 kè = 1,000 beats = 100,000 ticks; 1 tick = 0.864 s. Display GG:BB:TT.
+1 day = 10 gongs = 100 Kè = 1,000 beats = 100,000 ticks; 1 tick = 0.864 s. Display GG:BB:TT.
 Integer microseconds throughout; truncate, never round ahead.
 The reference is the Earth's rotation (UT1): pass dut1 (UT1 - UTC, seconds, from IERS) for full accuracy.
 No leap seconds, ever.
@@ -79,7 +79,7 @@ def nu_day(dt: datetime) -> int:
     return dt.astimezone(timezone.utc).toordinal() - 678576
 
 
-# ── the kè: 1/100 day = 1/100 circle = 3.6° ──
+# ── Kè: 1/100 day = 1/100 circle = 3.6° ──
 def degrees_to_ke(deg: float) -> float: return deg * 100 / 360
 def ke_to_degrees(ke: float) -> float: return ke * 360 / 100
 def nu_lat(lat_deg: float) -> float: return degrees_to_ke(lat_deg)
@@ -91,7 +91,7 @@ def nu_long(lon_deg: float) -> float:
 
 
 def solar_noon(lon_deg: float) -> NuTime:
-    """Mean solar noon in universal Nu:Time: 05:00:00 minus 10 beats per kè east."""
+    """Mean solar noon in universal Nu:Time: 05:00:00 minus 10 beats per Kè east."""
     return NuTime(round(50_000 - nu_long(lon_deg) * 1_000) % TICKS)
 
 

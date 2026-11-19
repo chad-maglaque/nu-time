@@ -81,6 +81,7 @@ function footer(t) {
 }
 
 function home(t) {
+  const g = t.geometry;
   const L = t.lang, u = t.units, h = t.hero;
   const alt = locales.map((x) => `<link rel="alternate" hreflang="${hl(x.lang)}" href="${SITE}${path(x.lang)}">`).join("\n") + `\n<link rel="alternate" hreflang="x-default" href="${SITE}/">`;
   const mine = { zh: "zh", hi: "in", ur: "in", fr: "fr", it: "it", es: "es", de: "de" }[L];
@@ -165,8 +166,15 @@ ${topbar(t, subnav)}
   </div>
   <h2 class="subhead">${esc(t.geometry.trigTitle)}</h2>
   ${t.geometry.trig.split("\n\n").map((para) => `<p class="lead">${esc(para)}</p>`).join("")}
-  <table class="tbl trigtbl"><thead><tr>${t.geometry.trigCols.map((c) => `<th>${esc(c)}</th>`).join("")}</tr></thead>
-  <tbody>${t.geometry.trigRows.map((r) => `<tr><th class="nu">${esc(r[0])}</th><td>${esc(r[1])}</td><td>${esc(r[2])}</td><td>${esc(r[3])}</td><td>${esc(r[4])}</td></tr>`).join("")}</tbody></table>
+  <h2 class="subhead">${esc(g.goldenTitle)}</h2>
+  ${g.golden.split("\n\n").map((para) => `<p class="lead">${esc(para)}</p>`).join("")}
+  <table class="tbl trigtbl"><thead><tr>${g.goldenCols.map((c) => `<th>${esc(c)}</th>`).join("")}</tr></thead>
+  <tbody>${g.goldenRows.map((r) => `<tr><th class="nu">${esc(r[0])}</th>${r.slice(1).map((c) => `<td>${esc(c)}</td>`).join("")}</tr>`).join("")}</tbody></table>
+  <ul class="phi-ids">${g.goldenIdentities.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>
+  <h2 class="subhead">${esc(g.triangleTitle)}</h2>
+  ${g.triangle.split("\n\n").map((para) => `<p class="lead">${esc(para)}</p>`).join("")}
+  <h2 class="subhead">${esc(g.goldenAngleTitle)}</h2>
+  ${g.goldenAngle.split("\n\n").map((para) => `<p class="lead">${esc(para)}</p>`).join("")}
 </section>
 
 <section id="heritage" class="band">
@@ -187,14 +195,13 @@ ${topbar(t, subnav)}
   <h2>${esc(t.build.title)}</h2>
   <p class="lead">${esc(t.build.lead)}</p>
   <div class="grid3">${t.build.items.map((i) => `<article class="card"><h3>${esc(i.title)}</h3><p>${esc(i.text)}</p><a class="more" href="${i.href === "/spec/" ? docPath("spec", t.lang) : i.href}">${esc(i.link)} →</a></article>`).join("")}</div>
-  <div class="split">
-    <div>
+  <div class="quartz">
       <h3>${esc(t.build.quartzTitle)}</h3>
       <table class="tbl"><thead><tr><th>${esc(t.build.colCrystal)}</th><th>${esc(t.build.colCycles)}</th><th>${esc(t.build.colMethod)}</th></tr></thead>
-      <tbody>${t.build.quartz.map((r) => `<tr><th>${esc(r[0])}</th><td class="nu">${esc(r[1])}</td><td>${esc(r[2])}</td></tr>`).join("")}</tbody></table>
-    </div>
-    <div class="card"><h3>${esc(t.build.certTitle)}</h3><p>${esc(t.build.cert)}</p></div>
+      <tbody>${t.build.quartz.map((r) => `<tr><th>${esc(r[0])}</th><td class="nu">${esc(r[1])}</td></tr>`).join("")}</tbody></table>
   </div>
+  <h2 class="subhead">${esc(t.build.certTitle)}</h2>
+  <p class="lead">${esc(t.build.cert)}</p>
   <p class="note">${esc(t.build.license)}</p>
 </section>
 

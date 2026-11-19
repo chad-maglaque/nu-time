@@ -2,25 +2,25 @@
 
 **Status:** Public draft for comment · **Steward:** Nu-Time Inc. · **Licence:** CC BY 4.0 · **Updated:** 2026-11-17
 
-Nu:Time™ (刻时 Ke-Shi™) is an open standard for representing time and place. It defines a decimal division of the day, one universal clock for the whole planet, and a single angular unit — the **kè** — shared by time and geography. Its reference is the Earth itself: the day is one turn of the planet, so Nu:Time never needs a leap second.
+Nu:Time™ (刻时 Ke-Shi™) is an open standard for representing time and place. It defines a decimal division of the day, one universal clock for the whole planet, and a single angular unit — the **Kè** — shared by time and geography. Its reference is the Earth itself: the day is one turn of the planet, so Nu:Time never needs a leap second.
 
 ## 1. Units of time
 
 | Unit | Chinese | Fraction of day | Subdivision | Nominal SI duration |
 |---|---|---:|---|---:|
 | Day | 日 rì | 1 | 10 gongs | 86,400 s |
-| **Gong** | 更 gēng | 1/10 | 10 kè · 100 beats | 8,640 s (2 h 24 min) |
-| **Kè** | 刻 kè | 1/100 | 10 beats | 864 s (14.4 min) |
+| **Gong** | 更 gēng | 1/10 | 10 Kè · 100 beats | 8,640 s (2 h 24 min) |
+| **Kè** | 刻 Kè | 1/100 | 10 beats | 864 s (14.4 min) |
 | **Beat** | 分 fēn | 1/1,000 | 100 ticks | 86.4 s |
 | **Tick** | 秒 miǎo | 1/100,000 | — | 0.864 s |
 
-- 1 day = 10 gongs = 100 kè = 1,000 beats = 100,000 ticks.
+- 1 day = 10 gongs = 100 Kè = 1,000 beats = 100,000 ticks.
 - **The Earth is the reference.** A Nu:Time day is one rotation of the Earth (the mean solar day, as measured by UT1), and every unit is an exact fraction of it. SI durations are nominal: as the Earth's rotation varies, a real tick differs from 0.864 s by roughly ten nanoseconds.
 - Nominally, 1 SI second = 1.157407… ticks and 1 hour = 41.666… beats.
 
 ### 1.1 Display format
 
-The canonical display is **`GG:BB:TT`** — gong (00–09), beat within the gong (00–99), tick within the beat (00–99). The kè is the tens digit of `BB`: in `05:37:50`, the time is gong 5, kè 53, beat 537 of the day.
+The canonical display is **`GG:BB:TT`** — gong (00–09), beat within the gong (00–99), tick within the beat (00–99). Kè is the tens digit of `BB`: in `05:37:50`, the time is gong 5, Kè 53, beat 537 of the day.
 
 ```
 ticksOfDay = gong × 10,000 + beatWithinGong × 100 + tickWithinBeat
@@ -36,10 +36,10 @@ Translate the names, never the durations or the field order. `GG:BB:TT` is ident
 
 | Locale | Gong | Kè | Beat | Tick |
 |---|---|---|---|---|
-| English | gong | kè | beat | tick |
-| French / Spanish / Italian | gong | kè | beat | tic |
+| English | gong | Kè | beat | tick |
+| French / Spanish / Italian | gong | Kè | beat | tic |
 | German | Gong | Kè | Beat | Tick |
-| Chinese | 更 gēng | 刻 kè | 分 fēn | 秒 miǎo |
+| Chinese | 更 gēng | 刻 Kè | 分 fēn | 秒 miǎo |
 
 In Chinese, `05:37:50` reads **五更三十七分五十秒**. 更 and 刻 are the historical names of the night watch and of the hundredth of a day; 分 and 秒 make every reading as natural as 时分秒. Where Nu:Time units appear beside SI units and could be confused, write **刻时分** and **刻时秒**.
 
@@ -71,23 +71,23 @@ Devices **may** additionally display, clearly labelled:
 |---|---|---|
 | `utc` (universal) | Midnight at Greenwich | Canonical. Coordination, records, interchange. |
 | `solar` (mean solar) | Local mean solar midnight: universal + longitude/15 h | "Your sun": noon ≈ 05:00:00 at your longitude. |
-| `ke` (kè-quantized solar) | As `solar`, longitude rounded to the nearest kè (3.6°) | Regional solar days in 10-beat steps. |
+| `ke` (Kè-quantized solar) | As `solar`, longitude rounded to the nearest Kè (3.6°) | Regional solar days in 10-beat steps. |
 | `civil` (legacy) | Local wall-clock midnight (IANA zone) | Transition aid during adoption. |
 
 Universal and local values **must never** be mixed silently.
 
-## 3. The kè as an angle
+## 3. Kè as an angle
 
-A full circle is **100 kè**: 1 kè = 3.6°, 1° = 5/18 kè ≈ 0.2778 kè. Because the Earth turns one circle per day, one kè of longitude equals one kè of time.
+A full circle is **100 Kè**: 1 Kè = 3.6°, 1° = 5/18 Kè ≈ 0.2778 Kè. Because the Earth turns one circle per day, one Kè of longitude equals one Kè of time.
 
 ### 3.1 Coordinates
 
-- **Nu:Long** — longitude in kè, 0 to 50 east (positive) or west (negative). 50 kè = 180°. The Prime Meridian (Greenwich) is 0 kè.
-- **Nu:Lat** — latitude in kè, 0 to 25 north (positive) or south (negative). 25 kè = 90°.
+- **Nu:Long** — longitude in Kè, 0 to 50 east (positive) or west (negative). 50 Kè = 180°. The Prime Meridian (Greenwich) is 0 Kè.
+- **Nu:Lat** — latitude in Kè, 0 to 25 north (positive) or south (negative). 25 Kè = 90°.
 
 ### 3.2 Geometry
 
-Kè values are written as decimals, rounded to two places (exact value in kè = degrees × 100 / 360).
+Kè values are written as decimals, rounded to two places (exact value in Kè = degrees × 100 / 360).
 
 | Angle | Kè | Degrees |
 |---|---:|---:|
@@ -102,34 +102,34 @@ Kè values are written as decimals, rounded to two places (exact value in kè = 
 
 ### 3.3 Trigonometry
 
-Trigonometric functions take kè naturally: sin 25 kè = 1, cos 50 kè = −1, sin 75 kè = −1 and cos 100 kè = 1. A wave that repeats daily has a period of exactly 100 kè.
+Trigonometric functions take Kè naturally: sin 25 Kè = 1, cos 50 Kè = −1, sin 75 Kè = −1 and cos 100 Kè = 1. A wave that repeats daily has a period of exactly 100 Kè.
 
 | Angle | Degrees | sin | cos | tan |
 |---|---:|---:|---:|---:|
-| 0 kè | 0° | 0 | 1 | 0 |
-| 8.33 kè | 30° | 1/2 | √3/2 | √3/3 |
-| 12.5 kè | 45° | √2/2 | √2/2 | 1 |
-| 16.67 kè | 60° | √3/2 | 1/2 | √3 |
-| 25 kè | 90° | 1 | 0 | — |
-| 50 kè | 180° | 0 | −1 | 0 |
-| 75 kè | 270° | −1 | 0 | — |
-| 100 kè | 360° | 0 | 1 | 0 |
+| 0 Kè | 0° | 0 | 1 | 0 |
+| 8.33 Kè | 30° | 1/2 | √3/2 | √3/3 |
+| 12.5 Kè | 45° | √2/2 | √2/2 | 1 |
+| 16.67 Kè | 60° | √3/2 | 1/2 | √3 |
+| 25 Kè | 90° | 1 | 0 | — |
+| 50 Kè | 180° | 0 | −1 | 0 |
+| 75 Kè | 270° | −1 | 0 | — |
+| 100 Kè | 360° | 0 | 1 | 0 |
 
 ### 3.4 Dials
 
-An analog Nu:Time dial has no numerals: four quarter marks (0, 25, 50, 75 kè) with zero emphasized, where gong, beat and tick roll over. The dial **should** be turned by the wearer's Nu:Long (rounded to the nearest kè): at Greenwich zero sits at the bottom, and everywhere the gong hand points straight up at local solar noon.
+An analog Nu:Time dial has no numerals: four quarter marks (0, 25, 50, 75 Kè) with zero emphasized, where gong, beat and tick roll over. The dial **should** be turned by the wearer's Nu:Long (rounded to the nearest Kè): at Greenwich zero sits at the bottom, and everywhere the gong hand points straight up at local solar noon.
 
 ## 4. Solar position
 
-Local **mean** solar noon, in universal Nu:Time, at a Nu:Long of *X* kè east:
+Local **mean** solar noon, in universal Nu:Time, at a Nu:Long of *X* Kè east:
 
 ```
-solarNoon = 05:00:00 − X kè = 500 − 10·X beats   (X negative for west)
+solarNoon = 05:00:00 − X Kè = 500 − 10·X beats   (X negative for west)
 ```
 
-Examples: Shanghai (121.47° E = 33.74 kè E) → about `01:62:58`; Delhi (77.21° E = 21.45 kè E) → about `02:85:53`; New York (74.01° W = 20.56 kè W) → about `07:05:57`.
+Examples: Shanghai (121.47° E = 33.74 Kè E) → about `01:62:58`; Delhi (77.21° E = 21.45 Kè E) → about `02:85:53`; New York (74.01° W = 20.56 Kè W) → about `07:05:57`.
 
-**Apparent** (true) solar noon differs from mean solar noon by the equation of time — at most about ±1.1 kè (±16 min) through the year — and implementations displaying the real sun **should** apply it. Sunrise and sunset use the standard horizon depression of 0.833° (0.231 kè) and depend on date and Nu:Lat; near the poles the sun may not rise or set.
+**Apparent** (true) solar noon differs from mean solar noon by the equation of time — at most about ±1.1 Kè (±16 min) through the year — and implementations displaying the real sun **should** apply it. Sunrise and sunset use the standard horizon depression of 0.833° (0.231 Kè) and depend on date and Nu:Lat; near the poles the sun may not rise or set.
 
 Solar calculations **must** use the absolute instant, never a decimal value misread as UTC.
 
@@ -197,7 +197,7 @@ Accuracy is set by the oscillator's ppm error, temperature and ageing, not by th
 
 ## 8. Names and certification
 
-The specification text is licensed CC BY 4.0. The names **Nu:Time™**, **Ke-Shi™**, **刻时™** and their logos are trademarks of Nu-Time Inc. and are not licensed by this document. The names of the units — gong / gēng (更), kè (刻), beat / fēn (分) and tick / miǎo (秒) — are ordinary words and are not claimed by anyone: use them freely. Any implementation may describe itself as "Nu:Time compatible". Implementations passing §6 may apply for the **Nu:Time Certified** mark. Nu-Time Inc. pledges not to assert any patent it holds that is necessarily infringed by implementing this standard.
+The specification text is licensed CC BY 4.0. The names **Nu:Time™**, **Ke-Shi™**, **刻时™** and their logos are trademarks of Nu-Time Inc. and are not licensed by this document. The names of the units — gong / gēng (更), Kè (刻), beat / fēn (分) and tick / miǎo (秒) — are ordinary words and are not claimed by anyone: use them freely. Any implementation may describe itself as "Nu:Time compatible". Implementations passing §6 may apply for the **Nu:Time Certified** mark. Nu-Time Inc. pledges not to assert any patent it holds that is necessarily infringed by implementing this standard.
 
 ## 9. Planned for v1.1
 

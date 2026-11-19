@@ -6,7 +6,7 @@
   "brandLocal": "Nu:Time",
   "meta": {
     "title": "Nu:Time™ – Zeit und Ort neu gedacht",
-    "description": "Nu:Time (刻时 Ke-Shi) ist ein offener Standard für Zeit und Ort: eine Uhrzeit für den ganzen Planeten, ein dezimaler Tag aus 10 Gongs, 100 Kè, 1.000 Beats und 100.000 Ticks – und eine einzige Einheit, das Kè, die beides misst: wann und wo."
+    "description": "Nu:Time (刻时 Ke-Shi) ist ein offener Standard für Zeit und Ort: eine Uhrzeit für den ganzen Planeten, ein dezimaler Tag aus 10 Gongs, 100 Kè, 1.000 Beats und 100.000 Ticks – und eine einzige Einheit namens Kè, die beides misst: wann und wo."
   },
   "nav": {
     "time": "Zeit neu gedacht",
@@ -111,7 +111,7 @@
       {
         "n": "100",
         "unit": "Kè · 刻",
-        "text": "100 Kè am Tag, 100 Kè im Kreis: Das Kè ist die Brücke zwischen Zeit und Ort."
+        "text": "100 Kè am Tag, 100 Kè im Kreis: Kè ist die Brücke zwischen Zeit und Ort."
       }
     ]
   },
@@ -152,110 +152,112 @@
         "180°"
       ],
       [
+        "Regelmäßiges Fünfeck, Innenwinkel",
+        "30 Kè",
+        "108°"
+      ],
+      [
         "Rechter Winkel",
         "25 Kè",
         "90°"
       ],
       [
-        "Gleichseitiges Dreieck",
-        "16,67 Kè",
-        "60°"
+        "Fünftel des Vollwinkels (Fünfeck)",
+        "20 Kè",
+        "72°"
       ],
       [
-        "30-60-90-Dreieck",
-        "8,33 Kè",
-        "30°"
+        "15-Kè-Winkel im rechtwinkligen 10-15-25-Dreieck",
+        "15 Kè",
+        "54°"
       ],
       [
-        "Regelmäßiges Fünfeck, Innenwinkel",
-        "30 Kè",
-        "108°"
+        "Zehntel des Vollwinkels (Zehneck)",
+        "10 Kè",
+        "36°"
+      ],
+      [
+        "Zwanzigstel des Vollwinkels",
+        "5 Kè",
+        "18°"
       ]
     ],
     "colAngle": "Winkel",
     "colKe": "In Kè",
     "colDeg": "In Grad",
-    "trig": "sin 25 Kè = 1, cos 50 Kè = −1, sin 75 Kè = −1 und cos 100 Kè = 1.\n\nEine Welle, die sich täglich wiederholt, hat eine Periode von genau 100 Kè. Zyklen, Umlaufbahnen und Schwingungen teilen sich endlich dieselbe Einheit mit dem Kalender.",
+    "trig": "Eine Welle, die sich täglich wiederholt, hat eine Periode von genau 100 Kè. Zyklen, Umlaufbahnen und Schwingungen teilen sich endlich dieselbe Einheit mit dem Kalender.\n\nsin 25 Kè = 1, cos 50 Kè = −1, sin 75 Kè = −1 und cos 100 Kè = 1.",
     "convertTitle": "Umrechnen",
     "deg": "Grad",
     "keLabel": "Kè",
-    "trigTitle": "Und Trigonometrie für eine neue Zeit.",
-    "trigCols": [
+    "trigTitle": "Wellen und Trigonometrie für eine neue Zeit.",
+    "goldenTitle": "Der Goldene Schnitt, versteckt direkt vor unserer Nase.",
+    "golden": "108°, 72°, 54°, 36°, 18° – krumme Werte, sagst du? Dabei ist es eigentlich nur der Goldene Schnitt, versteckt direkt vor unserer Nase.\n\nLass π einmal beiseite. Der Goldene Schnitt, φ = (1 + √5)/2 ≈ 1,618, ist die Proportion von Fünfeck und Pentagramm, der Grenzwert der Fibonacci-Quotienten, die Spirale der Sonnenblume.\n\nDas Bogenmaß verpackt diese Winkel in π: π/10, π/5, 3π/10, 2π/5. In Kè sind es einfach 5, 10, 15 und 20 – und jeder Sinus und Kosinus lässt sich exakt in φ ausdrücken. Aus vier Werten entsteht der ganze Kreis.",
+    "goldenCols": [
       "Winkel",
       "Grad",
       "sin",
-      "cos",
-      "tan"
+      "cos"
     ],
-    "trigRows": [
+    "goldenRows": [
       [
         "0 Kè",
         "0°",
         "0",
-        "1",
-        "0"
-      ],
-      [
-        "8,33 Kè",
-        "30°",
-        "1/2",
-        "√3/2",
-        "√3/3"
-      ],
-      [
-        "12,5 Kè",
-        "45°",
-        "√2/2",
-        "√2/2",
         "1"
       ],
       [
-        "16,67 Kè",
-        "60°",
-        "√3/2",
-        "1/2",
-        "√3"
+        "5 Kè",
+        "18°",
+        "1/(2φ)",
+        "√(2 + φ)/2"
+      ],
+      [
+        "10 Kè",
+        "36°",
+        "√(3 − φ)/2",
+        "φ/2"
+      ],
+      [
+        "15 Kè",
+        "54°",
+        "φ/2",
+        "√(3 − φ)/2"
+      ],
+      [
+        "20 Kè",
+        "72°",
+        "√(2 + φ)/2",
+        "1/(2φ)"
       ],
       [
         "25 Kè",
         "90°",
         "1",
-        "0",
-        "—"
-      ],
-      [
-        "50 Kè",
-        "180°",
-        "0",
-        "−1",
-        "0"
-      ],
-      [
-        "75 Kè",
-        "270°",
-        "−1",
-        "0",
-        "—"
-      ],
-      [
-        "100 Kè",
-        "360°",
-        "0",
-        "1",
         "0"
       ]
-    ]
+    ],
+    "goldenIdentities": [
+      "2 cos 10 Kè = φ",
+      "2 sin 5 Kè = 1/φ",
+      "2 cos 10 Kè − 2 sin 5 Kè = 1",
+      "cos 10 Kè ÷ sin 5 Kè = φ²",
+      "cos 10 Kè × sin 5 Kè = 1/4"
+    ],
+    "triangleTitle": "Darf ich vorstellen: das 10-15-25-Dreieck.",
+    "triangle": "Das rechtwinklige 30-60-90-Dreieck kennen wir alle, oder? Hier kommt stattdessen das rechtwinklige 10-15-25-Dreieck. Seine Winkel betragen 10, 15 und 25 Kè – zusammen 50, eine halbe Drehung. Gib ihm eine Hypotenuse von 2, und seine längere Kathete ist genau φ. Zehn davon, die sich im Mittelpunkt treffen, ergeben ein regelmäßiges Fünfeck. Es ist das rechtwinklige Dreieck der fünfzähligen Geometrie.",
+    "goldenAngleTitle": "Und jetzt der Goldene Winkel.",
+    "goldenAngle": "Teilst du eine volle Drehung im Goldenen Schnitt, misst der kleinere Bogen 100/φ² ≈ 38,2 Kè (137,5°) – die Drehung von einem Sonnenblumenkern zum nächsten. Dieser Schritt kommt nie mit sich selbst zur Deckung, deshalb füllen die Kerne der Sonnenblume den Blütenkopf ohne Lücken.\n\nKè ist die Geometrie der Natur."
   },
   "heritage": {
-    "title": "Keine neue Idee. Wir haben sie zu Ende gedacht.",
-    "lead": "Große Kulturen haben immer wieder versucht, den Tag vernünftiger einzuteilen. Nu:Time übernimmt ihre Erkenntnisse und ergänzt, was keine von ihnen hatte: einen Planeten, der sich auf denselben Moment einigen kann – egal, wo du bist.",
+    "title": "Keine neue Idee. Wir haben sie nur zu Ende gebracht.",
+    "lead": "Große Kulturen haben immer wieder versucht, den Tag vernünftiger einzuteilen. Nu:Time übernimmt ihre Erkenntnisse und ergänzt, was keine von ihnen hatte: einen Planeten, der sich auf denselben Moment einigen kann – egal, wo du bist –, verbunden durch die Geometrie der Natur.",
     "items": [
       {
         "key": "zh",
         "era": "Antike bis 17. Jh.",
         "place": "China",
-        "title": "Das Kè (刻)",
-        "text": "Über zweitausend Jahre lang teilten chinesische Astronomen den Tag in 100 Kè ein, gemessen mit Wasseruhren – dasselbe Kè, das im Mittelpunkt von Nu:Time steht. Die Nacht war in fünf Wachen gegliedert, die Gēng (更). Der Nu:Time-Standard · 刻时 Ke-Shi gibt Gēng (更) und Kè (刻) ihren angestammten Platz zurück."
+        "title": "Kè (刻)",
+        "text": "Über zweitausend Jahre lang teilten chinesische Astronomen den Tag in 100 Kè ein, gemessen mit Wasseruhren – Kè, dieselbe Einheit, die im Mittelpunkt von Nu:Time steht. Die Nacht war in fünf Wachen gegliedert, die Gēng (更). Der Nu:Time-Standard · 刻时 Ke-Shi gibt Gēng (更) und Kè (刻) ihren angestammten Platz zurück."
       },
       {
         "key": "fr",
@@ -275,7 +277,7 @@
   },
   "why": {
     "title": "Warum jetzt.",
-    "lead": "Die Zeitmessung wird gerade vom Atom aus neu aufgebaut – doch die Art, wie wir Zeit anzeigen, hat sich seit Babylon nicht verändert. Es wird Zeit.",
+    "lead": "Die Zeitmessung wird gerade vom Atom aus neu aufgebaut – doch die Art, wie wir Zeit anzeigen, hat sich seit Babylon nicht verändert. KI ist da. Es wird Zeit.",
     "items": [
       {
         "title": "Die Sekunde wird neu definiert",
@@ -330,7 +332,7 @@
     "items": [
       {
         "title": "Der Standard v1.0",
-        "text": "Einheiten, das Kè, weltweite Synchronisation, geografische Breite und Länge, der 100-Kè-Kreis, der Sonnenstand und der Datensatz nu-time/v1. CC BY 4.0.",
+        "text": "Einheiten, Kè, weltweite Synchronisation, geografische Breite und Länge, der 100-Kè-Kreis, der Sonnenstand und der Datensatz nu-time/v1. CC BY 4.0.",
         "link": "Zum Standard",
         "href": "/spec/"
       },
@@ -342,7 +344,7 @@
       },
       {
         "title": "Open-Hardware-Uhr",
-        "text": "Ein Referenzdesign: stromsparender ARM-Mikrocontroller, GNSS für UTC und Kè-Koordinaten, MIP-Display und ein haptischer Impuls bei jedem Kè. CERN-OHL-P 2.0.",
+        "text": "Ein Referenzdesign: stromsparender ARM-Mikrocontroller, GNSS für UTC und Kè-Koordinaten, MIP-Display und ein haptischer Impuls pro Kè. CERN-OHL-P 2.0.",
         "link": "Zur Hardware-Referenz",
         "href": "/developers/#hardware"
       }

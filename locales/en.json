@@ -6,7 +6,7 @@
   "brandLocal": "Nu:Time",
   "meta": {
     "title": "Nu:Time™ — time and location reimagined",
-    "description": "Nu:Time (刻时 Ke-Shi) is an open standard for time and place: one clock for the whole planet, a decimal day of 10 gongs, 100 kè, 1,000 beats and 100,000 ticks, and a single unit — the kè — that measures both when and where."
+    "description": "Nu:Time (刻时 Ke-Shi) is an open standard for time and place: one clock for the whole planet, a decimal day of 10 gongs, 100 Kè, 1,000 beats and 100,000 ticks, and a single unit — Kè — that measures both when and where."
   },
   "nav": {
     "time": "Time reimagined",
@@ -23,11 +23,11 @@
   },
   "units": {
     "gong": "gong",
-    "ke": "kè",
+    "ke": "Kè",
     "beat": "beat",
     "tick": "tick",
     "gongs": "gongs",
-    "kes": "kè",
+    "kes": "Kè",
     "beats": "beats",
     "ticks": "ticks"
   },
@@ -110,152 +110,154 @@
       },
       {
         "n": "100",
-        "unit": "kè · 刻",
+        "unit": "Kè · 刻",
         "text": "With 100 Kè in a day and 100 in a circle, Kè is the bridge between time and place."
       }
     ]
   },
   "ke": {
     "title": "Kè: one unit for when and where.",
-    "lead": "A full day is 100 kè. A full circle is 100 kè. So the Earth's rotation and the rotation of the four coordinates on the Nu:Time clock face are the same — and time zones disappear.",
+    "lead": "A full day is 100 Kè. A full circle is 100 Kè. So the Earth's rotation and the rotation of the four coordinates on the Nu:Time clock face are the same — and time zones disappear.",
     "facts": [
       {
-        "n": "1 kè",
+        "n": "1 Kè",
         "text": "1/100 of a day"
       },
       {
-        "n": "1 kè",
+        "n": "1 Kè",
         "text": "1/100 of a circle"
       },
       {
         "n": "Longitude",
-        "text": "0 to 50 kè east or west of the Prime Meridian"
+        "text": "0 to 50 Kè east or west of the Prime Meridian"
       },
       {
         "n": "Latitude",
-        "text": "0 to 25 kè north or south of the Equator"
+        "text": "0 to 25 Kè north or south of the Equator"
       }
     ]
   },
   "geometry": {
     "title": "A new era of geometry.",
-    "lead": "Degrees were Babylon's choice. Radians are a mathematician's. The 100-kè circle speaks the same language as your watch and your map — and makes geometry more intuitive.",
+    "lead": "Degrees were Babylon's choice. Radians are a mathematician's. The 100-Kè circle speaks the same language as your watch and your map — and makes geometry more intuitive.",
     "items": [
       [
         "Full turn",
-        "100 kè",
+        "100 Kè",
         "360°"
       ],
       [
         "Sum of a triangle's angles",
-        "50 kè",
+        "50 Kè",
         "180°"
       ],
       [
+        "Regular pentagon, interior",
+        "30 Kè",
+        "108°"
+      ],
+      [
         "Right angle",
-        "25 kè",
+        "25 Kè",
         "90°"
       ],
       [
-        "Equilateral triangle",
-        "16.67 kè",
-        "60°"
+        "Fifth of a turn (pentagon)",
+        "20 Kè",
+        "72°"
       ],
       [
-        "30-60-90 triangle",
-        "8.33 kè",
-        "30°"
+        "Third angle of the 10-15-25 right-angle triangle",
+        "15 Kè",
+        "54°"
       ],
       [
-        "Regular pentagon, interior",
-        "30 kè",
-        "108°"
+        "Tenth of a turn (decagon)",
+        "10 Kè",
+        "36°"
+      ],
+      [
+        "Twentieth of a turn",
+        "5 Kè",
+        "18°"
       ]
     ],
     "colAngle": "Angle",
-    "colKe": "In kè",
+    "colKe": "In Kè",
     "colDeg": "In degrees",
-    "trig": "sin 25 kè = 1, cos 50 kè = −1, sin 75 kè = −1 and cos 100 kè = 1.\n\nA wave that repeats daily has a period of exactly 100 kè. Cycles, orbits and oscillations finally share the same unit with the calendar.",
+    "trig": "A wave that repeats daily has a period of exactly 100 Kè. Cycles, orbits and oscillations finally share the same unit with the calendar.\n\nsin 25 Kè = 1, cos 50 Kè = −1, sin 75 Kè = −1 and cos 100 Kè = 1.",
     "convertTitle": "Convert",
     "deg": "Degrees",
     "keLabel": "Kè",
-    "trigTitle": "And a new era of trigonometry.",
-    "trigCols": [
+    "trigTitle": "Waves and a new era of trigonometry.",
+    "goldenTitle": "The Golden Ratio, hiding in plain sight.",
+    "golden": "108°, 72°, 54°, 36°, 18° — those are odd, you say? But it's really just the Golden Ratio, hiding in plain sight.\n\nSet aside π. The Golden Ratio, φ = (1 + √5)/2 ≈ 1.618, is the proportion of the pentagon and the pentagram, the limit of the Fibonacci sequence, the spiral of the sunflower.\n\nRadians wrap these angles in π: π/10, π/5, 3π/10, 2π/5. In Kè they are simply 5, 10, 15 and 20 — and every sine and cosine is an exact expression in φ. Four values build the whole circle.",
+    "goldenCols": [
       "Angle",
       "Degrees",
       "sin",
-      "cos",
-      "tan"
+      "cos"
     ],
-    "trigRows": [
+    "goldenRows": [
       [
-        "0 kè",
+        "0 Kè",
         "0°",
         "0",
-        "1",
-        "0"
-      ],
-      [
-        "8.33 kè",
-        "30°",
-        "1/2",
-        "√3/2",
-        "√3/3"
-      ],
-      [
-        "12.5 kè",
-        "45°",
-        "√2/2",
-        "√2/2",
         "1"
       ],
       [
-        "16.67 kè",
-        "60°",
-        "√3/2",
-        "1/2",
-        "√3"
+        "5 Kè",
+        "18°",
+        "1/(2φ)",
+        "√(2 + φ)/2"
       ],
       [
-        "25 kè",
+        "10 Kè",
+        "36°",
+        "√(3 − φ)/2",
+        "φ/2"
+      ],
+      [
+        "15 Kè",
+        "54°",
+        "φ/2",
+        "√(3 − φ)/2"
+      ],
+      [
+        "20 Kè",
+        "72°",
+        "√(2 + φ)/2",
+        "1/(2φ)"
+      ],
+      [
+        "25 Kè",
         "90°",
-        "1",
-        "0",
-        "—"
-      ],
-      [
-        "50 kè",
-        "180°",
-        "0",
-        "−1",
-        "0"
-      ],
-      [
-        "75 kè",
-        "270°",
-        "−1",
-        "0",
-        "—"
-      ],
-      [
-        "100 kè",
-        "360°",
-        "0",
         "1",
         "0"
       ]
-    ]
+    ],
+    "goldenIdentities": [
+      "2 cos 10 Kè = φ",
+      "2 sin 5 Kè = 1/φ",
+      "2 cos 10 Kè − 2 sin 5 Kè = 1",
+      "cos 10 Kè ÷ sin 5 Kè = φ²",
+      "cos 10 Kè × sin 5 Kè = 1/4"
+    ],
+    "triangleTitle": "Meet the 10-15-25 triangle.",
+    "triangle": "We all know a 30-60-90 right-angle triangle, right? Meet the 10-15-25 right-angle triangle instead. Its angles are 10, 15 and 25 Kè — adding up to 50, half a turn. Give it a hypotenuse of 2 and its long side is exactly φ. Ten of them, meeting at the centre, make a regular pentagon. It is the right-angle triangle of fivefold geometry.",
+    "goldenAngleTitle": "And now the golden angle.",
+    "goldenAngle": "Divide a full turn in the Golden Ratio and the smaller arc is 100/φ² ≈ 38.2 Kè (137.5°) — the turn from one sunflower seed to the next. The step never lines up with itself, so the seeds of the sunflower fill the head without gaps.\n\nKè is the geometry of nature."
   },
   "heritage": {
-    "title": "Not a new idea. We finished it.",
-    "lead": "Great civilizations have long tried to divide the day more sensibly. Nu:Time borrows their wisdom and adds what none of them had: a planet that can agree on the same moment — no matter where you are.",
+    "title": "Not a new idea. We just finished it.",
+    "lead": "Great civilizations have long tried to divide the day more sensibly. Nu:Time borrows their wisdom and adds what none of them had: a planet that can agree on the same moment — no matter where you are — bound by the geometry of nature.",
     "items": [
       {
         "key": "zh",
         "era": "Antiquity – 17th c.",
         "place": "China",
-        "title": "The kè (刻)",
-        "text": "For more than two thousand years, Chinese astronomers divided the day into 100 kè, measured by water clocks — the same kè at the heart of Nu:Time. Night was kept in five watches, the gēng (更). The Nu:Time Standard · 刻时 Ke-Shi restores the gēng (更) and kè (刻) to their rightful spot."
+        "title": "Kè (刻)",
+        "text": "For more than two thousand years, Chinese astronomers divided the day into 100 Kè, measured by water clocks — Kè, the same unit at the heart of Nu:Time. Night was kept in five watches, the gēng (更). The Nu:Time Standard · 刻时 Ke-Shi restores gēng (更) and Kè (刻) to their rightful spot."
       },
       {
         "key": "fr",
@@ -275,7 +277,7 @@
   },
   "why": {
     "title": "Why now.",
-    "lead": "The measurement of time is now being rebuilt from the atom up, yet the display of time has not changed since Babylon. It's time.",
+    "lead": "The measurement of time is now being rebuilt from the atom up, yet the display of time has not changed since Babylon. AI is here. It's time.",
     "items": [
       {
         "title": "The second is being redefined",
@@ -299,7 +301,7 @@
       },
       {
         "title": "Towards 2035: the world's next standards are being written",
-        "text": "China is actively shaping international standards in emerging technology, and its BeiDou Navigation Satellite System and the National Time Service Center of the Chinese Academy of Sciences are now important forces in how the world keeps time. 刻时 Ke-Shi — rooted in ancient China's hundred-kè day — is offered as an open standard for that work, and for everyone."
+        "text": "China is actively shaping international standards in emerging technology, and its BeiDou Navigation Satellite System and the National Time Service Center of the Chinese Academy of Sciences are now important forces in how the world keeps time. 刻时 Ke-Shi — rooted in ancient China's hundred-Kè day — is offered as an open standard for that work, and for everyone."
       }
     ]
   },
@@ -330,19 +332,19 @@
     "items": [
       {
         "title": "The Standard v1.0",
-        "text": "Units, kè, universal synchronization, latitude and longitude, the 100-kè circle, solar position and the nu-time/v1 record. CC BY 4.0.",
+        "text": "Units, Kè, universal synchronization, latitude and longitude, the 100-Kè circle, solar position and the nu-time/v1 record. CC BY 4.0.",
         "link": "Read the Standard",
         "href": "/spec/"
       },
       {
         "title": "APIs: JavaScript & Python",
-        "text": "Drop-in conversions between UTC and Nu:Time and between degrees and kè, including latitude and longitude — all with shared test vectors. MIT or Apache 2.0.",
+        "text": "Drop-in conversions between UTC and Nu:Time and between degrees and Kè, including latitude and longitude — all with shared test vectors. MIT or Apache 2.0.",
         "link": "Developer docs",
         "href": "/developers/"
       },
       {
         "title": "Open hardware clock",
-        "text": "A reference design: low-power ARM MCU, GNSS for UTC and kè coordinates, MIP display, and a haptic pulse every kè. CERN-OHL-P 2.0.",
+        "text": "A reference design: low-power ARM MCU, GNSS for UTC and Kè coordinates, MIP display, and a haptic pulse every Kè. CERN-OHL-P 2.0.",
         "link": "Hardware reference",
         "href": "/developers/#hardware"
       }
@@ -380,7 +382,7 @@
     "colMethod": "Method",
     "certTitle": "Nu:Time Certified",
     "cert": "Anyone may build to the standard and say \"Nu:Time compatible\". Devices that pass the conformance tests may carry the Nu:Time Certified mark.",
-    "license": "Spec & docs: CC BY 4.0 · Code: MIT or Apache 2.0 · Hardware: CERN-OHL-P 2.0 · Royalty-free patent pledge for implementers. Nu:Time™, Ke-Shi™, 刻时™ and their logos are trademarks of Nu-Time Inc. and are not licensed by the open licences. The unit names — gong (gēng 更), kè (刻), beat and tick — are ordinary words, free for anyone to use."
+    "license": "Spec & docs: CC BY 4.0 · Code: MIT or Apache 2.0 · Hardware: CERN-OHL-P 2.0 · Royalty-free patent pledge for implementers. Nu:Time™, Ke-Shi™, 刻时™ and their logos are trademarks of Nu-Time Inc. and are not licensed by the open licences. The unit names — gong (gēng 更), Kè (刻), beat and tick — are ordinary words, free for anyone to use."
   },
   "join": {
     "title": "Be first. Help set the standard.",

@@ -6,7 +6,7 @@
   "brandLocal": "Nu:Time",
   "meta": {
     "title": "Nu:Time™ — le temps et le lieu, réinventés",
-    "description": "Nu:Time (刻时 Ke-Shi) est un standard ouvert pour le temps et le lieu : une seule horloge pour toute la planète, une journée décimale de 10 gongs, 100 kè, 1 000 beats et 100 000 tics, et une seule unité — le kè — pour mesurer à la fois le quand et le où."
+    "description": "Nu:Time (刻时 Ke-Shi) est un standard ouvert pour le temps et le lieu : une seule horloge pour toute la planète, une journée décimale de 10 gongs, 100 Kè, 1 000 beats et 100 000 tics, et une seule unité — Kè — pour mesurer à la fois le quand et le où."
   },
   "nav": {
     "time": "Le temps réinventé",
@@ -23,11 +23,11 @@
   },
   "units": {
     "gong": "gong",
-    "ke": "kè",
+    "ke": "Kè",
     "beat": "beat",
     "tick": "tic",
     "gongs": "gongs",
-    "kes": "kè",
+    "kes": "Kè",
     "beats": "beats",
     "ticks": "tics"
   },
@@ -110,152 +110,154 @@
       },
       {
         "n": "100",
-        "unit": "kè · 刻",
-        "text": "Avec 100 kè dans une journée et 100 dans un cercle, le kè fait le pont entre le temps et le lieu."
+        "unit": "Kè · 刻",
+        "text": "Avec 100 Kè dans une journée et 100 dans un cercle, Kè fait le pont entre le temps et le lieu."
       }
     ]
   },
   "ke": {
     "title": "Kè : une seule unité pour dire quand et où.",
-    "lead": "Une journée entière, c’est 100 kè. Un tour complet, c’est 100 kè. La rotation de la Terre et celle des quatre coordonnées du cadran Nu:Time sont donc identiques — et les fuseaux horaires disparaissent.",
+    "lead": "Une journée entière, c’est 100 Kè. Un tour complet, c’est 100 Kè. La rotation de la Terre et celle des quatre coordonnées du cadran Nu:Time sont donc identiques — et les fuseaux horaires disparaissent.",
     "facts": [
       {
-        "n": "1 kè",
+        "n": "1 Kè",
         "text": "1/100 de journée"
       },
       {
-        "n": "1 kè",
+        "n": "1 Kè",
         "text": "1/100 de cercle"
       },
       {
         "n": "Longitude",
-        "text": "De 0 à 50 kè à l’est ou à l’ouest du méridien de Greenwich"
+        "text": "De 0 à 50 Kè à l’est ou à l’ouest du méridien de Greenwich"
       },
       {
         "n": "Latitude",
-        "text": "De 0 à 25 kè au nord ou au sud de l’équateur"
+        "text": "De 0 à 25 Kè au nord ou au sud de l’équateur"
       }
     ]
   },
   "geometry": {
     "title": "Une nouvelle ère pour la géométrie.",
-    "lead": "Les degrés, c’était le choix de Babylone. Les radians, celui des mathématiciens. Le cercle de 100 kè parle la même langue que votre montre et votre carte — et rend la géométrie plus intuitive.",
+    "lead": "Les degrés, c’était le choix de Babylone. Les radians, celui des mathématiciens. Le cercle de 100 Kè parle la même langue que votre montre et votre carte — et rend la géométrie plus intuitive.",
     "items": [
       [
         "Tour complet",
-        "100 kè",
+        "100 Kè",
         "360°"
       ],
       [
         "Somme des angles d’un triangle",
-        "50 kè",
+        "50 Kè",
         "180°"
       ],
       [
+        "Pentagone régulier, angle intérieur",
+        "30 Kè",
+        "108°"
+      ],
+      [
         "Angle droit",
-        "25 kè",
+        "25 Kè",
         "90°"
       ],
       [
-        "Triangle équilatéral",
-        "16,67 kè",
-        "60°"
+        "Cinquième de tour (pentagone)",
+        "20 Kè",
+        "72°"
       ],
       [
-        "Triangle 30-60-90",
-        "8,33 kè",
-        "30°"
+        "Angle de 15 Kè du triangle rectangle 10-15-25",
+        "15 Kè",
+        "54°"
       ],
       [
-        "Pentagone régulier, angle intérieur",
-        "30 kè",
-        "108°"
+        "Dixième de tour (décagone)",
+        "10 Kè",
+        "36°"
+      ],
+      [
+        "Vingtième de tour",
+        "5 Kè",
+        "18°"
       ]
     ],
     "colAngle": "Angle",
-    "colKe": "En kè",
+    "colKe": "En Kè",
     "colDeg": "En degrés",
-    "trig": "sin 25 kè = 1, cos 50 kè = −1, sin 75 kè = −1 et cos 100 kè = 1.\n\nUne onde qui se répète chaque jour a une période d’exactement 100 kè. Cycles, orbites et oscillations partagent enfin la même unité que le calendrier.",
+    "trig": "Une onde qui se répète chaque jour a une période d’exactement 100 Kè. Cycles, orbites et oscillations partagent enfin la même unité que le calendrier.\n\nsin 25 Kè = 1, cos 50 Kè = −1, sin 75 Kè = −1 et cos 100 Kè = 1.",
     "convertTitle": "Convertir",
     "deg": "Degrés",
     "keLabel": "Kè",
-    "trigTitle": "Et une nouvelle ère pour la trigonométrie.",
-    "trigCols": [
+    "trigTitle": "Les ondes, et une nouvelle ère pour la trigonométrie.",
+    "goldenTitle": "Le nombre d’or, caché sous nos yeux.",
+    "golden": "108°, 72°, 54°, 36°, 18° — des valeurs étranges, dites-vous ? Ce n’est en fait que le nombre d’or, caché sous nos yeux.\n\nLaissons π de côté. Le nombre d’or, φ = (1 + √5)/2 ≈ 1,618, est la proportion du pentagone et du pentagramme, le rapport limite de la suite de Fibonacci, la spirale du tournesol.\n\nLes radians enveloppent ces angles de π : π/10, π/5, 3π/10, 2π/5. En Kè, ce sont simplement 5, 10, 15 et 20 — et chaque sinus, chaque cosinus s’écrit exactement en fonction de φ. Avec quatre valeurs, on construit tout le cercle.",
+    "goldenCols": [
       "Angle",
       "Degrés",
       "sin",
-      "cos",
-      "tan"
+      "cos"
     ],
-    "trigRows": [
+    "goldenRows": [
       [
-        "0 kè",
+        "0 Kè",
         "0°",
         "0",
-        "1",
-        "0"
-      ],
-      [
-        "8,33 kè",
-        "30°",
-        "1/2",
-        "√3/2",
-        "√3/3"
-      ],
-      [
-        "12,5 kè",
-        "45°",
-        "√2/2",
-        "√2/2",
         "1"
       ],
       [
-        "16,67 kè",
-        "60°",
-        "√3/2",
-        "1/2",
-        "√3"
+        "5 Kè",
+        "18°",
+        "1/(2φ)",
+        "√(2 + φ)/2"
       ],
       [
-        "25 kè",
+        "10 Kè",
+        "36°",
+        "√(3 − φ)/2",
+        "φ/2"
+      ],
+      [
+        "15 Kè",
+        "54°",
+        "φ/2",
+        "√(3 − φ)/2"
+      ],
+      [
+        "20 Kè",
+        "72°",
+        "√(2 + φ)/2",
+        "1/(2φ)"
+      ],
+      [
+        "25 Kè",
         "90°",
-        "1",
-        "0",
-        "—"
-      ],
-      [
-        "50 kè",
-        "180°",
-        "0",
-        "−1",
-        "0"
-      ],
-      [
-        "75 kè",
-        "270°",
-        "−1",
-        "0",
-        "—"
-      ],
-      [
-        "100 kè",
-        "360°",
-        "0",
         "1",
         "0"
       ]
-    ]
+    ],
+    "goldenIdentities": [
+      "2 cos 10 Kè = φ",
+      "2 sin 5 Kè = 1/φ",
+      "2 cos 10 Kè − 2 sin 5 Kè = 1",
+      "cos 10 Kè ÷ sin 5 Kè = φ²",
+      "cos 10 Kè × sin 5 Kè = 1/4"
+    ],
+    "triangleTitle": "Découvrez le triangle 10-15-25.",
+    "triangle": "Le triangle rectangle 30-60-90, tout le monde le connaît, non ? Place plutôt au triangle rectangle 10-15-25. Ses angles mesurent 10, 15 et 25 Kè — 50 au total, soit un demi-tour. Donnez-lui une hypoténuse de 2 : le plus long des côtés de l’angle droit mesure exactement φ. Dix de ces triangles, réunis au centre, forment un pentagone régulier. C’est le triangle rectangle de la géométrie pentagonale.",
+    "goldenAngleTitle": "Et maintenant, l’angle d’or.",
+    "goldenAngle": "Partagez un tour complet selon le nombre d’or : le plus petit arc mesure 100/φ² ≈ 38,2 Kè (137,5°) — la rotation qui sépare une graine de tournesol de la suivante. Ce pas ne revient jamais s’aligner sur lui-même, si bien que les graines du tournesol remplissent le capitule sans laisser de vide.\n\nKè, c’est la géométrie de la nature."
   },
   "heritage": {
-    "title": "Pas une idée neuve. Nous l’avons menée à terme.",
-    "lead": "De grandes civilisations ont longtemps cherché à diviser le jour de façon plus sensée. Nu:Time hérite de leur sagesse et y ajoute ce qu’aucune n’avait : une planète capable de s’accorder sur le même instant — où que vous soyez.",
+    "title": "Pas une idée neuve. Nous l’avons simplement menée à terme.",
+    "lead": "De grandes civilisations ont longtemps cherché à diviser le jour de façon plus sensée. Nu:Time hérite de leur sagesse et y ajoute ce qu’aucune n’avait : une planète capable de s’accorder sur le même instant — où que vous soyez — et unie par la géométrie de la nature.",
     "items": [
       {
         "key": "zh",
         "era": "Antiquité – XVIIᵉ s.",
         "place": "Chine",
-        "title": "Le kè (刻)",
-        "text": "Pendant plus de deux mille ans, les astronomes chinois ont divisé le jour en 100 kè, mesurés à la clepsydre — le kè même qui est au cœur de Nu:Time. La nuit se comptait en cinq veilles, les gēng (更). Le standard Nu:Time · 刻时 Ke-Shi rend au gēng (更) et au kè (刻) la place qui leur revient."
+        "title": "Kè (刻)",
+        "text": "Pendant plus de deux mille ans, les astronomes chinois ont divisé le jour en 100 Kè, mesurés à la clepsydre — Kè, l’unité même qui est au cœur de Nu:Time. La nuit se comptait en cinq veilles, les gēng (更). Le standard Nu:Time · 刻时 Ke-Shi rend à gēng (更) et à Kè (刻) la place qui leur revient."
       },
       {
         "key": "fr",
@@ -275,7 +277,7 @@
   },
   "why": {
     "title": "Pourquoi maintenant.",
-    "lead": "La mesure du temps se reconstruit aujourd’hui à partir de l’atome, mais son affichage n’a pas changé depuis Babylone. Il est temps.",
+    "lead": "La mesure du temps se reconstruit aujourd’hui à partir de l’atome, mais son affichage n’a pas changé depuis Babylone. L’IA est là. Il est temps.",
     "items": [
       {
         "title": "La seconde va être redéfinie",
@@ -299,7 +301,7 @@
       },
       {
         "title": "Cap sur 2035 : les normes mondiales de demain s’écrivent",
-        "text": "La Chine participe activement à l’élaboration des normes internationales dans les technologies émergentes, et son système de navigation par satellite BeiDou comme le Centre national du service du temps (NTSC) de l’Académie chinoise des sciences comptent aujourd’hui parmi les acteurs majeurs de la mesure du temps dans le monde. 刻时 Ke-Shi — enraciné dans le jour de cent kè de la Chine ancienne — est proposé comme standard ouvert pour ce chantier, et pour tous."
+        "text": "La Chine participe activement à l’élaboration des normes internationales dans les technologies émergentes, et son système de navigation par satellite BeiDou comme le Centre national du service du temps (NTSC) de l’Académie chinoise des sciences comptent aujourd’hui parmi les acteurs majeurs de la mesure du temps dans le monde. 刻时 Ke-Shi — enraciné dans le jour de cent Kè de la Chine ancienne — est proposé comme standard ouvert pour ce chantier, et pour tous."
       }
     ]
   },
@@ -330,19 +332,19 @@
     "items": [
       {
         "title": "Le standard v1.0",
-        "text": "Les unités, le kè, la synchronisation universelle, la latitude et la longitude, le cercle de 100 kè, la position du Soleil et l’enregistrement nu-time/v1. CC BY 4.0.",
+        "text": "Les unités, Kè, la synchronisation universelle, la latitude et la longitude, le cercle de 100 Kè, la position du Soleil et l’enregistrement nu-time/v1. CC BY 4.0.",
         "link": "Lire le standard",
         "href": "/spec/"
       },
       {
         "title": "API : JavaScript et Python",
-        "text": "Des conversions prêtes à l’emploi entre UTC et Nu:Time et entre degrés et kè, latitude et longitude comprises — toutes avec des vecteurs de test communs. MIT ou Apache 2.0.",
+        "text": "Des conversions prêtes à l’emploi entre UTC et Nu:Time et entre degrés et Kè, latitude et longitude comprises — toutes avec des vecteurs de test communs. MIT ou Apache 2.0.",
         "link": "Documentation développeurs",
         "href": "/developers/"
       },
       {
         "title": "Horloge en matériel libre",
-        "text": "Une conception de référence : microcontrôleur ARM basse consommation, GNSS pour l’UTC et les coordonnées en kè, écran MIP, et une impulsion haptique à chaque kè. CERN-OHL-P 2.0.",
+        "text": "Une conception de référence : microcontrôleur ARM basse consommation, GNSS pour l’UTC et les coordonnées en Kè, écran MIP, et une impulsion haptique à chaque Kè. CERN-OHL-P 2.0.",
         "link": "Référence matérielle",
         "href": "/developers/#hardware"
       }
@@ -380,7 +382,7 @@
     "colMethod": "Méthode",
     "certTitle": "Nu:Time Certified",
     "cert": "Chacun peut appliquer le standard et présenter son produit comme « compatible Nu:Time ». Les appareils qui réussissent les tests de conformité peuvent porter la marque Nu:Time Certified.",
-    "license": "Spécification et documentation : CC BY 4.0 · Code : MIT ou Apache 2.0 · Matériel : CERN-OHL-P 2.0 · Engagement de licence de brevets sans redevance pour les implémenteurs. Nu:Time™, Ke-Shi™, 刻时™ et leurs logos sont des marques de Nu-Time Inc. et ne sont pas couverts par les licences ouvertes. Les noms des unités — gong (gēng 更), kè (刻), beat et tic — sont des mots ordinaires, libres d’usage pour tous."
+    "license": "Spécification et documentation : CC BY 4.0 · Code : MIT ou Apache 2.0 · Matériel : CERN-OHL-P 2.0 · Engagement de licence de brevets sans redevance pour les implémenteurs. Nu:Time™, Ke-Shi™, 刻时™ et leurs logos sont des marques de Nu-Time Inc. et ne sont pas couverts par les licences ouvertes. Les noms des unités — gong (gēng 更), Kè (刻), beat et tic — sont des mots ordinaires, libres d’usage pour tous."
   },
   "join": {
     "title": "Soyez parmi les premiers. Contribuez au standard.",

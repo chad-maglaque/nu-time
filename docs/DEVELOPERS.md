@@ -12,7 +12,7 @@ Works in browsers and Node; no dependencies. [Download nutime.js](/assets/nutime
 // <script src="https://nu-time.com/assets/nutime.js"></script>  or  const NuTime = require("./nutime.js")
 NuTime.now(Date.now(), "utc").display          // "05:37:50"  universal Nu:Time
 NuTime.now(Date.now(), "solar", { lon: 121.47 }) // your local solar day (Shanghai)
-NuTime.nuLong(121.47)                           // 33.742 kè east
+NuTime.nuLong(121.47)                           // 33.742 Kè east
 NuTime.fields(NuTime.solarNoonTicks(121.47)).display  // "01:62:58" mean solar noon, universal
 NuTime.degreesToKe(90)                          // 25
 NuTime.nuDay(Date.now())                        // 61361  Nu:Day number (no leap years)
@@ -29,7 +29,7 @@ Python 3.8+, standard library only. [nutime.py](/reference/python/nutime.py)
 import nutime
 print(nutime.now())                        # 05:37:50  (universal)
 print(nutime.now("solar", longitude=77.21))  # Delhi solar day
-nutime.nu_long(-74.006)                    # -20.557  (kè west)
+nutime.nu_long(-74.006)                    # -20.557  (Kè west)
 print(nutime.solar_noon(-74.006))          # 07:05:57
 nutime.parse("03:00:00").beats_of_day      # 300.0
 nutime.nu_day(datetime.now(timezone.utc))  # 61361
@@ -65,9 +65,9 @@ The Nu:Time reference clock is an open-hardware design for makers and manufactur
 | MCU | Ultra-low-power Arm Cortex-M4, e.g. STM32L4 | Decimal core, display, sleep management |
 | Nu:Time oscillator | 3.456 MHz quartz + load capacitors | Exactly 2,985,984 cycles per tick |
 | RTC crystal | 32.768 kHz tuning fork | Deep-sleep timekeeping via phase accumulator |
-| GNSS | Multi-constellation (BeiDou, GPS, Galileo, GLONASS), e.g. u-blox M8/M10 | UTC discipline and Nu:Lat/Nu:Long in kè |
+| GNSS | Multi-constellation (BeiDou, GPS, Galileo, GLONASS), e.g. u-blox M8/M10 | UTC discipline and Nu:Lat/Nu:Long in Kè |
 | Display | 1.54" memory-in-pixel LCD or e-ink (SPI) | `GG:BB:TT` and the day ring, near-zero power |
-| Haptics | TI DRV2605L + LRA | A gentle pulse every kè (14.4 min) |
+| Haptics | TI DRV2605L + LRA | A gentle pulse every Kè (14.4 min) |
 | Audio | Piezo buzzer | Optional gong chime |
 | Power | Single-cell LiPo, MCP73831 charger, low-Iq LDO | |
 
@@ -77,7 +77,7 @@ Firmware rules: keep the RTC in UTC; derive Nu:Time from the absolute instant on
 
 Nu:Time™, Ke-Shi™ and 刻时™ are trademarks of Nu-Time Inc. The open licences cover code, docs and designs — not the names or logos.
 
-**Free for everyone:** the unit names — gong / gēng (更), kè (刻), beat / fēn (分) and tick / miǎo (秒) — and the arithmetic itself. Nobody owns them.
+**Free for everyone:** the unit names — gong / gēng (更), Kè (刻), beat / fēn (分) and tick / miǎo (秒) — and the arithmetic itself. Nobody owns them.
 
 **You may, without asking:** say your product is "Nu:Time compatible", "supports the Nu:Time Standard" or "displays Nu:Time"; write about, teach and review Nu:Time.
 

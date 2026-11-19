@@ -6,7 +6,7 @@
   "brandLocal": "Nu:Time",
   "meta": {
     "title": "Nu:Time™ — tempo e lugar, reinventados",
-    "description": "O Nu:Time (刻时 Ke-Shi) é um padrão aberto para o tempo e o lugar: um só relógio para o planeta inteiro, um dia decimal de 10 gongs, 100 kè, 1.000 beats e 100.000 tiques, e uma única unidade — o kè — que mede tanto o quando quanto o onde."
+    "description": "O Nu:Time (刻时 Ke-Shi) é um padrão aberto para o tempo e o lugar: um só relógio para o planeta inteiro, um dia decimal de 10 gongs, 100 Kè, 1.000 beats e 100.000 tiques, e uma única unidade — Kè — que mede tanto o quando quanto o onde."
   },
   "nav": {
     "time": "Tempo reinventado",
@@ -23,11 +23,11 @@
   },
   "units": {
     "gong": "gong",
-    "ke": "kè",
+    "ke": "Kè",
     "beat": "beat",
     "tick": "tique",
     "gongs": "gongs",
-    "kes": "kè",
+    "kes": "Kè",
     "beats": "beats",
     "ticks": "tiques"
   },
@@ -110,152 +110,154 @@
       },
       {
         "n": "100",
-        "unit": "kè · 刻",
-        "text": "Com 100 kè em um dia e 100 em um círculo, o kè é a ponte entre o tempo e o lugar."
+        "unit": "Kè · 刻",
+        "text": "Com 100 Kè em um dia e 100 em um círculo, Kè é a ponte entre o tempo e o lugar."
       }
     ]
   },
   "ke": {
     "title": "Kè: uma só unidade para quando e onde.",
-    "lead": "Um dia inteiro tem 100 kè. Um círculo inteiro tem 100 kè. Assim, a rotação da Terra e a rotação das quatro coordenadas no mostrador do relógio Nu:Time coincidem — e os fusos horários desaparecem.",
+    "lead": "Um dia inteiro tem 100 Kè. Um círculo inteiro tem 100 Kè. Assim, a rotação da Terra e a rotação das quatro coordenadas no mostrador do relógio Nu:Time coincidem — e os fusos horários desaparecem.",
     "facts": [
       {
-        "n": "1 kè",
+        "n": "1 Kè",
         "text": "1/100 de um dia"
       },
       {
-        "n": "1 kè",
+        "n": "1 Kè",
         "text": "1/100 de um círculo"
       },
       {
         "n": "Longitude",
-        "text": "De 0 a 50 kè a leste ou a oeste do meridiano de Greenwich"
+        "text": "De 0 a 50 Kè a leste ou a oeste do meridiano de Greenwich"
       },
       {
         "n": "Latitude",
-        "text": "De 0 a 25 kè ao norte ou ao sul da linha do equador"
+        "text": "De 0 a 25 Kè ao norte ou ao sul da linha do equador"
       }
     ]
   },
   "geometry": {
     "title": "Uma nova era da geometria.",
-    "lead": "Os graus foram escolha da Babilônia. Os radianos, dos matemáticos. O círculo de 100 kè fala a mesma língua do seu relógio e do seu mapa — e torna a geometria mais intuitiva.",
+    "lead": "Os graus foram escolha da Babilônia. Os radianos, dos matemáticos. O círculo de 100 Kè fala a mesma língua do seu relógio e do seu mapa — e torna a geometria mais intuitiva.",
     "items": [
       [
         "Volta completa",
-        "100 kè",
+        "100 Kè",
         "360°"
       ],
       [
         "Soma dos ângulos de um triângulo",
-        "50 kè",
+        "50 Kè",
         "180°"
       ],
       [
+        "Pentágono regular, ângulo interno",
+        "30 Kè",
+        "108°"
+      ],
+      [
         "Ângulo reto",
-        "25 kè",
+        "25 Kè",
         "90°"
       ],
       [
-        "Triângulo equilátero",
-        "16,67 kè",
-        "60°"
+        "Um quinto de volta (pentágono)",
+        "20 Kè",
+        "72°"
       ],
       [
-        "Triângulo 30-60-90",
-        "8,33 kè",
-        "30°"
+        "Ângulo agudo maior do triângulo retângulo 10-15-25",
+        "15 Kè",
+        "54°"
       ],
       [
-        "Pentágono regular, ângulo interno",
-        "30 kè",
-        "108°"
+        "Um décimo de volta (decágono)",
+        "10 Kè",
+        "36°"
+      ],
+      [
+        "Um vigésimo de volta",
+        "5 Kè",
+        "18°"
       ]
     ],
     "colAngle": "Ângulo",
-    "colKe": "Em kè",
+    "colKe": "Em Kè",
     "colDeg": "Em graus",
-    "trig": "sen 25 kè = 1, cos 50 kè = −1, sen 75 kè = −1 e cos 100 kè = 1.\n\nUma onda que se repete todo dia tem período de exatamente 100 kè. Ciclos, órbitas e oscilações finalmente compartilham a mesma unidade com o calendário.",
+    "trig": "Uma onda que se repete todo dia tem período de exatamente 100 Kè. Ciclos, órbitas e oscilações finalmente compartilham a mesma unidade com o calendário.\n\nsen 25 Kè = 1, cos 50 Kè = −1, sen 75 Kè = −1 e cos 100 Kè = 1.",
     "convertTitle": "Converter",
     "deg": "Graus",
     "keLabel": "Kè",
-    "trigTitle": "E uma nova era da trigonometria.",
-    "trigCols": [
+    "trigTitle": "Ondas e uma nova era da trigonometria.",
+    "goldenTitle": "A razão áurea, escondida à vista de todos.",
+    "golden": "108°, 72°, 54°, 36°, 18° — ângulos estranhos, você diria? Mas, na verdade, é só a razão áurea, escondida à vista de todos.\n\nDeixe π de lado. A razão áurea, φ = (1 + √5)/2 ≈ 1,618, é a proporção do pentágono e do pentagrama, o limite das razões da sequência de Fibonacci, a espiral do girassol.\n\nEm radianos, esses ângulos vêm embrulhados em π: π/10, π/5, 3π/10, 2π/5. Em Kè, são simplesmente 5, 10, 15 e 20 — e todos os senos e cossenos são expressões exatas em φ. Quatro valores constroem o círculo inteiro.",
+    "goldenCols": [
       "Ângulo",
       "Graus",
       "sen",
-      "cos",
-      "tg"
+      "cos"
     ],
-    "trigRows": [
+    "goldenRows": [
       [
-        "0 kè",
+        "0 Kè",
         "0°",
         "0",
-        "1",
-        "0"
-      ],
-      [
-        "8,33 kè",
-        "30°",
-        "1/2",
-        "√3/2",
-        "√3/3"
-      ],
-      [
-        "12,5 kè",
-        "45°",
-        "√2/2",
-        "√2/2",
         "1"
       ],
       [
-        "16,67 kè",
-        "60°",
-        "√3/2",
-        "1/2",
-        "√3"
+        "5 Kè",
+        "18°",
+        "1/(2φ)",
+        "√(2 + φ)/2"
       ],
       [
-        "25 kè",
+        "10 Kè",
+        "36°",
+        "√(3 − φ)/2",
+        "φ/2"
+      ],
+      [
+        "15 Kè",
+        "54°",
+        "φ/2",
+        "√(3 − φ)/2"
+      ],
+      [
+        "20 Kè",
+        "72°",
+        "√(2 + φ)/2",
+        "1/(2φ)"
+      ],
+      [
+        "25 Kè",
         "90°",
-        "1",
-        "0",
-        "—"
-      ],
-      [
-        "50 kè",
-        "180°",
-        "0",
-        "−1",
-        "0"
-      ],
-      [
-        "75 kè",
-        "270°",
-        "−1",
-        "0",
-        "—"
-      ],
-      [
-        "100 kè",
-        "360°",
-        "0",
         "1",
         "0"
       ]
-    ]
+    ],
+    "goldenIdentities": [
+      "2 cos 10 Kè = φ",
+      "2 sen 5 Kè = 1/φ",
+      "2 cos 10 Kè − 2 sen 5 Kè = 1",
+      "cos 10 Kè ÷ sen 5 Kè = φ²",
+      "cos 10 Kè × sen 5 Kè = 1/4"
+    ],
+    "triangleTitle": "Conheça o triângulo 10-15-25.",
+    "triangle": "Todo mundo conhece o triângulo retângulo 30-60-90, certo? Agora, em vez dele, conheça o triângulo retângulo 10-15-25. Seus ângulos medem 10, 15 e 25 Kè — somando 50, meia volta. Dê a ele uma hipotenusa de 2 e o cateto maior mede exatamente φ. Dez deles, unidos no centro, formam um pentágono regular. É o triângulo retângulo da geometria pentagonal.",
+    "goldenAngleTitle": "E agora, o ângulo áureo.",
+    "goldenAngle": "Divida uma volta completa na razão áurea e o arco menor mede 100/φ² ≈ 38,2 Kè (137,5°) — o giro de uma semente de girassol para a seguinte. Esse passo nunca volta a se alinhar consigo mesmo, por isso as sementes do girassol preenchem o miolo sem deixar vazios.\n\nKè é a geometria da natureza."
   },
   "heritage": {
-    "title": "Não é uma ideia nova. Nós a concluímos.",
-    "lead": "Grandes civilizações tentaram, por muito tempo, dividir o dia de um jeito mais sensato. O Nu:Time aproveita essa sabedoria e acrescenta o que nenhuma delas tinha: um planeta inteiro capaz de concordar sobre o mesmo momento — não importa onde você esteja.",
+    "title": "Não é uma ideia nova. Nós só a concluímos.",
+    "lead": "Grandes civilizações tentaram, por muito tempo, dividir o dia de um jeito mais sensato. O Nu:Time aproveita essa sabedoria e acrescenta o que nenhuma delas tinha: um planeta inteiro capaz de concordar sobre o mesmo momento — não importa onde você esteja — e unido pela geometria da natureza.",
     "items": [
       {
         "key": "zh",
         "era": "Antiguidade – séc. XVII",
         "place": "China",
-        "title": "O kè (刻)",
-        "text": "Por mais de dois mil anos, os astrônomos chineses dividiram o dia em 100 kè, medidos por relógios de água — o mesmo kè que está no coração do Nu:Time. A noite era dividida em cinco vigílias, os gēng (更). O Padrão Nu:Time · 刻时 Ke-Shi devolve ao gēng (更) e ao kè (刻) o lugar que é deles por direito."
+        "title": "Kè (刻)",
+        "text": "Por mais de dois mil anos, os astrônomos chineses dividiram o dia em 100 Kè, medidos por relógios de água — Kè, a mesma unidade que está no coração do Nu:Time. A noite era dividida em cinco vigílias, os gēng (更). O Padrão Nu:Time · 刻时 Ke-Shi devolve gēng (更) e Kè (刻) ao lugar que é deles por direito."
       },
       {
         "key": "fr",
@@ -275,7 +277,7 @@
   },
   "why": {
     "title": "Por que agora.",
-    "lead": "A medição do tempo está sendo reconstruída a partir do átomo, mas a forma de mostrar as horas não muda desde a Babilônia. Chegou a hora.",
+    "lead": "A medição do tempo está sendo reconstruída a partir do átomo, mas a forma de mostrar as horas não muda desde a Babilônia. A IA já está aqui. Chegou a hora.",
     "items": [
       {
         "title": "O segundo está sendo redefinido",
@@ -299,7 +301,7 @@
       },
       {
         "title": "Rumo a 2035: os próximos padrões do mundo estão sendo escritos",
-        "text": "A China está moldando ativamente padrões internacionais em tecnologias emergentes, e o Sistema de Navegação por Satélite BeiDou e o National Time Service Center da Academia Chinesa de Ciências são hoje forças importantes na forma como o mundo mede o tempo. O 刻时 Ke-Shi — enraizado no dia de cem kè da China antiga — é oferecido como padrão aberto para esse trabalho, e para todos."
+        "text": "A China está moldando ativamente padrões internacionais em tecnologias emergentes, e o Sistema de Navegação por Satélite BeiDou e o National Time Service Center da Academia Chinesa de Ciências são hoje forças importantes na forma como o mundo mede o tempo. O 刻时 Ke-Shi — enraizado no dia de cem Kè da China antiga — é oferecido como padrão aberto para esse trabalho, e para todos."
       }
     ]
   },
@@ -330,19 +332,19 @@
     "items": [
       {
         "title": "O Padrão v1.0",
-        "text": "Unidades, kè, sincronização universal, latitude e longitude, o círculo de 100 kè, posição solar e o registro nu-time/v1. CC BY 4.0.",
+        "text": "Unidades, Kè, sincronização universal, latitude e longitude, o círculo de 100 Kè, posição solar e o registro nu-time/v1. CC BY 4.0.",
         "link": "Ler o Padrão",
         "href": "/spec/"
       },
       {
         "title": "APIs: JavaScript e Python",
-        "text": "Conversões prontas para usar entre UTC e Nu:Time e entre graus e kè, também para latitude e longitude — todas com vetores de teste compartilhados. MIT ou Apache 2.0.",
+        "text": "Conversões prontas para usar entre UTC e Nu:Time e entre graus e Kè, também para latitude e longitude — todas com vetores de teste compartilhados. MIT ou Apache 2.0.",
         "link": "Documentação técnica",
         "href": "/developers/"
       },
       {
         "title": "Relógio em hardware aberto",
-        "text": "Um projeto de referência: MCU ARM de baixo consumo, GNSS para UTC e coordenadas em kè, tela MIP e um pulso háptico a cada kè. CERN-OHL-P 2.0.",
+        "text": "Um projeto de referência: MCU ARM de baixo consumo, GNSS para UTC e coordenadas em Kè, tela MIP e um pulso háptico a cada Kè. CERN-OHL-P 2.0.",
         "link": "Referência de hardware",
         "href": "/developers/#hardware"
       }
@@ -380,7 +382,7 @@
     "colMethod": "Método",
     "certTitle": "Nu:Time Certified",
     "cert": "Qualquer pessoa pode desenvolver de acordo com o padrão e dizer \"compatível com Nu:Time\". Dispositivos aprovados nos testes de conformidade podem levar o selo Nu:Time Certified.",
-    "license": "Especificação e documentação: CC BY 4.0 · Código: MIT ou Apache 2.0 · Hardware: CERN-OHL-P 2.0 · Compromisso de não cobrar royalties de patentes de quem implementar o padrão. Nu:Time™, Ke-Shi™, 刻时™ e seus logotipos são marcas comerciais da Nu-Time Inc. e não estão cobertos pelas licenças abertas. Os nomes das unidades — gong (gēng 更), kè (刻), beat e tique — são palavras comuns, livres para qualquer pessoa usar."
+    "license": "Especificação e documentação: CC BY 4.0 · Código: MIT ou Apache 2.0 · Hardware: CERN-OHL-P 2.0 · Compromisso de não cobrar royalties de patentes de quem implementar o padrão. Nu:Time™, Ke-Shi™, 刻时™ e seus logotipos são marcas comerciais da Nu-Time Inc. e não estão cobertos pelas licenças abertas. Os nomes das unidades — gong (gēng 更), Kè (刻), beat e tique — são palavras comuns, livres para qualquer pessoa usar."
   },
   "join": {
     "title": "Saia na frente. Ajude a definir o padrão.",

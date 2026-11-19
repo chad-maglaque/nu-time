@@ -15,9 +15,9 @@
 
   // Localized labels. Translate the labels, never the durations or the field order.
   var LABELS = {
-    en: { gong: "gong", ke: "kè", beat: "beat", tick: "tick" }, fr: { gong: "gong", ke: "kè", beat: "beat", tick: "tic" },
-    it: { gong: "gong", ke: "kè", beat: "beat", tick: "tic" },  de: { gong: "Gong", ke: "Kè", beat: "Beat", tick: "Tick" },
-    es: { gong: "gong", ke: "kè", beat: "beat", tick: "tic" },
+    en: { gong: "gong", ke: "Kè", beat: "beat", tick: "tick" }, fr: { gong: "gong", ke: "Kè", beat: "beat", tick: "tic" },
+    it: { gong: "gong", ke: "Kè", beat: "beat", tick: "tic" },  de: { gong: "Gong", ke: "Kè", beat: "Beat", tick: "Tick" },
+    es: { gong: "gong", ke: "Kè", beat: "beat", tick: "tic" },
     zh: { gong: "更", ke: "刻", beat: "分", tick: "秒" }
   };
 
@@ -133,17 +133,17 @@
   /** Nu:Day number (Modified Julian Day): whole days since midnight at Greenwich, 1858-11-17. No leap years. */
   function nuDay(ms) { return Math.floor(ms / DAY_MS) + 40587; }
 
-  // ── the kè: 1/100 of a day = 1/100 of a circle = 3.6° ──
+  // ── Kè: 1/100 of a day = 1/100 of a circle = 3.6° ──
   function degreesToKe(deg) { return deg * 100 / 360; }
   function keToDegrees(ke) { return ke * 360 / 100; }
-  /** Nu:Long in kè, east positive, normalized to (-50, 50]. */
+  /** Nu:Long in Kè, east positive, normalized to (-50, 50]. */
   function nuLong(lonDeg) { var k = mod(degreesToKe(lonDeg) + 50, 100) - 50; return k === -50 ? 50 : k; }
-  /** Nu:Lat in kè, north positive, -25..25. */
+  /** Nu:Lat in Kè, north positive, -25..25. */
   function nuLat(latDeg) { return degreesToKe(latDeg); }
-  /** Mean solar noon at a longitude, as a universal tick-of-day (05:00:00 minus 10 beats per kè east). */
+  /** Mean solar noon at a longitude, as a universal tick-of-day (05:00:00 minus 10 beats per Kè east). */
   function solarNoonTicks(lonDeg) { return mod(Math.round(50000 - nuLong(lonDeg) * 1000), TICKS); }
-  /** "32.34 kè E" style formatting. */
-  function formatKe(ke, pos, neg, digits) { return Math.abs(ke).toFixed(digits == null ? 2 : digits) + " kè " + (ke >= 0 ? pos : neg); }
+  /** "32.34 Kè E" style formatting. */
+  function formatKe(ke, pos, neg, digits) { return Math.abs(ke).toFixed(digits == null ? 2 : digits) + " Kè " + (ke >= 0 ? pos : neg); }
 
   var api = { DAY_MS: DAY_MS, TICKS: TICKS, LABELS: LABELS, fields: fields, ticksFromMs: ticksFromMs,
               degreesToKe: degreesToKe, keToDegrees: keToDegrees, nuLong: nuLong, nuLat: nuLat,
