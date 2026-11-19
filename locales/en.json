@@ -64,7 +64,7 @@
   },
   "eliminates": {
     "title": "the things you never understood anyway — things like: 24 hours, AM and PM, 60 minutes, 60 seconds, time zones, Daylight Saving, leap seconds and the International Date Line!",
-    "tail": "While keeping the things that matter — the moment and place you're in, along with the sun's position in the sky.",
+    "tail": "While keeping the things that matter — the time and place you're in, along with the sun's position in the sky.",
     "heading": "Nu:Time eliminates"
   },
   "time": {
@@ -250,7 +250,7 @@
   },
   "heritage": {
     "title": "Not a new idea. We just finished it.",
-    "lead": "Great civilizations have long tried to divide the day more sensibly. Nu:Time borrows their wisdom and adds what none of them had: a planet that can agree on the same moment — no matter where you are — bound by the geometry of nature.",
+    "lead": "Great civilizations have long tried to divide the day more sensibly. Nu:Time borrows their wisdom and adds what none of them had: a planet that can agree on the same time — no matter where you are — bound by the geometry of nature.",
     "items": [
       {
         "key": "zh",

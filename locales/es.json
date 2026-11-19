@@ -64,7 +64,7 @@
   },
   "eliminates": {
     "title": "todo eso que nunca acabaste de entender: cosas como las 24 horas, el a. m. y el p. m., los 60 minutos, los 60 segundos, los husos horarios, el horario de verano, los segundos intercalares ¡y la línea internacional de cambio de fecha!",
-    "tail": "Y conserva lo que importa: el momento y el lugar en que estás, junto con la posición del sol en el cielo.",
+    "tail": "Y conserva lo que importa: la hora y el lugar en que estás, junto con la posición del sol en el cielo.",
     "heading": "Nu:Time elimina"
   },
   "time": {
@@ -250,7 +250,7 @@
   },
   "heritage": {
     "title": "No es una idea nueva. Solo la completamos.",
-    "lead": "Desde hace mucho, grandes civilizaciones han intentado dividir el día de forma más sensata. Nu:Time recoge su sabiduría y añade lo que ninguna tuvo: un planeta capaz de ponerse de acuerdo sobre un mismo momento, estés donde estés, y unido por la geometría de la naturaleza.",
+    "lead": "Desde hace mucho, grandes civilizaciones han intentado dividir el día de forma más sensata. Nu:Time recoge su sabiduría y añade lo que ninguna tuvo: un planeta capaz de ponerse de acuerdo sobre una misma hora, estés donde estés, y unido por la geometría de la naturaleza.",
     "items": [
       {
         "key": "zh",

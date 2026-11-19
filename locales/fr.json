@@ -64,7 +64,7 @@
   },
   "eliminates": {
     "title": "Adieu à tout ce que vous n’avez jamais vraiment compris — par exemple : les 24 heures, l’AM et le PM des anglophones, les 60 minutes, les 60 secondes, les fuseaux horaires, le passage à l’heure d’été, les secondes intercalaires et la ligne de changement de date !",
-    "tail": "Tout en gardant ce qui compte — l’instant et le lieu où vous êtes, ainsi que la position du Soleil dans le ciel.",
+    "tail": "Tout en gardant ce qui compte — l’heure et le lieu où vous êtes, ainsi que la position du Soleil dans le ciel.",
     "heading": "Nu:Time fait table rase"
   },
   "time": {
@@ -250,7 +250,7 @@
   },
   "heritage": {
     "title": "Pas une idée neuve. Nous l’avons simplement menée à terme.",
-    "lead": "De grandes civilisations ont longtemps cherché à diviser le jour de façon plus sensée. Nu:Time hérite de leur sagesse et y ajoute ce qu’aucune n’avait : une planète capable de s’accorder sur le même instant — où que vous soyez — et unie par la géométrie de la nature.",
+    "lead": "De grandes civilisations ont longtemps cherché à diviser le jour de façon plus sensée. Nu:Time hérite de leur sagesse et y ajoute ce qu’aucune n’avait : une planète capable de s’accorder sur la même heure — où que vous soyez — et unie par la géométrie de la nature.",
     "items": [
       {
         "key": "zh",

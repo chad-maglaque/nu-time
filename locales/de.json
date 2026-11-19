@@ -64,7 +64,7 @@
   },
   "eliminates": {
     "title": "mit allem, was du ohnehin nie verstanden hast – zum Beispiel: 24 Stunden, AM und PM, 60 Minuten, 60 Sekunden, Zeitzonen, Sommerzeit, Schaltsekunden und der Datumsgrenze!",
-    "tail": "Und behält, was wirklich zählt – den Moment und den Ort, an dem du bist, und dazu den Stand der Sonne am Himmel.",
+    "tail": "Und behält, was wirklich zählt – die Zeit und den Ort, an dem du bist, und dazu den Stand der Sonne am Himmel.",
     "heading": "Nu:Time macht Schluss"
   },
   "time": {
@@ -250,7 +250,7 @@
   },
   "heritage": {
     "title": "Keine neue Idee. Wir haben sie nur zu Ende gebracht.",
-    "lead": "Große Kulturen haben immer wieder versucht, den Tag vernünftiger einzuteilen. Nu:Time übernimmt ihre Erkenntnisse und ergänzt, was keine von ihnen hatte: einen Planeten, der sich auf denselben Moment einigen kann – egal, wo du bist –, verbunden durch die Geometrie der Natur.",
+    "lead": "Große Kulturen haben immer wieder versucht, den Tag vernünftiger einzuteilen. Nu:Time übernimmt ihre Erkenntnisse und ergänzt, was keine von ihnen hatte: einen Planeten, der sich auf dieselbe Zeit einigen kann – egal, wo du bist –, verbunden durch die Geometrie der Natur.",
     "items": [
       {
         "key": "zh",

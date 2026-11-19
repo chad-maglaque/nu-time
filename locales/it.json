@@ -64,7 +64,7 @@
   },
   "eliminates": {
     "title": "tutte quelle cose che, diciamolo, non hai mai capito — cose come: le 24 ore, AM e PM, i 60 minuti, i 60 secondi, i fusi orari, l'ora legale, i secondi intercalari e la linea del cambio di data!",
-    "tail": "E tiene ciò che conta davvero — il momento e il luogo in cui ti trovi, insieme alla posizione del sole nel cielo.",
+    "tail": "E tiene ciò che conta davvero — l'ora e il luogo in cui ti trovi, insieme alla posizione del sole nel cielo.",
     "heading": "Nu:Time elimina"
   },
   "time": {
@@ -250,7 +250,7 @@
   },
   "heritage": {
     "title": "Non è un'idea nuova. Noi l'abbiamo solo portata a compimento.",
-    "lead": "Da secoli le grandi civiltà cercano di dividere il giorno in modo più sensato. Nu:Time ne raccoglie la saggezza e aggiunge ciò che nessuna di loro aveva: un intero pianeta d'accordo sullo stesso istante — ovunque tu sia — unito dalla geometria della natura.",
+    "lead": "Da secoli le grandi civiltà cercano di dividere il giorno in modo più sensato. Nu:Time ne raccoglie la saggezza e aggiunge ciò che nessuna di loro aveva: un intero pianeta d'accordo sulla stessa ora — ovunque tu sia — unito dalla geometria della natura.",
     "items": [
       {
         "key": "zh",
