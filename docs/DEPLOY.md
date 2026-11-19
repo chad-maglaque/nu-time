@@ -28,7 +28,7 @@ The **Join** form must save every signup somewhere. In production it saves to Up
 
 Nu:Time is an open standard, so **nu-time.org** is the domain of record. **nu-time.com** and **nutime.org** (and all three `www`) 301-redirect to it, keeping the path and query. All three zones are on **Cloudflare DNS** (free), DNS only (grey cloud); the site is served by Vercel.
 
-Only named addresses forward, through Cloudflare **Email Routing** (free), to the owner's work inbox: **info@**, **press@**, **privacy@**, **standards@** and **legal@nu-time.org** (the ones the site shows), the same five at nutime.org, and the older info@, press@, privacy@ and standards@nu-time.com. Mail to any other address is dropped: the catch-all stays off on all three zones. The list is `MAIL_ADDRESSES` in the script.
+Only named addresses forward, through Cloudflare **Email Routing** (free), to the owner's work inbox: **info@**, **press@**, **privacy@**, **standards@** and **legal@nu-time.org** (the ones the site shows), and the same five at nutime.org and nu-time.com. Mail to any other address is dropped: the catch-all stays off on all three zones. The list is `MAIL_ADDRESSES` in the script.
 
 The commercial watch domains (**nu-watch.com, nu.watch, nu-beat.com**) are separate and are not part of this setup. Nothing here touches them.
 
