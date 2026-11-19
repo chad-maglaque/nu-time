@@ -34,7 +34,7 @@
   "hero": {
     "eyebrow": "Lo standard Nu:Time · 刻时 Ke-Shi",
     "title": "tempo e luogo, ripensati.",
-    "sub": "Un solo orologio per tutto il pianeta, con una giornata scandita da 10 gong, 1.000 beat e 100.000 tic. E un'unica unità — il kè — che unisce tempo e spazio: 100 kè fanno un giro completo e misurano sia quando sia dove ti trovi sulla Terra.",
+    "sub": "Un solo orologio per tutto il pianeta, che unisce tempo e spazio. Misura sia quando sia dove ti trovi sulla Terra.",
     "ctaExplore": "Scopri di più",
     "ctaJoin": "Partecipa al lancio",
     "clockLabel": "Nu:Time universale, adesso",
@@ -50,7 +50,7 @@
     "polarDay": "Il sole non tramonta",
     "polarNight": "Il sole non sorge",
     "dayBar": "La giornata di oggi dove ti trovi, in Nu:Time universale",
-    "dialHint": "Nu:Time è lo stesso per tutti, ovunque sulla Terra. Il quadrante di un orologio Nu:Time ruota in base alla tua posizione e mantiene un riferimento fisso al meridiano di Greenwich.\n\nIl mezzogiorno solare è sempre in cima al quadrante, in qualunque punto del pianeta tu sia. Mentre il sole attraversa il cielo, tre lancette segnano lo scorrere del tempo: la lancetta rossa compie un giro al giorno, quella blu un giro ogni gong e quella dorata un giro ogni beat, scandendo i tic che passano.",
+    "dialHint": "Nu:Time è lo stesso per tutti — ovunque tu sia. A differenza di un normale orologio, le quattro coordinate sul quadrante Nu:Time ruotano in base alla tua posizione e mantengono un riferimento fisso al meridiano di Greenwich.\n\nIl mezzogiorno solare è sempre in cima al quadrante e, mentre il sole attraversa il cielo, tre lancette segnano lo scorrere del tempo: la lancetta rossa compie un giro al giorno, quella blu un giro ogni gong e quella dorata un giro ogni beat, scandendo i tic che passano.",
     "choose": "Scegli un luogo",
     "current": "Posizione attuale (rilevamento automatico)",
     "locating": "Rilevamento della posizione…",
@@ -63,13 +63,13 @@
     "tryIt": "Provalo anche tu!"
   },
   "eliminates": {
-    "title": "tutte quelle cose che, diciamolo, non hai mai capito: le 24 ore, AM e PM, i 60 minuti, i 60 secondi, i fusi orari, l'ora legale, i secondi intercalari e la linea del cambio di data!",
-    "tail": "E tiene solo ciò che conta davvero: l'istante che stai vivendo e la posizione del sole nel cielo.",
-    "heading": "Nu:Time elimina."
+    "title": "tutte quelle cose che, diciamolo, non hai mai capito — cose come: le 24 ore, AM e PM, i 60 minuti, i 60 secondi, i fusi orari, l'ora legale, i secondi intercalari e la linea del cambio di data!",
+    "tail": "E tiene ciò che conta davvero — il momento e il luogo in cui ti trovi, insieme alla posizione del sole nel cielo.",
+    "heading": "Nu:Time elimina"
   },
   "time": {
     "title": "Il tempo, ripensato.",
-    "lead": "Con Nu:Time, ogni luogo della Terra ha la stessa ora, nello stesso istante. Il posto in cui ti trovi non cambia più l'ora: cambia solo la posizione del sole e il momento in cui albeggia e tramonta.",
+    "lead": "Nu:Time è lo stesso per tutti — ovunque tu sia. Il posto in cui ti trovi non cambia più l'ora.",
     "points": [
       {
         "title": "Un'ora per tutti",
@@ -91,7 +91,7 @@
   },
   "how": {
     "title": "L'intero sistema sta in una riga.",
-    "lead": "Ogni unità è una potenza di dieci. Ogni display si legge allo stesso modo: gong:beat:tic.",
+    "lead": "Ogni unità è una potenza di dieci. Ogni display si legge allo stesso modo — gong : beat : tic.",
     "cards": [
       {
         "n": "10",
@@ -117,7 +117,7 @@
   },
   "ke": {
     "title": "Il kè: una sola unità per il quando e il dove.",
-    "lead": "Un giorno intero dura 100 kè. Un giro completo misura 100 kè. Così la rotazione della Terra e il giro dell'orologio si esprimono con lo stesso numero — e i fusi orari scompaiono.",
+    "lead": "Un giorno intero dura 100 kè. Un giro completo misura 100 kè. Così la rotazione della Terra e quella delle quattro coordinate sul quadrante Nu:Time coincidono — e i fusi orari scompaiono.",
     "facts": [
       {
         "n": "1 kè",
@@ -147,7 +147,7 @@
         "360°"
       ],
       [
-        "Angolo piatto · somma degli angoli di un triangolo",
+        "Somma degli angoli di un triangolo",
         "50 kè",
         "180°"
       ],
@@ -162,7 +162,7 @@
         "60°"
       ],
       [
-        "Triangolo rettangolo, angolo di 30°",
+        "Triangolo 30-60-90",
         "8,33 kè",
         "30°"
       ],
@@ -179,7 +179,7 @@
     "convertTitle": "Converti",
     "deg": "Gradi",
     "keLabel": "Kè",
-    "trigTitle": "Una nuova era per la trigonometria.",
+    "trigTitle": "E una nuova era per la trigonometria.",
     "trigCols": [
       "Angolo",
       "Gradi",
@@ -247,8 +247,8 @@
     ]
   },
   "heritage": {
-    "title": "Non è un'idea nuova. È un'idea compiuta.",
-    "lead": "Da secoli le grandi civiltà cercano di dividere il giorno in modo più sensato. Nu:Time ne raccoglie la saggezza e aggiunge ciò che nessuna di loro aveva: un intero pianeta d'accordo sullo stesso istante.",
+    "title": "Non è un'idea nuova, ma l'abbiamo portata a compimento.",
+    "lead": "Da secoli le grandi civiltà cercano di dividere il giorno in modo più sensato. Nu:Time ne raccoglie la saggezza e aggiunge ciò che nessuna di loro aveva: un intero pianeta d'accordo sullo stesso istante — ovunque tu sia.",
     "items": [
       {
         "key": "zh",
@@ -262,14 +262,14 @@
         "era": "1793 – 1795",
         "place": "Francia",
         "title": "La Rivoluzione decimale",
-        "text": "La Francia rivoluzionaria divise il giorno in 10 ore da 100 minuti da 100 secondi: esattamente come il gong, il beat e il tic di Nu:Time. Il metro e il chilogrammo hanno conquistato il mondo; il tempo decimale è semplicemente arrivato troppo presto."
+        "text": "La Francia rivoluzionaria divise il giorno in 10 ore, l'ora in 100 minuti e il minuto in 100 secondi: esattamente come il gong, il beat e il tic di Nu:Time. Il metro e il chilogrammo hanno conquistato il mondo; il tempo decimale è semplicemente arrivato troppo presto."
       },
       {
         "key": "es",
         "era": "1940 – oggi",
         "place": "Spagna",
-        "title": "Un paese nel fuso orario sbagliato",
-        "text": "La Spagna si trova in gran parte a ovest di Greenwich, eppure nel 1940 ha adottato l'ora dell'Europa centrale. I suoi orologi sono avanti di un'ora o più rispetto al sole: un esempio concreto di come i fusi orari incidano sulla vita di tutti i giorni."
+        "title": "Un intero paese nel fuso orario sbagliato",
+        "text": "La Spagna si trova in gran parte a ovest di Greenwich, eppure nel 1940 ha adottato l'ora dell'Europa centrale. I suoi orologi sono ancora avanti di un'ora o più rispetto al sole: un esempio concreto di come i fusi orari incidano sulla vita di tutti i giorni."
       }
     ]
   },
@@ -330,13 +330,13 @@
     "items": [
       {
         "title": "Lo standard v1.0",
-        "text": "Le unità, il kè, la sincronizzazione universale, Nu:Lat/Nu:Long, il cerchio da 100 kè, la posizione del sole e il record nu-time/v1. CC BY 4.0.",
+        "text": "Le unità, il kè, la sincronizzazione universale, latitudine e longitudine, il cerchio da 100 kè, la posizione del sole e il record nu-time/v1. CC BY 4.0.",
         "link": "Leggi lo standard",
         "href": "/spec/"
       },
       {
         "title": "API: JavaScript e Python",
-        "text": "Conversioni pronte all'uso tra UTC e Nu:Time, gradi e kè, latitudine/longitudine e Nu:Lat/Nu:Long, con vettori di test condivisi. MIT o Apache 2.0.",
+        "text": "Conversioni pronte all'uso tra UTC e Nu:Time e tra gradi e kè, anche per latitudine e longitudine — tutte con vettori di test condivisi. MIT o Apache 2.0.",
         "link": "Documentazione per sviluppatori",
         "href": "/developers/"
       },

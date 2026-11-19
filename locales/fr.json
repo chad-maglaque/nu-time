@@ -34,7 +34,7 @@
   "hero": {
     "eyebrow": "Le standard Nu:Time · 刻时 Ke-Shi",
     "title": "le temps et le lieu, réinventés.",
-    "sub": "Une seule horloge pour toute la planète, et une journée rythmée par 10 gongs, 1 000 beats et 100 000 tics. Et une seule unité — le kè — pour relier le temps et l’espace : 100 kè font un tour complet, et disent à la fois quand et où vous êtes sur Terre.",
+    "sub": "Une seule horloge pour toute la planète, qui relie le temps et l’espace. Elle mesure à la fois quand et où vous êtes sur Terre.",
     "ctaExplore": "En savoir plus",
     "ctaJoin": "Participer au lancement",
     "clockLabel": "heure universelle Nu:Time, en ce moment",
@@ -50,7 +50,7 @@
     "polarDay": "Le soleil ne se couche pas",
     "polarNight": "Le soleil ne se lève pas",
     "dayBar": "Aujourd’hui, là où vous êtes, en heure universelle Nu:Time",
-    "dialHint": "L’heure Nu:Time est la même pour tous, partout sur Terre. Le cadran d’une horloge Nu:Time tourne selon l’endroit où vous vous trouvez, en gardant une référence fixe au méridien de Greenwich.\n\nLe midi solaire est toujours en haut du cadran, où que vous soyez sur la planète. Et tandis que le Soleil traverse le ciel, trois aiguilles marquent le passage du temps : l’aiguille rouge fait un tour par jour, l’aiguille bleue un tour par gong, et l’aiguille dorée un tour par beat, en égrenant les tics.",
+    "dialHint": "L’heure Nu:Time est la même pour tous — où que vous soyez. Contrairement à une horloge ordinaire, les quatre coordonnées du cadran Nu:Time tournent selon l’endroit où vous vous trouvez, en gardant une référence fixe au méridien de Greenwich.\n\nLe midi solaire est toujours en haut du cadran et, tandis que le Soleil traverse le ciel, trois aiguilles marquent le passage du temps : l’aiguille rouge fait un tour par jour, l’aiguille bleue un tour par gong, et l’aiguille dorée un tour par beat, en égrenant les tics.",
     "choose": "Choisir un lieu",
     "current": "Position actuelle (détection automatique)",
     "locating": "Recherche de votre position…",
@@ -63,13 +63,13 @@
     "tryIt": "Essayez par vous-même !"
   },
   "eliminates": {
-    "title": "Adieu à tout ce que vous n’avez jamais vraiment compris : les 24 heures, l’AM et le PM des anglophones, les 60 minutes, les 60 secondes, les fuseaux horaires, le passage à l’heure d’été, les secondes intercalaires et la ligne de changement de date !",
-    "tail": "Ne reste que l’essentiel : l’instant présent, et la place du Soleil dans le ciel.",
-    "heading": "Nu:Time fait table rase."
+    "title": "Adieu à tout ce que vous n’avez jamais vraiment compris — par exemple : les 24 heures, l’AM et le PM des anglophones, les 60 minutes, les 60 secondes, les fuseaux horaires, le passage à l’heure d’été, les secondes intercalaires et la ligne de changement de date !",
+    "tail": "Tout en gardant ce qui compte — l’instant et le lieu où vous êtes, ainsi que la position du Soleil dans le ciel.",
+    "heading": "Nu:Time fait table rase"
   },
   "time": {
     "title": "Le temps réinventé.",
-    "lead": "Avec Nu:Time, partout sur Terre, il est la même heure au même instant. L’endroit où vous êtes ne change plus l’heure qu’il est : il change seulement la position du Soleil, et le moment où il se lève et se couche.",
+    "lead": "L’heure Nu:Time est la même pour tous — où que vous soyez. L’endroit où vous êtes ne change plus l’heure qu’il est.",
     "points": [
       {
         "title": "Une heure universelle",
@@ -91,7 +91,7 @@
   },
   "how": {
     "title": "Tout le système tient en une ligne.",
-    "lead": "Chaque unité est une puissance de dix. Chaque affichage se lit de la même façon : gong:beat:tic.",
+    "lead": "Chaque unité est une puissance de dix. Chaque affichage se lit de la même façon — gong : beat : tic.",
     "cards": [
       {
         "n": "10",
@@ -117,7 +117,7 @@
   },
   "ke": {
     "title": "Le kè : une seule unité pour dire quand et où.",
-    "lead": "Une journée entière, c’est 100 kè. Un tour complet, c’est 100 kè. La rotation de la Terre et le tour du cadran s’expriment donc par le même nombre — et les fuseaux horaires disparaissent.",
+    "lead": "Une journée entière, c’est 100 kè. Un tour complet, c’est 100 kè. La rotation de la Terre et celle des quatre coordonnées du cadran Nu:Time sont donc identiques — et les fuseaux horaires disparaissent.",
     "facts": [
       {
         "n": "1 kè",
@@ -147,7 +147,7 @@
         "360°"
       ],
       [
-        "Angle plat · somme des angles d’un triangle",
+        "Somme des angles d’un triangle",
         "50 kè",
         "180°"
       ],
@@ -162,7 +162,7 @@
         "60°"
       ],
       [
-        "Triangle rectangle, angle de 30°",
+        "Triangle 30-60-90",
         "8,33 kè",
         "30°"
       ],
@@ -179,7 +179,7 @@
     "convertTitle": "Convertir",
     "deg": "Degrés",
     "keLabel": "Kè",
-    "trigTitle": "Une nouvelle ère pour la trigonométrie.",
+    "trigTitle": "Et une nouvelle ère pour la trigonométrie.",
     "trigCols": [
       "Angle",
       "Degrés",
@@ -247,8 +247,8 @@
     ]
   },
   "heritage": {
-    "title": "Pas une idée neuve. Une idée enfin aboutie.",
-    "lead": "De grandes civilisations ont longtemps cherché à diviser le jour de façon plus sensée. Nu:Time hérite de leur sagesse et y ajoute ce qu’aucune n’avait : une planète capable de s’accorder sur l’instant.",
+    "title": "Pas une idée neuve, mais nous l’avons menée à terme.",
+    "lead": "De grandes civilisations ont longtemps cherché à diviser le jour de façon plus sensée. Nu:Time hérite de leur sagesse et y ajoute ce qu’aucune n’avait : une planète capable de s’accorder sur le même instant — où que vous soyez.",
     "items": [
       {
         "key": "zh",
@@ -262,14 +262,14 @@
         "era": "1793–1795",
         "place": "France",
         "title": "La Révolution décimale",
-        "text": "La France révolutionnaire a divisé le jour en 10 heures de 100 minutes de 100 secondes — exactement le gong, le beat et le tic de Nu:Time. Le mètre et le kilogramme ont conquis le monde ; l’heure décimale avait simplement un temps d’avance."
+        "text": "La France révolutionnaire a divisé le jour en 10 heures, l’heure en 100 minutes et la minute en 100 secondes — exactement le gong, le beat et le tic de Nu:Time. Le mètre et le kilogramme ont conquis le monde ; l’heure décimale avait simplement un temps d’avance."
       },
       {
         "key": "es",
         "era": "Depuis 1940",
         "place": "Espagne",
-        "title": "Un pays dans le mauvais fuseau",
-        "text": "L’Espagne se situe en majeure partie à l’ouest de Greenwich, mais elle a adopté l’heure d’Europe centrale en 1940. Ses horloges ont une heure ou plus d’avance sur son soleil — un exemple vivant de ce que les fuseaux horaires font à la vie quotidienne."
+        "title": "Tout un pays dans le mauvais fuseau",
+        "text": "L’Espagne se situe en majeure partie à l’ouest de Greenwich, mais elle a adopté l’heure d’Europe centrale en 1940. Ses horloges ont encore une heure ou plus d’avance sur son soleil — un exemple vivant de ce que les fuseaux horaires font à la vie quotidienne."
       }
     ]
   },
@@ -330,13 +330,13 @@
     "items": [
       {
         "title": "Le standard v1.0",
-        "text": "Les unités, le kè, la synchronisation universelle, Nu:Lat/Nu:Long, le cercle de 100 kè, la position du Soleil et l’enregistrement nu-time/v1. CC BY 4.0.",
+        "text": "Les unités, le kè, la synchronisation universelle, la latitude et la longitude, le cercle de 100 kè, la position du Soleil et l’enregistrement nu-time/v1. CC BY 4.0.",
         "link": "Lire le standard",
         "href": "/spec/"
       },
       {
         "title": "API : JavaScript et Python",
-        "text": "Des conversions prêtes à l’emploi entre UTC et Nu:Time, degrés et kè, latitude/longitude et Nu:Lat/Nu:Long — avec des vecteurs de test communs. MIT ou Apache 2.0.",
+        "text": "Des conversions prêtes à l’emploi entre UTC et Nu:Time et entre degrés et kè, latitude et longitude comprises — toutes avec des vecteurs de test communs. MIT ou Apache 2.0.",
         "link": "Documentation développeurs",
         "href": "/developers/"
       },

@@ -34,7 +34,7 @@
   "hero": {
     "eyebrow": "El Estándar Nu:Time · 刻时 Ke-Shi",
     "title": "el tiempo y el lugar, reinventados.",
-    "sub": "Un solo reloj para todo el planeta, con un día marcado por 10 gongs, 1000 beats y 100 000 tics. Y una sola unidad —el kè— que une tiempo y espacio: 100 kè forman una vuelta completa y miden a la vez cuándo y dónde estás en la Tierra.",
+    "sub": "Un solo reloj para todo el planeta, que une tiempo y espacio. Mide a la vez cuándo y dónde estás en la Tierra.",
     "ctaExplore": "Descubre más",
     "ctaJoin": "Únete al lanzamiento",
     "clockLabel": "Nu:Time universal, ahora",
@@ -50,7 +50,7 @@
     "polarDay": "El sol no se pone",
     "polarNight": "El sol no sale",
     "dayBar": "Hoy en tu ubicación, en Nu:Time universal",
-    "dialHint": "Nu:Time es el mismo para todos, en cualquier lugar de la Tierra. La esfera de un reloj Nu:Time gira según tu ubicación y mantiene siempre una referencia fija al meridiano de Greenwich.\n\nEl mediodía solar queda siempre en lo alto de la esfera, estés donde estés. Mientras el sol cruza el cielo, tres agujas marcan el paso del tiempo: la roja da una vuelta al día; la azul, una vuelta cada gong; y la dorada, una vuelta cada beat, marcando los tics a su paso.",
+    "dialHint": "Nu:Time es el mismo para todos, estés donde estés. A diferencia de un reloj convencional, las cuatro coordenadas de la esfera del reloj Nu:Time giran según tu ubicación y mantienen una referencia fija al meridiano de Greenwich.\n\nEl mediodía solar queda siempre en lo alto de la esfera y, mientras el sol cruza el cielo, tres agujas marcan el paso del tiempo: la roja da una vuelta al día; la azul, una vuelta cada gong; y la dorada, una vuelta cada beat, marcando los tics a su paso.",
     "choose": "Elige una ubicación",
     "current": "Ubicación actual (detección automática)",
     "locating": "Buscando tu ubicación…",
@@ -63,13 +63,13 @@
     "tryIt": "¡Pruébalo por tu cuenta!"
   },
   "eliminates": {
-    "title": "todo eso que nunca acabaste de entender, como las 24 horas, el a. m. y el p. m., los 60 minutos, los 60 segundos, los husos horarios, el horario de verano, los segundos intercalares ¡y la línea internacional de cambio de fecha!",
-    "tail": "y se queda solo con lo que importa, como el momento que estás viviendo y la posición del sol en el cielo.",
-    "heading": "Nu:Time elimina."
+    "title": "todo eso que nunca acabaste de entender: cosas como las 24 horas, el a. m. y el p. m., los 60 minutos, los 60 segundos, los husos horarios, el horario de verano, los segundos intercalares ¡y la línea internacional de cambio de fecha!",
+    "tail": "Y conserva lo que importa: el momento y el lugar en que estás, junto con la posición del sol en el cielo.",
+    "heading": "Nu:Time elimina"
   },
   "time": {
     "title": "El tiempo, reinventado.",
-    "lead": "Con Nu:Time, todos los lugares de la Tierra tienen la misma hora en el mismo instante. Dónde estés ya no cambia qué hora es: solo cambia dónde está el sol y cuándo sale y se pone.",
+    "lead": "Nu:Time es el mismo para todos, estés donde estés. El lugar en el que te encuentras ya no cambia qué hora es.",
     "points": [
       {
         "title": "Una sola hora",
@@ -91,7 +91,7 @@
   },
   "how": {
     "title": "Todo el sistema cabe en una línea.",
-    "lead": "Cada unidad es una potencia de diez. Todas las pantallas se leen igual: gong:beat:tic.",
+    "lead": "Cada unidad es una potencia de diez. Todas las pantallas se leen igual: gong : beat : tic.",
     "cards": [
       {
         "n": "10",
@@ -117,7 +117,7 @@
   },
   "ke": {
     "title": "El kè: una sola unidad para el cuándo y el dónde.",
-    "lead": "Un día completo son 100 kè. Una vuelta completa son 100 kè. Así, el giro de la Tierra y el del reloj se miden con el mismo número, y los husos horarios desaparecen.",
+    "lead": "Un día completo son 100 kè. Una vuelta completa son 100 kè. Así, la rotación de la Tierra y la rotación de las cuatro coordenadas de la esfera del reloj Nu:Time coinciden, y los husos horarios desaparecen.",
     "facts": [
       {
         "n": "1 kè",
@@ -147,7 +147,7 @@
         "360°"
       ],
       [
-        "Ángulo llano · suma de los ángulos de un triángulo",
+        "Suma de los ángulos de un triángulo",
         "50 kè",
         "180°"
       ],
@@ -162,7 +162,7 @@
         "60°"
       ],
       [
-        "Triángulo rectángulo, ángulo de 30°",
+        "Triángulo 30-60-90",
         "8.33 kè",
         "30°"
       ],
@@ -175,11 +175,11 @@
     "colAngle": "Ángulo",
     "colKe": "En kè",
     "colDeg": "En grados",
-    "trig": "sen 25 kè = 1, cos 50 kè = −1, sen 75 kè = −1 y cos 100 kè = 1.\n\nUna onda que se repite cada día tiene un periodo de exactamente 100 kè. Ciclos, órbitas y oscilaciones comparten por fin una misma unidad con el calendario.",
+    "trig": "sen 25 kè = 1, cos 50 kè = −1, sen 75 kè = −1 y cos 100 kè = 1.\n\nUna onda que se repite cada día tiene un periodo de exactamente 100 kè. Ciclos, órbitas y oscilaciones comparten por fin la misma unidad con el calendario.",
     "convertTitle": "Convertir",
     "deg": "Grados",
     "keLabel": "Kè",
-    "trigTitle": "Una nueva era para la trigonometría.",
+    "trigTitle": "Y una nueva era para la trigonometría.",
     "trigCols": [
       "Ángulo",
       "Grados",
@@ -247,8 +247,8 @@
     ]
   },
   "heritage": {
-    "title": "No es una idea nueva. Ahora está completa.",
-    "lead": "Desde hace mucho, grandes civilizaciones han intentado dividir el día de forma más sensata. Nu:Time recoge su sabiduría y añade lo que ninguna tuvo: un planeta capaz de ponerse de acuerdo sobre el momento.",
+    "title": "No es una idea nueva, pero la completamos.",
+    "lead": "Desde hace mucho, grandes civilizaciones han intentado dividir el día de forma más sensata. Nu:Time recoge su sabiduría y añade lo que ninguna tuvo: un planeta capaz de ponerse de acuerdo sobre un mismo momento, estés donde estés.",
     "items": [
       {
         "key": "zh",
@@ -262,14 +262,14 @@
         "era": "1793 – 1795",
         "place": "Francia",
         "title": "La Revolución decimal",
-        "text": "La Francia revolucionaria dividió el día en 10 horas de 100 minutos de 100 segundos: exactamente lo mismo que el gong, el beat y el tic de Nu:Time. El metro y el kilogramo conquistaron el mundo; la hora decimal, sencillamente, llegó demasiado pronto."
+        "text": "La Francia revolucionaria dividió el día en 10 horas, cada hora en 100 minutos y cada minuto en 100 segundos: exactamente lo mismo que el gong, el beat y el tic de Nu:Time. El metro y el kilogramo conquistaron el mundo; la hora decimal, sencillamente, llegó demasiado pronto."
       },
       {
         "key": "es",
         "era": "1940 – hoy",
         "place": "España",
-        "title": "Un país fuera de su huso horario",
-        "text": "La mayor parte de España está al oeste del meridiano de Greenwich, pero en 1940 adoptó la hora de Europa Central. Desde entonces, sus relojes van una hora o más por delante del sol: un ejemplo vivo de cómo los husos horarios condicionan la vida cotidiana."
+        "title": "Un país entero fuera de su huso horario",
+        "text": "La mayor parte de España está al oeste del meridiano de Greenwich, pero en 1940 adoptó la hora de Europa Central. Sus relojes todavía van una hora o más por delante del sol: un ejemplo vivo de cómo los husos horarios condicionan la vida cotidiana."
       }
     ]
   },
@@ -330,13 +330,13 @@
     "items": [
       {
         "title": "El Estándar v1.0",
-        "text": "Unidades, el kè, sincronización universal, Nu:Lat/Nu:Long, el círculo de 100 kè, posición solar y el registro nu-time/v1. CC BY 4.0.",
+        "text": "Unidades, kè, sincronización universal, latitud y longitud, el círculo de 100 kè, posición solar y el registro nu-time/v1. CC BY 4.0.",
         "link": "Leer el Estándar",
         "href": "/spec/"
       },
       {
         "title": "API para JavaScript y Python",
-        "text": "Conversiones listas para usar entre UTC y Nu:Time, grados y kè, latitud/longitud y Nu:Lat/Nu:Long, con vectores de prueba compartidos. MIT o Apache 2.0.",
+        "text": "Conversiones listas para usar entre UTC y Nu:Time y entre grados y kè, también para latitud y longitud, todas con vectores de prueba compartidos. MIT o Apache 2.0.",
         "link": "Documentación para desarrolladores",
         "href": "/developers/"
       },

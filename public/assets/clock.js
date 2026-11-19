@@ -233,10 +233,18 @@
       ctx.beginPath(); ctx.lineWidth = R * 0.007; ctx.strokeStyle = "rgba(26,26,26,.55)";
       ctx.moveTo(Math.cos(a) * R * (RING_OUT - 0.04), Math.sin(a) * R * (RING_OUT - 0.04)); ctx.lineTo(Math.cos(a) * R * RING_OUT, Math.sin(a) * R * RING_OUT); ctx.stroke();
     }
-    // quarter marks: short, soft cream; the tip meets the teal ring's outer edge; zero the same colour, thicker
+    // quarter marks: short, soft cream; the tip meets the teal ring's outer edge.
+    // Zero (the Prime Meridian): a small triangle of the same length, base on the teal ring, point toward the centre.
     [0, 25, 50, 75].forEach(function (k) {
-      var a = ang(k / 100);
-      ctx.beginPath(); ctx.lineWidth = R * (k === 0 ? 0.03 : 0.016); ctx.strokeStyle = "#ede3cc";
+      var a = ang(k / 100), c = Math.cos(a), s = Math.sin(a);
+      if (k === 0) {
+        var ro = R * TEAL_OUT, ri = R * (TEAL_OUT - 0.08), hw = R * 0.026;
+        ctx.beginPath();
+        ctx.moveTo(c * ro - s * hw, s * ro + c * hw); ctx.lineTo(c * ro + s * hw, s * ro - c * hw); ctx.lineTo(c * ri, s * ri);
+        ctx.closePath(); ctx.fillStyle = "#ede3cc"; ctx.fill();
+        return;
+      }
+      ctx.beginPath(); ctx.lineWidth = R * 0.016; ctx.strokeStyle = "#ede3cc";
       ctx.moveTo(Math.cos(a) * R * (TEAL_OUT - 0.08), Math.sin(a) * R * (TEAL_OUT - 0.08)); ctx.lineTo(Math.cos(a) * R * TEAL_OUT, Math.sin(a) * R * TEAL_OUT); ctx.stroke();
     });
     // night: a translucent shade over the ring and marks, sunset → sunrise, in one fill (no double shading).
@@ -275,7 +283,7 @@
     ctx.beginPath(); ctx.arc(0, 0, R * 0.2, 0, 2 * Math.PI); ctx.fillStyle = "#ff8c00"; ctx.fill();
     ctx.lineWidth = R * 0.012; ctx.strokeStyle = "#ffb347"; ctx.stroke();
     // hands: gong/day (red), beat (blue: one turn per gong), tick (gold: one turn per beat)
-    hand(ang(f), R * 0.6, R * 0.055, "#d9452b", R * 0.08);
+    hand(ang(f), R * (CREAM + 0.01), R * 0.055, "#d9452b", R * 0.08);   // rounded tip just reaches over the inner edge of the brass ring
     hand(ang((f * 10) % 1), R * (TEAL_OUT - 0.0175), R * 0.035, "#3d6be0", R * 0.1);   // rounded tip ends exactly at the teal ring's outer edge
     hand(ang((f * 1000) % 1), R * 0.88, R * 0.012, "#e8c45a", R * 0.14);
     ctx.beginPath(); ctx.arc(0, 0, R * 0.05, 0, 2 * Math.PI); ctx.fillStyle = "#1a1a1a"; ctx.fill();

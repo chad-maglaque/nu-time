@@ -92,7 +92,7 @@ p { margin: 0 0 1em; }
 .big { display: flex; justify-content: center; font: 700 var(--dfs)/1 var(--mono); color: var(--gold); direction: ltr; }
 .big .dg { display: inline-block; width: var(--dw); text-align: center; }
 .big .cl { display: inline-block; width: var(--cw); text-align: center; }
-.units { display: flex; justify-content: center; font: 400 12px/1.4 var(--sans); color: var(--muted); direction: ltr; }
+.units { display: flex; justify-content: center; font: 500 17px/1.4 var(--sans); color: var(--text2); direction: ltr; }
 .units i { font-style: normal; width: calc(var(--dw) * 2); text-align: center; }
 .units s { width: var(--cw); text-decoration: none; }
 .units b { font-weight: 400; }

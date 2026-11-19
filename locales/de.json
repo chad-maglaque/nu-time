@@ -34,7 +34,7 @@
   "hero": {
     "eyebrow": "Der Nu:Time-Standard · 刻时 Ke-Shi",
     "title": "Zeit und Ort neu gedacht.",
-    "sub": "Eine Uhrzeit für den ganzen Planeten – mit einem Tag aus 10 Gongs, 1.000 Beats und 100.000 Ticks. Und eine Einheit, die Zeit und Raum verbindet: das Kè. 100 Kè ergeben einen vollen Kreis und zeigen dir, wann und wo auf der Erde du gerade bist.",
+    "sub": "Eine Uhr für den ganzen Planeten, die Zeit und Raum verbindet. Sie misst zugleich, wann und wo auf der Erde du gerade bist.",
     "ctaExplore": "Mehr entdecken",
     "ctaJoin": "Beim Start dabei sein",
     "clockLabel": "Nu:Time-Weltzeit, jetzt",
@@ -50,7 +50,7 @@
     "polarDay": "Sonne geht nicht unter",
     "polarNight": "Sonne geht nicht auf",
     "dayBar": "Heute an deinem Standort, in Nu:Time-Weltzeit",
-    "dialHint": "Nu:Time ist für alle gleich, überall auf der Erde. Das Zifferblatt einer Nu:Time-Uhr richtet sich nach deinem Standort aus und bleibt dabei fest auf den Nullmeridian in Greenwich bezogen.\n\nDer Sonnenmittag steht immer oben, egal wo auf dem Planeten du bist. Während die Sonne über den Himmel wandert, zeigen drei Zeiger den Lauf der Zeit: Der rote Zeiger dreht sich einmal pro Tag, der blaue einmal pro Gong und der goldene einmal pro Beat – er zählt die vergehenden Ticks.",
+    "dialHint": "Nu:Time ist für alle gleich – egal, wo du bist. Anders als bei einer gewöhnlichen Uhr drehen sich die vier Koordinaten auf dem Nu:Time-Zifferblatt passend zu deinem Standort und bleiben dabei fest auf den Nullmeridian in Greenwich bezogen.\n\nDer Sonnenmittag steht immer oben, und während die Sonne über den Himmel wandert, zeigen drei Zeiger den Lauf der Zeit: Der rote Zeiger dreht sich einmal pro Tag, der blaue einmal pro Gong und der goldene einmal pro Beat – er zählt die vergehenden Ticks.",
     "choose": "Ort wählen",
     "current": "Aktueller Standort (automatisch)",
     "locating": "Standort wird ermittelt …",
@@ -63,13 +63,13 @@
     "tryIt": "Probier es selbst aus!"
   },
   "eliminates": {
-    "title": "mit allem, was du ohnehin nie verstanden hast: 24 Stunden, AM und PM, 60 Minuten, 60 Sekunden, Zeitzonen, Sommerzeit, Schaltsekunden und der Datumsgrenze!",
-    "tail": "und behält nur, was wirklich zählt: den Moment, in dem du bist, und den Stand der Sonne am Himmel.",
-    "heading": "Nu:Time macht Schluss."
+    "title": "mit allem, was du ohnehin nie verstanden hast – zum Beispiel: 24 Stunden, AM und PM, 60 Minuten, 60 Sekunden, Zeitzonen, Sommerzeit, Schaltsekunden und der Datumsgrenze!",
+    "tail": "Und behält, was wirklich zählt – den Moment und den Ort, an dem du bist, und dazu den Stand der Sonne am Himmel.",
+    "heading": "Nu:Time macht Schluss"
   },
   "time": {
     "title": "Zeit neu gedacht.",
-    "lead": "Mit Nu:Time gilt überall auf der Erde im selben Augenblick dieselbe Uhrzeit. Wo du bist, ändert nicht mehr, wie spät es ist – nur, wo die Sonne steht und wann sie auf- und untergeht.",
+    "lead": "Nu:Time ist für alle gleich – egal, wo du bist. Dein Standort ändert nicht mehr, wie spät es ist.",
     "points": [
       {
         "title": "Eine Zeit für alle",
@@ -91,7 +91,7 @@
   },
   "how": {
     "title": "Das ganze System passt in eine Zeile.",
-    "lead": "Jede Einheit ist eine Zehnerpotenz. Jede Anzeige folgt demselben Muster: Gong:Beat:Tick.",
+    "lead": "Jede Einheit ist eine Zehnerpotenz. Jede Anzeige folgt demselben Muster – Gong : Beat : Tick.",
     "cards": [
       {
         "n": "10",
@@ -117,7 +117,7 @@
   },
   "ke": {
     "title": "Das Kè: eine Einheit für Wann und Wo.",
-    "lead": "Ein ganzer Tag hat 100 Kè. Ein ganzer Kreis hat 100 Kè. Die Drehung der Erde und die Runde des Zeigers ergeben also dieselbe Zahl – und Zeitzonen verschwinden.",
+    "lead": "Ein ganzer Tag hat 100 Kè. Ein ganzer Kreis hat 100 Kè. Die Drehung der Erde und die Drehung der vier Koordinaten auf dem Nu:Time-Zifferblatt sind also gleich – und Zeitzonen verschwinden.",
     "facts": [
       {
         "n": "1 Kè",
@@ -147,7 +147,7 @@
         "360°"
       ],
       [
-        "Gestreckter Winkel · Winkelsumme im Dreieck",
+        "Winkelsumme im Dreieck",
         "50 Kè",
         "180°"
       ],
@@ -162,7 +162,7 @@
         "60°"
       ],
       [
-        "Rechtwinkliges Dreieck, 30°-Winkel",
+        "30-60-90-Dreieck",
         "8,33 Kè",
         "30°"
       ],
@@ -175,11 +175,11 @@
     "colAngle": "Winkel",
     "colKe": "In Kè",
     "colDeg": "In Grad",
-    "trig": "sin 25 Kè = 1, cos 50 Kè = −1, sin 75 Kè = −1 und cos 100 Kè = 1.\n\nEine Welle, die sich täglich wiederholt, hat eine Periode von genau 100 Kè. Zyklen, Umlaufbahnen und Schwingungen teilen sich endlich eine Einheit mit dem Kalender.",
+    "trig": "sin 25 Kè = 1, cos 50 Kè = −1, sin 75 Kè = −1 und cos 100 Kè = 1.\n\nEine Welle, die sich täglich wiederholt, hat eine Periode von genau 100 Kè. Zyklen, Umlaufbahnen und Schwingungen teilen sich endlich dieselbe Einheit mit dem Kalender.",
     "convertTitle": "Umrechnen",
     "deg": "Grad",
     "keLabel": "Kè",
-    "trigTitle": "Trigonometrie für eine neue Zeit.",
+    "trigTitle": "Und Trigonometrie für eine neue Zeit.",
     "trigCols": [
       "Winkel",
       "Grad",
@@ -247,8 +247,8 @@
     ]
   },
   "heritage": {
-    "title": "Keine neue Idee. Eine zu Ende gedachte.",
-    "lead": "Große Kulturen haben immer wieder versucht, den Tag vernünftiger einzuteilen. Nu:Time übernimmt ihre Erkenntnisse und ergänzt, was keine von ihnen hatte: einen Planeten, der sich auf denselben Moment einigen kann.",
+    "title": "Keine neue Idee, aber wir haben sie zu Ende gedacht.",
+    "lead": "Große Kulturen haben immer wieder versucht, den Tag vernünftiger einzuteilen. Nu:Time übernimmt ihre Erkenntnisse und ergänzt, was keine von ihnen hatte: einen Planeten, der sich auf denselben Moment einigen kann – egal, wo du bist.",
     "items": [
       {
         "key": "zh",
@@ -262,14 +262,14 @@
         "era": "1793 – 1795",
         "place": "Frankreich",
         "title": "Die dezimale Revolution",
-        "text": "Das revolutionäre Frankreich teilte den Tag in 10 Stunden zu je 100 Minuten zu je 100 Sekunden – genau wie Gong, Beat und Tick bei Nu:Time. Meter und Kilogramm haben die Welt erobert; die Dezimalzeit kam einfach zu früh."
+        "text": "Das revolutionäre Frankreich teilte den Tag in 10 Stunden, die Stunde in 100 Minuten und die Minute in 100 Sekunden – genau wie Gong, Beat und Tick bei Nu:Time. Meter und Kilogramm haben die Welt erobert; die Dezimalzeit kam einfach zu früh."
       },
       {
         "key": "es",
         "era": "1940 – heute",
         "place": "Spanien",
-        "title": "Ein Land in der falschen Zeitzone",
-        "text": "Spanien liegt größtenteils westlich von Greenwich, übernahm 1940 aber die Mitteleuropäische Zeit. Seine Uhren gehen der Sonne seither eine Stunde oder mehr voraus – ein lebendiges Beispiel dafür, was Zeitzonen mit dem Alltag machen."
+        "title": "Ein ganzes Land in der falschen Zeitzone",
+        "text": "Spanien liegt größtenteils westlich von Greenwich, übernahm 1940 aber die Mitteleuropäische Zeit. Seine Uhren gehen der Sonne bis heute eine Stunde oder mehr voraus – ein lebendiges Beispiel dafür, was Zeitzonen mit dem Alltag machen."
       }
     ]
   },
@@ -330,13 +330,13 @@
     "items": [
       {
         "title": "Der Standard v1.0",
-        "text": "Einheiten, das Kè, weltweite Synchronisation, Nu:Lat/Nu:Long, der 100-Kè-Kreis, der Sonnenstand und der Datensatz nu-time/v1. CC BY 4.0.",
+        "text": "Einheiten, das Kè, weltweite Synchronisation, geografische Breite und Länge, der 100-Kè-Kreis, der Sonnenstand und der Datensatz nu-time/v1. CC BY 4.0.",
         "link": "Zum Standard",
         "href": "/spec/"
       },
       {
         "title": "APIs: JavaScript & Python",
-        "text": "Einsatzfertige Umrechnungen zwischen UTC und Nu:Time, Grad und Kè, Breite/Länge und Nu:Lat/Nu:Long – mit gemeinsamen Testvektoren. MIT oder Apache 2.0.",
+        "text": "Einsatzfertige Umrechnungen zwischen UTC und Nu:Time und zwischen Grad und Kè, auch für geografische Breite und Länge – alle mit gemeinsamen Testvektoren. MIT oder Apache 2.0.",
         "link": "Zur Entwicklerdoku",
         "href": "/developers/"
       },
