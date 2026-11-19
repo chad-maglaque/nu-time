@@ -1,7 +1,7 @@
 #!/bin/bash
 # nu-time.org is the domain of record. This sets up everything outside the code for that:
 #   • Cloudflare DNS for nu-time.org, nutime.org and nu-time.com → Vercel (grey cloud)
-#   • Vercel project nu-time: nu-time.org serves the site; every other domain 308-redirects to it, path kept
+#   • Vercel project nu-time: nu-time.org serves the site; every other domain 301-redirects to it (301: what Google's Change of Address tool requires), path kept
 #   • Cloudflare Email Routing on nu-time.org, nutime.org and nu-time.com: only the addresses in MAIL_ADDRESSES
 #     forward to $EMAIL_DEST; everything else is dropped (catch-all off)
 #   • GitHub repository homepage → https://nu-time.org
@@ -176,8 +176,8 @@ elif [ -n "$(redirect_of "$PRIMARY")" ]; then
 else say "  ok: $PRIMARY serves the site"; fi
 for d in $REDIRECTS; do
   on_project "$d" && continue   # its redirect is set in step 7
-  act "add $d → redirect to $PRIMARY (308)"
-  [ $APPLY = 1 ] && vc POST "/v10/projects/$PROJECT/domains" "$(jq -nc --arg n "$d" --arg r "$PRIMARY" '{name:$n,redirect:$r,redirectStatusCode:308}')" >/dev/null
+  act "add $d → redirect to $PRIMARY (301)"
+  [ $APPLY = 1 ] && vc POST "/v10/projects/$PROJECT/domains" "$(jq -nc --arg n "$d" --arg r "$PRIMARY" '{name:$n,redirect:$r,redirectStatusCode:301}')" >/dev/null
 done
 
 # ── 5. ownership check, if Vercel asks (domain used by another Vercel account before) ──
@@ -213,7 +213,7 @@ if [ $APPLY = 1 ]; then
   DOMS=$(vdomains)
 fi
 
-# ── 7. Vercel: the listed domains → 308 to nu-time.org (nu-time.com last) ──
+# ── 7. Vercel: the listed domains → 301 to nu-time.org (nu-time.com last) ──
 # Only $REDIRECTS is touched. Any other domain on the project (*.vercel.app, the commercial
 # watch domains, …) is left exactly as it is.
 step "Vercel domains: redirects"
@@ -221,9 +221,9 @@ ORDERED=$(printf '%s\n' $REDIRECTS | grep -vx "nu-time.com"; echo nu-time.com)
 for d in $ORDERED; do
   on_project "$d" || continue   # (dry run: new domains are listed under "add")
   cur=$(redirect_of "$d"); code=$(jq -r --arg n "$d" 'select(.name==$n) | (.redirectStatusCode // "")' <<<"$DOMS")
-  if [ "$cur" = "$PRIMARY" ] && [ "$code" = 308 ]; then say "  ok: $d → $PRIMARY"; continue; fi
-  act "$d: ${cur:-serves the site} → redirect to $PRIMARY (308)"
-  [ $APPLY = 1 ] && vc PATCH "/v9/projects/$PROJECT/domains/$d" "$(jq -nc --arg r "$PRIMARY" '{redirect:$r,redirectStatusCode:308}')" >/dev/null
+  if [ "$cur" = "$PRIMARY" ] && [ "$code" = 301 ]; then say "  ok: $d → $PRIMARY"; continue; fi
+  act "$d: ${cur:-serves the site} → redirect to $PRIMARY (301)"
+  [ $APPLY = 1 ] && vc PATCH "/v9/projects/$PROJECT/domains/$d" "$(jq -nc --arg r "$PRIMARY" '{redirect:$r,redirectStatusCode:301}')" >/dev/null
 done
 
 # ── 8. mail rules: the named addresses → $EMAIL_DEST; catch-all off (everything else dropped) ──

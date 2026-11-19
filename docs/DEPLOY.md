@@ -26,7 +26,7 @@ The **Join** form must save every signup somewhere. In production it saves to Up
 
 ## 3. Domains, DNS and email
 
-Nu:Time is an open standard, so **nu-time.org** is the domain of record. **nu-time.com** and **nutime.org** (and all three `www`) 308-redirect to it, keeping the path and query. All three zones are on **Cloudflare DNS** (free), DNS only (grey cloud); the site is served by Vercel.
+Nu:Time is an open standard, so **nu-time.org** is the domain of record. **nu-time.com** and **nutime.org** (and all three `www`) 301-redirect to it, keeping the path and query. All three zones are on **Cloudflare DNS** (free), DNS only (grey cloud); the site is served by Vercel.
 
 Only named addresses forward, through Cloudflare **Email Routing** (free), to the owner's work inbox: **info@**, **press@**, **privacy@**, **standards@** and **legal@nu-time.org** (the ones the site shows), plus the older info@, press@, privacy@ and standards@nu-time.com. Mail to any other address is dropped: the catch-all stays off on all three zones, and nutime.org has no addresses. The list is `MAIL_ADDRESSES` in the script.
 
@@ -50,11 +50,13 @@ All of it is scripted, and both scripts are safe to re-run:
    2. Points Cloudflare DNS for each zone at Vercel: apex `A` and `www` `CNAME`, DNS only, so Vercel issues the certificates. It deletes old parking records and old mail records, and keeps everything else.
    3. Turns on Email Routing on each zone, which adds Cloudflare's `MX` and SPF records.
    4. In Vercel (project **nu-time** → Domains), adds `nu-time.org` to serve the site, and adds `www.nu-time.org`, `nutime.org` and `www.nutime.org` as redirects. If Vercel asks for an ownership TXT record, it adds the record in Cloudflare and verifies.
-   5. Waits until `https://nu-time.org` serves the site, then sets `www.nu-time.com` and `nu-time.com` to **Redirect to** `nu-time.org` (308), nu-time.com last.
+   5. Waits until `https://nu-time.org` serves the site, then sets `www.nu-time.com` and `nu-time.com` to **Redirect to** `nu-time.org` (301, which Google's Change of Address tool requires), nu-time.com last.
    6. Points each address in `MAIL_ADDRESSES` at `EMAIL_DEST`, creating the rule or repointing it. It turns any catch-all off, and reports, without changing, rules for other addresses. It waits for the verification click first, if that is still pending.
    7. Sets the GitHub repository's homepage to `https://nu-time.org`.
    8. Runs `tools/check-domains.sh`. It checks the site, canonical tag, sitemap, redirects and mail records.
-4. **(you)** Google Search Console: add nu-time.org, then on the nu-time.com property go to **Settings → Change of address**.
+4. Google Search Console. nu-time.org and nu-time.com are verified as Domain properties, by a `google-site-verification` TXT record in each zone; keep those records. The nu-time.org sitemap is submitted.
+   - **Change of address:** run it from the URL-prefix property `https://nu-time.com/`, not the Domain property. The Domain property tests `http://nu-time.com/`, where Vercel first sends its own http→https 308, which the checker rejects. Go to **Settings → Change of address**, choose **nu-time.org**, then **Validate & update**.
+   - **Status (2026-11-19):** "Couldn't fetch the page", because Google had not crawled the new properties yet. Retry after a day or two.
 5. Send a test message to a few addresses at each domain from a different account. Replies come from the work inbox. Sending *as* info@nu-time.org needs a mail service later (not needed for launch).
 
 ## 4. Launch checks

@@ -27,7 +27,7 @@ case "$code" in 30[18]\ https://$PRIMARY/) pass "http:// → https://";; *) fail
 echo "== redirects to $PRIMARY (path and query kept)"
 for h in $REDIRECT_HOSTS; do
   got=$(curl -s -o /dev/null --max-time 15 -w '%{http_code} %{redirect_url}' "https://$h/spec/?x=1")
-  if [ "$got" = "308 https://$PRIMARY/spec/?x=1" ]; then pass "$h → $PRIMARY"
+  if [ "$got" = "301 https://$PRIMARY/spec/?x=1" ]; then pass "$h → $PRIMARY"
   else fail "$h: '${got:-no answer}' (nameservers: $(dig +short NS "$h" | head -1))"; fi
 done
 
