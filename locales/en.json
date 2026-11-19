@@ -406,7 +406,7 @@
     "submit": "Join",
     "sending": "Sending…",
     "ok": "You're in. Welcome to Nu:Time.",
-    "err": "That didn't go through. Please try again, or email info@nu-time.com.",
+    "err": "That didn't go through. Please try again, or email info@nu-time.org.",
     "invalid": "Please enter a valid email."
   },
   "footer": {

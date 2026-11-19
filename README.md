@@ -2,7 +2,7 @@
 
 **Nu:Time (刻时 Ke-Shi™)** is an open standard for time and place: one clock for the whole planet, a decimal day of **10 gongs · 100 kè · 1,000 beats · 100,000 ticks**, and one unit — the **kè** — that measures both *when* (1/100 of a day) and *where* (3.6° of arc). Its reference is the Earth's own rotation, so it never needs a leap second.
 
-This repository holds the standard, the reference implementations, the open-hardware reference clock and the [nu-time.com](https://nu-time.com) website.
+This repository holds the standard, the reference implementations, the open-hardware reference clock and the [nu-time.org](https://nu-time.org) website.
 
 | | |
 |---|---|
@@ -30,8 +30,8 @@ The site has no build dependencies and loads nothing from third-party CDNs or fo
 | Endpoint | Purpose |
 |---|---|
 | `POST /api/signup` | The "Join" form: stores name, email, role, country, message, language, time zone, consent. Honeypot field and per-IP rate limit (30/hour) against bots. One row per email; re-joining updates it. |
-| `GET /api/signup` | Download every signup as CSV — `curl -H "Authorization: Bearer $ADMIN_KEY" https://nu-time.com/api/signup > signups.csv` |
-| `DELETE /api/signup?email=…` | Remove one signup (privacy requests) — `curl -X DELETE -H "Authorization: Bearer $ADMIN_KEY" "https://nu-time.com/api/signup?email=someone@example.com"` |
+| `GET /api/signup` | Download every signup as CSV — `curl -H "Authorization: Bearer $ADMIN_KEY" https://nu-time.org/api/signup > signups.csv` |
+| `DELETE /api/signup?email=…` | Remove one signup (privacy requests) — `curl -X DELETE -H "Authorization: Bearer $ADMIN_KEY" "https://nu-time.org/api/signup?email=someone@example.com"` |
 | `GET /api/where` | Approximate visitor location for the clock when the browser won't share one (Vercel geo headers); nothing stored |
 
 **Local development** — `npm run dev` (or `bun build.mjs && bun dev.mjs`) serves the site and runs the functions at http://localhost:4310. Signups go to `.data/signups.jsonl` (git-ignored); export with `curl -H "Authorization: Bearer dev" localhost:4310/api/signup`.

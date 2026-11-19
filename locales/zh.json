@@ -406,7 +406,7 @@
     "submit": "加入",
     "sending": "提交中…",
     "ok": "加入成功！欢迎来到刻时 Nu:Time。",
-    "err": "提交失败。请重试，或发邮件至 info@nu-time.com。",
+    "err": "提交失败。请重试，或发邮件至 info@nu-time.org。",
     "invalid": "请输入有效的邮箱地址。"
   },
   "footer": {

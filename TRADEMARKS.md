@@ -19,6 +19,6 @@ The **unit names** — gong / gēng (更), kè (刻), beat / fēn (分) and tick
 
 ## Nu:Time Certified
 
-Implementations that pass the conformance tests in the Standard (§6) may apply to use the **Nu:Time Certified** mark free of charge. Contact standards@nu-time.com.
+Implementations that pass the conformance tests in the Standard (§6) may apply to use the **Nu:Time Certified** mark free of charge. Contact standards@nu-time.org.
 
-Licence and permission requests: legal@nu-time.com.
+Licence and permission requests: legal@nu-time.org.

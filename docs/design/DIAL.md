@@ -1,6 +1,6 @@
 # The Nu:Time dial
 
-Design reference for the live clock on nu-time.com ([public/assets/clock.js](../../public/assets/clock.js)) and for any analog Nu:Time face.
+Design reference for the live clock on nu-time.org ([public/assets/clock.js](../../public/assets/clock.js)) and for any analog Nu:Time face.
 
 ## Principle
 

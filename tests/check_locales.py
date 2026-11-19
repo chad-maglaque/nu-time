@@ -48,7 +48,7 @@ def check(code):
             leaf = re.split(r"[.\[]", p)[-1]
             if leaf in VERBATIM_KEYS and ev != tv:
                 errs.append(f"must be unchanged {p}: {ev!r} -> {tv!r}")
-            for tok in ([] if p == "brandLocal" else ["Nu:Time", "@nu-time.com", "/spec/", "/developers/"]):   # brandLocal is the local brand alone (刻时)
+            for tok in ([] if p == "brandLocal" else ["Nu:Time", "@nu-time.org", "/spec/", "/developers/"]):   # brandLocal is the local brand alone (刻时)
                 if tok in ev and tok not in tv and not (tok == "Nu:Time" and code == "zh" and "刻时" in tv):   # zh: 刻时 alone may stand in after first mention
                     errs.append(f"lost token {tok!r} in {p}")
             if not tv.strip():

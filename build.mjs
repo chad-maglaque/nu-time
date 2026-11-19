@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT OR Apache-2.0 — Copyright (c) 2025-2026 Nu-Time Inc.
-// Static site build for nu-time.com. No dependencies: `node build.mjs` or `bun build.mjs`.
+// Static site build for nu-time.org. No dependencies: `node build.mjs` or `bun build.mjs`.
 // Reads locales/*.json and docs/*.md, writes dist/ (English at /, other languages at /<lang>/).
 import { readFileSync, writeFileSync, mkdirSync, cpSync, rmSync, existsSync } from "node:fs";
 import { join, dirname } from "node:path";
@@ -8,7 +8,7 @@ import { createRequire } from "node:module";
 
 const ROOT = dirname(fileURLToPath(import.meta.url));
 const DIST = join(ROOT, "dist");
-const SITE = "https://nu-time.com";
+const SITE = "https://nu-time.org";
 const BUILD = Date.now().toString(36);   // cache-busting stamp for CSS/JS links
 const ORDER = ["en", "zh", "ja", "hi", "ur", "es", "pt", "fr", "de", "it", "ru"];
 const NT = createRequire(import.meta.url)("./reference/js/nutime.js");
@@ -76,7 +76,7 @@ function footer(t) {
   <p class="small" style="margin-top:12px">${esc(t.footer.tagline)}</p>
   <nav>${langLinks}</nav>
   <p class="small">${esc(t.footer.rights)} ${esc(t.footer.open)}</p>
-  <p class="small"><a href="${docPath("spec", t.lang)}">${esc(t.nav.spec)}</a> · <a href="/developers/">${esc(t.nav.build)}</a> · <a href="/developers/#using-the-name">${esc(t.footer.brand)}</a> · <a href="${privPath(t.lang)}">${esc(t.footer.privacy)}</a> · <a href="mailto:info@nu-time.com">${esc(t.footer.contact)}</a> · <a href="mailto:press@nu-time.com">${esc(t.footer.press)}</a></p>
+  <p class="small"><a href="${docPath("spec", t.lang)}">${esc(t.nav.spec)}</a> · <a href="/developers/">${esc(t.nav.build)}</a> · <a href="/developers/#using-the-name">${esc(t.footer.brand)}</a> · <a href="${privPath(t.lang)}">${esc(t.footer.privacy)}</a> · <a href="mailto:info@nu-time.org">${esc(t.footer.contact)}</a> · <a href="mailto:press@nu-time.org">${esc(t.footer.press)}</a></p>
 </footer>`;
 }
 

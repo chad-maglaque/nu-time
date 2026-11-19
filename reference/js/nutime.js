@@ -1,4 +1,4 @@
-/*! Nu:Time(TM) reference core for JavaScript — https://nu-time.com
+/*! Nu:Time(TM) reference core for JavaScript — https://nu-time.org
  *  Copyright (c) 2025-2026 Nu-Time Inc. Licensed under MIT OR Apache-2.0, at your option.
  *  SPDX-License-Identifier: MIT OR Apache-2.0
  *  "Nu:Time", "Ke-Shi" and "刻时" are trademarks of Nu-Time Inc. (see TRADEMARKS.md).

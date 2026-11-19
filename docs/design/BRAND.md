@@ -1,6 +1,6 @@
 # Brand and design system
 
-Design system for nu-time.com.
+Design system for nu-time.org.
 
 ## Logo
 

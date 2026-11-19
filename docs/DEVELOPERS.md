@@ -9,7 +9,7 @@ Everything you need to build with Nu:Time™: reference code in three languages 
 Works in browsers and Node; no dependencies. [Download nutime.js](/assets/nutime.js)
 
 ```js
-// <script src="https://nu-time.com/assets/nutime.js"></script>  or  const NuTime = require("./nutime.js")
+// <script src="https://nu-time.org/assets/nutime.js"></script>  or  const NuTime = require("./nutime.js")
 NuTime.now(Date.now(), "utc").display          // "05:37:50"  universal Nu:Time
 NuTime.now(Date.now(), "solar", { lon: 121.47 }) // your local solar day (Shanghai)
 NuTime.nuLong(121.47)                           // 33.742 Kè east
@@ -83,4 +83,4 @@ Nu:Time™, Ke-Shi™ and 刻时™ are trademarks of Nu-Time Inc. The open lice
 
 **Please don't, without a licence:** name a product or company with Nu:Time, Ke-Shi or 刻时 (e.g. "Nu:Time Pro"); use the official logos; alter the marks (e.g. "NuTime"); or suggest your product is made, endorsed or certified by Nu-Time Inc.
 
-**Nu:Time Certified:** implementations that pass the conformance tests may apply to use the Certified mark free of charge. Contact standards@nu-time.com.
+**Nu:Time Certified:** implementations that pass the conformance tests may apply to use the Certified mark free of charge. Contact standards@nu-time.org.
