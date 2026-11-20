@@ -28,7 +28,7 @@ The **Join** form must save every signup somewhere. In production it saves to Up
 
 Nu:Time is an open standard, so **nu-time.org** is the domain of record. **nu-time.com** and **nutime.org** (and all three `www`) 301-redirect to it, keeping the path and query. All three zones are on **Cloudflare DNS** (free), DNS only (grey cloud); the site is served by Vercel.
 
-Only named addresses forward, through Cloudflare **Email Routing** (free), to the owner's work inbox: **info@**, **press@**, **privacy@**, **standards@** and **legal@nu-time.org** (the ones the site shows), and the same five at nutime.org and nu-time.com. Mail to any other address is dropped: the catch-all stays off on all three zones. The list is `MAIL_ADDRESSES` in the script.
+Only named addresses forward, through Cloudflare **Email Routing** (free), to the owner's personal Nu:Time inbox (`EMAIL_DEST` in `.env.domains`; switched from the work inbox on 2026-11-19): **info@**, **press@**, **privacy@**, **standards@** and **legal@nu-time.org** (the ones the site shows), and the same five at nutime.org and nu-time.com. Mail to any other address is dropped: the catch-all stays off on all three zones. The list is `MAIL_ADDRESSES` in the script.
 
 The commercial watch domains (**nu-watch.com, nu.watch, nu-beat.com**) are separate and are not part of this setup. Nothing here touches them.
 
@@ -58,7 +58,8 @@ All of it is scripted, and both scripts are safe to re-run:
    - **Change of address:** run it from the URL-prefix property (`https://…/`), not the Domain property. The Domain property tests `http://`, where Vercel first sends its own http→https 308, which the checker rejects. Go to **Settings → Change of address**, choose **nu-time.org**, then **Validate & update**, then **Confirm move**.
    - **nutime.org → nu-time.org:** move confirmed 2026-11-19.
    - **nu-time.com → nu-time.org:** still pending on 2026-11-19. Google's fetch got a stale `200` from Vercel's edge cache (`X-Vercel-Cache: HIT`), the old page from before the redirect. A production redeploy clears that cache. Then retry the change of address.
-5. Send a test message to a few addresses at each domain from a different account. Replies come from the work inbox. Sending *as* info@nu-time.org needs a mail service later (not needed for launch).
+5. Send a test message to a few addresses at each domain from a different account. Replies go out as press@ or info@nu-time.org from that inbox (Gmail "Send mail as" through Resend, below).
+6. **Sending as nu-time.org (Resend, set up 2026-11-19).** Outgoing mail such as press pitches goes through [Resend](https://resend.com) (free plan), from `Nu:Time <press@nu-time.org>` with `reply_to` press@nu-time.org, so replies arrive through Email Routing as above. Records in the nu-time.org zone, all DNS only: `TXT resend._domainkey` (DKIM key from Resend), `CNAME send → send.forge.rmta.net`, `CNAME rsend → rsend.forge.rmta.net`, and `TXT _dmarc = v=DMARC1; p=none;`. They sit on subdomains, so `tools/domains.sh` (which manages only apex mail records) leaves them alone. Resend's receiving (MX) record is deliberately not added: Cloudflare Email Routing keeps receiving. The sending key is `RESEND_API_KEY` in the git-ignored `.env.domains` (permission: sending access).
 
 ## 4. Launch checks
 

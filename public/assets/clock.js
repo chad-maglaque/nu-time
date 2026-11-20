@@ -77,13 +77,6 @@
   var place = null, skyAt = 0, events = null, sunUp = true, last = "";
   var say = function (k, extra) { if (status) status.textContent = (k ? root.getAttribute("data-" + k) : "") + (extra || ""); };
 
-  // After the visitor picks a place, bring the clock face into view so they see the change.
-  function showClock() {
-    if (document.activeElement && document.activeElement.blur) document.activeElement.blur();   // a focused control would pull the page back down
-    var still = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (window.innerWidth > 980) window.scrollTo({ top: 0, behavior: still ? "auto" : "smooth" });
-    else canvas.scrollIntoView({ behavior: still ? "auto" : "smooth", block: "start" });
-  }
   function setPlace(name, lat, lon, tz, kind) {
     place = { name: name, lat: lat, lon: lon, tz: tz || Intl.DateTimeFormat().resolvedOptions().timeZone, kind: kind || "city" };
     try { localStorage.setItem("nt-place", JSON.stringify(place)); } catch (e) {}
@@ -111,7 +104,6 @@
         if (g.lat == null || g.lon == null) throw 0;
         setPlace(g.city || "≈", +g.lat, +g.lon, g.tz, "approx");
         if (g.city) say("approx", " " + g.city + (g.region ? ", " + g.region : "")); else say("");
-        if (byUser) showClock();
       }).catch(function () { say("locfail"); });
     };
     if (!navigator.geolocation || window.isSecureContext === false) return approx();
@@ -119,10 +111,9 @@
       var lat = p.coords.latitude, lon = p.coords.longitude;
       setPlace("current", lat, lon, null, "current");
       say("");
-      if (byUser) showClock();
     }, approx, { enableHighAccuracy: false, timeout: 15000, maximumAge: 300000 });
   }
-  sel.addEventListener("change", function () { if (sel.value === "current") locate(true); else if (sel.value !== "") { pickCity(+sel.value); showClock(); } });
+  sel.addEventListener("change", function () { if (sel.value === "current") locate(true); else if (sel.value !== "") pickCity(+sel.value); });
   var locBtn = $("[data-locate]");
   if (locBtn) locBtn.addEventListener("click", function () { locate(true); });
 
@@ -288,6 +279,102 @@
     hand(ang((f * 1000) % 1), R * 0.88, R * 0.012, "#e8c45a", R * 0.14);
     ctx.beginPath(); ctx.arc(0, 0, R * 0.05, 0, 2 * Math.PI); ctx.fillStyle = "#1a1a1a"; ctx.fill();
   }
+
+  // ── share poster: a 1080×1440 image of this visitor's dial, sun times and a QR code back to the site ──
+  // Made in the browser and nothing is uploaded. Long-press to save (works in WeChat), or Save / Share.
+  var pBtn = root.querySelector("[data-poster]"), dlg = root.querySelector("[data-poster-dlg]");
+  if (pBtn && dlg && dlg.showModal) {
+    var pImg = dlg.querySelector("[data-poster-img]"), pSave = dlg.querySelector("[data-poster-save]"),
+        pShare = dlg.querySelector("[data-poster-share]"), pFile = null;
+    var attr = function (k) { return dlg.getAttribute("data-" + k) || ""; };
+    var dtOf = function (el) { return el && el.previousElementSibling ? el.previousElementSibling.textContent.trim() : ""; };
+    function placeName() {
+      if (sel.value !== "" && sel.value !== "current" && sel.selectedIndex >= 0) return sel.options[sel.selectedIndex].textContent;
+      if (place && place.kind === "approx" && place.name && place.name !== "≈") return place.name;
+      if (place && place.kind === "city") return place.name;   // Greenwich default
+      return attr("place") + " · " + latEl.textContent + " · " + lonEl.textContent;
+    }
+    function wrap(c, text, x, y, maxW, lineH) {
+      var words = /[　-鿿＀-￯]/.test(text) ? text.split("") : text.split(" "), sep = /[　-鿿]/.test(text) ? "" : " ", line = "";
+      for (var i = 0; i < words.length; i++) {
+        var test = line ? line + sep + words[i] : words[i];
+        if (c.measureText(test).width > maxW && line) { c.fillText(line, x, y); line = words[i]; y += lineH; } else line = test;
+      }
+      if (line) c.fillText(line, x, y);
+      return y;
+    }
+    function makePoster() {
+      var ms = Date.now(), PW = 1080, PH = 1440, cv = document.createElement("canvas");
+      cv.width = PW; cv.height = PH;
+      var c = cv.getContext("2d"), sans = getComputedStyle(document.body).fontFamily, logo = '"Orbitron", ' + sans;
+      var L = attr("lang"), sky = getComputedStyle(document.documentElement).getPropertyValue("--sky").trim() || "rgb(24,30,66)";
+      c.fillStyle = "#1a1a1a"; c.fillRect(0, 0, PW, PH);
+      // header: 刻时 (Chinese page) + the wordmark with its upside-down U
+      c.textBaseline = "alphabetic"; c.fillStyle = "#ffb347";
+      var x = 72, y = 128;
+      if (L === "zh") { c.font = "600 46px " + sans; c.fillText("刻时", x, y); x += c.measureText("刻时").width + 22; }
+      c.font = "800 46px " + logo;
+      var uw = c.measureText("U").width;
+      c.save(); c.translate(x, y - 16); c.scale(1, -1); c.fillText("U", 0, 16); c.restore();   // flip about the cap-height midline
+      c.fillText("U:TIME", x + uw, y);
+      // label + the big universal time
+      c.textAlign = "center"; c.fillStyle = "#9ca3af"; c.font = "500 30px " + sans;
+      c.fillText(attr("label"), PW / 2, 236);
+      c.fillStyle = "#ffb347"; c.font = "800 150px " + logo;
+      c.fillText(uni(ms).display, PW / 2, 392);
+      // the dial, as it is right now, on a glow of the place's sky colour
+      var D = 620, dx = (PW - D) / 2, dy = 440;
+      var g = c.createRadialGradient(PW / 2, dy + D / 2, D * 0.3, PW / 2, dy + D / 2, D * 0.62);
+      g.addColorStop(0, sky); g.addColorStop(1, "rgba(26,26,26,0)");
+      c.fillStyle = g; c.fillRect(0, dy - 60, PW, D + 120);
+      c.drawImage(canvas, dx, dy, D, D);
+      // place
+      c.fillStyle = "#ffffff"; c.font = "600 38px " + sans;
+      c.fillText(placeName(), PW / 2, dy + D + 76);
+      // footer: sun times, tagline, address · QR code on the right
+      c.strokeStyle = "#333"; c.lineWidth = 2; c.beginPath(); c.moveTo(72, 1170); c.lineTo(PW - 72, 1170); c.stroke();
+      c.textAlign = "left";
+      [[rise, 72], [noon, 302], [set, 532]].forEach(function (s) {
+        c.fillStyle = "#9ca3af"; c.font = "500 24px " + sans; c.fillText(dtOf(s[0]), s[1], 1216);
+        c.fillStyle = "#ffb347"; c.font = "700 44px " + logo; c.fillText(s[0].textContent, s[1], 1266);
+      });
+      c.direction = document.documentElement.dir === "rtl" ? "rtl" : "ltr";   // Urdu shapes and orders correctly
+      c.fillStyle = "#d1d5db"; c.font = "500 26px " + sans;
+      var ty = wrap(c, attr("tagline"), 72, 1316, 690, 36);
+      c.direction = "ltr";
+      c.fillStyle = "#ffb347"; c.font = "700 30px " + logo;
+      var qr = (window.NT_QR || {})[L] || (window.NT_QR || {}).en;
+      c.fillText(qr ? qr.url.replace(/^https:\/\//, "").replace(/\/$/, "") : "nu-time.org", 72, Math.max(1396, ty + 50));
+      if (qr) {
+        var n = qr.rows.length, Q = 214, qx = PW - 72 - Q, qy = 1196, m = (Q - 20) / n;
+        c.fillStyle = "#ffffff"; c.beginPath();
+        if (c.roundRect) c.roundRect(qx, qy, Q, Q, 14); else c.rect(qx, qy, Q, Q);
+        c.fill(); c.fillStyle = "#111";
+        for (var r = 0; r < n; r++) for (var k = 0; k < n; k++)
+          if (qr.rows[r].charAt(k) === "1") c.fillRect(qx + 10 + k * m, qy + 10 + r * m, Math.ceil(m), Math.ceil(m));
+        c.textAlign = "center"; c.fillStyle = "#9ca3af"; c.font = "500 20px " + sans;
+        c.fillText(attr("scan"), qx + Q / 2, qy + Q + 30);
+      }
+      return cv;
+    }
+    function openPoster() {
+      var go = function () {
+        var cv = makePoster(), url = cv.toDataURL("image/png");
+        pImg.src = url; pSave.href = url;
+        pFile = null; pShare.hidden = true;
+        if (cv.toBlob && navigator.canShare) cv.toBlob(function (b) {
+          try { var f = new File([b], "nu-time.png", { type: "image/png" }); if (navigator.canShare({ files: [f] })) { pFile = f; pShare.hidden = false; } } catch (e) {}
+        }, "image/png");
+        if (!dlg.open) dlg.showModal();
+      };
+      // make sure the wordmark font is ready before drawing on the canvas
+      if (document.fonts && document.fonts.load) document.fonts.load('800 46px "Orbitron"').then(go, go); else go();
+    }
+    pBtn.addEventListener("click", openPoster);
+    pShare.addEventListener("click", function () { if (pFile) navigator.share({ files: [pFile], text: "https://nu-time.org" }).catch(function () {}); });
+    dlg.querySelector("[data-poster-close]").addEventListener("click", function () { dlg.close(); });
+    dlg.addEventListener("click", function (e) { if (e.target === dlg) dlg.close(); });   // tap outside to close
+  } else if (pBtn) pBtn.hidden = true;   // very old browsers: no <dialog>, no poster
 
   function frame() {
     var ms = Date.now();

@@ -219,3 +219,13 @@ p { margin: 0 0 1em; }
 .phi-ids { list-style: none; padding: 0; margin: 8px 0 32px; display: flex; flex-wrap: wrap; gap: 10px; max-width: 760px; }
 .phi-ids li { font: 600 15px var(--mono); color: var(--gold); border: 1px solid var(--line); border-radius: 10px; padding: 9px 14px; direction: ltr; unicode-bidi: isolate; }
 .quartz { max-width: 760px; }
+
+/* share poster */
+.share { margin: 22px 0 26px; text-align: center; }
+.share .btn { padding: 11px 20px; font-size: 12px; }
+.posterdlg { border: 1px solid var(--line); border-radius: 14px; background: var(--bg2); color: var(--text); padding: 16px; max-width: min(520px, 94vw); max-height: 94vh; overflow: auto; }
+.posterdlg::backdrop { background: rgba(0, 0, 0, .72); }
+.posterdlg img { display: block; width: 100%; height: auto; max-height: calc(94vh - 150px); object-fit: contain; border-radius: 8px; }
+.posterdlg .hint { text-align: center; margin: 10px 0 10px; font-size: 14px; }
+.posterdlg .row { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+.posterdlg .pbtn { padding: 8px 14px; font-size: 11px; letter-spacing: .06em; border-radius: 6px; }

@@ -471,5 +471,15 @@
     "Vancouver": "Vancouver",
     "Washington D.C.": "Washington D.C.",
     "Greenwich": "Greenwich"
+  },
+  "poster": {
+    "button": "Make my poster",
+    "hint": "Long-press the image to save it, or use the buttons below.",
+    "save": "Save image",
+    "share": "Share",
+    "close": "Close",
+    "tagline": "1 Kè = 864 seconds · 100 Kè in a day, 100 Kè in a circle",
+    "scan": "Scan for the live dial",
+    "place": "My location"
   }
 }

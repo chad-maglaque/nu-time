@@ -471,5 +471,15 @@
     "Vancouver": "Vancouver",
     "Washington D.C.": "Washington D.C.",
     "Greenwich": "Greenwich"
+  },
+  "poster": {
+    "button": "Crea il mio poster",
+    "hint": "Tieni premuta l’immagine per salvarla, oppure usa i pulsanti qui sotto.",
+    "save": "Salva immagine",
+    "share": "Condividi",
+    "close": "Chiudi",
+    "tagline": "1 Kè = 864 secondi · 100 Kè in un giorno, 100 Kè in un giro",
+    "scan": "Inquadra per vedere il quadrante in tempo reale",
+    "place": "La mia posizione"
   }
 }
