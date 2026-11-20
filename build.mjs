@@ -124,7 +124,7 @@ ${topbar(t, subnav)}
       </dl>
     </div>
     <div class="daybar"><span>${esc(h.dayBar)}</span><div class="track" data-bar><span class="now" data-bar-now></span></div><div class="scale">${[0, 2, 4, 6, 8, 10].map((g) => `<span style="left:${g * 10}%">${g}</span>`).join("")}</div><span class="unit">${esc(u.gongs)}</span></div>
-    <dialog class="posterdlg" data-poster-dlg data-lang="${L}" data-tagline="${esc(t.poster.tagline)}" data-scan="${esc(t.poster.scan)}" data-place="${esc(t.poster.place)}" data-label="${esc(h.clockLabel)}" data-brand="${esc(t.brandLocal)}">
+    <dialog class="posterdlg" data-poster-dlg data-lang="${L}" data-tagline="${esc(h.title)}" data-scan="${esc(t.poster.scan)}" data-place="${esc(t.poster.place)}" data-label="${esc(h.clockLabel)}" data-brand="${esc(t.brandLocal)}">
       <img data-poster-img alt="${esc(t.poster.button)}">
       <p class="hint">${esc(t.poster.hint)}</p>
       <div class="row"><a class="btn pbtn" data-poster-save download="nu-time.png" href="#">${esc(t.poster.save)}</a><button type="button" class="btn pbtn ghost" data-poster-share hidden>${esc(t.poster.share)}</button><button type="button" class="btn pbtn ghost" data-poster-close>${esc(t.poster.close)}</button></div>

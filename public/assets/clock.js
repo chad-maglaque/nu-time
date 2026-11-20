@@ -339,8 +339,8 @@
         c.fillStyle = "#ffb347"; c.font = "700 44px " + logo; c.fillText(s[0].textContent, s[1], 1266);
       });
       c.direction = document.documentElement.dir === "rtl" ? "rtl" : "ltr";   // Urdu shapes and orders correctly
-      c.fillStyle = "#d1d5db"; c.font = "500 26px " + sans;
-      var ty = wrap(c, attr("tagline"), 72, 1316, 690, 36);
+      c.fillStyle = "#ffffff"; c.font = "600 34px " + sans;   // the site's lead line (hero.title)
+      var ty = wrap(c, attr("tagline"), 72, 1322, 690, 42);
       c.direction = "ltr";
       c.fillStyle = "#ffb347"; c.font = "700 30px " + logo;
       var qr = (window.NT_QR || {})[L] || (window.NT_QR || {}).en;
