@@ -334,10 +334,22 @@
       // footer: sun times, tagline, address · QR code on the right
       c.strokeStyle = "#333"; c.lineWidth = 2; c.beginPath(); c.moveTo(72, 1170); c.lineTo(PW - 72, 1170); c.stroke();
       c.textAlign = "left";
-      [[rise, 72], [noon, 302], [set, 532]].forEach(function (s) {
-        c.fillStyle = "#9ca3af"; c.font = "500 24px " + sans; c.fillText(dtOf(s[0]), s[1], 1216);
-        c.fillStyle = "#ffb347"; c.font = "700 44px " + logo; c.fillText(s[0].textContent, s[1], 1266);
-      });
+      if (events && events.polar) {
+        // polar day / night: no sunrise or sunset to list, so one line across the row up to the QR code,
+        // shrunk if needed (the sentence is far wider than one 230px time slot in every language)
+        var pw = PW - 72 - 214 - 24 - 72, fs = 44;
+        c.direction = document.documentElement.dir === "rtl" ? "rtl" : "ltr";   // left-aligned like the tagline below it
+        c.fillStyle = "#9ca3af"; c.font = "500 24px " + sans; c.fillText(dtOf(events.polar === "day" ? set : rise), 72, 1216);
+        c.fillStyle = "#ffb347"; c.font = "700 44px " + logo;
+        while (fs > 26 && c.measureText(rise.textContent).width > pw) { fs -= 2; c.font = "700 " + fs + "px " + logo; }
+        c.fillText(rise.textContent, 72, 1266);
+        c.direction = "ltr";
+      } else {
+        [[rise, 72], [noon, 302], [set, 532]].forEach(function (s) {
+          c.fillStyle = "#9ca3af"; c.font = "500 24px " + sans; c.fillText(dtOf(s[0]), s[1], 1216);
+          c.fillStyle = "#ffb347"; c.font = "700 44px " + logo; c.fillText(s[0].textContent, s[1], 1266);
+        });
+      }
       c.direction = document.documentElement.dir === "rtl" ? "rtl" : "ltr";   // Urdu shapes and orders correctly
       c.fillStyle = "#ffffff"; c.font = "600 34px " + sans;   // the site's lead line (hero.title)
       var ty = wrap(c, attr("tagline"), 72, 1322, 690, 42);
