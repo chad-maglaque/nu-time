@@ -24,6 +24,8 @@ The **Join** form must save every signup somewhere. In production it saves to Up
    ```
    The CSV has one row per email: date, country (detected), email, name, role, country (typed), message, language, page, time zone, consent.
 
+   **Consent cut-off: 2026-11-20T02:14:39Z** (commit d4bf46a). Before then the "email me launch news" box was pre-ticked, so a `consent = yes` dated earlier was not actively given. Email news only to `consent = yes` rows dated after the cut-off; the first email to anyone earlier asks them to confirm instead of assuming. The privacy page promises news only to people who tick the box.
+
 ## 3. Domains, DNS and email
 
 Nu:Time is an open standard, so **nu-time.org** is the domain of record. **nu-time.com** and **nutime.org** (and all three `www`) 301-redirect to it, keeping the path and query. All three zones are on **Cloudflare DNS** (free), DNS only (grey cloud); the site is served by Vercel.
