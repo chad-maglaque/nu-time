@@ -272,6 +272,13 @@
         "place": "Spagna",
         "title": "Un intero paese nel fuso orario sbagliato",
         "text": "La Spagna si trova in gran parte a ovest di Greenwich, eppure nel 1940 ha adottato l'ora dell'Europa centrale. I suoi orologi sono ancora avanti di un'ora o più rispetto al sole: un esempio concreto di come i fusi orari incidano sulla vita di tutti i giorni."
+      },
+      {
+        "key": "cn",
+        "era": "1949 – oggi",
+        "place": "Cina",
+        "title": "Un paese, un orologio",
+        "text": "Da oltre 75 anni circa 1,4 miliardi di persone condividono un unico orologio nazionale, in un paese che il sole impiega più di quattro ore ad attraversare. La Cina ha fatto il salto molto tempo fa: l'ora civile non deve per forza seguire il sole locale. Nu:Time estende questo principio a tutto il pianeta e rende esplicito ciò che era rimasto sottinteso, cioè che l'ora ufficiale è una cosa e la posizione del sole nel cielo un'altra. La filosofia, la Cina l'ha già accettata. La geometria ce la mette Nu:Time."
       }
     ]
   },
@@ -289,7 +296,7 @@
       },
       {
         "title": "I fusi orari sono politica, non fisica",
-        "text": "Nel mondo sono in uso decine di scostamenti orari diversi. La Cina si estende su cinque fusi orari con un'unica ora. L'India su quasi due. La Spagna è spostata di un'ora intera. Nu:Time separa l'ora condivisa dal sole locale."
+        "text": "Nel mondo sono in uso decine di scostamenti orari diversi. L'India si estende su quasi due fusi orari; la Spagna è spostata di un'ora intera. La Cina usa già un'unica ora su cinque fusi orari geografici. Nu:Time separa l'ora ufficiale dal sole locale."
       },
       {
         "title": "L'ora legale ha perso la partita",

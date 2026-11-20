@@ -229,3 +229,4 @@ p { margin: 0 0 1em; }
 .posterdlg .hint { text-align: center; margin: 10px 0 10px; font-size: 14px; }
 .posterdlg .row { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
 .posterdlg .pbtn { padding: 8px 14px; font-size: 11px; letter-spacing: .06em; border-radius: 6px; }
+.timeline li:last-child:nth-child(even) { grid-column: 1 / -1; }   /* an even count ends on a full-width card */

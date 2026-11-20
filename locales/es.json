@@ -272,6 +272,13 @@
         "place": "España",
         "title": "Un país entero fuera de su huso horario",
         "text": "La mayor parte de España está al oeste del meridiano de Greenwich, pero en 1940 adoptó la hora de Europa Central. Sus relojes todavía van una hora o más por delante del sol: un ejemplo vivo de cómo los husos horarios condicionan la vida cotidiana."
+      },
+      {
+        "key": "cn",
+        "era": "1949 – hoy",
+        "place": "China",
+        "title": "Un país, un reloj",
+        "text": "Desde hace más de 75 años, unos 1400 millones de personas comparten un único reloj nacional en un país que el sol tarda más de cuatro horas en cruzar. China dio el salto hace mucho: la hora civil no tiene por qué seguir al sol local. Nu:Time extiende ese principio a todo el planeta y añade lo que quedaba implícito: la hora oficial es una cosa, y la posición del sol en el cielo, otra. China ya acepta la filosofía. Nu:Time aporta la geometría."
       }
     ]
   },
@@ -289,7 +296,7 @@
       },
       {
         "title": "Los husos horarios son política, no física",
-        "text": "En el mundo se usan decenas de desfases horarios distintos. China abarca cinco husos horarios con un solo reloj. India, casi dos. España vive con una hora entera de desfase. Nu:Time distingue entre la hora que todos compartimos y el sol de cada lugar."
+        "text": "En el mundo se usan decenas de desfases horarios distintos. India abarca casi dos husos horarios; España vive con una hora entera de desfase. China ya funciona con un solo reloj en cinco husos horarios geográficos. Nu:Time distingue entre la hora oficial y el sol de cada lugar."
       },
       {
         "title": "El horario de verano ha perdido el debate",

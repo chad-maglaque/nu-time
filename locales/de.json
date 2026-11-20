@@ -272,6 +272,13 @@
         "place": "Spanien",
         "title": "Ein ganzes Land in der falschen Zeitzone",
         "text": "Spanien liegt größtenteils westlich von Greenwich, übernahm 1940 aber die Mitteleuropäische Zeit. Seine Uhren gehen der Sonne bis heute eine Stunde oder mehr voraus – ein lebendiges Beispiel dafür, was Zeitzonen mit dem Alltag machen."
+      },
+      {
+        "key": "cn",
+        "era": "1949 – heute",
+        "place": "China",
+        "title": "Ein Land, eine Uhr",
+        "text": "Seit mehr als 75 Jahren teilen rund 1,4 Milliarden Menschen eine einzige nationale Uhrzeit – in einem Land, das die Sonne in mehr als vier Stunden überquert. China hat diesen Schritt längst vollzogen: Die Uhrzeit im Alltag muss sich nicht nach der Sonne vor Ort richten. Nu:Time überträgt dieses Prinzip auf den ganzen Planeten und spricht aus, was bisher unausgesprochen blieb – die offizielle Uhrzeit ist etwas anderes als der Stand der Sonne am Himmel. Die Philosophie hat China bereits akzeptiert. Die Geometrie liefert Nu:Time."
       }
     ]
   },
@@ -289,7 +296,7 @@
       },
       {
         "title": "Zeitzonen sind Politik, nicht Physik",
-        "text": "Weltweit gelten Dutzende verschiedene Abweichungen von UTC. China erstreckt sich über fünf Zeitzonen – mit einer einzigen Uhrzeit. Indien über fast zwei. Spanien ist um eine ganze Stunde verschoben. Nu:Time trennt die gemeinsame Zeit von der Sonne vor Ort."
+        "text": "Weltweit gelten Dutzende verschiedene Abweichungen von UTC. Indien erstreckt sich über fast zwei Zeitzonen; Spanien ist um eine ganze Stunde verschoben. China nutzt bereits eine einzige Uhrzeit über fünf geografische Zeitzonen hinweg. Nu:Time trennt die offizielle Uhrzeit von der Sonne vor Ort."
       },
       {
         "title": "Die Sommerzeit hat die Debatte verloren",

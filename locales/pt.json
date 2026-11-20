@@ -272,6 +272,13 @@
         "place": "Espanha",
         "title": "Um país inteiro no fuso horário errado",
         "text": "A Espanha fica, em sua maior parte, a oeste de Greenwich, mas adotou o horário da Europa Central em 1940. Seus relógios ainda andam uma hora ou mais à frente do sol — um exemplo vivo do que os fusos horários fazem com o dia a dia."
+      },
+      {
+        "key": "cn",
+        "era": "1949 – hoje",
+        "place": "China",
+        "title": "Um país, um relógio",
+        "text": "Há mais de 75 anos, cerca de 1,4 bilhão de pessoas compartilham um único relógio nacional, num país que o sol leva mais de quatro horas para atravessar. A China deu esse salto há muito tempo: a hora civil não precisa seguir o sol local. O Nu:Time estende esse princípio ao planeta inteiro e acrescenta o que tinha ficado implícito — o horário oficial é uma coisa; a posição do sol no céu é outra. A China já aceita a filosofia. O Nu:Time traz a geometria."
       }
     ]
   },
@@ -289,7 +296,7 @@
       },
       {
         "title": "Fusos horários são política, não física",
-        "text": "O mundo usa dezenas de fusos diferentes. A China abrange cinco fusos horários com um único relógio. A Índia, quase dois. A Espanha está deslocada uma hora inteira. O Nu:Time separa duas coisas: a hora que todos compartilham e o sol de cada lugar."
+        "text": "O mundo usa dezenas de fusos diferentes. A Índia abrange quase dois fusos horários; a Espanha está deslocada uma hora inteira. A China já funciona com um único relógio em cinco fusos horários geográficos. O Nu:Time separa duas coisas: o horário oficial e o sol de cada lugar."
       },
       {
         "title": "O horário de verão perdeu o debate",

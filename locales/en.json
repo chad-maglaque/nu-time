@@ -272,6 +272,13 @@
         "place": "Spain",
         "title": "A whole country in the wrong time zone",
         "text": "Spain sits mostly west of Greenwich yet adopted Central European Time, in 1940. Its clocks still run an hour or more ahead of its sun — a living example of what time zones do to daily life."
+      },
+      {
+        "key": "cn",
+        "era": "1949 – today",
+        "place": "China",
+        "title": "One country, one clock",
+        "text": "For more than 75 years, about 1.4 billion people have shared a single national clock across a country the sun takes more than four hours to cross. China made the leap long ago: civil time doesn't have to follow the local sun. Nu:Time extends that principle to the whole planet, and adds what was left implicit — a standardized clock is different from the sun's position in the sky. China already accepts the philosophy. Nu:Time provides the geometry."
       }
     ]
   },
@@ -289,7 +296,7 @@
       },
       {
         "title": "Time zones are politics, not physics",
-        "text": "Dozens of offsets are in use worldwide. China spans five time zones on one clock. India spans nearly two. Spain is shifted an entire hour. Nu:Time separates the shared time from the local sun."
+        "text": "Dozens of offsets are in use worldwide. India spans nearly two time zones; Spain is shifted an entire hour. China already runs one clock across five geographic time zones. Nu:Time separates the standardized time from the local sun."
       },
       {
         "title": "Daylight saving has lost the argument",

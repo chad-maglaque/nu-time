@@ -272,6 +272,13 @@
         "place": "Espagne",
         "title": "Tout un pays dans le mauvais fuseau",
         "text": "L’Espagne se situe en majeure partie à l’ouest de Greenwich, mais elle a adopté l’heure d’Europe centrale en 1940. Ses horloges ont encore une heure ou plus d’avance sur son soleil — un exemple vivant de ce que les fuseaux horaires font à la vie quotidienne."
+      },
+      {
+        "key": "cn",
+        "era": "Depuis 1949",
+        "place": "Chine",
+        "title": "Un pays, une seule heure",
+        "text": "Depuis plus de 75 ans, quelque 1,4 milliard de personnes partagent une seule et même heure nationale, dans un pays que le soleil met plus de quatre heures à traverser. La Chine a franchi le pas il y a longtemps : l’heure civile n’a pas à suivre le soleil local. Nu:Time étend ce principe à toute la planète, et énonce ce qui restait implicite — l’heure légale et la position du soleil dans le ciel sont deux choses différentes. La philosophie, la Chine l’a déjà acceptée. La géométrie, c’est Nu:Time qui l’apporte."
       }
     ]
   },
@@ -289,7 +296,7 @@
       },
       {
         "title": "Les fuseaux horaires relèvent de la politique, pas de la physique",
-        "text": "Des dizaines de décalages horaires sont en usage dans le monde. La Chine s’étend sur cinq fuseaux avec une seule heure. L’Inde, sur près de deux. L’Espagne est décalée d’une heure entière. Nu:Time distingue l’heure, commune à tous, du soleil, propre à chaque lieu."
+        "text": "Des dizaines de décalages horaires sont en usage dans le monde. L’Inde s’étend sur près de deux fuseaux ; l’Espagne est décalée d’une heure entière. La Chine applique déjà une seule heure sur cinq fuseaux géographiques. Nu:Time distingue l’heure légale du soleil, propre à chaque lieu."
       },
       {
         "title": "L’heure d’été a perdu la partie",
