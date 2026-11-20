@@ -2,6 +2,8 @@
 
 Added 2026-11-19 with the share poster on the home page (`hero.tryIt` is the button; `poster.*` are the dialog and the image text; `poster.button` is now only the image's alt text). Each language was translated, then independently reviewed and back-translated into literal English; the review's fixes were applied. The Urdu poster was checked rendered. Unit words follow `units.ke` in each locale (刻, Кэ, Kè).
 
+**Update, same day:** the tagline no longer leads with a conversion to seconds (that suggests a cumbersome changeover). It is now only the second half of the reviewed line: "100 Kè in a day, 100 Kè in a circle" / 「一天 100 刻，一圈也是 100 刻」. The `tagline` rows below show the earlier, longer wording; the first part ("1 Kè = 864 seconds ·") was dropped in every language.
+
 ## zh
 
 | Key | English source | Translation | Back-translation |
