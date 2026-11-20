@@ -23,8 +23,7 @@ The **Join** form must save every signup somewhere. In production it saves to Up
    curl -H "Authorization: Bearer $ADMIN_KEY" https://nu-time.org/api/signup > nu-time-signups.csv
    ```
    The CSV has one row per email: date, country (detected), email, name, role, country (typed), message, language, page, time zone, consent.
-
-   **Consent cut-off: 2026-11-20T02:14:39Z** (commit d4bf46a). Before then the "email me launch news" box was pre-ticked, so a `consent = yes` dated earlier was not actively given. Email news only to `consent = yes` rows dated after the cut-off; the first email to anyone earlier asks them to confirm instead of assuming. The privacy page promises news only to people who tick the box.
+   Email news only to rows with `consent = yes`: the box starts unticked, and the privacy page promises news only to people who tick it.
 
 ## 3. Domains, DNS and email
 
