@@ -18,7 +18,7 @@ const EN = locales.find((t) => t.lang === "en");
 
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 const path = (l) => (l === "en" ? "/" : `/${l}/`);
-const hl = (l) => ({ zh: "zh-Hans", pt: "pt-BR" })[l] || l;
+const hl = (l) => ({ zh: "zh-Hans" })[l] || l;   // language codes only (zh-Hans names the script, not a region)
 // translated doc pages live in docs/i18n/<doc>/<lang>.md; fall back to the English page
 const DOCS = { spec: "SPEC.md", privacy: "PRIVACY.md" };
 const docSrc = (d, l) => join(ROOT, "docs/i18n", d, l + ".md");
@@ -220,7 +220,7 @@ ${topbar(t, subnav)}
     <label>${esc(t.join.country)}<input name="country" autocomplete="country-name" maxlength="80"></label>
     <label class="wide">${esc(t.join.message)}<textarea name="message" rows="3" maxlength="2000"></textarea></label>
     <label class="hp" aria-hidden="true">Website<input name="website" tabindex="-1" autocomplete="off"></label>
-    <label class="check wide"><input type="checkbox" name="consent" checked> <span>${esc(t.join.consent)} <a href="${privPath(t.lang)}">${esc(t.footer.privacy)}</a></span></label>
+    <label class="check wide"><input type="checkbox" name="consent"> <span>${esc(t.join.consent)} <a href="${privPath(t.lang)}">${esc(t.footer.privacy)}</a></span></label>
     <input type="hidden" name="lang" value="${L}">
     <button class="btn" type="submit">${esc(t.join.submit)}</button>
     <p class="status" role="status" aria-live="polite"></p>
